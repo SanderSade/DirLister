@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FA37B9DD-98FB-4976-BA6F-6C57137EF6D1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sander.DirLister.Core</RootNamespace>
+    <AssemblyName>DirLister.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\DirLister.Core.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Application\FileReader.cs" />
+    <Compile Include="Application\Runner.cs" />
+    <Compile Include="Application\Utils.cs" />
+    <Compile Include="DTO\Configuration.cs" />
+    <Compile Include="DTO\FileEntry.cs" />
+    <Compile Include="DTO\Filter.cs" />
+    <Compile Include="DirLister.cs" />
+    <Compile Include="DTO\OutputFormat.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TagLib\Aac\AudioHeader.cs" />
+    <Compile Include="TagLib\Aac\BitStream.cs" />
+    <Compile Include="TagLib\Aac\File.cs" />
+    <Compile Include="TagLib\Aiff\File.cs" />
+    <Compile Include="TagLib\Aiff\StreamHeader.cs" />
+    <Compile Include="TagLib\Ape\File.cs" />
+    <Compile Include="TagLib\Ape\Footer.cs" />
+    <Compile Include="TagLib\Ape\Item.cs" />
+    <Compile Include="TagLib\Ape\StreamHeader.cs" />
+    <Compile Include="TagLib\Asf\ContentDescriptionObject.cs" />
+    <Compile Include="TagLib\Asf\ContentDescriptor.cs" />
+    <Compile Include="TagLib\Asf\DescriptionRecord.cs" />
+    <Compile Include="TagLib\Asf\ExtendedContentDescriptionObject.cs" />
+    <Compile Include="TagLib\Asf\File.cs" />
+    <Compile Include="TagLib\Asf\FilePropertiesObject.cs" />
+    <Compile Include="TagLib\Asf\Guid.cs" />
+    <Compile Include="TagLib\Asf\HeaderExtensionObject.cs" />
+    <Compile Include="TagLib\Asf\HeaderObject.cs" />
+    <Compile Include="TagLib\Asf\MetadataLibraryObject.cs" />
+    <Compile Include="TagLib\Asf\Object.cs" />
+    <Compile Include="TagLib\Asf\PaddingObject.cs" />
+    <Compile Include="TagLib\Asf\StreamPropertiesObject.cs" />
+    <Compile Include="TagLib\Asf\UnknownObject.cs" />
+    <Compile Include="TagLib\Audible\File.cs" />
+    <Compile Include="TagLib\ByteVector.cs" />
+    <Compile Include="TagLib\ByteVectorList.cs" />
+    <Compile Include="TagLib\CorruptFileException.cs" />
+    <Compile Include="TagLib\Dsf\File.cs" />
+    <Compile Include="TagLib\Dsf\StreamHeader.cs" />
+    <Compile Include="TagLib\File.cs" />
+    <Compile Include="TagLib\FileTypes.cs" />
+    <Compile Include="TagLib\Flac\Block.cs" />
+    <Compile Include="TagLib\Flac\BlockHeader.cs" />
+    <Compile Include="TagLib\Flac\File.cs" />
+    <Compile Include="TagLib\Flac\StreamHeader.cs" />
+    <Compile Include="TagLib\Genres.cs" />
+    <Compile Include="TagLib\ICodec.cs" />
+    <Compile Include="TagLib\ListBase.cs" />
+    <Compile Include="TagLib\Matroska\AudioTrack.cs" />
+    <Compile Include="TagLib\Matroska\EBMLElement.cs" />
+    <Compile Include="TagLib\Matroska\EBMLIDs.cs" />
+    <Compile Include="TagLib\Matroska\EBMLreader.cs" />
+    <Compile Include="TagLib\Matroska\File.cs" />
+    <Compile Include="TagLib\Matroska\IUIDElement.cs" />
+    <Compile Include="TagLib\Matroska\MatroskaIDs.cs" />
+    <Compile Include="TagLib\Matroska\TargetType.cs" />
+    <Compile Include="TagLib\Matroska\Track.cs" />
+    <Compile Include="TagLib\Matroska\VideoTrack.cs" />
+    <Compile Include="TagLib\Mpc\File.cs" />
+    <Compile Include="TagLib\Mpc\StreamHeader.cs" />
+    <Compile Include="TagLib\Mpeg4\Box.cs" />
+    <Compile Include="TagLib\Mpeg4\Boxes\AppleAdditionalInfoBox.cs" />
+    <Compile Include="TagLib\Mpeg4\Boxes\AppleAnnotationBox.cs" />
+    <Compile Include="TagLib\Mpeg4\Boxes\AppleDataBox.cs" />
+    <Compile Include="TagLib\Mpeg4\Boxes\AppleElementaryStreamDescriptor.cs" />
+    <Compile Include="TagLib\Mpeg4\Boxes\AppleItemListBox.cs" />
+    <Compile Include="TagLib\Mpeg4\Boxes\FullBox.cs" />
+    <Compile Include="TagLib\Mpeg4\Boxes\IsoAudioSampleEntry.cs" />
+    <Compile Include="TagLib\Mpeg4\Boxes\IsoChunkLargeOffsetBox.cs" />
+    <Compile Include="TagLib\Mpeg4\Boxes\IsoChunkOffsetBox.cs" />
+    <Compile Include="TagLib\Mpeg4\Boxes\IsoFreeSpaceBox.cs" />
+    <Compile Include="TagLib\Mpeg4\Boxes\IsoHandlerBox.cs" />
+    <Compile Include="TagLib\Mpeg4\Boxes\IsoMetaBox.cs" />
+    <Compile Include="TagLib\Mpeg4\Boxes\IsoMovieHeaderBox.cs" />
+    <Compile Include="TagLib\Mpeg4\Boxes\IsoSampleDescriptionBox.cs" />
+    <Compile Include="TagLib\Mpeg4\Boxes\IsoSampleEntry.cs" />
+    <Compile Include="TagLib\Mpeg4\Boxes\IsoSampleTableBox.cs" />
+    <Compile Include="TagLib\Mpeg4\Boxes\IsoUserDataBox.cs" />
+    <Compile Include="TagLib\Mpeg4\Boxes\IsoVisualSampleEntry.cs" />
+    <Compile Include="TagLib\Mpeg4\Boxes\TextBox.cs" />
+    <Compile Include="TagLib\Mpeg4\Boxes\UnknownBox.cs" />
+    <Compile Include="TagLib\Mpeg4\Boxes\UrlBox.cs" />
+    <Compile Include="TagLib\Mpeg4\BoxFactory.cs" />
+    <Compile Include="TagLib\Mpeg4\BoxHeader.cs" />
+    <Compile Include="TagLib\Mpeg4\BoxTypes.cs" />
+    <Compile Include="TagLib\Mpeg4\File.cs" />
+    <Compile Include="TagLib\Mpeg4\FileParser.cs" />
+    <Compile Include="TagLib\Mpeg\AudioFile.cs" />
+    <Compile Include="TagLib\Mpeg\AudioHeader.cs" />
+    <Compile Include="TagLib\Mpeg\File.cs" />
+    <Compile Include="TagLib\Mpeg\VBRIHeader.cs" />
+    <Compile Include="TagLib\Mpeg\VideoHeader.cs" />
+    <Compile Include="TagLib\Mpeg\XingHeader.cs" />
+    <Compile Include="TagLib\NonContainer\File.cs" />
+    <Compile Include="TagLib\Ogg\Bitstream.cs" />
+    <Compile Include="TagLib\Ogg\Codec.cs" />
+    <Compile Include="TagLib\Ogg\Codecs\Opus.cs" />
+    <Compile Include="TagLib\Ogg\Codecs\Theora.cs" />
+    <Compile Include="TagLib\Ogg\Codecs\Vorbis.cs" />
+    <Compile Include="TagLib\Ogg\File.cs" />
+    <Compile Include="TagLib\Ogg\Page.cs" />
+    <Compile Include="TagLib\Ogg\PageHeader.cs" />
+    <Compile Include="TagLib\Ogg\Paginator.cs" />
+    <Compile Include="TagLib\Properties.cs" />
+    <Compile Include="TagLib\ReadOnlyByteVector.cs" />
+    <Compile Include="TagLib\Riff\AviHeaderList.cs" />
+    <Compile Include="TagLib\Riff\AviStream.cs" />
+    <Compile Include="TagLib\Riff\BitmapInfoHeader.cs" />
+    <Compile Include="TagLib\Riff\File.cs" />
+    <Compile Include="TagLib\Riff\List.cs" />
+    <Compile Include="TagLib\Riff\WaveFormatEx.cs" />
+    <Compile Include="TagLib\StringList.cs" />
+    <Compile Include="TagLib\SupportedMimeType.cs" />
+    <Compile Include="TagLib\UnsupportedFormatException.cs" />
+    <Compile Include="TagLib\WavPack\File.cs" />
+    <Compile Include="TagLib\WavPack\StreamHeader.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
