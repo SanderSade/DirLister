@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Sander.DirLister.Core.Application.Writers
 {
@@ -17,6 +18,11 @@ namespace Sander.DirLister.Core.Application.Writers
 		/// <param name="entries"></param>
 		/// <returns></returns>
 		protected internal abstract string Write(List<FileEntry> entries);
+
+		protected string GetFilename(OutputFormat format)
+		{
+			throw new NotImplementedException();
+		}
 
 	}
 }
