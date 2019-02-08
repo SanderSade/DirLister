@@ -37,11 +37,16 @@ namespace Sander.DirLister.Core.Application
 
 			}
 
-			/*
-			 * Write output if needed
-			 */
+			if (_skipListMaking)
+				return entries;
 
-			throw new NotImplementedException();
+			var writer = new OutputFileWriter(_configuration);
+			writer.Write(entries);
+
+			if (_configuration.OpenAfter)
+				writer.OpenFile();
+
+			return entries;
 		}
 
 		internal bool ValidateConfiguration()

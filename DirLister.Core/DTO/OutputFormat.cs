@@ -8,7 +8,7 @@
 		/// <summary>
 		/// Plain text file
 		/// </summary>
-		Text,
+		Txt,
 		/// <summary>
 		/// HTML5
 		/// </summary>

@@ -38,8 +38,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\FileReader.cs" />
+    <Compile Include="Application\OutputFileWriter.cs" />
     <Compile Include="Application\Runner.cs" />
     <Compile Include="Application\Utils.cs" />
+    <Compile Include="Application\Writers\BaseWriter.cs" />
+    <Compile Include="Application\Writers\CsvWriter.cs" />
+    <Compile Include="Application\Writers\XmlWriter.cs" />
+    <Compile Include="Application\Writers\JsonWriter.cs" />
+    <Compile Include="Application\Writers\HtmlWriter.cs" />
+    <Compile Include="Application\Writers\TxtWriter.cs" />
     <Compile Include="DTO\Configuration.cs" />
     <Compile Include="DTO\FileEntry.cs" />
     <Compile Include="DTO\Filter.cs" />
