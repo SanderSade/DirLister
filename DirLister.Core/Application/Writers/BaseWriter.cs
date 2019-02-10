@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace Sander.DirLister.Core.Application.Writers
 {
 	internal abstract class BaseWriter
 	{
-		protected readonly Configuration _configuration;
+		protected readonly Configuration Configuration;
 
 		protected BaseWriter(Configuration configuration)
 		{
-			_configuration = configuration;
+			Configuration = configuration;
 		}
 
 		/// <summary>
@@ -19,10 +21,31 @@ namespace Sander.DirLister.Core.Application.Writers
 		/// <returns></returns>
 		protected internal abstract string Write(List<FileEntry> entries);
 
-		protected string GetFilename(OutputFormat format)
+		/// <summary>
+		/// Return filename, fullpath.
+		/// </summary>
+		/// <param name="format"></param>
+		/// <returns></returns>
+		protected internal string GetFilename(OutputFormat format)
 		{
-			throw new NotImplementedException();
+
+			if (Configuration.InputFolders.Count == 1)
+				return Path.Combine(Configuration.OutputFolder, $"DirLister.{DateTimeOffset.Now:yyyy-MM-dd.HHmmss}.",
+					ReplacePathCharacters(format));
+
+			return
+				$"{Path.Combine(Configuration.OutputFolder,$"DirLister.{DateTimeOffset.Now:yyyy-MM-dd.HHmmss}.{Configuration.InputFolders.Count}-folders")}{format.ToString().ToLowerInvariant()}";
+
+
 		}
 
+
+		private string ReplacePathCharacters(OutputFormat format)
+		{
+			var chars = Path.GetInvalidFileNameChars();
+			var filename = chars.Aggregate(Configuration.InputFolders[0], (current, c) => current.Replace(c, '_'));
+
+			return $"{filename}.{format.ToString().ToLowerInvariant()}";
+		}
 	}
 }
