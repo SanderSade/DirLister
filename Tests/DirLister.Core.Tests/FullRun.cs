@@ -42,5 +42,14 @@ namespace DirLister.Core.Tests
 			configuration.OutputFormats = new List<OutputFormat>() { OutputFormat.Csv };
 			Sander.DirLister.Core.DirLister.List(configuration);
 		}
+
+
+		[TestMethod]
+		public void TestJsonOut()
+		{
+			var configuration = GetConfiguration();
+			configuration.OutputFormats = new List<OutputFormat>() { OutputFormat.Json };
+			Sander.DirLister.Core.DirLister.List(configuration);
+		}
 	}
 }
