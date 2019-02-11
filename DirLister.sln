@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirLister.Core", "DirLister.Core\DirLister.Core.csproj", "{FA37B9DD-98FB-4976-BA6F-6C57137EF6D1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{572181EE-738E-4894-9305-4F5E178D247B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirLister.Core.Tests", "Tests\DirLister.Core.Tests\DirLister.Core.Tests.csproj", "{8305FA79-5B08-4266-A9AC-2ECA859CDE15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +19,16 @@ Global
 		{FA37B9DD-98FB-4976-BA6F-6C57137EF6D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA37B9DD-98FB-4976-BA6F-6C57137EF6D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA37B9DD-98FB-4976-BA6F-6C57137EF6D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8305FA79-5B08-4266-A9AC-2ECA859CDE15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8305FA79-5B08-4266-A9AC-2ECA859CDE15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8305FA79-5B08-4266-A9AC-2ECA859CDE15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8305FA79-5B08-4266-A9AC-2ECA859CDE15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8305FA79-5B08-4266-A9AC-2ECA859CDE15} = {572181EE-738E-4894-9305-4F5E178D247B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {93EE51C7-3B6F-4EFE-A53B-977458248E0E}

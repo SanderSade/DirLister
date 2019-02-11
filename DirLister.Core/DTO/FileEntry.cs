@@ -14,7 +14,10 @@ namespace Sander.DirLister.Core
 		private string _filename;
 		private string _folder;
 
-		internal string Fullname { get; set; }
+		/// <summary>
+		/// Full name of the file, including path.
+		/// </summary>
+		public string Fullname { get; set; }
 
 		/// <summary>
 		/// File folder

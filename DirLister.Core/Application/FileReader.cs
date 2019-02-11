@@ -28,7 +28,6 @@ namespace Sander.DirLister.Core.Application
 		{
 			_configuration.LoggingAction.Invoke(TraceLevel.Info, "Gathering files...");
 
-
 			var fileList = ListFiles();
 
 			if (fileList.Count == 0)
@@ -37,18 +36,16 @@ namespace Sander.DirLister.Core.Application
 				return null;
 			}
 
-			_configuration.LoggingAction.Invoke(TraceLevel.Info, $"Found {fileList.Count} files");
+			_configuration.LoggingAction.Invoke(TraceLevel.Info, $"Found {fileList.Count} matching files");
 			return fileList;
 		}
 
 
 		private List<FileEntry> ListFiles()
 		{
-
 			var fileList = new List<FileEntry>(100000);
 			foreach (var inputFolder in _configuration.InputFolders)
 			{
-
 
 				if (!Directory.Exists(inputFolder))
 				{
