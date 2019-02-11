@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using Sander.DirLister.Core.Application.Media;
 
 namespace Sander.DirLister.Core.Application
 {
@@ -34,7 +35,8 @@ namespace Sander.DirLister.Core.Application
 
 			if (_configuration.IncludeMediaInfo)
 			{
-
+				var mediaReader = new MediaInfoReader(_configuration);
+				mediaReader.AddMediaInfo(entries);
 			}
 
 			if (_skipListMaking)

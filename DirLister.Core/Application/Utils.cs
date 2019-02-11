@@ -82,7 +82,7 @@ namespace Sander.DirLister.Core.Application
 		}
 
 		/// <summary>
-		/// Return extension. Should be slightly faster than inbuilt method
+		/// Return extension without the period (.). Should be slightly faster than inbuilt method
 		/// </summary>
 		/// <returns></returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]

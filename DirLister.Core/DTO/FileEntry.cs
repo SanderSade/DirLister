@@ -27,7 +27,7 @@ namespace Sander.DirLister.Core
 		public string Filename => _filename ?? (_filename = Utils.GetFileName(Fullname));
 
 		/// <summary>
-		/// File extension. Does not handle multi-dot extensions.
+		/// File extension without the period (.). Does not handle multi-dot extensions.
 		/// </summary>
 		public string Extension => _extension ?? (_extension = Utils.GetExtension(Fullname));
 
@@ -50,6 +50,11 @@ namespace Sander.DirLister.Core
 		/// Last-modified date
 		/// </summary>
 		public DateTimeOffset Modified { get; set; }
+
+		/// <summary>
+		/// Media information, encapsulating image/audio/video data
+		/// </summary>
+		public MediaInfo MediaInfo { get; set; }
 
 		/// <summary>
 		/// Returns full file name - drive:\path\name.ext

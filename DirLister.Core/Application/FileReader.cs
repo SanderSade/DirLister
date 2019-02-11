@@ -37,6 +37,7 @@ namespace Sander.DirLister.Core.Application
 				return null;
 			}
 
+			_configuration.LoggingAction.Invoke(TraceLevel.Info, $"Found {fileList.Count} files");
 			return fileList;
 		}
 
