@@ -46,7 +46,7 @@ namespace Sander.DirLister.Core.Application
 			writer.Write(entries);
 
 			if (_configuration.OpenAfter)
-				writer.OpenFile();
+				writer.OpenFileOrFolder();
 
 			return entries;
 		}

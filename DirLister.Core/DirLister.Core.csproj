@@ -45,6 +45,7 @@
     <Compile Include="Application\Media\BaseProvider.cs" />
     <Compile Include="Application\Media\ImageInfoProvider.cs" />
     <Compile Include="Application\Media\MediaInfoProvider.cs" />
+    <Compile Include="Application\ShowSelectedInExplorer.cs" />
     <Compile Include="DTO\MediaInfo.cs" />
     <Compile Include="Application\Media\MediaInfoReader.cs" />
     <Compile Include="Application\OutputFileWriter.cs" />

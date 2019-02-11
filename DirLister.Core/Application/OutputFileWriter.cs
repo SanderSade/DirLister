@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Sander.DirLister.Core.Application.Writers;
@@ -18,6 +20,8 @@ namespace Sander.DirLister.Core.Application
 
 		internal void Write(List<FileEntry> entries)
 		{
+			_configuration.LoggingAction.Invoke(TraceLevel.Info, "Creating output files...");
+
 			var tasks = new List<Task<string>>();
 			//todo: more elegant than repeated if
 
@@ -36,13 +40,26 @@ namespace Sander.DirLister.Core.Application
 			if (_configuration.OutputFormats.Contains(OutputFormat.Xml))
 				tasks.Add(Task.Run(() => new XmlWriter(_configuration).Write(entries)));
 
+			// ReSharper disable once CoVariantArrayConversion
 			Task.WaitAll(tasks.ToArray());
-			_outputFiles = tasks.Select(x => x.Result).ToList();
+
+			_outputFiles = tasks.Select(x =>  x.Result)
+				.Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
+
+			_configuration.LoggingAction.Invoke(TraceLevel.Info, $"{_outputFiles.Count} output file(s) created");
 		}
 
-		internal void OpenFile()
+		internal void OpenFileOrFolder()
 		{
-			throw new System.NotImplementedException();
+			if (_outputFiles.Count == 1)
+			{
+				_configuration.LoggingAction.Invoke(TraceLevel.Info, "Opening the output file with the default viewer");
+				Process.Start(_outputFiles.First());
+				return;
+			}
+
+			_configuration.LoggingAction.Invoke(TraceLevel.Info, "Opening the output folder");
+			ShowSelectedInExplorer.FilesOrFolders(_configuration.OutputFolder, _outputFiles.Select(Path.GetFileName).ToArray());
 		}
 	}
 }
