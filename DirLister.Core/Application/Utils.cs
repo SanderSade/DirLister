@@ -89,7 +89,7 @@ namespace Sander.DirLister.Core.Application
 		internal static string GetExtension(string filename)
 		{
 			var lastDot = filename.LastIndexOf(".", StringComparison.Ordinal);
-			if (lastDot == -1)
+			if (lastDot == -1 || lastDot == 0) //not found or .file
 				return null;
 			return filename.Substring(lastDot + 1);
 		}

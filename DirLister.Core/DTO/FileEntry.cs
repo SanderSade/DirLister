@@ -42,7 +42,7 @@ namespace Sander.DirLister.Core
 		/// File size in bytes
 		/// </summary>
 		[DataMember(Name = "size", EmitDefaultValue = false, IsRequired = false, Order = 2)]
-		public int Size { get; set; }
+		public long Size { get; set; }
 
 		/// <summary>
 		/// Get human-readable file size (1.24GB

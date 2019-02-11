@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using Sander.DirLister.Core.Application.Media;
 
 namespace Sander.DirLister.Core.Application
@@ -70,6 +71,8 @@ namespace Sander.DirLister.Core.Application
 						_configuration.LoggingAction.Invoke(TraceLevel.Error,
 							"At least one output format needs to be set!");
 					}
+					else
+						_configuration.OutputFormats = _configuration.OutputFormats.Distinct().ToList();
 
 					Directory.CreateDirectory(_configuration.OutputFolder);
 				}
