@@ -153,7 +153,7 @@ namespace Sander.DirLister.Core.Application.Writers
 
 			if (Configuration.InputFolders.Count > 1)
 			{
-				_sb.AppendLine($"<strong>Total: {entries.Count} files, {Utils.ReadableSize(entries.Sum(x => x.Size))}");
+				_sb.AppendLine($"<strong>Total: {entries.Count} files, {Utils.ReadableSize(entries.Sum(x => x.Size))}</strong>");
 			}
 			_sb.AppendLine("</header>");
 		}
@@ -164,7 +164,7 @@ namespace Sander.DirLister.Core.Application.Writers
 		private void BuildHtmlHeader()
 		{
 			_sb.AppendLine($@"<!doctype html>
-<html>
+<html lang=""en"">
 <head>
   <meta charset=""utf-8"">
   <title>DirLister&nbsp;{_now}</title>
