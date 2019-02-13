@@ -11,6 +11,10 @@ html {
 	background: black;
 }
 
+header {
+	margin-bottom: 1em;
+}
+
 body {
 	background-color: rgb(255, 253, 247);
 	margin: 0 auto;
