@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace Sander.DirLister.Core.Application.Writers
 {
 	internal abstract class BaseWriter
 	{
 		protected readonly Configuration Configuration;
+		protected static readonly string FileDateFormat = "yyyy-MM-dd HH:mm:ss";
+
 
 		protected BaseWriter(Configuration configuration)
 		{
@@ -47,6 +50,20 @@ namespace Sander.DirLister.Core.Application.Writers
 		protected IEnumerable<IGrouping<string, FileEntry>> GroupByFolder(List<FileEntry> entries)
 		{
 			return entries.GroupBy(x => x.Folder);
+		}
+
+		protected string FormatDuration(TimeSpan time)
+		{
+			if (time == TimeSpan.Zero)
+				return string.Empty;
+
+			var sb = new StringBuilder();
+			if (time.Hours > 0) sb.Append($"{time.Hours}h");
+
+			sb.Append($"{time.Minutes}m");
+			sb.Append($"{time.Seconds}s");
+
+			return sb.ToString();
 		}
 	}
 }

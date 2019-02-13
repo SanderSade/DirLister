@@ -174,5 +174,8 @@
     <Compile Include="TagLib\WavPack\File.cs" />
     <Compile Include="TagLib\WavPack\StreamHeader.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Application\Writers\Default.css" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

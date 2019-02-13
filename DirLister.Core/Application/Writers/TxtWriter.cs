@@ -53,19 +53,26 @@ namespace Sander.DirLister.Core.Application.Writers
 
 				if (Configuration.IncludeMediaInfo && entry.MediaInfo != null)
 				{
-					sb.Append($" :: {nameof(entry.MediaInfo.MediaType)}: {entry.MediaInfo.MediaType},");
+					sb.Append($" :: {entry.MediaInfo.MediaType}");
 					if (entry.MediaInfo.Duration != TimeSpan.Zero)
-						sb.Append($" {entry.MediaInfo.Duration:m'm'''ss's'},");
+						sb.Append($" {FormatDuration(entry.MediaInfo.Duration)}");
 
 					if (entry.MediaInfo.Height > 0)
 						sb.Append($" {entry.MediaInfo.Height}x{entry.MediaInfo.Width},");
 
 					sb.Append(GetMediaInfo("bpp", entry.MediaInfo.BitsPerPixel));
-					sb.Append(GetMediaInfo("audio bitrate", entry.MediaInfo.AudioBitRate));
-					sb.Append(GetMediaInfo("audio channels", entry.MediaInfo.AudioChannels));
 
-					if (entry.MediaInfo.AudioSampleRate > 0)
-						sb.Append(GetMediaInfo("audio sample rate", entry.MediaInfo.AudioSampleRate / 1000f));
+					if (entry.MediaInfo.AudioBitRate != 0 || entry.MediaInfo.AudioSampleRate != 0 ||
+					    entry.MediaInfo.AudioChannels != 0)
+					{
+						sb.Remove(sb.Length - 1, 1);
+						sb.Append(" :: audio");
+						sb.Append(GetMediaInfo("bitrate", entry.MediaInfo.AudioBitRate));
+						sb.Append(GetMediaInfo("channels", entry.MediaInfo.AudioChannels));
+
+						if (entry.MediaInfo.AudioSampleRate > 0)
+							sb.Append(GetMediaInfo("sample rate", entry.MediaInfo.AudioSampleRate / 1000f));
+					}
 
 					sb.Remove(sb.Length - 1, 1);//remove trailing comma
 				}

@@ -20,7 +20,7 @@ namespace DirLister.Core.Tests
 				Recursive = true,
 				InputFolders = new List<string>
 				{
-					@"C:\Temp",
+					@"C:\Temp", @"c:\tools\"
 				}
 			};
 
@@ -72,6 +72,8 @@ namespace DirLister.Core.Tests
 			var configuration = GetConfiguration();
 			configuration.OutputFormats = new List<OutputFormat>
 				{ OutputFormat.Html };
+			//configuration.IncludeFileDates = false;
+			//configuration.Filter = new Filter(new []{"*.avi", "*.exe"});
 			Sander.DirLister.Core.DirLister.List(configuration);
 		}
 

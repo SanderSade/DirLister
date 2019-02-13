@@ -56,12 +56,26 @@ mka, mks, mkv, mp+, mp1, mp2, mp3, mp4, mpc, mpe, mpeg, mpg, mpp, mpv2, oga, ogg
 		{
 			var mediaInfo = new MediaInfo(MediaType.Audio)
 			{
-				Duration = fileProperties.Duration,
+				Duration = RoundDuration(fileProperties.Duration),
 				AudioChannels = fileProperties.AudioChannels,
 				AudioSampleRate = fileProperties.AudioSampleRate,
 				AudioBitRate = fileProperties.AudioBitrate
 			};
 			return mediaInfo;
+		}
+
+		/// <summary>
+		/// Round seconds to closest. No one is interested in fractional seconds...
+		/// Also, some old AVIs report negative duration
+		/// </summary>
+		private TimeSpan RoundDuration(TimeSpan duration)
+		{
+			if (duration == TimeSpan.Zero)
+				return TimeSpan.Zero;
+
+			var seconds = (int) Math.Round(Math.Abs(duration.TotalSeconds), MidpointRounding.ToEven);
+
+			return TimeSpan.FromSeconds(seconds);
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -72,7 +86,7 @@ mka, mks, mkv, mp+, mp1, mp2, mp3, mp4, mpc, mpe, mpeg, mpg, mpp, mpv2, oga, ogg
 				Height = fileProperties.VideoHeight,
 				Width = fileProperties.VideoWidth,
 				BitsPerPixel = fileProperties.BitsPerSample,
-				Duration = fileProperties.Duration,
+				Duration = RoundDuration(fileProperties.Duration),
 				AudioChannels = fileProperties.AudioChannels,
 				AudioSampleRate = fileProperties.AudioSampleRate,
 				AudioBitRate = fileProperties.AudioBitrate
