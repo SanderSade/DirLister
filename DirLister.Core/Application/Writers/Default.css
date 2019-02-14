@@ -5,6 +5,9 @@
 	box-sizing: border-box;
 	margin-top: 0;
 	outline: none !important;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	hyphens: auto;
 }
 
 html {
@@ -23,6 +26,25 @@ body {
 	width: 80%;
 	box-shadow: 6px 0 4px orange;
 }
+
+@media only screen and (max-width:1080px) {
+	body {
+		padding: 0.3em;
+		width: 100%;
+		max-width: 100%;
+		box-shadow: none;
+		font-size-adjust: 80;
+	}
+
+	section {
+		padding: 0.1em;
+	}
+
+	ul {
+		margin-left: -3em;
+	}
+}
+
 
 h2 {
 	font: 1.6em Helvetica, Verdana, sans-serif;
