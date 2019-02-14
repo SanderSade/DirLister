@@ -9,6 +9,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{572181EE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirLister.Core.Tests", "Tests\DirLister.Core.Tests\DirLister.Core.Tests.csproj", "{8305FA79-5B08-4266-A9AC-2ECA859CDE15}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{1C02106B-EE71-49CD-B971-01937F1B397C}"
+	ProjectSection(SolutionItems) = preProject
+		favicon.ico = favicon.ico
+		LICENSE = LICENSE
+		readme.md = readme.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
