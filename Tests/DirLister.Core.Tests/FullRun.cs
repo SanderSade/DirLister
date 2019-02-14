@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Sander.DirLister.Core;
 
@@ -21,7 +22,8 @@ namespace DirLister.Core.Tests
 				InputFolders = new List<string>
 				{
 					@"C:\Temp", @"c:\tools\"
-				}
+				},
+				ProgressAction = (i, s) => Trace.WriteLine($"[Progress] {i} {s}")
 			};
 
 			return configuration;
@@ -72,6 +74,7 @@ namespace DirLister.Core.Tests
 			var configuration = GetConfiguration();
 			configuration.OutputFormats = new List<OutputFormat>
 				{ OutputFormat.Html };
+			//configuration.Recursive = false;
 			//configuration.IncludeFileDates = false;
 			//configuration.Filter = new Filter(new []{"*.avi", "*.exe"});
 			Sander.DirLister.Core.DirLister.List(configuration);
@@ -82,7 +85,7 @@ namespace DirLister.Core.Tests
 		{
 			var configuration = GetConfiguration();
 			configuration.OutputFormats = new List<OutputFormat>
-				{/* OutputFormat.Html,*/ OutputFormat.Csv, OutputFormat.Json, OutputFormat.Txt, OutputFormat.Xml };
+				{ OutputFormat.Html, OutputFormat.Csv, OutputFormat.Json, OutputFormat.Txt, OutputFormat.Xml };
 			Sander.DirLister.Core.DirLister.List(configuration);
 		}
 	}

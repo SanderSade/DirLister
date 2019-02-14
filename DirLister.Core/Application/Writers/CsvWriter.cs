@@ -22,15 +22,10 @@ namespace Sander.DirLister.Core.Application.Writers
 				GetFileLine(sb, entry);
 			}
 
-			var fileName = GetFilename(OutputFormat.Csv);
-
-			using (var sw = new StreamWriter(fileName, false, Encoding.UTF8, 2 << 16 /* 128KB*/))
-			{
-				sw.Write(sb.ToString());
-			}
-
-			return fileName;
+			return WriteFile(sb, OutputFormat.Csv);
 		}
+
+
 
 		private void GetHeaderLine(StringBuilder sb)
 		{

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
 
@@ -36,25 +37,19 @@ namespace Sander.DirLister.Core.Application.Writers
 			}
 
 			_sb.AppendLine(
-				"<footer><strong>DirLister v2</strong>&nbsp;|&nbsp;<a href=\"https://github.com/SanderSade/DirLister/\">Source, updates & support</a></footer>");
+				"<footer><a href=\"https://github.com/SanderSade/DirLister/\"><strong>DirLister v2</strong>&nbsp;|&nbsp;Source, updates & support</a></footer>");
 			_sb.AppendLine("</body>");
 			_sb.AppendLine("</html>");
 
-			var fileName = GetFilename(OutputFormat.Html);
-			using (var sw = new StreamWriter(fileName, false, Encoding.UTF8, 2 << 16 /* 128KB*/))
-			{
-				sw.Write(_sb.ToString());
-			}
-
-			return fileName;
+			return WriteFile(_sb, OutputFormat.Html);
 		}
 
 		private void CreateFolder(IGrouping<string, FileEntry> folder)
 		{
 			_sb.AppendLine("<section>");
 			_sb.AppendLine("<details open=\"\">");
-			//todo: encoding
-			_sb.Append($"<summary>{folder.Key}<span>files: {folder.Count()}");
+
+			_sb.Append($"<summary>{WebUtility.HtmlEncode(folder.Key)}<span>files: {folder.Count()}");
 			if (Configuration.IncludeSize)
 				_sb.Append($"&nbsp;({Utils.ReadableSize(folder.Sum(x => x.Size))})");
 
@@ -62,7 +57,7 @@ namespace Sander.DirLister.Core.Application.Writers
 			_sb.AppendLine("<ul>");
 			foreach (var entry in folder)
 			{
-				_sb.AppendLine($"<li>{entry.Filename}{GetFileDetails(entry)}</li>");
+				_sb.AppendLine($"<li>{WebUtility.HtmlEncode(entry.Filename)}{GetFileDetails(entry)}</li>");
 			}
 
 			_sb.AppendLine("</ul>");
@@ -70,6 +65,11 @@ namespace Sander.DirLister.Core.Application.Writers
 			_sb.AppendLine("</section>");
 		}
 
+		/// <summary>
+		/// File details, as needed
+		/// </summary>
+		/// <param name="entry"></param>
+		/// <returns></returns>
 		private string GetFileDetails(FileEntry entry)
 		{
 			string GetMediaInfo<T>(string name, T value)
@@ -113,9 +113,6 @@ namespace Sander.DirLister.Core.Application.Writers
 						sb.Append(GetMediaInfo("sample rate", entry.MediaInfo.AudioSampleRate / 1000f));
 				}
 
-
-
-
 				sb.Remove(sb.Length - 1, 1);//remove trailing comma
 			}
 
@@ -147,14 +144,13 @@ namespace Sander.DirLister.Core.Application.Writers
 			{
 				var files = folderList.Where(x => x.Key.StartsWith(folder, StringComparison.Ordinal)).SelectMany(x => x.ToList()).ToList();
 				_sb.AppendLine(
-					$"<li>{folder} <span>files: {files.Count}, size: {Utils.ReadableSize(files.Sum(x => x.Size))}</span></li>");
+					$"<li>{WebUtility.HtmlEncode(folder)} <span>files: {files.Count}, size: {Utils.ReadableSize(files.Sum(x => x.Size))}</span></li>");
 			}
 			_sb.AppendLine("</ul>");
 
 			if (Configuration.InputFolders.Count > 1)
-			{
-				_sb.AppendLine($"<strong>Total: {entries.Count} files, {Utils.ReadableSize(entries.Sum(x => x.Size))}</strong>");
-			}
+				_sb.AppendLine(
+					$"<strong>Total: {entries.Count} files, {Utils.ReadableSize(entries.Sum(x => x.Size))}</strong>");
 			_sb.AppendLine("</header>");
 		}
 

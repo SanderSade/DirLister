@@ -16,6 +16,10 @@ namespace Sander.DirLister.Core.Application.Writers
 			var folders = GroupByFolder(entries);
 
 			var xRoot = new XElement(nameof(DirLister));
+			xRoot.SetAttributeValue("TotalFiles", entries.Count);
+			xRoot.SetAttributeValue("TotalSize", entries.Sum(x => x.Size));
+			xRoot.SetAttributeValue("RunDate", DateTimeOffset.Now);
+
 			var xFolders = new List<XElement>();
 			foreach (var fileEntries in folders)
 			{
@@ -33,10 +37,10 @@ namespace Sander.DirLister.Core.Application.Writers
 
 		private XElement GetFolderElement(IGrouping<string, FileEntry> entries)
 		{
-			var xfolder = new XElement("directory");
-			xfolder.SetAttributeValue("name", entries.Key);
-			xfolder.SetAttributeValue("fileCount", entries.Count());
-			xfolder.SetAttributeValue("totalSize", entries.Sum(x => x.Size));
+			var xfolder = new XElement("Directory");
+			xfolder.SetAttributeValue("Name", entries.Key);
+			xfolder.SetAttributeValue("FileCount", entries.Count());
+			xfolder.SetAttributeValue("TotalSize", entries.Sum(x => x.Size));
 			var files = new List<XElement>();
 			foreach (var entry in entries)
 				files.Add(GetFileElement(entry));
@@ -48,8 +52,8 @@ namespace Sander.DirLister.Core.Application.Writers
 
 		private XElement GetFileElement(FileEntry entry)
 		{
-			var file = new XElement("file");
-			file.SetAttributeValue("name", entry.Filename);
+			var file = new XElement("File");
+			file.SetAttributeValue("Name", entry.Filename);
 
 			if (Configuration.IncludeSize)
 				file.SetAttributeValue(nameof(entry.Size), entry.Size);
@@ -71,29 +75,25 @@ namespace Sander.DirLister.Core.Application.Writers
 
 		private static XElement GetMediaInfo(FileEntry entry)
 		{
+			void NonZeroInsert(XElement element, string name, int value)
+			{
+				if (value != 0)
+					element.SetAttributeValue(name, value);
+			}
+
+
 			var media = new XElement(nameof(entry.MediaInfo));
 			media.SetAttributeValue(nameof(entry.MediaInfo.MediaType), entry.MediaInfo.MediaType);
 
 			if (entry.MediaInfo.Duration != TimeSpan.Zero)
 				media.SetAttributeValue(nameof(entry.MediaInfo.Duration), entry.MediaInfo.Duration.TotalSeconds);
 
-			if (entry.MediaInfo.Height != 0)
-				media.SetAttributeValue(nameof(entry.MediaInfo.Height), entry.MediaInfo.Height);
-
-			if (entry.MediaInfo.Width != 0)
-				media.SetAttributeValue(nameof(entry.MediaInfo.Width), entry.MediaInfo.Width);
-
-			if (entry.MediaInfo.BitsPerPixel != 0)
-				media.SetAttributeValue(nameof(entry.MediaInfo.BitsPerPixel), entry.MediaInfo.BitsPerPixel);
-
-			if (entry.MediaInfo.AudioBitRate != 0)
-				media.SetAttributeValue(nameof(entry.MediaInfo.AudioBitRate), entry.MediaInfo.AudioBitRate);
-
-			if (entry.MediaInfo.AudioChannels != 0)
-				media.SetAttributeValue(nameof(entry.MediaInfo.AudioChannels), entry.MediaInfo.AudioChannels);
-
-			if (entry.MediaInfo.AudioSampleRate != 0)
-				media.SetAttributeValue(nameof(entry.MediaInfo.AudioSampleRate), entry.MediaInfo.AudioSampleRate);
+			NonZeroInsert(media, nameof(entry.MediaInfo.Height), entry.MediaInfo.Height);
+			NonZeroInsert(media, nameof(entry.MediaInfo.Width), entry.MediaInfo.Width);
+			NonZeroInsert(media, nameof(entry.MediaInfo.BitsPerPixel), entry.MediaInfo.BitsPerPixel);
+			NonZeroInsert(media, nameof(entry.MediaInfo.AudioBitRate), entry.MediaInfo.AudioBitRate);
+			NonZeroInsert(media, nameof(entry.MediaInfo.AudioChannels), entry.MediaInfo.AudioChannels);
+			NonZeroInsert(media, nameof(entry.MediaInfo.AudioSampleRate), entry.MediaInfo.AudioSampleRate);
 
 			return media;
 		}

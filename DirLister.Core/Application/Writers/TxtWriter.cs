@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -22,14 +21,7 @@ namespace Sander.DirLister.Core.Application.Writers
 				AppendFolder(group, sb);
 			}
 
-			var fileName = GetFilename(OutputFormat.Txt);
-
-			using (var sw = new StreamWriter(fileName, false, Encoding.UTF8, 2 << 16 /* 128KB*/))
-			{
-				sw.Write(sb.ToString());
-			}
-
-			return fileName;
+			return WriteFile(sb, OutputFormat.Txt);
 		}
 
 		private void AppendFolder(IGrouping<string, FileEntry> group, StringBuilder sb)
@@ -63,7 +55,7 @@ namespace Sander.DirLister.Core.Application.Writers
 					sb.Append(GetMediaInfo("bpp", entry.MediaInfo.BitsPerPixel));
 
 					if (entry.MediaInfo.AudioBitRate != 0 || entry.MediaInfo.AudioSampleRate != 0 ||
-					    entry.MediaInfo.AudioChannels != 0)
+						entry.MediaInfo.AudioChannels != 0)
 					{
 						sb.Remove(sb.Length - 1, 1);
 						sb.Append(" :: audio");

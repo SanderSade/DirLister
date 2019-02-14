@@ -24,6 +24,7 @@ namespace Sander.DirLister.Core.Application.Media
 				return;
 
 			_configuration.LoggingAction.Invoke(TraceLevel.Info, "Fetching media info...");
+			_configuration.SendProgress(50, "Fetching media info...");
 
 			entries
 				.AsParallel()
@@ -41,6 +42,7 @@ namespace Sander.DirLister.Core.Application.Media
 					}
 				});
 
+			_configuration.SendProgress(90, "Media info fetched");
 			_configuration.LoggingAction.Invoke(TraceLevel.Info, "Media info fetched");
 		}
 

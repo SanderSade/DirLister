@@ -44,9 +44,12 @@ namespace Sander.DirLister.Core.Application
 		private List<FileEntry> ListFiles()
 		{
 			var fileList = new List<FileEntry>(100000);
+
+			float maxProgress = _configuration.IncludeMediaInfo ? 30 : 80;
+			var stepSize = (int)Math.Round(maxProgress / _configuration.InputFolders.Count, 0);
+			var position = 10;
 			foreach (var inputFolder in _configuration.InputFolders)
 			{
-
 				if (!Directory.Exists(inputFolder))
 				{
 					_configuration.LoggingAction.Invoke(TraceLevel.Warning,
@@ -55,6 +58,8 @@ namespace Sander.DirLister.Core.Application
 				}
 
 				var files = ParallelFindNextFile(inputFolder);
+				position += stepSize;
+				_configuration.SendProgress(position, "Gathering files");
 
 				if (files.Count == 0)
 				{

@@ -1,7 +1,7 @@
 ﻿namespace Sander.DirLister.Core
 {
 	/// <summary>
-	/// Output format. Multiple can be used at the same time
+	/// Output format. Multiple formats can be used at the same time
 	/// </summary>
 	public enum OutputFormat
 	{
@@ -14,7 +14,7 @@
 		/// </summary>
 		Html,
 		/// <summary>
-		/// CSV. All fields are quoted, header exists
+		/// CSV. All fields are quoted, comma delimiter, header exists
 		/// </summary>
 		Csv,
 		/// <summary>

@@ -26,6 +26,7 @@ namespace Sander.DirLister.Core.Application
 			if (!ValidateConfiguration())
 				return null;
 
+			_configuration.SendProgress(10, "Fetching files");
 			var entries = new FileReader(_configuration).GetEntries();
 
 			if (entries == null || entries.Count == 0)
@@ -41,10 +42,16 @@ namespace Sander.DirLister.Core.Application
 			}
 
 			if (_skipListMaking)
+			{
+				_configuration.SendProgress(100, "All done");
 				return entries;
+			}
+			_configuration.SendProgress(95, "Creating output file(s)");
 
 			var writer = new OutputFileWriter(_configuration);
 			writer.Write(entries);
+
+			_configuration.SendProgress(100, "All done");
 
 			if (_configuration.OpenAfter)
 				writer.OpenFileOrFolder();
@@ -90,7 +97,6 @@ namespace Sander.DirLister.Core.Application
 
 		private void ValidateInputFolders(ref bool isValid)
 		{
-
 			if (_configuration.InputFolders == null || _configuration.InputFolders.Count == 0)
 			{
 				isValid = false;
@@ -99,16 +105,27 @@ namespace Sander.DirLister.Core.Application
 			}
 			else
 			{
+				var folders = new List<string>(_configuration.InputFolders.Count);
 				foreach (var inputFolder in _configuration.InputFolders)
 				{
 					if (!Directory.Exists(inputFolder))
 					{
 						isValid = false;
-						_configuration.LoggingAction.Invoke(TraceLevel.Error,
+						_configuration.LoggingAction.Invoke(TraceLevel.Warning,
 							$"Folder \"{inputFolder}\" does not exist.");
 					}
+					else
+					{
+						if (inputFolder[inputFolder.Length - 1] != Path.DirectorySeparatorChar)
+							folders.Add(inputFolder + Path.DirectorySeparatorChar);
+						else
+							folders.Add(inputFolder);
+					}
 				}
+
+				_configuration.InputFolders = folders;
 			}
 		}
+
 	}
 }

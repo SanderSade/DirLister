@@ -38,7 +38,9 @@ namespace Sander.DirLister.Core.Application.Writers
 				$"{Path.Combine(Configuration.OutputFolder, $"DirLister.{DateTimeOffset.Now:yyyy-MM-dd.HHmmss}.{Configuration.InputFolders.Count}-folders")}.{format.ToString().ToLowerInvariant()}";
 		}
 
-
+		/// <summary>
+		/// Replace path characters in filename
+		/// </summary>
 		private string ReplacePathCharacters(OutputFormat format)
 		{
 			var chars = Path.GetInvalidFileNameChars();
@@ -47,11 +49,17 @@ namespace Sander.DirLister.Core.Application.Writers
 			return $"{filename}.{format.ToString().ToLowerInvariant()}";
 		}
 
+		/// <summary>
+		/// Group entries by folder
+		/// </summary>
 		protected IEnumerable<IGrouping<string, FileEntry>> GroupByFolder(List<FileEntry> entries)
 		{
 			return entries.GroupBy(x => x.Folder);
 		}
 
+		/// <summary>
+		/// Format duration. Handles time better than inbuilt, but isn't culture-specific
+		/// </summary>
 		protected string FormatDuration(TimeSpan time)
 		{
 			if (time == TimeSpan.Zero)
@@ -64,6 +72,21 @@ namespace Sander.DirLister.Core.Application.Writers
 			sb.Append($"{time.Seconds}s");
 
 			return sb.ToString();
+		}
+
+		/// <summary>
+		/// Write the output file. Returns the filename
+		/// </summary>
+		protected string WriteFile(StringBuilder sb, OutputFormat format)
+		{
+			var fileName = GetFilename(format);
+
+			using (var sw = new StreamWriter(fileName, false, Encoding.UTF8, 2 << 16 /* 128KB*/))
+			{
+				sw.Write(sb.ToString());
+			}
+
+			return fileName;
 		}
 	}
 }

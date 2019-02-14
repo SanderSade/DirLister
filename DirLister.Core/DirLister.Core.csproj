@@ -49,7 +49,6 @@
     <Compile Include="Application\Media\ImageInfoProvider.cs" />
     <Compile Include="Application\Media\MediaInfoProvider.cs" />
     <Compile Include="Application\ShowSelectedInExplorer.cs" />
-    <Compile Include="DTO\MediaInfo.cs" />
     <Compile Include="Application\Media\MediaInfoReader.cs" />
     <Compile Include="Application\OutputFileWriter.cs" />
     <Compile Include="Application\Runner.cs" />
@@ -64,6 +63,10 @@
     <Compile Include="DTO\FileEntry.cs" />
     <Compile Include="DTO\Filter.cs" />
     <Compile Include="DirLister.cs" />
+    <Compile Include="DTO\MediaInfo.cs" />
+    <Compile Include="DTO\MediaInfo.JsonProperties.cs">
+      <DependentUpon>MediaInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="DTO\MediaType.cs" />
     <Compile Include="DTO\OutputFormat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
