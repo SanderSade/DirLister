@@ -83,8 +83,8 @@ namespace Sander.DirLister.Core
 		public bool IncludeFileDates { get; set; } = false;
 
 		/// <summary>
-		///     CSS to use for HTML output. If omitted, defaults to indernal CSS.
-		///     This the actual content of the CSS, not path to a file
+		///     CSS to use for HTML output. If omitted, defaults to internal CSS.
+		///     This the actual content of the CSS, not path to the file.
 		///     See the documentation for details.
 		/// </summary>
 		public string CssContent { get; set; }

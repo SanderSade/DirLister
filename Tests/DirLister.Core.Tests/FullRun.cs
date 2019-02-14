@@ -75,6 +75,7 @@ namespace DirLister.Core.Tests
 			configuration.OutputFormats = new List<OutputFormat>
 				{ OutputFormat.Html };
 			configuration.EnableMultithreading = true;
+			//configuration.CssContent = "* {}";
 			//configuration.IncludeSubfolders = false;
 			//configuration.IncludeFileDates = false;
 			//configuration.Filter = new Filter(new []{"*.avi", "*.exe"});
