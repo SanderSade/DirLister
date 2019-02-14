@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -67,7 +68,7 @@ namespace Sander.DirLister.Core.Application
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static string GetPath(string fullname)
 		{
-			return fullname.Substring(0, fullname.LastIndexOf("\\", StringComparison.Ordinal) + 1);
+			return fullname.Substring(0, fullname.LastIndexOf(Path.DirectorySeparatorChar) + 1);
 		}
 
 		/// <summary>
@@ -78,7 +79,7 @@ namespace Sander.DirLister.Core.Application
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static string GetFileName(string fullname)
 		{
-			return fullname.Substring(fullname.LastIndexOf("\\", StringComparison.Ordinal) + 1);
+			return fullname.Substring(fullname.LastIndexOf(Path.DirectorySeparatorChar) + 1);
 		}
 
 		/// <summary>
@@ -88,7 +89,7 @@ namespace Sander.DirLister.Core.Application
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		internal static string GetExtension(string filename)
 		{
-			var lastDot = filename.LastIndexOf(".", StringComparison.Ordinal);
+			var lastDot = filename.LastIndexOf('.');
 			if (lastDot == -1 || lastDot == 0) //not found or .file
 				return null;
 			return filename.Substring(lastDot + 1);
@@ -102,7 +103,7 @@ namespace Sander.DirLister.Core.Application
 		internal static DateTimeOffset FileTimeToDateTimeOffset(FILETIME filetime)
 #pragma warning restore 618
 		{
-			return DateTimeOffset.FromFileTime((((long)filetime.dwHighDateTime) << 32) + filetime.dwLowDateTime);
+			return DateTimeOffset.FromFileTime(((long)filetime.dwHighDateTime << 32) + filetime.dwLowDateTime);
 		}
 	}
 }

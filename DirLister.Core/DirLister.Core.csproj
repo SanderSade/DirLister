@@ -63,6 +63,7 @@
     <Compile Include="DTO\FileEntry.cs" />
     <Compile Include="DTO\Filter.cs" />
     <Compile Include="DirLister.cs" />
+    <Compile Include="DTO\IFilter.cs" />
     <Compile Include="DTO\MediaInfo.cs" />
     <Compile Include="DTO\MediaInfo.JsonProperties.cs">
       <DependentUpon>MediaInfo.cs</DependentUpon>

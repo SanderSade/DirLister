@@ -21,9 +21,10 @@ namespace Sander.DirLister.Core
 		public bool IncludeHidden { get; set; } = false;
 
 		/// <summary>
-		///     Filter to apply for files
+		///     Filter to apply for files.
+		///     You can apply custom logic via IFilter interface
 		/// </summary>
-		public Filter Filter { get; set; } = new Filter();
+		public IFilter Filter { get; set; } = new Filter();
 
 		/// <summary>
 		///     Output formats. Defaults to HTML if omitted
@@ -38,7 +39,7 @@ namespace Sander.DirLister.Core
 			Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "DirLister");
 
 		/// <summary>
-		///     Open the output file with the defaul viewer after list generation.
+		///     Open the output file with the default viewer after list generation.
 		///     If multiple output files are defined, folder is opened instead
 		/// </summary>
 		public bool OpenAfter { get; set; }
@@ -46,7 +47,7 @@ namespace Sander.DirLister.Core
 		/// <summary>
 		///     Whether or not directory listing is recursive (includes subfolders). Defaults to true.
 		/// </summary>
-		public bool Recursive { get; set; } = true;
+		public bool IncludeSubfolders { get; set; } = true;
 
 		/// <summary>
 		///     Include size. Human-readable for txt and HTML, exact byte count for others
@@ -62,14 +63,15 @@ namespace Sander.DirLister.Core
 		///     Logging action. Defaults to simple Trace.WriteLine().
 		///     * TraceLevel.Error means fatal exception was encountered.
 		///     * TraceLevel.Warning is nonfatal.
-		///     * TraceLevel.Info is informational messages.
+		///     * TraceLevel.Info is informational message.
+		///     NOT thread-safe (multiple threads may write at the same time)
 		/// </summary>
 		public Action<TraceLevel, string> LoggingAction { get; set; } =
 			(traceLevel, message) => Trace.WriteLine($"[{traceLevel}] {message}");
 
 		/// <summary>
 		///     Enable multi-threaded file and media info gathering.
-		///     Enable for SSDs *only*, bad performance hit for regular hard drives.
+		///     Enable for SSDs *only*, as this is a bad performance hit for regular hard drives.
 		///     Defaults to false.
 		/// </summary>
 		public bool EnableMultithreading { get; set; } = false;
@@ -95,11 +97,28 @@ namespace Sander.DirLister.Core
 		public Action<int, string> ProgressAction { get; set; }
 
 		/// <summary>
+		/// Date format used in .txt and .html output when IncludeFileDates is set.
+		/// See https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings for details.
+		/// Defaults to yyyy-MM-dd HH:mm:ss (ISO 8601)
+		/// </summary>
+		public string FileDateFormat { get; set; } = "yyyy-MM-dd HH:mm:ss";
+
+
+		/// <summary>
 		///     Send out progress indicator w/o waiting the invoke to finish.
 		/// </summary>
 		internal void SendProgress(int percentage, string description)
 		{
 			ProgressAction?.BeginInvoke(percentage, description, null, null);
+		}
+
+
+		/// <summary>
+		///     Log w/o waiting the invoke to finish.
+		/// </summary>
+		internal void Log(TraceLevel level, string message)
+		{
+			LoggingAction.BeginInvoke(level, message, null, null);
 		}
 	}
 }

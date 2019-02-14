@@ -9,12 +9,13 @@ namespace Sander.DirLister.Core.Application.Writers
 	internal abstract class BaseWriter
 	{
 		protected readonly Configuration Configuration;
-		protected static readonly string FileDateFormat = "yyyy-MM-dd HH:mm:ss";
+		protected string FileDateFormat;
 
 
 		protected BaseWriter(Configuration configuration)
 		{
 			Configuration = configuration;
+			FileDateFormat = configuration.FileDateFormat;
 		}
 
 		/// <summary>

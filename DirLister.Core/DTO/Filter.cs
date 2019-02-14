@@ -1,21 +1,20 @@
-﻿using System.Linq;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.CompilerServices;
 
 namespace Sander.DirLister.Core
 {
 	/// <summary>
-	/// Filter to apply when listing
+	///     Filter to apply when listing
 	/// </summary>
-	public sealed class Filter
+	public sealed class Filter : IFilter
 	{
-		private readonly string[] _wildcards;
-		private readonly Regex _regex;
 		private readonly bool _isWildcard;
+		private readonly Regex _regex;
+		private readonly string[] _wildcards;
 
 		/// <summary>
-		/// No-filtering constructor
+		///     No-filtering constructor
 		/// </summary>
 		internal Filter()
 		{
@@ -23,7 +22,7 @@ namespace Sander.DirLister.Core
 		}
 
 		/// <summary>
-		/// Apply wildcard filter
+		///     Apply wildcard filter
 		/// </summary>
 		/// <param name="wildcards"></param>
 		public Filter(string[] wildcards)
@@ -33,7 +32,7 @@ namespace Sander.DirLister.Core
 		}
 
 		/// <summary>
-		/// Apply regex filter
+		///     Apply regex filter
 		/// </summary>
 		/// <param name="regex"></param>
 		public Filter(string regex)
@@ -42,11 +41,11 @@ namespace Sander.DirLister.Core
 		}
 
 		/// <summary>
-		/// Send in filename without the path
+		///     Send in filename without the path
 		/// </summary>
 		/// <param name="filename"></param>
 		/// <returns></returns>
-		internal bool IsMatch(string filename)
+		public bool IsMatch(string filename)
 		{
 			if (_isWildcard)
 			{
@@ -54,10 +53,8 @@ namespace Sander.DirLister.Core
 					return true;
 
 				foreach (var wildcard in _wildcards)
-				{
 					if (LikeOperator.LikeString(filename, wildcard, CompareMethod.Text))
 						return true;
-				}
 
 				return false;
 			}

@@ -26,12 +26,14 @@ namespace Sander.DirLister.Core.Application
 			if (!ValidateConfiguration())
 				return null;
 
+			var sw = Stopwatch.StartNew();
+
 			_configuration.SendProgress(10, "Fetching files");
 			var entries = new FileReader(_configuration).GetEntries();
 
 			if (entries == null || entries.Count == 0)
 			{
-				_configuration.LoggingAction.Invoke(TraceLevel.Error, "No files found or error gathering data!");
+				_configuration.Log(TraceLevel.Error, "No files found or error gathering data!");
 				return null;
 			}
 
@@ -44,6 +46,9 @@ namespace Sander.DirLister.Core.Application
 			if (_skipListMaking)
 			{
 				_configuration.SendProgress(100, "All done");
+				_configuration.Log(TraceLevel.Info,
+					$"All done. Total time: {sw.Elapsed}, total files: {entries.Count}, total size: {Utils.ReadableSize(entries.Sum(x => x.Size))}");
+
 				return entries;
 			}
 			_configuration.SendProgress(95, "Creating output file(s)");
@@ -51,6 +56,8 @@ namespace Sander.DirLister.Core.Application
 			var writer = new OutputFileWriter(_configuration);
 			writer.Write(entries);
 
+			_configuration.Log(TraceLevel.Info,
+				$"All done. Total time: {sw.Elapsed}, total files: {entries.Count}, total size: {Utils.ReadableSize(entries.Sum(x => x.Size))}");
 			_configuration.SendProgress(100, "All done");
 
 			if (_configuration.OpenAfter)
@@ -70,12 +77,15 @@ namespace Sander.DirLister.Core.Application
 				if (_configuration.Filter == null)
 					_configuration.Filter = new Filter();
 
+				if (string.IsNullOrWhiteSpace(_configuration.FileDateFormat))
+					_configuration.FileDateFormat = "yyyy-MM-dd HH:mm:ss";
+
 				if (!_skipListMaking)
 				{
 					if (_configuration.OutputFormats == null || _configuration.OutputFormats.Count == 0)
 					{
 						isValid = false;
-						_configuration.LoggingAction.Invoke(TraceLevel.Error,
+						_configuration.Log(TraceLevel.Error,
 							"At least one output format needs to be set!");
 					}
 					else
@@ -90,7 +100,7 @@ namespace Sander.DirLister.Core.Application
 			}
 			catch (Exception e)
 			{
-				_configuration.LoggingAction.Invoke(TraceLevel.Error, e.ToString());
+				_configuration.Log(TraceLevel.Error, e.ToString());
 				return false;
 			}
 		}
@@ -100,7 +110,7 @@ namespace Sander.DirLister.Core.Application
 			if (_configuration.InputFolders == null || _configuration.InputFolders.Count == 0)
 			{
 				isValid = false;
-				_configuration.LoggingAction.Invoke(TraceLevel.Error,
+				_configuration.Log(TraceLevel.Error,
 					"At least one input folder needs to be set!");
 			}
 			else
@@ -111,7 +121,7 @@ namespace Sander.DirLister.Core.Application
 					if (!Directory.Exists(inputFolder))
 					{
 						isValid = false;
-						_configuration.LoggingAction.Invoke(TraceLevel.Warning,
+						_configuration.Log(TraceLevel.Warning,
 							$"Folder \"{inputFolder}\" does not exist.");
 					}
 					else

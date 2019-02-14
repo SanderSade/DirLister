@@ -26,17 +26,17 @@ namespace Sander.DirLister.Core.Application
 
 		internal List<FileEntry> GetEntries()
 		{
-			_configuration.LoggingAction.Invoke(TraceLevel.Info, "Gathering files...");
+			_configuration.Log(TraceLevel.Info, "Gathering files...");
 
 			var fileList = ListFiles();
 
 			if (fileList.Count == 0)
 			{
-				_configuration.LoggingAction.Invoke(TraceLevel.Error, "Input folders did not contain any files!");
+				_configuration.Log(TraceLevel.Error, "Input folders did not contain any files!");
 				return null;
 			}
 
-			_configuration.LoggingAction.Invoke(TraceLevel.Info, $"Found {fileList.Count} matching files");
+			_configuration.Log(TraceLevel.Info, $"Found {fileList.Count} matching files");
 			return fileList;
 		}
 
@@ -52,7 +52,7 @@ namespace Sander.DirLister.Core.Application
 			{
 				if (!Directory.Exists(inputFolder))
 				{
-					_configuration.LoggingAction.Invoke(TraceLevel.Warning,
+					_configuration.Log(TraceLevel.Warning,
 						$"Input folder \"{inputFolder}\" does not exist!");
 					continue;
 				}
@@ -63,7 +63,7 @@ namespace Sander.DirLister.Core.Application
 
 				if (files.Count == 0)
 				{
-					_configuration.LoggingAction.Invoke(TraceLevel.Warning,
+					_configuration.Log(TraceLevel.Warning,
 						$"Input folder \"{inputFolder}\" does not contain any files!");
 					continue;
 				}
@@ -142,7 +142,7 @@ namespace Sander.DirLister.Core.Application
 			}
 			catch (Exception exception)
 			{
-				_configuration.LoggingAction.Invoke(TraceLevel.Warning, $"Caught exception while trying to enumerate a directory. {exception}");
+				_configuration.Log(TraceLevel.Warning, $"Caught exception while trying to enumerate a directory. {exception}");
 
 				if (findHandle != INVALID_HANDLE_VALUE) FindClose(findHandle);
 				files = null;
@@ -177,7 +177,7 @@ namespace Sander.DirLister.Core.Application
 							// Check if this is a directory and not a symbolic link since symbolic links could lead to repeated files and folders as well as infinite loops.
 							if (findData.dwFileAttributes.HasFlag(FileAttributes.Directory) && !findData.dwFileAttributes.HasFlag(FileAttributes.ReparsePoint))
 							{
-								if (_configuration.Recursive)
+								if (_configuration.IncludeSubfolders)
 									directoryList.Add(fullPath);
 							}
 							else if (!findData.dwFileAttributes.HasFlag(FileAttributes.Directory))
@@ -208,7 +208,7 @@ namespace Sander.DirLister.Core.Application
 			}
 			catch (Exception exception)
 			{
-				_configuration.LoggingAction.Invoke(TraceLevel.Warning, $"Caught exception while trying to enumerate a directory. {exception}");
+				_configuration.Log(TraceLevel.Warning, $"Caught exception while trying to enumerate a directory. {exception}");
 				if (findHandle != INVALID_HANDLE_VALUE) FindClose(findHandle);
 				return fileList.ToList();
 			}

@@ -68,14 +68,10 @@ mka, mks, mkv, mp+, mp1, mp2, mp3, mp4, mpc, mpe, mpeg, mpg, mpp, mpv2, oga, ogg
 		/// Round seconds to closest. No one is interested in fractional seconds...
 		/// Also, some old AVIs report negative duration
 		/// </summary>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		private TimeSpan RoundDuration(TimeSpan duration)
 		{
-			if (duration == TimeSpan.Zero)
-				return TimeSpan.Zero;
-
-			var seconds = (int) Math.Round(Math.Abs(duration.TotalSeconds), MidpointRounding.ToEven);
-
-			return TimeSpan.FromSeconds(seconds);
+			return duration == TimeSpan.Zero ? TimeSpan.Zero : TimeSpan.FromSeconds((int) Math.Round(Math.Abs(duration.TotalSeconds), MidpointRounding.ToEven));
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]

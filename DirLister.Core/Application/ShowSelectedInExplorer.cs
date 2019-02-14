@@ -9,7 +9,7 @@ using System.Runtime.InteropServices.ComTypes;
 namespace Sander.DirLister.Core.Application
 {
 	/// <summary>
-	/// From https://gist.github.com/vbfox/551626, modified
+	///     From https://gist.github.com/vbfox/551626, modified
 	/// </summary>
 	[SuppressMessage("ReSharper", "InconsistentNaming")]
 	internal static class ShowSelectedInExplorer
@@ -46,7 +46,6 @@ namespace Sander.DirLister.Core.Application
 		{
 			NativeMethods.SHOpenFolderAndSelectItems(pidlFolder, apidl, edit ? 1 : 0);
 		}
-
 
 
 		internal static void FilesOrFolders(string parentDirectory, ICollection<string> filenames)
