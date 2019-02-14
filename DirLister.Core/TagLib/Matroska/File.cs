@@ -201,11 +201,11 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 				{
 					element = new EBMLreader(this, offset);
 				}
-				catch (Exception ex)
+				catch (Exception)
 				{
 					// Sometimes, the file has zero padding at the end
 					if (hasSegment) break; // Avoid crash
-					throw ex;
+					throw;
 				}
 
 				var ebml_id = (EBMLID)element.ID;

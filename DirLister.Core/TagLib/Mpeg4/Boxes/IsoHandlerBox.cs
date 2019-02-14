@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace Sander.DirLister.Core.TagLib.Mpeg4.Boxes
 {
@@ -30,6 +30,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4.Boxes
 		/// <exception cref="ArgumentNullException">
 		///    <paramref name="file" /> is <see langword="null" />.
 		/// </exception>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
 		public IsoHandlerBox(BoxHeader header, TagLib.File file,
 			IsoHandlerBox handler)
 			: base(header, file, handler)

@@ -77,15 +77,18 @@ namespace Sander.DirLister.Core.Application
 		}
 
 
+		[SuppressMessage("Microsoft.Design", "CA1060:MovePInvokesToNativeMethodsClass")]
 		[DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
 		private static extern bool FindNextFile(IntPtr hFindFile, out WIN32_FIND_DATAW lpFindFileData);
 
 
+		[SuppressMessage("Microsoft.Design", "CA1060:MovePInvokesToNativeMethodsClass")]
 		[DllImport("kernel32.dll")]
 		private static extern bool FindClose(IntPtr hFindFile);
 
 
 
+		[SuppressMessage("Microsoft.Design", "CA1060:MovePInvokesToNativeMethodsClass")]
 		[DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
 		private static extern IntPtr FindFirstFileEx(
 			string lpFileName,

@@ -145,6 +145,7 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 		/// </summary>
 		/// <param name="throwException">Throw exception on invalid EBML read if true (Default: false).</param>
 		/// <returns>True if successful.</returns>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2200:RethrowToPreserveStackDetails")]
 		public bool Read(bool throwException = false)
 		{
 			if (!Abstract) return true;

@@ -157,6 +157,7 @@ namespace Sander.DirLister.Core.Application.Writers
 		/// <summary>
 		/// Standard HTML header, including CSS
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times")]
 		private void BuildHtmlHeader()
 		{
 			_sb.AppendLine($@"<!doctype html>

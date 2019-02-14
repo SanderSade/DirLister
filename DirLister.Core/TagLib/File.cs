@@ -299,6 +299,7 @@ namespace Sander.DirLister.Core.TagLib
 		///    Dispose the current file. Equivalent to setting the
 		///    mode to closed
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1063:ImplementIDisposableCorrectly")]
 		public void Dispose()
 		{
 			Mode = AccessMode.Closed;

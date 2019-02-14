@@ -53,6 +53,7 @@ namespace Sander.DirLister.Core.TagLib.NonContainer
 		/// <exception cref="ArgumentNullException">
 		///    <paramref name="path" /> is <see langword="null" />.
 		/// </exception>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
 		protected File(string path, ReadStyle propertiesStyle)
 			: base(path)
 		{
@@ -95,6 +96,7 @@ namespace Sander.DirLister.Core.TagLib.NonContainer
 		///    <paramref name="abstraction" /> is <see langword="null"
 		///    />.
 		/// </exception>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
 		protected File(IFileAbstraction abstraction,
 			ReadStyle propertiesStyle)
 			: base(abstraction)

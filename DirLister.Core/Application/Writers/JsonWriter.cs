@@ -11,6 +11,7 @@ namespace Sander.DirLister.Core.Application.Writers
 		{
 		}
 
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times")]
 		protected internal override string Write(List<FileEntry> entries)
 		{
 			var fileName = GetFilename(OutputFormat.Json);

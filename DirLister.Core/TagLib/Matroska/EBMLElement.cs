@@ -87,6 +87,7 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 		/// <summary>
 		/// Get the size of the EBML ID, in bytes
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1065:DoNotRaiseExceptionsInUnexpectedLocations")]
 		public long IDSize
 		{
 			get
@@ -116,6 +117,7 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 		/// <summary>
 		/// EBML Element data/content size in bytes.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1065:DoNotRaiseExceptionsInUnexpectedLocations")]
 		public long DataSize
 		{
 			get

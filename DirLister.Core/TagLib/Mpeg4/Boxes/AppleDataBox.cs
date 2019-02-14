@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace Sander.DirLister.Core.TagLib.Mpeg4.Boxes
 {
@@ -70,6 +70,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4.Boxes
 		/// <exception cref="ArgumentNullException">
 		///    <paramref name="file" /> is <see langword="null" />.
 		/// </exception>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
 		public AppleDataBox(BoxHeader header, TagLib.File file,
 			IsoHandlerBox handler)
 			: base(header, file, handler)
@@ -90,6 +91,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4.Boxes
 		///    A <see cref="uint" /> value containing flags to use for
 		///    the new instance.
 		/// </param>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
 		public AppleDataBox(ByteVector data, uint flags)
 			: base("data", 0, flags)
 		{
@@ -117,7 +119,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4.Boxes
 		public override ByteVector Data
 		{
 			get => data;
-			set => data = value != null ? value : new ByteVector();
+			set => data = value ?? new ByteVector();
 		}
 
 		/// <summary>
