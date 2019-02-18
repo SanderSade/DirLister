@@ -34,5 +34,16 @@ namespace Sander.DirLister.UI.Properties {
                 this["EnableShellIntegration"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection DirectoryHistory {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["DirectoryHistory"]));
+            }
+            set {
+                this["DirectoryHistory"] = value;
+            }
+        }
     }
 }

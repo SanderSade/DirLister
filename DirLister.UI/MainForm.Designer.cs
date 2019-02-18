@@ -1,4 +1,6 @@
-﻿namespace Sander.DirLister.UI
+﻿using Sander.DirLister.UI.App;
+
+namespace Sander.DirLister.UI
 {
 	partial class MainForm
 	{
@@ -28,34 +30,38 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("c:\\");
 			System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("C:\\Users\\Sander\\Source\\Repos\\DirLister\\DirLister.UI");
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.BottomPanel = new System.Windows.Forms.Panel();
-			this.StartButton = new System.Windows.Forms.Button();
-			this.Progress = new System.Windows.Forms.ProgressBar();
-			this.ProgressLabel = new System.Windows.Forms.Label();
 			this.FirstRunLabel = new System.Windows.Forms.Label();
+			this.ProgressLabel = new System.Windows.Forms.Label();
+			this.Progress = new System.Windows.Forms.ProgressBar();
+			this.StartButton = new System.Windows.Forms.Button();
 			this.MainTabs = new System.Windows.Forms.TabControl();
 			this.InputTab = new System.Windows.Forms.TabPage();
+			this.HistoryButton = new Sander.DirLister.UI.App.SplitButton();
+			this.DirectoryList = new System.Windows.Forms.ListView();
+			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.RemoveAll = new System.Windows.Forms.Label();
+			this.BrowseButton = new System.Windows.Forms.Button();
+			this.FilterBox = new System.Windows.Forms.GroupBox();
+			this.label1 = new System.Windows.Forms.Label();
+			this.FilenameFilter = new System.Windows.Forms.ComboBox();
+			this.Recursive = new System.Windows.Forms.CheckBox();
+			this.IncludeHidden = new System.Windows.Forms.CheckBox();
 			this.OutputTab = new System.Windows.Forms.TabPage();
 			this.LogTab = new System.Windows.Forms.TabPage();
 			this.AboutTab = new System.Windows.Forms.TabPage();
-			this.FilterBox = new System.Windows.Forms.GroupBox();
-			this.IncludeHidden = new System.Windows.Forms.CheckBox();
-			this.Recursive = new System.Windows.Forms.CheckBox();
-			this.FilenameFilter = new System.Windows.Forms.ComboBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.FolderHistory = new System.Windows.Forms.ComboBox();
-			this.AddButton = new System.Windows.Forms.Button();
-			this.SelectLink = new System.Windows.Forms.Label();
-			this.RemoveAll = new System.Windows.Forms.Label();
-			this.DirectoryList = new System.Windows.Forms.ListView();
-			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.HistoryMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.HistoryClearMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.HistorySeparator = new System.Windows.Forms.ToolStripSeparator();
 			this.BottomPanel.SuspendLayout();
 			this.MainTabs.SuspendLayout();
 			this.InputTab.SuspendLayout();
 			this.FilterBox.SuspendLayout();
+			this.HistoryMenu.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// BottomPanel
@@ -70,6 +76,35 @@
 			this.BottomPanel.Size = new System.Drawing.Size(945, 81);
 			this.BottomPanel.TabIndex = 0;
 			// 
+			// FirstRunLabel
+			// 
+			this.FirstRunLabel.AutoSize = true;
+			this.FirstRunLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.FirstRunLabel.ForeColor = System.Drawing.Color.Red;
+			this.FirstRunLabel.Location = new System.Drawing.Point(156, 17);
+			this.FirstRunLabel.Name = "FirstRunLabel";
+			this.FirstRunLabel.Size = new System.Drawing.Size(391, 16);
+			this.FirstRunLabel.TabIndex = 3;
+			this.FirstRunLabel.Text = "First run - choose the default output options and click \"Set default\"";
+			// 
+			// ProgressLabel
+			// 
+			this.ProgressLabel.AutoSize = true;
+			this.ProgressLabel.Location = new System.Drawing.Point(407, 50);
+			this.ProgressLabel.Name = "ProgressLabel";
+			this.ProgressLabel.Size = new System.Drawing.Size(52, 13);
+			this.ProgressLabel.TabIndex = 2;
+			this.ProgressLabel.Text = "Waiting...";
+			// 
+			// Progress
+			// 
+			this.Progress.ForeColor = System.Drawing.Color.DarkRed;
+			this.Progress.Location = new System.Drawing.Point(157, 45);
+			this.Progress.Name = "Progress";
+			this.Progress.Size = new System.Drawing.Size(244, 23);
+			this.Progress.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+			this.Progress.TabIndex = 1;
+			// 
 			// StartButton
 			// 
 			this.StartButton.BackColor = System.Drawing.SystemColors.ControlDark;
@@ -82,35 +117,6 @@
 			this.StartButton.TabIndex = 0;
 			this.StartButton.Text = "Start";
 			this.StartButton.UseVisualStyleBackColor = false;
-			// 
-			// Progress
-			// 
-			this.Progress.ForeColor = System.Drawing.Color.DarkRed;
-			this.Progress.Location = new System.Drawing.Point(157, 45);
-			this.Progress.Name = "Progress";
-			this.Progress.Size = new System.Drawing.Size(244, 23);
-			this.Progress.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-			this.Progress.TabIndex = 1;
-			// 
-			// ProgressLabel
-			// 
-			this.ProgressLabel.AutoSize = true;
-			this.ProgressLabel.Location = new System.Drawing.Point(407, 50);
-			this.ProgressLabel.Name = "ProgressLabel";
-			this.ProgressLabel.Size = new System.Drawing.Size(52, 13);
-			this.ProgressLabel.TabIndex = 2;
-			this.ProgressLabel.Text = "Waiting...";
-			// 
-			// FirstRunLabel
-			// 
-			this.FirstRunLabel.AutoSize = true;
-			this.FirstRunLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.FirstRunLabel.ForeColor = System.Drawing.Color.Red;
-			this.FirstRunLabel.Location = new System.Drawing.Point(156, 17);
-			this.FirstRunLabel.Name = "FirstRunLabel";
-			this.FirstRunLabel.Size = new System.Drawing.Size(391, 16);
-			this.FirstRunLabel.TabIndex = 3;
-			this.FirstRunLabel.Text = "First run - choose the default output options and click \"Set default\"";
 			// 
 			// MainTabs
 			// 
@@ -132,11 +138,10 @@
 			// 
 			// InputTab
 			// 
+			this.InputTab.Controls.Add(this.HistoryButton);
 			this.InputTab.Controls.Add(this.DirectoryList);
 			this.InputTab.Controls.Add(this.RemoveAll);
-			this.InputTab.Controls.Add(this.SelectLink);
-			this.InputTab.Controls.Add(this.AddButton);
-			this.InputTab.Controls.Add(this.FolderHistory);
+			this.InputTab.Controls.Add(this.BrowseButton);
 			this.InputTab.Controls.Add(this.FilterBox);
 			this.InputTab.Location = new System.Drawing.Point(4, 29);
 			this.InputTab.Name = "InputTab";
@@ -146,138 +151,16 @@
 			this.InputTab.Text = "Input";
 			this.InputTab.UseVisualStyleBackColor = true;
 			// 
-			// OutputTab
+			// HistoryButton
 			// 
-			this.OutputTab.Location = new System.Drawing.Point(4, 29);
-			this.OutputTab.Name = "OutputTab";
-			this.OutputTab.Padding = new System.Windows.Forms.Padding(3);
-			this.OutputTab.Size = new System.Drawing.Size(792, 336);
-			this.OutputTab.TabIndex = 1;
-			this.OutputTab.Text = "Output";
-			this.OutputTab.UseVisualStyleBackColor = true;
-			// 
-			// LogTab
-			// 
-			this.LogTab.Location = new System.Drawing.Point(4, 29);
-			this.LogTab.Name = "LogTab";
-			this.LogTab.Padding = new System.Windows.Forms.Padding(3);
-			this.LogTab.Size = new System.Drawing.Size(792, 336);
-			this.LogTab.TabIndex = 2;
-			this.LogTab.Text = "Log";
-			this.LogTab.UseVisualStyleBackColor = true;
-			// 
-			// AboutTab
-			// 
-			this.AboutTab.Location = new System.Drawing.Point(4, 29);
-			this.AboutTab.Name = "AboutTab";
-			this.AboutTab.Size = new System.Drawing.Size(792, 336);
-			this.AboutTab.TabIndex = 3;
-			this.AboutTab.Text = "About";
-			this.AboutTab.UseVisualStyleBackColor = true;
-			// 
-			// FilterBox
-			// 
-			this.FilterBox.Controls.Add(this.label1);
-			this.FilterBox.Controls.Add(this.FilenameFilter);
-			this.FilterBox.Controls.Add(this.Recursive);
-			this.FilterBox.Controls.Add(this.IncludeHidden);
-			this.FilterBox.Dock = System.Windows.Forms.DockStyle.Right;
-			this.FilterBox.Location = new System.Drawing.Point(687, 3);
-			this.FilterBox.Name = "FilterBox";
-			this.FilterBox.Size = new System.Drawing.Size(247, 341);
-			this.FilterBox.TabIndex = 0;
-			this.FilterBox.TabStop = false;
-			this.FilterBox.Text = "Options";
-			// 
-			// IncludeHidden
-			// 
-			this.IncludeHidden.AutoSize = true;
-			this.IncludeHidden.Location = new System.Drawing.Point(7, 21);
-			this.IncludeHidden.Name = "IncludeHidden";
-			this.IncludeHidden.Size = new System.Drawing.Size(197, 19);
-			this.IncludeHidden.TabIndex = 0;
-			this.IncludeHidden.Text = "Include hidden and system files";
-			this.IncludeHidden.UseVisualStyleBackColor = true;
-			// 
-			// Recursive
-			// 
-			this.Recursive.AutoSize = true;
-			this.Recursive.Location = new System.Drawing.Point(7, 47);
-			this.Recursive.Name = "Recursive";
-			this.Recursive.Size = new System.Drawing.Size(226, 19);
-			this.Recursive.TabIndex = 1;
-			this.Recursive.Text = "Recursive mode (include subfolders)";
-			this.Recursive.UseVisualStyleBackColor = true;
-			// 
-			// FilenameFilter
-			// 
-			this.FilenameFilter.DisplayMember = "0";
-			this.FilenameFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.FilenameFilter.Items.AddRange(new object[] {
-            "None",
-            "Wildcard",
-            "Regular expression"});
-			this.FilenameFilter.Location = new System.Drawing.Point(7, 106);
-			this.FilenameFilter.Name = "FilenameFilter";
-			this.FilenameFilter.Size = new System.Drawing.Size(226, 23);
-			this.FilenameFilter.TabIndex = 2;
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(6, 79);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(88, 15);
-			this.label1.TabIndex = 3;
-			this.label1.Text = "Filename filter:";
-			// 
-			// FolderHistory
-			// 
-			this.FolderHistory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.FolderHistory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.FolderHistory.FormattingEnabled = true;
-			this.FolderHistory.Location = new System.Drawing.Point(9, 7);
-			this.FolderHistory.Name = "FolderHistory";
-			this.FolderHistory.Size = new System.Drawing.Size(466, 23);
-			this.FolderHistory.TabIndex = 1;
-			// 
-			// AddButton
-			// 
-			this.AddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.AddButton.Location = new System.Drawing.Point(481, 6);
-			this.AddButton.Name = "AddButton";
-			this.AddButton.Size = new System.Drawing.Size(59, 23);
-			this.AddButton.TabIndex = 2;
-			this.AddButton.Text = "Add";
-			this.AddButton.UseVisualStyleBackColor = true;
-			// 
-			// SelectLink
-			// 
-			this.SelectLink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.SelectLink.AutoSize = true;
-			this.SelectLink.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.SelectLink.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.SelectLink.ForeColor = System.Drawing.Color.Navy;
-			this.SelectLink.Location = new System.Drawing.Point(546, 10);
-			this.SelectLink.Name = "SelectLink";
-			this.SelectLink.Size = new System.Drawing.Size(41, 15);
-			this.SelectLink.TabIndex = 3;
-			this.SelectLink.Text = "Select";
-			// 
-			// RemoveAll
-			// 
-			this.RemoveAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.RemoveAll.AutoSize = true;
-			this.RemoveAll.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.RemoveAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.RemoveAll.ForeColor = System.Drawing.Color.Navy;
-			this.RemoveAll.Location = new System.Drawing.Point(593, 10);
-			this.RemoveAll.Name = "RemoveAll";
-			this.RemoveAll.Size = new System.Drawing.Size(69, 15);
-			this.RemoveAll.TabIndex = 4;
-			this.RemoveAll.Text = "Remove all";
-			this.RemoveAll.Click += new System.EventHandler(this.RemoveAll_Click);
+			this.HistoryButton.Location = new System.Drawing.Point(82, 6);
+			this.HistoryButton.Menu = this.HistoryMenu;
+			this.HistoryButton.Name = "HistoryButton";
+			this.HistoryButton.Size = new System.Drawing.Size(75, 23);
+			this.HistoryButton.SplitWidth = 30;
+			this.HistoryButton.TabIndex = 6;
+			this.HistoryButton.Text = "History";
+			this.HistoryButton.UseVisualStyleBackColor = true;
 			// 
 			// DirectoryList
 			// 
@@ -304,7 +187,135 @@
 			// 
 			// columnHeader1
 			// 
-			this.columnHeader1.Width = 90000;
+			this.columnHeader1.Width = 24464;
+			// 
+			// RemoveAll
+			// 
+			this.RemoveAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.RemoveAll.AutoSize = true;
+			this.RemoveAll.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.RemoveAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.RemoveAll.ForeColor = System.Drawing.Color.Navy;
+			this.RemoveAll.Location = new System.Drawing.Point(593, 10);
+			this.RemoveAll.Name = "RemoveAll";
+			this.RemoveAll.Size = new System.Drawing.Size(69, 15);
+			this.RemoveAll.TabIndex = 4;
+			this.RemoveAll.Text = "Remove all";
+			this.RemoveAll.Click += new System.EventHandler(this.RemoveAll_Click);
+			// 
+			// BrowseButton
+			// 
+			this.BrowseButton.Location = new System.Drawing.Point(9, 6);
+			this.BrowseButton.Name = "BrowseButton";
+			this.BrowseButton.Size = new System.Drawing.Size(67, 23);
+			this.BrowseButton.TabIndex = 2;
+			this.BrowseButton.Text = "Browse...";
+			this.BrowseButton.UseVisualStyleBackColor = true;
+			// 
+			// FilterBox
+			// 
+			this.FilterBox.Controls.Add(this.label1);
+			this.FilterBox.Controls.Add(this.FilenameFilter);
+			this.FilterBox.Controls.Add(this.Recursive);
+			this.FilterBox.Controls.Add(this.IncludeHidden);
+			this.FilterBox.Dock = System.Windows.Forms.DockStyle.Right;
+			this.FilterBox.Location = new System.Drawing.Point(687, 3);
+			this.FilterBox.Name = "FilterBox";
+			this.FilterBox.Size = new System.Drawing.Size(247, 341);
+			this.FilterBox.TabIndex = 0;
+			this.FilterBox.TabStop = false;
+			this.FilterBox.Text = "Options";
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(6, 79);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(88, 15);
+			this.label1.TabIndex = 3;
+			this.label1.Text = "Filename filter:";
+			// 
+			// FilenameFilter
+			// 
+			this.FilenameFilter.DisplayMember = "0";
+			this.FilenameFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.FilenameFilter.Items.AddRange(new object[] {
+            "None",
+            "Wildcard",
+            "Regular expression"});
+			this.FilenameFilter.Location = new System.Drawing.Point(7, 106);
+			this.FilenameFilter.Name = "FilenameFilter";
+			this.FilenameFilter.Size = new System.Drawing.Size(226, 23);
+			this.FilenameFilter.TabIndex = 2;
+			// 
+			// Recursive
+			// 
+			this.Recursive.AutoSize = true;
+			this.Recursive.Location = new System.Drawing.Point(7, 47);
+			this.Recursive.Name = "Recursive";
+			this.Recursive.Size = new System.Drawing.Size(226, 19);
+			this.Recursive.TabIndex = 1;
+			this.Recursive.Text = "Recursive mode (include subfolders)";
+			this.Recursive.UseVisualStyleBackColor = true;
+			// 
+			// IncludeHidden
+			// 
+			this.IncludeHidden.AutoSize = true;
+			this.IncludeHidden.Location = new System.Drawing.Point(7, 21);
+			this.IncludeHidden.Name = "IncludeHidden";
+			this.IncludeHidden.Size = new System.Drawing.Size(197, 19);
+			this.IncludeHidden.TabIndex = 0;
+			this.IncludeHidden.Text = "Include hidden and system files";
+			this.IncludeHidden.UseVisualStyleBackColor = true;
+			// 
+			// OutputTab
+			// 
+			this.OutputTab.Location = new System.Drawing.Point(4, 29);
+			this.OutputTab.Name = "OutputTab";
+			this.OutputTab.Padding = new System.Windows.Forms.Padding(3);
+			this.OutputTab.Size = new System.Drawing.Size(937, 347);
+			this.OutputTab.TabIndex = 1;
+			this.OutputTab.Text = "Output";
+			this.OutputTab.UseVisualStyleBackColor = true;
+			// 
+			// LogTab
+			// 
+			this.LogTab.Location = new System.Drawing.Point(4, 29);
+			this.LogTab.Name = "LogTab";
+			this.LogTab.Padding = new System.Windows.Forms.Padding(3);
+			this.LogTab.Size = new System.Drawing.Size(937, 347);
+			this.LogTab.TabIndex = 2;
+			this.LogTab.Text = "Log";
+			this.LogTab.UseVisualStyleBackColor = true;
+			// 
+			// AboutTab
+			// 
+			this.AboutTab.Location = new System.Drawing.Point(4, 29);
+			this.AboutTab.Name = "AboutTab";
+			this.AboutTab.Size = new System.Drawing.Size(937, 347);
+			this.AboutTab.TabIndex = 3;
+			this.AboutTab.Text = "About";
+			this.AboutTab.UseVisualStyleBackColor = true;
+			// 
+			// HistoryMenu
+			// 
+			this.HistoryMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.HistoryClearMenuItem,
+            this.HistorySeparator});
+			this.HistoryMenu.Name = "HistoryMenu";
+			this.HistoryMenu.Size = new System.Drawing.Size(181, 54);
+			// 
+			// HistoryClearMenuItem
+			// 
+			this.HistoryClearMenuItem.Name = "HistoryClearMenuItem";
+			this.HistoryClearMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.HistoryClearMenuItem.Text = "Clear";
+			this.HistoryClearMenuItem.Click += new System.EventHandler(this.HistoryClearMenuItem_Click);
+			// 
+			// HistorySeparator
+			// 
+			this.HistorySeparator.Name = "HistorySeparator";
+			this.HistorySeparator.Size = new System.Drawing.Size(177, 6);
 			// 
 			// MainForm
 			// 
@@ -326,6 +337,7 @@
 			this.InputTab.PerformLayout();
 			this.FilterBox.ResumeLayout(false);
 			this.FilterBox.PerformLayout();
+			this.HistoryMenu.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -347,12 +359,14 @@
 		private System.Windows.Forms.CheckBox IncludeHidden;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.ComboBox FilenameFilter;
-		private System.Windows.Forms.Label SelectLink;
-		private System.Windows.Forms.Button AddButton;
-		private System.Windows.Forms.ComboBox FolderHistory;
+		private System.Windows.Forms.Button BrowseButton;
 		private System.Windows.Forms.ListView DirectoryList;
 		private System.Windows.Forms.ColumnHeader columnHeader1;
 		private System.Windows.Forms.Label RemoveAll;
+		private Sander.DirLister.UI.App.SplitButton HistoryButton;
+		private System.Windows.Forms.ContextMenuStrip HistoryMenu;
+		private System.Windows.Forms.ToolStripMenuItem HistoryClearMenuItem;
+		private System.Windows.Forms.ToolStripSeparator HistorySeparator;
 	}
 }
 

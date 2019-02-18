@@ -22,6 +22,8 @@ namespace Sander.DirLister.UI
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new MainForm());
+
+			Application.ApplicationExit += (sender, args) => { Settings.Default.Save(); };
 		}
 	}
 }
