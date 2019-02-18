@@ -24,7 +24,10 @@ namespace Sander.DirLister.Core.Application
 		internal List<FileEntry> Run()
 		{
 			if (!ValidateConfiguration())
+			{
+				Trace.Flush();
 				return null;
+			}
 
 			var sw = Stopwatch.StartNew();
 
@@ -67,7 +70,7 @@ namespace Sander.DirLister.Core.Application
 			_configuration.SendProgress(100, "All done");
 			_configuration.Log(TraceLevel.Info,
 				$"All done. Total time: {sw.Elapsed}, total files: {entries.Count}, total size: {Utils.ReadableSize(entries.Sum(x => x.Size))}");
-			//this has no effect if our LoggingAction is not Trace-based
+			//this has no useful effect if our LoggingAction is not Trace-based
 			Trace.Flush();
 		}
 
