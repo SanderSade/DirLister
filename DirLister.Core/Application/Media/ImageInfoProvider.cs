@@ -21,7 +21,7 @@ namespace Sander.DirLister.Core.Application.Media
 
 			SupportedExtensions = new HashSet<string>(extSplit, StringComparer.OrdinalIgnoreCase);
 
-			Configuration.LoggingAction.Invoke(TraceLevel.Info, $"Supported image extensions: {string.Join(", ", SupportedExtensions)}");
+			Configuration.Log(TraceLevel.Info, $"Supported image extensions: {string.Join(", ", SupportedExtensions.Select(x => x.ToLowerInvariant()))}");
 		}
 
 
@@ -42,7 +42,7 @@ namespace Sander.DirLister.Core.Application.Media
 			}
 			catch (Exception e)
 			{
-				Configuration.LoggingAction.Invoke(TraceLevel.Warning,
+				Configuration.Log(TraceLevel.Warning,
 					$"Error getting image information for \"{entry.Fullname}\":{Environment.NewLine}, {e}");
 			}
 		}

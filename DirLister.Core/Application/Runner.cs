@@ -45,25 +45,30 @@ namespace Sander.DirLister.Core.Application
 
 			if (_skipListMaking)
 			{
-				_configuration.SendProgress(100, "All done");
-				_configuration.Log(TraceLevel.Info,
-					$"All done. Total time: {sw.Elapsed}, total files: {entries.Count}, total size: {Utils.ReadableSize(entries.Sum(x => x.Size))}");
-
+				RunComplete(sw, entries);
 				return entries;
 			}
+
 			_configuration.SendProgress(95, "Creating output file(s)");
 
 			var writer = new OutputFileWriter(_configuration);
 			writer.Write(entries);
 
-			_configuration.Log(TraceLevel.Info,
-				$"All done. Total time: {sw.Elapsed}, total files: {entries.Count}, total size: {Utils.ReadableSize(entries.Sum(x => x.Size))}");
-			_configuration.SendProgress(100, "All done");
+			RunComplete(sw, entries);
 
 			if (_configuration.OpenAfter)
 				writer.OpenFileOrFolder();
 
 			return entries;
+		}
+
+		private void RunComplete(Stopwatch sw, List<FileEntry> entries)
+		{
+			_configuration.SendProgress(100, "All done");
+			_configuration.Log(TraceLevel.Info,
+				$"All done. Total time: {sw.Elapsed}, total files: {entries.Count}, total size: {Utils.ReadableSize(entries.Sum(x => x.Size))}");
+			//this has no effect if our LoggingAction is not Trace-based
+			Trace.Flush();
 		}
 
 		internal bool ValidateConfiguration()
@@ -118,18 +123,23 @@ namespace Sander.DirLister.Core.Application
 				var folders = new List<string>(_configuration.InputFolders.Count);
 				foreach (var inputFolder in _configuration.InputFolders)
 				{
-					if (!Directory.Exists(inputFolder))
+					var mappedFolder = Utils.GetUncPath(inputFolder);
+
+					if (string.Compare(mappedFolder, inputFolder, StringComparison.Ordinal) != 0)
+						_configuration.Log(TraceLevel.Warning, $"Using \"{inputFolder}\" as UNC path \"{mappedFolder}\"");
+
+					if (!Directory.Exists(mappedFolder))
 					{
 						isValid = false;
 						_configuration.Log(TraceLevel.Warning,
-							$"Folder \"{inputFolder}\" does not exist.");
+							$"Folder \"{mappedFolder}\" does not exist.");
 					}
 					else
 					{
-						if (inputFolder[inputFolder.Length - 1] != Path.DirectorySeparatorChar)
-							folders.Add(inputFolder + Path.DirectorySeparatorChar);
+						if (mappedFolder[mappedFolder.Length - 1] != Path.DirectorySeparatorChar)
+							folders.Add(mappedFolder + Path.DirectorySeparatorChar);
 						else
-							folders.Add(inputFolder);
+							folders.Add(mappedFolder);
 					}
 				}
 

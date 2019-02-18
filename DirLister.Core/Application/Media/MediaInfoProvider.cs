@@ -17,7 +17,7 @@ mka, mks, mkv, mp+, mp1, mp2, mp3, mp4, mpc, mpe, mpeg, mpg, mpp, mpv2, oga, ogg
 					.Split(',').Select(x => x.Trim('.', ' ')).OrderBy(x => x),
 				StringComparer.OrdinalIgnoreCase);
 
-			Configuration.LoggingAction.Invoke(TraceLevel.Info,
+			Configuration.Log(TraceLevel.Info,
 				$"Supported media extensions: {string.Join(", ", SupportedExtensions)}");
 		}
 
@@ -40,13 +40,13 @@ mka, mks, mkv, mp+, mp1, mp2, mp3, mp4, mpc, mpe, mpeg, mpg, mpp, mpv2, oga, ogg
 
 					if ((file.Properties.MediaTypes & MediaTypes.Audio) != 0)
 					{
-						entry.MediaInfo = GetAudioInfo(file.Properties);						;
+						entry.MediaInfo = GetAudioInfo(file.Properties);
 					}
 				}
 			}
 			catch (Exception e)
 			{
-				Configuration.LoggingAction.Invoke(TraceLevel.Warning,
+				Configuration.Log(TraceLevel.Warning,
 					$"Error getting media information for \"{entry.Fullname}\":{Environment.NewLine}, {e}");
 			}
 		}

@@ -50,13 +50,6 @@ namespace Sander.DirLister.Core.Application
 			var position = 10;
 			foreach (var inputFolder in _configuration.InputFolders)
 			{
-				if (!Directory.Exists(inputFolder))
-				{
-					_configuration.Log(TraceLevel.Warning,
-						$"Input folder \"{inputFolder}\" does not exist!");
-					continue;
-				}
-
 				var files = ParallelFindNextFile(inputFolder);
 				position += stepSize;
 				_configuration.SendProgress(position, "Gathering files");
