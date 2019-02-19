@@ -79,6 +79,7 @@ namespace Sander.DirLister.UI
 		{
 			var count = HistoryMenu.Items.Count;
 			for (var i = 2; i < count; i++) HistoryMenu.Items.RemoveAt(2);
+			Settings.Default.DirectoryHistory.Clear();
 		}
 
 
