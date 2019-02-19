@@ -6,13 +6,13 @@ using Sander.DirLister.UI.Properties;
 
 namespace Sander.DirLister.UI
 {
-	static class Program
+	internal static class Program
 	{
 		/// <summary>
-		/// The main entry point for the application.
+		///     The main entry point for the application.
 		/// </summary>
 		[STAThread]
-		static void Main(params string[] folders)
+		private static void Main(params string[] folders)
 		{
 			if (folders != null && folders.Length == 1)
 			{
@@ -26,21 +26,33 @@ namespace Sander.DirLister.UI
 				}
 			}
 
-			if (Settings.Default.EnableShellIntegration)
-			{
-				Task.Run(() => ShellIntegration.Create());
-			}
+			if (Settings.Default.EnableShellIntegration) Task.Run(() => ShellIntegration.Create());
 
-			Application.ApplicationExit += (sender, args) =>
-			{
-				Settings.Default.Save();
+			Application.ApplicationExit += (sender, args) => Settings.Default.Save();
 
+
+			AppDomain.CurrentDomain.UnhandledException += delegate(object sender, UnhandledExceptionEventArgs args)
+			{
+				LogUnhandledException(args.ExceptionObject as Exception,
+					$"Uncaught exception: {sender}, terminating: {args.IsTerminating}");
 			};
+
+			TaskScheduler.UnobservedTaskException += delegate(object sender, UnobservedTaskExceptionEventArgs args)
+			{
+				LogUnhandledException(args.Exception,
+					$"Uncaught task exception: {sender}");
+				args.SetObserved();
+			};
+
 			Mediator.Run(folders);
+		}
 
 
-
-
+		private static void LogUnhandledException(Exception ex, string message)
+		{
+			MessageBox.Show($"Fatal error. {message}\r\n\r\n{ex}",
+				"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			Environment.Exit(0);
 		}
 	}
 }

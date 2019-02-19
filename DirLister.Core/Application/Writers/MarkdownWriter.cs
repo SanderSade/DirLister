@@ -20,7 +20,7 @@ namespace Sander.DirLister.Core.Application.Writers
 		/// <inheritdoc />
 		protected internal override string Write(List<FileEntry> entries)
 		{
-			
+
 			var groups = GroupByFolder(entries).ToList();
 			AppendHeader(groups, entries);
 

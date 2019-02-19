@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -15,31 +16,45 @@ namespace Sander.DirLister.UI
 		internal static void Run(params string[] folders)
 		{
 			var configuration = ReadConfiguration();
-			if (folders == null || folders.Length == 0)
+			if (/*Settings.Default.FirstRun ||*/ folders == null || folders.Length == 0)
 			{
 				Application.EnableVisualStyles();
 				Application.SetCompatibleTextRenderingDefault(false);
 				Application.Run(new MainForm(configuration));
+				Settings.Default.Save();
 			}
 			else
 			{
-				configuration.InputFolders = new List<string>(folders);
-				var log = new List<LogEntry>();
-				bool hasError = false;
-				configuration.LoggingAction = delegate(TraceLevel level, string s)
-				{
-					if (level == TraceLevel.Error)
-						hasError = true;
-					log.Add(new LogEntry(level, s));
-				};
+				RunSilent(folders, configuration);
+			}
+		}
 
-				Core.DirLister.List(configuration);
-				if (hasError)
-				{
-					Application.EnableVisualStyles();
-					Application.SetCompatibleTextRenderingDefault(false);
-					Application.Run(new MainForm(configuration, log));
-				}
+		private static void RunSilent(string[] folders, Configuration configuration)
+		{
+			configuration.InputFolders = new List<string>(folders);
+
+			var log = new List<LogEntry>();
+			var hasError = false;
+
+			configuration.LoggingAction = delegate(TraceLevel level, string message)
+			{
+				if (level == TraceLevel.Error)
+					hasError = true;
+				log.Add(new LogEntry(level, message));
+			};
+
+			Core.DirLister.List(configuration);
+
+			if (hasError)
+			{
+				Application.EnableVisualStyles();
+				Application.SetCompatibleTextRenderingDefault(false);
+				Application.Run(new MainForm(configuration, log, folders));
+			}
+			else
+			{
+				AddToHistory(folders);
+				Settings.Default.Save();
 			}
 		}
 
@@ -82,5 +97,18 @@ namespace Sander.DirLister.UI
 			return configuration;
 		}
 
+
+		internal static void AddToHistory(params string[] folders)
+		{
+			if (Settings.Default.DirectoryHistory == null)
+				Settings.Default.DirectoryHistory = new StringCollection();
+
+			var history = Settings.Default.DirectoryHistory.Cast<string>().ToList();
+
+			history.InsertRange(0, folders);
+
+			Settings.Default.DirectoryHistory.Clear();
+			Settings.Default.DirectoryHistory.AddRange(history.Distinct().Take(Settings.Default.HistoryLength).ToArray());
+		}
 	}
 }

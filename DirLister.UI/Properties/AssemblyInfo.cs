@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("DirLister.UI")]
 [assembly: AssemblyDescription("DirLister UI")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Sander Säde")]
+[assembly: AssemblyCompany("DirLister")]
 [assembly: AssemblyProduct("DirLister.UI")]
 [assembly: AssemblyCopyright("Copyright © Sander Säde 2019")]
 [assembly: AssemblyTrademark("")]

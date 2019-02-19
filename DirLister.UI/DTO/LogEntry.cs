@@ -19,7 +19,7 @@ namespace Sander.DirLister.UI.DTO
 
 		public override string ToString()
 		{
-			return $"[{Timestamp.ToLocalTime():g}] {Level}: {Message}";
+			return $"[{Timestamp.ToLocalTime():G}] {Level}: {Message}";
 		}
 	}
 }
