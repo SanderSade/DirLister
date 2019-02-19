@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Json;
 using System.Text;
@@ -7,7 +8,7 @@ namespace Sander.DirLister.Core.Application.Writers
 {
 	internal sealed class JsonWriter : BaseWriter
 	{
-		public JsonWriter(Configuration configuration) : base(configuration)
+		public JsonWriter(Configuration configuration, DateTimeOffset endDate) : base(configuration, endDate)
 		{
 		}
 

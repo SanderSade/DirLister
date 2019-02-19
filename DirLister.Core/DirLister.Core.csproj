@@ -55,6 +55,7 @@
     <Compile Include="Application\Utils.cs" />
     <Compile Include="Application\Writers\BaseWriter.cs" />
     <Compile Include="Application\Writers\CsvWriter.cs" />
+    <Compile Include="Application\Writers\MarkdownWriter.cs" />
     <Compile Include="Application\Writers\XmlWriter.cs" />
     <Compile Include="Application\Writers\JsonWriter.cs" />
     <Compile Include="Application\Writers\HtmlWriter.cs" />

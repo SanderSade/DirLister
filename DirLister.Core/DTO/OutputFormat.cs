@@ -24,6 +24,10 @@
 		/// <summary>
 		/// XML
 		/// </summary>
-		Xml
+		Xml,
+		/// <summary>
+		/// Markdown
+		/// </summary>
+		Md
 	}
 }

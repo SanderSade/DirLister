@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -21,24 +22,28 @@ namespace Sander.DirLister.Core.Application
 		internal void Write(List<FileEntry> entries)
 		{
 			_configuration.Log(TraceLevel.Info, "Creating output files...");
+			var endDate = DateTimeOffset.Now;
 
 			var tasks = new List<Task<string>>();
 			//todo: more elegant than repeated if
 
 			if (_configuration.OutputFormats.Contains(OutputFormat.Csv))
-				tasks.Add(Task.Run(() => new CsvWriter(_configuration).Write(entries)));
+				tasks.Add(Task.Run(() => new CsvWriter(_configuration, endDate).Write(entries)));
 
 			if (_configuration.OutputFormats.Contains(OutputFormat.Html))
-				tasks.Add(Task.Run(() => new HtmlWriter(_configuration).Write(entries)));
+				tasks.Add(Task.Run(() => new HtmlWriter(_configuration, endDate).Write(entries)));
 
 			if (_configuration.OutputFormats.Contains(OutputFormat.Json))
-				tasks.Add(Task.Run(() => new JsonWriter(_configuration).Write(entries)));
+				tasks.Add(Task.Run(() => new JsonWriter(_configuration, endDate).Write(entries)));
 
 			if (_configuration.OutputFormats.Contains(OutputFormat.Txt))
-				tasks.Add(Task.Run(() => new TxtWriter(_configuration).Write(entries)));
+				tasks.Add(Task.Run(() => new TxtWriter(_configuration, endDate).Write(entries)));
 
 			if (_configuration.OutputFormats.Contains(OutputFormat.Xml))
-				tasks.Add(Task.Run(() => new XmlWriter(_configuration).Write(entries)));
+				tasks.Add(Task.Run(() => new XmlWriter(_configuration, endDate).Write(entries)));
+
+			if (_configuration.OutputFormats.Contains(OutputFormat.Md))
+				tasks.Add(Task.Run(() => new MarkdownWriter(_configuration, endDate).Write(entries)));
 
 			// ReSharper disable once CoVariantArrayConversion
 			Task.WaitAll(tasks.ToArray());

@@ -9,12 +9,14 @@ namespace Sander.DirLister.Core.Application.Writers
 	internal abstract class BaseWriter
 	{
 		protected readonly Configuration Configuration;
+		private readonly DateTimeOffset _endDate;
 		protected string FileDateFormat;
 
 
-		protected BaseWriter(Configuration configuration)
+		protected BaseWriter(Configuration configuration, DateTimeOffset endDate)
 		{
 			Configuration = configuration;
+			_endDate = endDate;
 			FileDateFormat = configuration.FileDateFormat;
 		}
 
@@ -33,10 +35,10 @@ namespace Sander.DirLister.Core.Application.Writers
 		protected internal string GetFilename(OutputFormat format)
 		{
 			if (Configuration.InputFolders.Count == 1)
-				return Path.Combine(Configuration.OutputFolder, $"DirLister.{DateTimeOffset.Now:yyyy-MM-dd.HHmmss}.{ReplacePathCharacters(format)}");
+				return Path.Combine(Configuration.OutputFolder, $"DirLister.{_endDate.ToLocalTime():yyyy-MM-dd.HHmmss}.{ReplacePathCharacters(format)}");
 
 			return
-				$"{Path.Combine(Configuration.OutputFolder, $"DirLister.{DateTimeOffset.Now:yyyy-MM-dd.HHmmss}.{Configuration.InputFolders.Count}-folders")}.{format.ToString().ToLowerInvariant()}";
+				$"{Path.Combine(Configuration.OutputFolder, $"DirLister.{Configuration.InputFolders.Count} folders")}.{_endDate.ToLocalTime():yyyy-MM-dd.HHmmss}.{format.ToString().ToLowerInvariant()}";
 		}
 
 		/// <summary>

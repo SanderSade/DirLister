@@ -82,6 +82,17 @@ namespace DirLister.Core.Tests
 			Sander.DirLister.Core.DirLister.List(configuration);
 		}
 
+
+		[TestMethod]
+		public void TestMdOut()
+		{
+			var configuration = GetConfiguration();
+			configuration.OutputFormats = new List<OutputFormat>
+				{ OutputFormat.Md };
+			configuration.OpenAfter = false;
+			Sander.DirLister.Core.DirLister.List(configuration);
+		}
+
 		[TestMethod]
 		public void TestAllOut()
 		{

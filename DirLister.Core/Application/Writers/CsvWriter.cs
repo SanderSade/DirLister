@@ -9,7 +9,7 @@ namespace Sander.DirLister.Core.Application.Writers
 	{
 		private readonly StringBuilder _sb;
 
-		internal CsvWriter(Configuration configuration) : base(configuration)
+		internal CsvWriter(Configuration configuration, DateTimeOffset endDate) : base(configuration, endDate)
 		{
 			_sb = new StringBuilder();
 		}

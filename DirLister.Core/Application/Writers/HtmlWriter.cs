@@ -16,7 +16,7 @@ namespace Sander.DirLister.Core.Application.Writers
 		private readonly bool _needsFileInfo;
 
 
-		public HtmlWriter(Configuration configuration) : base(configuration)
+		public HtmlWriter(Configuration configuration, DateTimeOffset endDate) : base(configuration, endDate)
 		{
 			_sb = new StringBuilder();
 			_now = DateTimeOffset.Now.ToString(FileDateFormat);
