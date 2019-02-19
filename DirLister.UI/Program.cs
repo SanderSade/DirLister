@@ -14,16 +14,33 @@ namespace Sander.DirLister.UI
 		[STAThread]
 		static void Main(params string[] folders)
 		{
+			if (folders != null && folders.Length == 1)
+			{
+				var command = folders[0].Trim('/', '-');
+				if (string.Compare(command, "uninstall", StringComparison.OrdinalIgnoreCase) == 0
+				    || string.Compare(command, "remove", StringComparison.OrdinalIgnoreCase) == 0)
+				{
+					ShellIntegration.Remove();
+					Environment.Exit(0);
+					return;
+				}
+			}
+
 			if (Settings.Default.EnableShellIntegration)
 			{
 				Task.Run(() => ShellIntegration.Create());
 			}
-			
-			Application.EnableVisualStyles();
-			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new MainForm());
 
-			Application.ApplicationExit += (sender, args) => { Settings.Default.Save(); };
+			Application.ApplicationExit += (sender, args) =>
+			{
+				Settings.Default.Save();
+
+			};
+			Mediator.Run(folders);
+
+
+
+
 		}
 	}
 }

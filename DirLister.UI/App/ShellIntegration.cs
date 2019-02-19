@@ -27,5 +27,10 @@ namespace Sander.DirLister.UI.App
 		{
 			CreateShortcut();
 		}
+
+		internal static void Remove()
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

@@ -1,17 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sander.DirLister.Core;
+using Sander.DirLister.UI.DTO;
 using Sander.DirLister.UI.Properties;
 
 namespace Sander.DirLister.UI
 {
 	public partial class MainForm : Form
 	{
-		public MainForm()
+		public MainForm(Configuration configuration, IEnumerable<LogEntry> logs = null)
 		{
 			InitializeComponent();
 			FilenameFilter.SelectedIndex = 0;

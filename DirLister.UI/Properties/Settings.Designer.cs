@@ -45,5 +45,174 @@ namespace Sander.DirLister.UI.Properties {
                 this["DirectoryHistory"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IncludeHidden {
+            get {
+                return ((bool)(this["IncludeHidden"]));
+            }
+            set {
+                this["IncludeHidden"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
+            "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <s" +
+            "tring>Html</string>\r\n</ArrayOfString>")]
+        public global::System.Collections.Specialized.StringCollection OutputFormats {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["OutputFormats"]));
+            }
+            set {
+                this["OutputFormats"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string OutputFolder {
+            get {
+                return ((string)(this["OutputFolder"]));
+            }
+            set {
+                this["OutputFolder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool OpenAfter {
+            get {
+                return ((bool)(this["OpenAfter"]));
+            }
+            set {
+                this["OpenAfter"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool IncludeSubfolders {
+            get {
+                return ((bool)(this["IncludeSubfolders"]));
+            }
+            set {
+                this["IncludeSubfolders"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool IncludeSize {
+            get {
+                return ((bool)(this["IncludeSize"]));
+            }
+            set {
+                this["IncludeSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IncludeMediaInfo {
+            get {
+                return ((bool)(this["IncludeMediaInfo"]));
+            }
+            set {
+                this["IncludeMediaInfo"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool EnableMultithreading {
+            get {
+                return ((bool)(this["EnableMultithreading"]));
+            }
+            set {
+                this["EnableMultithreading"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IncludeFileDates {
+            get {
+                return ((bool)(this["IncludeFileDates"]));
+            }
+            set {
+                this["IncludeFileDates"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("yyyy-MM-dd HH:mm:ss")]
+        public string FileDateFormat {
+            get {
+                return ((string)(this["FileDateFormat"]));
+            }
+            set {
+                this["FileDateFormat"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CssFile {
+            get {
+                return ((string)(this["CssFile"]));
+            }
+            set {
+                this["CssFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("None")]
+        public string SelectedFilter {
+            get {
+                return ((string)(this["SelectedFilter"]));
+            }
+            set {
+                this["SelectedFilter"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection WildcardFilter {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["WildcardFilter"]));
+            }
+            set {
+                this["WildcardFilter"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string RegexFilter {
+            get {
+                return ((string)(this["RegexFilter"]));
+            }
+            set {
+                this["RegexFilter"] = value;
+            }
+        }
     }
 }

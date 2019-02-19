@@ -42,7 +42,7 @@ namespace Sander.DirLister.Core
 		///     Open the output file with the default viewer after list generation.
 		///     If multiple output files are defined, folder is opened instead
 		/// </summary>
-		public bool OpenAfter { get; set; }
+		public bool OpenAfter { get; set; } = true;
 
 		/// <summary>
 		///     Whether or not directory listing is recursive (includes subfolders). Defaults to true.
