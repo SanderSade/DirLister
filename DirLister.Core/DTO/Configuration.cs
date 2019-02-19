@@ -105,11 +105,11 @@ namespace Sander.DirLister.Core
 
 
 		/// <summary>
-		///     Send out progress indicator w/o waiting the invoke to finish.
+		///     Send out progress indicator
 		/// </summary>
 		internal void SendProgress(int percentage, string description)
 		{
-			ProgressAction?.BeginInvoke(percentage, description, null, null);
+			ProgressAction?.Invoke(percentage, description);
 		}
 
 

@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Sander.DirLister.Core;
+using Sander.DirLister.UI.App;
 using Sander.DirLister.UI.DTO;
 using Sander.DirLister.UI.Properties;
 
@@ -15,11 +16,14 @@ namespace Sander.DirLister.UI
 	{
 		internal static void Run(params string[] folders)
 		{
+			Application.EnableVisualStyles();
+			Application.SetCompatibleTextRenderingDefault(false);
+		
 			var configuration = ReadConfiguration();
+
 			if (/*Settings.Default.FirstRun ||*/ folders == null || folders.Length == 0)
 			{
-				Application.EnableVisualStyles();
-				Application.SetCompatibleTextRenderingDefault(false);
+
 				Application.Run(new MainForm(configuration));
 				Settings.Default.Save();
 			}
@@ -36,19 +40,39 @@ namespace Sander.DirLister.UI
 			var log = new List<LogEntry>();
 			var hasError = false;
 
-			configuration.LoggingAction = delegate(TraceLevel level, string message)
+			configuration.LoggingAction = delegate (TraceLevel level, string message)
 			{
 				if (level == TraceLevel.Error)
 					hasError = true;
 				log.Add(new LogEntry(level, message));
 			};
 
+			ProgressForm progressForm = null;
+			if (Settings.Default.ShowProgressWindow)
+			{
+				progressForm = new ProgressForm
+				{
+					TopMost = true,
+					StartPosition = FormStartPosition.Manual,
+				};
+
+				progressForm.Left = Screen.PrimaryScreen.WorkingArea.Right - progressForm.Width - 20;
+				progressForm.Top = Screen.PrimaryScreen.WorkingArea.Bottom - progressForm.Height - 30;
+
+				progressForm.Show();
+
+				configuration.ProgressAction = delegate (int progress, string message)
+											   {
+												   progressForm.Invoke(progressForm.ProgressDelegate, progress,
+													   message);
+											   };
+			}
+
 			Core.DirLister.List(configuration);
+			progressForm?.Close();
 
 			if (hasError)
 			{
-				Application.EnableVisualStyles();
-				Application.SetCompatibleTextRenderingDefault(false);
 				Application.Run(new MainForm(configuration, log, folders));
 			}
 			else

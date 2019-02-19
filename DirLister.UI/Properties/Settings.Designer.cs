@@ -238,5 +238,17 @@ namespace Sander.DirLister.UI.Properties {
                 this["FirstRun"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowProgressWindow {
+            get {
+                return ((bool)(this["ShowProgressWindow"]));
+            }
+            set {
+                this["ShowProgressWindow"] = value;
+            }
+        }
     }
 }
