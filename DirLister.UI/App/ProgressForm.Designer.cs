@@ -32,6 +32,7 @@
 			this.ProgressBar = new System.Windows.Forms.ProgressBar();
 			this.ProgressLabel = new System.Windows.Forms.Label();
 			this.TopLabel = new System.Windows.Forms.Label();
+			this.HideLabel = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// ProgressBar
@@ -46,13 +47,11 @@
 			// 
 			// ProgressLabel
 			// 
-			this.ProgressLabel.AutoSize = true;
-			this.ProgressLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.ProgressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.ProgressLabel.ForeColor = System.Drawing.Color.White;
 			this.ProgressLabel.Location = new System.Drawing.Point(12, 30);
 			this.ProgressLabel.Name = "ProgressLabel";
-			this.ProgressLabel.Size = new System.Drawing.Size(74, 20);
+			this.ProgressLabel.Size = new System.Drawing.Size(387, 20);
 			this.ProgressLabel.TabIndex = 1;
 			this.ProgressLabel.Text = "Waiting...";
 			// 
@@ -68,12 +67,28 @@
 			this.TopLabel.Text = "DirLister v2";
 			this.TopLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
+			// HideLabel
+			// 
+			this.HideLabel.AutoSize = true;
+			this.HideLabel.BackColor = System.Drawing.SystemColors.ControlDark;
+			this.HideLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.HideLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.HideLabel.ForeColor = System.Drawing.Color.Maroon;
+			this.HideLabel.Location = new System.Drawing.Point(381, 2);
+			this.HideLabel.Name = "HideLabel";
+			this.HideLabel.Size = new System.Drawing.Size(29, 13);
+			this.HideLabel.TabIndex = 3;
+			this.HideLabel.Text = "Hide";
+			this.HideLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.HideLabel.Click += new System.EventHandler(this.HideLabel_Click);
+			// 
 			// ProgressForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
 			this.ClientSize = new System.Drawing.Size(411, 85);
+			this.Controls.Add(this.HideLabel);
 			this.Controls.Add(this.TopLabel);
 			this.Controls.Add(this.ProgressLabel);
 			this.Controls.Add(this.ProgressBar);
@@ -87,6 +102,7 @@
 			this.ShowIcon = false;
 			this.ShowInTaskbar = false;
 			this.Text = "ProgressForm";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ProgressForm_FormClosed);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -97,5 +113,6 @@
 		internal System.Windows.Forms.ProgressBar ProgressBar;
 		private System.Windows.Forms.Label ProgressLabel;
 		private System.Windows.Forms.Label TopLabel;
+		private System.Windows.Forms.Label HideLabel;
 	}
 }

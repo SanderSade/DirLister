@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
@@ -23,13 +24,13 @@ namespace Sander.DirLister.UI
 			var configuration = ReadConfiguration();
 			folders = new[] { @"c:\temp", @"c:\tools", @"c:\dev" };
 			configuration.IncludeMediaInfo = true;
-			//if (/*Settings.Default.FirstRun ||*/ Settings.Default.ShowUiFromShell || folders == null || folders.Length == 0)
-			//{
+			if (/*Settings.Default.FirstRun ||*/ Settings.Default.ShowUiFromShell || folders == null || folders.Length == 0)
+			{
 
-			//	Application.Run(new MainForm(configuration, null, folders));
-			//	Settings.Default.Save();
-			//}
-			//else
+				Application.Run(new MainForm(configuration, null, folders));
+				Settings.Default.Save();
+			}
+			else
 			{
 				RunSilent(folders, configuration);
 			}
@@ -39,7 +40,7 @@ namespace Sander.DirLister.UI
 		{
 			configuration.InputFolders = new List<string>(folders);
 
-			var log = new List<LogEntry>();
+			var log = new ConcurrentBag<LogEntry>();
 			var hasError = false;
 
 			configuration.LoggingAction = delegate (TraceLevel level, string message)
@@ -58,7 +59,7 @@ namespace Sander.DirLister.UI
 
 					configuration.ProgressAction = delegate (int progress, string message)
 					{
-						//hide the window
+						//hide the window if we have an error. This may not be foolproof, so rethink
 						if (hasError)
 							progress = 100;
 
@@ -77,7 +78,7 @@ namespace Sander.DirLister.UI
 
 			if (hasError)
 			{
-				Application.Run(new MainForm(configuration, log, folders));
+				Application.Run(new MainForm(configuration, log.ToList(), folders));
 			}
 			else
 			{

@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using Sander.DirLister.UI.Properties;
 
 namespace Sander.DirLister.UI.App
 {
@@ -25,5 +26,16 @@ namespace Sander.DirLister.UI.App
 
 
 		internal delegate void DoProgress(int progress, string message);
+
+		private void ProgressForm_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			Settings.Default.Save();
+		}
+
+		private void HideLabel_Click(object sender, System.EventArgs e)
+		{
+			Settings.Default.ShowProgressWindow = false;
+			Hide();
+		}
 	}
 }
