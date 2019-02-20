@@ -61,6 +61,9 @@
       <SubType>Form</SubType>
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainForm.Worker.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Mediator.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

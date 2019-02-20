@@ -28,18 +28,21 @@ namespace Sander.DirLister.UI
 				}
 			}
 
-			if (Settings.Default.EnableShellIntegration) Task.Run(() => ShellIntegration.Create());
+			if (Settings.Default.EnableShellIntegration)
+				Task.Run(() => ShellIntegration.Create());
 
 			Application.ApplicationExit += (sender, args) => Settings.Default.Save();
 
+			Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
 
-			AppDomain.CurrentDomain.UnhandledException += delegate(object sender, UnhandledExceptionEventArgs args)
-			{
-				LogUnhandledException(args.ExceptionObject as Exception,
-					$"Uncaught exception: {sender}, terminating: {args.IsTerminating}");
-			};
+			Application.ThreadException += (sender, args) =>
+				LogUnhandledException(args.Exception, "Uncaught thread exception");
 
-			TaskScheduler.UnobservedTaskException += delegate(object sender, UnobservedTaskExceptionEventArgs args)
+			AppDomain.CurrentDomain.UnhandledException += (sender, args) => LogUnhandledException(
+				args.ExceptionObject as Exception,
+				$"Uncaught exception: {sender}, terminating: {args.IsTerminating}");
+
+			TaskScheduler.UnobservedTaskException += (sender, args) =>
 			{
 				LogUnhandledException(args.Exception,
 					$"Uncaught task exception: {sender}");

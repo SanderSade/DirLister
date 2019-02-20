@@ -22,8 +22,7 @@ namespace Sander.DirLister.UI
 			Application.SetCompatibleTextRenderingDefault(false);
 
 			var configuration = ReadConfiguration();
-			folders = new[] { @"c:\temp", @"c:\tools", @"c:\dev" };
-			configuration.IncludeMediaInfo = true;
+
 			if (/*Settings.Default.FirstRun ||*/ Settings.Default.ShowUiFromShell || folders == null || folders.Length == 0)
 			{
 
@@ -47,30 +46,13 @@ namespace Sander.DirLister.UI
 			{
 				if (level == TraceLevel.Error)
 					hasError = true;
+
 				log.Add(new LogEntry(level, message));
 			};
 
 			if (Settings.Default.ShowProgressWindow)
 			{
-				using (var progressForm = new ProgressForm { TopMost = true, StartPosition = FormStartPosition.Manual, })
-				{
-					progressForm.Left = Screen.PrimaryScreen.WorkingArea.Right - progressForm.Width - 20;
-					progressForm.Top = Screen.PrimaryScreen.WorkingArea.Bottom - progressForm.Height - 30;
-
-					configuration.ProgressAction = delegate (int progress, string message)
-					{
-						//hide the window if we have an error. This may not be foolproof, so rethink
-						if (hasError)
-							progress = 100;
-
-						// ReSharper disable AccessToDisposedClosure
-						progressForm.Invoke(progressForm.ProgressDelegate, progress,
-							message);
-					};
-
-					Task.Run(() => Core.DirLister.List(configuration));
-					Application.Run(progressForm);
-				}
+				RunSilentWithProgress(configuration, hasError);
 			}
 			else
 				Core.DirLister.List(configuration);
@@ -87,6 +69,29 @@ namespace Sander.DirLister.UI
 			}
 		}
 
+		private static void RunSilentWithProgress(Configuration configuration, bool hasError)
+		{
+			using (var progressForm = new ProgressForm { TopMost = true, StartPosition = FormStartPosition.Manual })
+			{
+				progressForm.Left = Screen.PrimaryScreen.WorkingArea.Right - progressForm.Width - 20;
+				progressForm.Top = Screen.PrimaryScreen.WorkingArea.Bottom - progressForm.Height - 30;
+
+				configuration.ProgressAction = delegate (int progress, string message)
+				{
+					//hide the window if we have an error. This may not be foolproof, so rethink
+					if (hasError)
+						progress = 100;
+
+					// ReSharper disable AccessToDisposedClosure
+					progressForm.Invoke(progressForm.ProgressDelegate, progress,
+						message);
+				};
+
+				Task.Run(() => Core.DirLister.List(configuration));
+				Application.Run(progressForm);
+			}
+		}
+
 		private static Configuration ReadConfiguration()
 		{
 			var configuration = new Configuration();
@@ -97,6 +102,7 @@ namespace Sander.DirLister.UI
 			configuration.EnableMultithreading = Settings.Default.EnableMultithreading;
 			configuration.FileDateFormat = Settings.Default.FileDateFormat;
 
+			//see about less chatty implementation
 			switch (Settings.Default.SelectedFilter)
 			{
 				case "Wildcard":

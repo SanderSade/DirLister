@@ -116,9 +116,8 @@ namespace Sander.DirLister.UI
 			this.ProgressLabel.AutoSize = true;
 			this.ProgressLabel.Location = new System.Drawing.Point(407, 50);
 			this.ProgressLabel.Name = "ProgressLabel";
-			this.ProgressLabel.Size = new System.Drawing.Size(52, 13);
+			this.ProgressLabel.Size = new System.Drawing.Size(0, 13);
 			this.ProgressLabel.TabIndex = 2;
-			this.ProgressLabel.Text = "Waiting...";
 			// 
 			// Progress
 			// 
@@ -187,6 +186,7 @@ namespace Sander.DirLister.UI
 			this.LogBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
 			this.LogBox.Size = new System.Drawing.Size(931, 341);
 			this.LogBox.TabIndex = 0;
+			this.LogBox.TextChanged += new System.EventHandler(this.LogBox_TextChanged);
 			// 
 			// OutputTab
 			// 

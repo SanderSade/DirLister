@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -105,6 +106,7 @@ namespace Sander.DirLister.UI
 
 			FirstRunLabel.Visible = Settings.Default.FirstRun;
 			StartButton.Enabled = !Settings.Default.FirstRun;
+			ProgressLabel.Text = string.Empty;
 		}
 
 
@@ -146,6 +148,18 @@ namespace Sander.DirLister.UI
 		private void RemoveFolder_Click(object sender, EventArgs e)
 		{
 			DirectoryList.FocusedItem.Remove();
+		}
+
+		private void BrowseButton_Click(object sender, System.EventArgs e)
+		{
+			if (FolderSelectionDialog.ShowDialog() == DialogResult.OK)
+			{
+				var directory = FolderSelectionDialog.SelectedPath[FolderSelectionDialog.SelectedPath.Length - 1] != Path.DirectorySeparatorChar
+					? FolderSelectionDialog.SelectedPath + Path.DirectorySeparatorChar
+					: FolderSelectionDialog.SelectedPath;
+				AddFolderToList(directory);
+				AddFolderToHistory(directory);
+			}
 		}
 	}
 }
