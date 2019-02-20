@@ -7,6 +7,7 @@ namespace Sander.DirLister.UI.App
 		public ProgressForm()
 		{
 			InitializeComponent();
+			TopLabel.Text = Program.VersionString;
 			ProgressDelegate = SetProgress;
 		}
 

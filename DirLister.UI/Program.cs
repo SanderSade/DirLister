@@ -8,6 +8,8 @@ namespace Sander.DirLister.UI
 {
 	internal static class Program
 	{
+		internal static readonly string VersionString = "DirLister v2 beta 1";
+
 		/// <summary>
 		///     The main entry point for the application.
 		/// </summary>

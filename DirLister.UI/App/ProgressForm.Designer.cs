@@ -31,13 +31,14 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProgressForm));
 			this.ProgressBar = new System.Windows.Forms.ProgressBar();
 			this.ProgressLabel = new System.Windows.Forms.Label();
+			this.TopLabel = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// ProgressBar
 			// 
 			this.ProgressBar.BackColor = System.Drawing.SystemColors.ButtonShadow;
 			this.ProgressBar.ForeColor = System.Drawing.Color.Black;
-			this.ProgressBar.Location = new System.Drawing.Point(12, 44);
+			this.ProgressBar.Location = new System.Drawing.Point(12, 61);
 			this.ProgressBar.Name = "ProgressBar";
 			this.ProgressBar.Size = new System.Drawing.Size(387, 12);
 			this.ProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
@@ -49,18 +50,31 @@
 			this.ProgressLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.ProgressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.ProgressLabel.ForeColor = System.Drawing.Color.White;
-			this.ProgressLabel.Location = new System.Drawing.Point(12, 13);
+			this.ProgressLabel.Location = new System.Drawing.Point(12, 30);
 			this.ProgressLabel.Name = "ProgressLabel";
 			this.ProgressLabel.Size = new System.Drawing.Size(74, 20);
 			this.ProgressLabel.TabIndex = 1;
 			this.ProgressLabel.Text = "Waiting...";
+			// 
+			// TopLabel
+			// 
+			this.TopLabel.BackColor = System.Drawing.SystemColors.ControlDark;
+			this.TopLabel.Dock = System.Windows.Forms.DockStyle.Top;
+			this.TopLabel.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.TopLabel.Location = new System.Drawing.Point(0, 0);
+			this.TopLabel.Name = "TopLabel";
+			this.TopLabel.Size = new System.Drawing.Size(411, 16);
+			this.TopLabel.TabIndex = 2;
+			this.TopLabel.Text = "DirLister v2";
+			this.TopLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// ProgressForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.ClientSize = new System.Drawing.Size(411, 68);
+			this.ClientSize = new System.Drawing.Size(411, 85);
+			this.Controls.Add(this.TopLabel);
 			this.Controls.Add(this.ProgressLabel);
 			this.Controls.Add(this.ProgressBar);
 			this.Cursor = System.Windows.Forms.Cursors.AppStarting;
@@ -82,5 +96,6 @@
 
 		internal System.Windows.Forms.ProgressBar ProgressBar;
 		private System.Windows.Forms.Label ProgressLabel;
+		private System.Windows.Forms.Label TopLabel;
 	}
 }
