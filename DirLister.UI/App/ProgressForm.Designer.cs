@@ -40,7 +40,7 @@
 			this.ProgressBar.Location = new System.Drawing.Point(12, 44);
 			this.ProgressBar.Name = "ProgressBar";
 			this.ProgressBar.Size = new System.Drawing.Size(387, 12);
-			this.ProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+			this.ProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
 			this.ProgressBar.TabIndex = 0;
 			// 
 			// ProgressLabel

@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sander.DirLister.Core;
 using Sander.DirLister.UI.App;
@@ -18,16 +19,17 @@ namespace Sander.DirLister.UI
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-		
+
 			var configuration = ReadConfiguration();
+			folders = new[] { @"c:\temp", @"c:\tools", @"c:\dev" };
+			configuration.IncludeMediaInfo = true;
+			//if (/*Settings.Default.FirstRun ||*/ Settings.Default.ShowUiFromShell || folders == null || folders.Length == 0)
+			//{
 
-			if (/*Settings.Default.FirstRun ||*/ folders == null || folders.Length == 0)
-			{
-
-				Application.Run(new MainForm(configuration));
-				Settings.Default.Save();
-			}
-			else
+			//	Application.Run(new MainForm(configuration, null, folders));
+			//	Settings.Default.Save();
+			//}
+			//else
 			{
 				RunSilent(folders, configuration);
 			}
@@ -47,29 +49,31 @@ namespace Sander.DirLister.UI
 				log.Add(new LogEntry(level, message));
 			};
 
-			ProgressForm progressForm = null;
 			if (Settings.Default.ShowProgressWindow)
 			{
-				progressForm = new ProgressForm
+				using (var progressForm = new ProgressForm { TopMost = true, StartPosition = FormStartPosition.Manual, })
 				{
-					TopMost = true,
-					StartPosition = FormStartPosition.Manual,
-				};
+					progressForm.Left = Screen.PrimaryScreen.WorkingArea.Right - progressForm.Width - 20;
+					progressForm.Top = Screen.PrimaryScreen.WorkingArea.Bottom - progressForm.Height - 30;
 
-				progressForm.Left = Screen.PrimaryScreen.WorkingArea.Right - progressForm.Width - 20;
-				progressForm.Top = Screen.PrimaryScreen.WorkingArea.Bottom - progressForm.Height - 30;
+					configuration.ProgressAction = delegate (int progress, string message)
+					{
+						//hide the window
+						if (hasError)
+							progress = 100;
 
-				progressForm.Show();
+						// ReSharper disable AccessToDisposedClosure
+						progressForm.Invoke(progressForm.ProgressDelegate, progress,
+							message);
+					};
 
-				configuration.ProgressAction = delegate (int progress, string message)
-											   {
-												   progressForm.Invoke(progressForm.ProgressDelegate, progress,
-													   message);
-											   };
+					Task.Run(() => Core.DirLister.List(configuration));
+					Application.Run(progressForm);
+				}
 			}
+			else
+				Core.DirLister.List(configuration);
 
-			Core.DirLister.List(configuration);
-			progressForm?.Close();
 
 			if (hasError)
 			{

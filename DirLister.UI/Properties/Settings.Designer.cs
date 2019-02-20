@@ -250,5 +250,17 @@ namespace Sander.DirLister.UI.Properties {
                 this["ShowProgressWindow"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowUiFromShell {
+            get {
+                return ((bool)(this["ShowUiFromShell"]));
+            }
+            set {
+                this["ShowUiFromShell"] = value;
+            }
+        }
     }
 }
