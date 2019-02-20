@@ -12,7 +12,7 @@ using Sander.DirLister.UI.Properties;
 
 namespace Sander.DirLister.UI
 {
-	public partial class MainForm
+	public sealed partial class MainForm
 	{
 		private bool _isStartup;
 		internal void InitializeOutput()

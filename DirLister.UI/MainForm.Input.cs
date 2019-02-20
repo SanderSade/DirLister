@@ -11,7 +11,7 @@ using Sander.DirLister.UI.Properties;
 
 namespace Sander.DirLister.UI
 {
-	public partial class MainForm
+	public sealed partial class MainForm
 	{
 		private void AddFolderToHistory(string directory, bool isStartup = false)
 		{

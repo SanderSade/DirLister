@@ -10,7 +10,7 @@ using Sander.DirLister.UI.Properties;
 
 namespace Sander.DirLister.UI
 {
-	public partial class MainForm : Form
+	public sealed partial class MainForm : Form
 	{
 		private readonly Configuration _configuration;
 
@@ -21,7 +21,7 @@ namespace Sander.DirLister.UI
 		{
 			_configuration = configuration;
 			InitializeComponent();
-
+			Text = Program.VersionString;
 			TopMost = Settings.Default.KeepOnTop;
 
 			InitializeInput(inputFolders);

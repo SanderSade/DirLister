@@ -7,7 +7,7 @@ using Sander.DirLister.Core;
 
 namespace Sander.DirLister.UI
 {
-	public partial class MainForm
+	public sealed partial class MainForm
 	{
 		internal DoProgress ProgressDelegate { get; set; }
 
