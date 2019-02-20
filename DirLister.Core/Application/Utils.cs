@@ -7,7 +7,10 @@ using System.Text;
 
 namespace Sander.DirLister.Core.Application
 {
-	internal static class Utils
+	/// <summary>
+	/// Misc utils
+	/// </summary>
+	public static class Utils
 	{
 
 		/// <summary>
@@ -16,7 +19,7 @@ namespace Sander.DirLister.Core.Application
 		/// <param name="size">Size in bytes</param>
 		/// <param name="numberFormat">Format of the returned number. Defaults to 0.##</param>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		internal static string ReadableSize(long size, string numberFormat = "0.##")
+		public static string ReadableSize(long size, string numberFormat = "0.##")
 		{
 			size = Math.Abs(size);
 
@@ -105,6 +108,18 @@ namespace Sander.DirLister.Core.Application
 #pragma warning restore 618
 		{
 			return DateTimeOffset.FromFileTime(((long)filetime.dwHighDateTime << 32) + filetime.dwLowDateTime);
+		}
+
+		/// <summary>
+		/// Ensure path ends with backslash
+		/// </summary>
+		/// <param name="directory"></param>
+		/// <returns></returns>
+		public static string EnsureBackslash(string directory)
+		{
+			return directory[directory.Length - 1] != Path.DirectorySeparatorChar
+				? directory + Path.DirectorySeparatorChar
+				: directory;
 		}
 
 

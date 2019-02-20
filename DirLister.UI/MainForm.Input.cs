@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sander.DirLister.Core;
+using Sander.DirLister.Core.Application;
 using Sander.DirLister.UI.Properties;
 
 namespace Sander.DirLister.UI
@@ -64,12 +66,6 @@ namespace Sander.DirLister.UI
 		{
 			Process.Start("explorer.exe", DirectoryList.SelectedItems[0]
 			                                           .Text);
-		}
-
-
-		private void LabelHomepage_Click(object sender, EventArgs e)
-		{
-			Process.Start("https://github.com/SanderSade/DirLister");
 		}
 
 
@@ -154,12 +150,18 @@ namespace Sander.DirLister.UI
 		{
 			if (FolderSelectionDialog.ShowDialog() == DialogResult.OK)
 			{
-				var directory = FolderSelectionDialog.SelectedPath[FolderSelectionDialog.SelectedPath.Length - 1] != Path.DirectorySeparatorChar
-					? FolderSelectionDialog.SelectedPath + Path.DirectorySeparatorChar
-					: FolderSelectionDialog.SelectedPath;
+				var directory = Utils.EnsureBackslash(FolderSelectionDialog.SelectedPath);
 				AddFolderToList(directory);
 				AddFolderToHistory(directory);
 			}
+		}
+
+		private void LabelHomepage_MouseClick(object sender, MouseEventArgs e)
+		{
+			if (e.Button == MouseButtons.Right)
+				Process.Start("explorer.exe", Path.GetDirectoryName(ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath));
+			else
+				Process.Start("https://github.com/SanderSade/DirLister");
 		}
 	}
 }

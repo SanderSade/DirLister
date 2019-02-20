@@ -38,6 +38,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -63,9 +64,11 @@
     </Compile>
     <Compile Include="MainForm.Output.cs">
       <SubType>Form</SubType>
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.Worker.cs">
       <SubType>Form</SubType>
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Mediator.cs" />
     <Compile Include="MainForm.cs">

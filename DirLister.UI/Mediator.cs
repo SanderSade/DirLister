@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Sander.DirLister.Core;
+using Sander.DirLister.Core.Application;
 using Sander.DirLister.UI.Properties;
 
 namespace Sander.DirLister.UI
@@ -15,10 +16,12 @@ namespace Sander.DirLister.UI
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 
+			folders = folders?.Select(x => Utils.EnsureBackslash(x.Trim('"'))).ToArray();
+
 			var configuration = ReadConfiguration();
 			//folders = new[] { @"c:\dev", @"c:\tools", @"c:\temp" };
 			//configuration.IncludeMediaInfo = true;
-			if (/*Settings.Default.FirstRun ||*/ Settings.Default.ShowUiFromShell || folders == null || folders.Length == 0)
+			if (Settings.Default.FirstRun || Settings.Default.ShowUiFromShell || folders == null || folders.Length == 0)
 			{
 
 				Application.Run(new MainForm(configuration, null, folders));

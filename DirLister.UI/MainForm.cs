@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Sander.DirLister.Core;
+using Sander.DirLister.Core.Application;
 using Sander.DirLister.UI.DTO;
 using Sander.DirLister.UI.Properties;
 
@@ -13,7 +15,8 @@ namespace Sander.DirLister.UI
 	{
 		private readonly Configuration _configuration;
 
-		public MainForm(Configuration configuration, List<LogEntry> logs = null,
+		public MainForm(Configuration configuration,
+			List<LogEntry> logs = null,
 			IEnumerable<string> inputFolders = null)
 		{
 			_configuration = configuration;
@@ -51,9 +54,7 @@ namespace Sander.DirLister.UI
 				if (!File.GetAttributes(folder).HasFlag(FileAttributes.Directory))
 					continue;
 
-				var directory = folder[folder.Length - 1] != Path.DirectorySeparatorChar
-					? folder + Path.DirectorySeparatorChar
-					: folder;
+				var directory = Utils.EnsureBackslash(folder);
 				AddFolderToList(directory);
 				AddFolderToHistory(directory);
 			}
@@ -65,5 +66,7 @@ namespace Sander.DirLister.UI
 			LogBox.SelectionStart = LogBox.Text.Length;
 			LogBox.ScrollToCaret();
 		}
+
+
 	}
 }

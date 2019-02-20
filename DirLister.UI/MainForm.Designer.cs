@@ -66,6 +66,7 @@ namespace Sander.DirLister.UI
 			this.SetDefault = new System.Windows.Forms.Button();
 			this.InputTab = new System.Windows.Forms.TabPage();
 			this.RemoveAllButton = new System.Windows.Forms.Button();
+			this.HistoryButton = new Sander.DirLister.UI.App.SplitButton();
 			this.DirectoryList = new System.Windows.Forms.ListView();
 			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.BrowseButton = new System.Windows.Forms.Button();
@@ -82,7 +83,6 @@ namespace Sander.DirLister.UI
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.MoveUp = new System.Windows.Forms.ToolStripMenuItem();
 			this.MoveDown = new System.Windows.Forms.ToolStripMenuItem();
-			this.HistoryButton = new Sander.DirLister.UI.App.SplitButton();
 			this.BottomPanel.SuspendLayout();
 			this.HistoryMenu.SuspendLayout();
 			this.LogTab.SuspendLayout();
@@ -123,7 +123,7 @@ namespace Sander.DirLister.UI
 			this.LabelHomepage.TabIndex = 5;
 			this.LabelHomepage.Text = "https://github.com/SanderSade/DirLister";
 			this.LabelHomepage.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-			this.LabelHomepage.Click += new System.EventHandler(this.LabelHomepage_Click);
+			this.LabelHomepage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.LabelHomepage_MouseClick);
 			// 
 			// FirstRunLabel
 			// 
@@ -247,10 +247,11 @@ namespace Sander.DirLister.UI
 			this.ProgressWindowCheck.AutoSize = true;
 			this.ProgressWindowCheck.Location = new System.Drawing.Point(37, 79);
 			this.ProgressWindowCheck.Name = "ProgressWindowCheck";
-			this.ProgressWindowCheck.Size = new System.Drawing.Size(369, 19);
+			this.ProgressWindowCheck.Size = new System.Drawing.Size(370, 19);
 			this.ProgressWindowCheck.TabIndex = 8;
-			this.ProgressWindowCheck.Text = "Show progress window during operations started from Explorer";
+			this.ProgressWindowCheck.Text = "Show progress window during list making started from Explorer";
 			this.ProgressWindowCheck.UseVisualStyleBackColor = true;
+			this.ProgressWindowCheck.CheckedChanged += new System.EventHandler(this.ProgressWindowCheck_CheckedChanged);
 			// 
 			// OpenUiCheck
 			// 
@@ -261,6 +262,7 @@ namespace Sander.DirLister.UI
 			this.OpenUiCheck.TabIndex = 7;
 			this.OpenUiCheck.Text = "Open UI instead of silently creating file list with default options";
 			this.OpenUiCheck.UseVisualStyleBackColor = true;
+			this.OpenUiCheck.CheckedChanged += new System.EventHandler(this.OpenUiCheck_CheckedChanged);
 			// 
 			// EnableShellCheck
 			// 
@@ -272,6 +274,7 @@ namespace Sander.DirLister.UI
 			this.EnableShellCheck.Text = "Enable shell integration (right-click menu for directory and drive, Send To entry" +
     "";
 			this.EnableShellCheck.UseVisualStyleBackColor = true;
+			this.EnableShellCheck.CheckedChanged += new System.EventHandler(this.EnableShellCheck_CheckedChanged);
 			// 
 			// groupBox2
 			// 
@@ -449,6 +452,7 @@ namespace Sander.DirLister.UI
 			this.SetDefault.TabIndex = 0;
 			this.SetDefault.Text = "Set default";
 			this.SetDefault.UseVisualStyleBackColor = true;
+			this.SetDefault.Click += new System.EventHandler(this.SetDefault_Click);
 			// 
 			// InputTab
 			// 
@@ -475,6 +479,17 @@ namespace Sander.DirLister.UI
 			this.RemoveAllButton.Text = "Remove all";
 			this.RemoveAllButton.UseVisualStyleBackColor = true;
 			this.RemoveAllButton.Click += new System.EventHandler(this.RemoveAll_Click);
+			// 
+			// HistoryButton
+			// 
+			this.HistoryButton.Location = new System.Drawing.Point(118, 6);
+			this.HistoryButton.Menu = this.HistoryMenu;
+			this.HistoryButton.Name = "HistoryButton";
+			this.HistoryButton.Size = new System.Drawing.Size(75, 23);
+			this.HistoryButton.SplitWidth = 30;
+			this.HistoryButton.TabIndex = 6;
+			this.HistoryButton.Text = "History";
+			this.HistoryButton.UseVisualStyleBackColor = true;
 			// 
 			// DirectoryList
 			// 
@@ -634,17 +649,6 @@ namespace Sander.DirLister.UI
 			this.MoveDown.Size = new System.Drawing.Size(112, 22);
 			this.MoveDown.Text = "Move down";
 			this.MoveDown.Click += new System.EventHandler(this.MoveDown_Click);
-			// 
-			// HistoryButton
-			// 
-			this.HistoryButton.Location = new System.Drawing.Point(118, 6);
-			this.HistoryButton.Menu = this.HistoryMenu;
-			this.HistoryButton.Name = "HistoryButton";
-			this.HistoryButton.Size = new System.Drawing.Size(75, 23);
-			this.HistoryButton.SplitWidth = 30;
-			this.HistoryButton.TabIndex = 6;
-			this.HistoryButton.Text = "History";
-			this.HistoryButton.UseVisualStyleBackColor = true;
 			// 
 			// MainForm
 			// 

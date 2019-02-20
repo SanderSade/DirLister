@@ -139,10 +139,7 @@ namespace Sander.DirLister.Core.Application
 					}
 					else
 					{
-						if (mappedFolder[mappedFolder.Length - 1] != Path.DirectorySeparatorChar)
-							folders.Add(mappedFolder + Path.DirectorySeparatorChar);
-						else
-							folders.Add(mappedFolder);
+					folders.Add(Utils.EnsureBackslash(mappedFolder));
 					}
 				}
 
