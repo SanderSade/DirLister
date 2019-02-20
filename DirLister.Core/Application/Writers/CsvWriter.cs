@@ -26,7 +26,8 @@ namespace Sander.DirLister.Core.Application.Writers
 
 		private void GetHeaderLine()
 		{
-			_sb.Append(Quote("File"));
+			_sb.Append(Quote("Path"));
+			_sb.Append($",{Quote("File")}");
 
 			if (Configuration.IncludeSize)
 				_sb.Append($",{Quote(nameof(FileEntry.Size))}");
@@ -54,7 +55,8 @@ namespace Sander.DirLister.Core.Application.Writers
 
 		private void GetFileLine(FileEntry entry)
 		{
-			_sb.Append(Quote(entry.Fullname));
+			_sb.Append(Quote(Utils.EnsureBackslash(Utils.GetPath(entry.Fullname))));
+			_sb.Append($",{Quote(Utils.GetFileName(entry.Fullname))}");
 
 			if (Configuration.IncludeSize)
 				_sb.Append($",{Quote(entry.Size)}");

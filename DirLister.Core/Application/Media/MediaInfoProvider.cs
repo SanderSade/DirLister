@@ -47,7 +47,7 @@ mka, mks, mkv, mp+, mp1, mp2, mp3, mp4, mpc, mpe, mpeg, mpg, mpp, mpv2, oga, ogg
 			catch (Exception e)
 			{
 				Configuration.Log(TraceLevel.Warning,
-					$"Error getting media information for \"{entry.Fullname}\":{Environment.NewLine}, {e}");
+					$"Error getting media information for \"{entry.Fullname}\":{Environment.NewLine}, {e.Message}");
 			}
 		}
 

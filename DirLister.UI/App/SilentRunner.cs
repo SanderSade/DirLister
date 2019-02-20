@@ -5,11 +5,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sander.DirLister.Core;
-using Sander.DirLister.UI.App;
 using Sander.DirLister.UI.DTO;
 using Sander.DirLister.UI.Properties;
 
-namespace Sander.DirLister.UI
+namespace Sander.DirLister.UI.App
 {
 	internal sealed class SilentRunner
 	{

@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Sander.DirLister.Core;
+using Sander.DirLister.Core.Application;
 using Sander.DirLister.UI.App;
 using Sander.DirLister.UI.Properties;
 
@@ -16,9 +19,9 @@ namespace Sander.DirLister.UI
 		{
 			_isStartup = true;
 			SetFormats();
-			SizeCheck.Checked = _configuration.IncludeSize;
-			FileDateCheck.Checked = _configuration.IncludeFileDates;
-			MediaInfoCheck.Checked = _configuration.IncludeMediaInfo;
+			IncludeSize.Checked = _configuration.IncludeSize;
+			IncludeFileDates.Checked = _configuration.IncludeFileDates;
+			IncludeMediaInfo.Checked = _configuration.IncludeMediaInfo;
 
 			OutputFolder.Text = _configuration.OutputFolder;
 			OpenAfter.Checked = _configuration.OpenAfter;
@@ -26,6 +29,7 @@ namespace Sander.DirLister.UI
 			EnableShellCheck.Checked = Settings.Default.EnableShellIntegration;
 			OpenUiCheck.Checked = Settings.Default.ShowUiFromShell;
 			ProgressWindowCheck.Checked = Settings.Default.ShowProgressWindow;
+			KeepOnTop.Checked = Settings.Default.KeepOnTop;
 			_isStartup = false;
 		}
 
@@ -74,6 +78,31 @@ namespace Sander.DirLister.UI
 
 		private void SetDefault_Click(object sender, EventArgs e)
 		{
+			if (!ValidateOutputFolder()) return;
+
+			if (!GetFormats(out var formats))
+				return;
+
+			Settings.Default.OutputFormats = new StringCollection();
+			Settings.Default.OutputFormats.AddRange(formats.Select(x => x.ToString()).ToArray());
+
+			Settings.Default.SelectedFilter = FilenameFilter.Text;
+			Settings.Default.IncludeSize = IncludeSize.Checked;
+			Settings.Default.IncludeFileDates = IncludeFileDates.Checked;
+			Settings.Default.IncludeMediaInfo = IncludeMediaInfo.Checked;
+			Settings.Default.OpenAfter = OpenAfter.Checked;
+			Settings.Default.IncludeHidden = IncludeHidden.Checked;
+			Settings.Default.IncludeSubfolders = IncludeSubfolders.Checked;
+			Settings.Default.KeepOnTop = KeepOnTop.Checked;
+			FirstRunLabel.Hide();
+			Settings.Default.FirstRun = false;
+			Settings.Default.Save();
+			StartButton.Enabled = true;
+		}
+
+
+		private bool ValidateOutputFolder()
+		{
 			try
 			{
 				var path = Path.GetFullPath(OutputFolder.Text);
@@ -84,39 +113,46 @@ namespace Sander.DirLister.UI
 			{
 				MessageBox.Show(this, "Output folder must be a valid directory!", "Invalid output path!",
 					MessageBoxButtons.OK, MessageBoxIcon.Error);
-				return;
+				return false;
 			}
 
-
-			if (!GetFormats())
-			{
-				MessageBox.Show(this, "At least one output format must be set!", "No output formats!",
-					MessageBoxButtons.OK, MessageBoxIcon.Error);
-				return;
-			}
-
-			Settings.Default.IncludeSize = SizeCheck.Checked;
-			Settings.Default.IncludeFileDates = FileDateCheck.Checked;
-			Settings.Default.IncludeMediaInfo = MediaInfoCheck.Checked;
-			Settings.Default.OpenAfter = OpenAfter.Checked;
-			Settings.Default.IncludeHidden = IncludeHidden.Checked;
-			Settings.Default.IncludeSubfolders = Recursive.Checked;
-
-			FirstRunLabel.Hide();
-			Settings.Default.FirstRun = false;
-			Settings.Default.Save();
-			StartButton.Enabled = true;
+			return true;
 		}
 
-		private bool GetFormats()
+
+		private bool GetFormats(out List<OutputFormat> formatList)
 		{
 			var formats = OutFormats.Controls.OfType<CheckBox>().Where(x => x.Checked).Select(x => (string)x.Tag).ToList();
 			if (formats.Count == 0)
+			{
+				MessageBox.Show(this, "At least one output format must be set!", "No output formats!",
+					MessageBoxButtons.OK, MessageBoxIcon.Error);
+				formatList = null;
 				return false;
+			}
 
-			Settings.Default.OutputFormats = new StringCollection();
-			Settings.Default.OutputFormats.AddRange(formats.Select(x => (OutputFormat)Enum.Parse(typeof(OutputFormat), x, true)).Select(x => x.ToString()).ToArray());
+			
+			formatList = formats.Select(x => (OutputFormat)Enum.Parse(typeof(OutputFormat), x, true))
+			                    .ToList();
+			
 			return true;
+		}
+
+		private void SelectOutputFolder_Click(object sender, EventArgs e)
+		{
+			FolderSelectionDialog.Description = "Select output folder";
+			FolderSelectionDialog.RootFolder = Environment.SpecialFolder.MyComputer;
+			FolderSelectionDialog.SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+			if (FolderSelectionDialog.ShowDialog() == DialogResult.OK)
+			{
+				var directory = Utils.EnsureBackslash(FolderSelectionDialog.SelectedPath);
+				OutputFolder.Text = directory;
+			}
+		}
+
+		private void KeepOnTop_CheckedChanged(object sender, EventArgs e)
+		{
+			TopMost = KeepOnTop.Checked;
 		}
 	}
 }
