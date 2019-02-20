@@ -84,7 +84,7 @@ namespace Sander.DirLister.UI
 		}
 
 
-		private void InitializeInput(Configuration configuration, IEnumerable<string> inputFolders)
+		private void InitializeInput(IEnumerable<string> inputFolders)
 		{
 			FilenameFilter.SelectedItem = Settings.Default.SelectedFilter;
 			//todo: filters
@@ -101,8 +101,8 @@ namespace Sander.DirLister.UI
 				}
 			}
 
-			IncludeHidden.Checked = configuration.IncludeHidden;
-			Recursive.Checked = configuration.IncludeSubfolders;
+			IncludeHidden.Checked = _configuration.IncludeHidden;
+			Recursive.Checked = _configuration.IncludeSubfolders;
 
 			FirstRunLabel.Visible = Settings.Default.FirstRun;
 			StartButton.Enabled = !Settings.Default.FirstRun;

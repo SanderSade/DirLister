@@ -44,9 +44,28 @@ namespace Sander.DirLister.UI
 			this.LogTab = new System.Windows.Forms.TabPage();
 			this.LogBox = new System.Windows.Forms.TextBox();
 			this.OutputTab = new System.Windows.Forms.TabPage();
+			this.groupBox3 = new System.Windows.Forms.GroupBox();
+			this.ProgressWindowCheck = new System.Windows.Forms.CheckBox();
+			this.OpenUiCheck = new System.Windows.Forms.CheckBox();
+			this.EnableShellCheck = new System.Windows.Forms.CheckBox();
+			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.MediaInfoCheck = new System.Windows.Forms.CheckBox();
+			this.FileDateCheck = new System.Windows.Forms.CheckBox();
+			this.SizeCheck = new System.Windows.Forms.CheckBox();
+			this.OutFormats = new System.Windows.Forms.GroupBox();
+			this.MdCheck = new System.Windows.Forms.CheckBox();
+			this.JsonCheck = new System.Windows.Forms.CheckBox();
+			this.XmlCheck = new System.Windows.Forms.CheckBox();
+			this.CsvCheck = new System.Windows.Forms.CheckBox();
+			this.TxtCheck = new System.Windows.Forms.CheckBox();
+			this.HtmlCheck = new System.Windows.Forms.CheckBox();
+			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.OpenAfter = new System.Windows.Forms.CheckBox();
+			this.SelectOutputFolder = new System.Windows.Forms.Button();
+			this.OutputFolder = new System.Windows.Forms.TextBox();
+			this.SetDefault = new System.Windows.Forms.Button();
 			this.InputTab = new System.Windows.Forms.TabPage();
 			this.RemoveAllButton = new System.Windows.Forms.Button();
-			this.HistoryButton = new Sander.DirLister.UI.App.SplitButton();
 			this.DirectoryList = new System.Windows.Forms.ListView();
 			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.BrowseButton = new System.Windows.Forms.Button();
@@ -63,9 +82,15 @@ namespace Sander.DirLister.UI
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.MoveUp = new System.Windows.Forms.ToolStripMenuItem();
 			this.MoveDown = new System.Windows.Forms.ToolStripMenuItem();
+			this.HistoryButton = new Sander.DirLister.UI.App.SplitButton();
 			this.BottomPanel.SuspendLayout();
 			this.HistoryMenu.SuspendLayout();
 			this.LogTab.SuspendLayout();
+			this.OutputTab.SuspendLayout();
+			this.groupBox3.SuspendLayout();
+			this.groupBox2.SuspendLayout();
+			this.OutFormats.SuspendLayout();
+			this.groupBox1.SuspendLayout();
 			this.InputTab.SuspendLayout();
 			this.FilterBox.SuspendLayout();
 			this.MainTabs.SuspendLayout();
@@ -190,6 +215,11 @@ namespace Sander.DirLister.UI
 			// 
 			// OutputTab
 			// 
+			this.OutputTab.Controls.Add(this.groupBox3);
+			this.OutputTab.Controls.Add(this.groupBox2);
+			this.OutputTab.Controls.Add(this.OutFormats);
+			this.OutputTab.Controls.Add(this.groupBox1);
+			this.OutputTab.Controls.Add(this.SetDefault);
 			this.OutputTab.Location = new System.Drawing.Point(4, 29);
 			this.OutputTab.Name = "OutputTab";
 			this.OutputTab.Padding = new System.Windows.Forms.Padding(3);
@@ -197,6 +227,228 @@ namespace Sander.DirLister.UI
 			this.OutputTab.TabIndex = 1;
 			this.OutputTab.Text = "Output";
 			this.OutputTab.UseVisualStyleBackColor = true;
+			// 
+			// groupBox3
+			// 
+			this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox3.Controls.Add(this.ProgressWindowCheck);
+			this.groupBox3.Controls.Add(this.OpenUiCheck);
+			this.groupBox3.Controls.Add(this.EnableShellCheck);
+			this.groupBox3.Location = new System.Drawing.Point(419, 117);
+			this.groupBox3.Name = "groupBox3";
+			this.groupBox3.Size = new System.Drawing.Size(510, 203);
+			this.groupBox3.TabIndex = 6;
+			this.groupBox3.TabStop = false;
+			this.groupBox3.Text = "Windows Explorer integration";
+			// 
+			// ProgressWindowCheck
+			// 
+			this.ProgressWindowCheck.AutoSize = true;
+			this.ProgressWindowCheck.Location = new System.Drawing.Point(37, 79);
+			this.ProgressWindowCheck.Name = "ProgressWindowCheck";
+			this.ProgressWindowCheck.Size = new System.Drawing.Size(369, 19);
+			this.ProgressWindowCheck.TabIndex = 8;
+			this.ProgressWindowCheck.Text = "Show progress window during operations started from Explorer";
+			this.ProgressWindowCheck.UseVisualStyleBackColor = true;
+			// 
+			// OpenUiCheck
+			// 
+			this.OpenUiCheck.AutoSize = true;
+			this.OpenUiCheck.Location = new System.Drawing.Point(37, 50);
+			this.OpenUiCheck.Name = "OpenUiCheck";
+			this.OpenUiCheck.Size = new System.Drawing.Size(359, 19);
+			this.OpenUiCheck.TabIndex = 7;
+			this.OpenUiCheck.Text = "Open UI instead of silently creating file list with default options";
+			this.OpenUiCheck.UseVisualStyleBackColor = true;
+			// 
+			// EnableShellCheck
+			// 
+			this.EnableShellCheck.AutoSize = true;
+			this.EnableShellCheck.Location = new System.Drawing.Point(17, 21);
+			this.EnableShellCheck.Name = "EnableShellCheck";
+			this.EnableShellCheck.Size = new System.Drawing.Size(449, 19);
+			this.EnableShellCheck.TabIndex = 6;
+			this.EnableShellCheck.Text = "Enable shell integration (right-click menu for directory and drive, Send To entry" +
+    "";
+			this.EnableShellCheck.UseVisualStyleBackColor = true;
+			// 
+			// groupBox2
+			// 
+			this.groupBox2.Controls.Add(this.MediaInfoCheck);
+			this.groupBox2.Controls.Add(this.FileDateCheck);
+			this.groupBox2.Controls.Add(this.SizeCheck);
+			this.groupBox2.Location = new System.Drawing.Point(203, 117);
+			this.groupBox2.Name = "groupBox2";
+			this.groupBox2.Size = new System.Drawing.Size(200, 203);
+			this.groupBox2.TabIndex = 3;
+			this.groupBox2.TabStop = false;
+			this.groupBox2.Text = "Additional information";
+			// 
+			// MediaInfoCheck
+			// 
+			this.MediaInfoCheck.AutoSize = true;
+			this.MediaInfoCheck.Location = new System.Drawing.Point(7, 79);
+			this.MediaInfoCheck.Name = "MediaInfoCheck";
+			this.MediaInfoCheck.Size = new System.Drawing.Size(84, 19);
+			this.MediaInfoCheck.TabIndex = 2;
+			this.MediaInfoCheck.Text = "Media info";
+			this.MediaInfoCheck.UseVisualStyleBackColor = true;
+			// 
+			// FileDateCheck
+			// 
+			this.FileDateCheck.AutoSize = true;
+			this.FileDateCheck.Location = new System.Drawing.Point(7, 50);
+			this.FileDateCheck.Name = "FileDateCheck";
+			this.FileDateCheck.Size = new System.Drawing.Size(153, 19);
+			this.FileDateCheck.TabIndex = 1;
+			this.FileDateCheck.Text = "Created/modified dates";
+			this.FileDateCheck.UseVisualStyleBackColor = true;
+			// 
+			// SizeCheck
+			// 
+			this.SizeCheck.AutoSize = true;
+			this.SizeCheck.Location = new System.Drawing.Point(7, 21);
+			this.SizeCheck.Name = "SizeCheck";
+			this.SizeCheck.Size = new System.Drawing.Size(50, 19);
+			this.SizeCheck.TabIndex = 0;
+			this.SizeCheck.Text = "Size";
+			this.SizeCheck.UseVisualStyleBackColor = true;
+			// 
+			// OutFormats
+			// 
+			this.OutFormats.Controls.Add(this.MdCheck);
+			this.OutFormats.Controls.Add(this.JsonCheck);
+			this.OutFormats.Controls.Add(this.XmlCheck);
+			this.OutFormats.Controls.Add(this.CsvCheck);
+			this.OutFormats.Controls.Add(this.TxtCheck);
+			this.OutFormats.Controls.Add(this.HtmlCheck);
+			this.OutFormats.Location = new System.Drawing.Point(6, 117);
+			this.OutFormats.Name = "OutFormats";
+			this.OutFormats.Size = new System.Drawing.Size(187, 203);
+			this.OutFormats.TabIndex = 2;
+			this.OutFormats.TabStop = false;
+			this.OutFormats.Text = "Output formats";
+			// 
+			// MdCheck
+			// 
+			this.MdCheck.AutoSize = true;
+			this.MdCheck.Location = new System.Drawing.Point(6, 166);
+			this.MdCheck.Name = "MdCheck";
+			this.MdCheck.Size = new System.Drawing.Size(113, 19);
+			this.MdCheck.TabIndex = 5;
+			this.MdCheck.Tag = "md";
+			this.MdCheck.Text = "Markdown (md)";
+			this.MdCheck.UseVisualStyleBackColor = true;
+			// 
+			// JsonCheck
+			// 
+			this.JsonCheck.AutoSize = true;
+			this.JsonCheck.Location = new System.Drawing.Point(6, 137);
+			this.JsonCheck.Name = "JsonCheck";
+			this.JsonCheck.Size = new System.Drawing.Size(58, 19);
+			this.JsonCheck.TabIndex = 4;
+			this.JsonCheck.Tag = "json";
+			this.JsonCheck.Text = "JSON";
+			this.JsonCheck.UseVisualStyleBackColor = true;
+			// 
+			// XmlCheck
+			// 
+			this.XmlCheck.AutoSize = true;
+			this.XmlCheck.Location = new System.Drawing.Point(6, 108);
+			this.XmlCheck.Name = "XmlCheck";
+			this.XmlCheck.Size = new System.Drawing.Size(52, 19);
+			this.XmlCheck.TabIndex = 3;
+			this.XmlCheck.Tag = "xml";
+			this.XmlCheck.Text = "XML";
+			this.XmlCheck.UseVisualStyleBackColor = true;
+			// 
+			// CsvCheck
+			// 
+			this.CsvCheck.AutoSize = true;
+			this.CsvCheck.Location = new System.Drawing.Point(6, 79);
+			this.CsvCheck.Name = "CsvCheck";
+			this.CsvCheck.Size = new System.Drawing.Size(49, 19);
+			this.CsvCheck.TabIndex = 2;
+			this.CsvCheck.Tag = "csv";
+			this.CsvCheck.Text = "CSV";
+			this.CsvCheck.UseVisualStyleBackColor = true;
+			// 
+			// TxtCheck
+			// 
+			this.TxtCheck.AutoSize = true;
+			this.TxtCheck.Location = new System.Drawing.Point(6, 50);
+			this.TxtCheck.Name = "TxtCheck";
+			this.TxtCheck.Size = new System.Drawing.Size(99, 19);
+			this.TxtCheck.TabIndex = 1;
+			this.TxtCheck.Tag = "txt";
+			this.TxtCheck.Text = "Plain text (txt)";
+			this.TxtCheck.UseVisualStyleBackColor = true;
+			// 
+			// HtmlCheck
+			// 
+			this.HtmlCheck.AutoSize = true;
+			this.HtmlCheck.Location = new System.Drawing.Point(6, 21);
+			this.HtmlCheck.Name = "HtmlCheck";
+			this.HtmlCheck.Size = new System.Drawing.Size(60, 19);
+			this.HtmlCheck.TabIndex = 0;
+			this.HtmlCheck.Tag = "html";
+			this.HtmlCheck.Text = "HTML";
+			this.HtmlCheck.UseVisualStyleBackColor = true;
+			// 
+			// groupBox1
+			// 
+			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox1.Controls.Add(this.OpenAfter);
+			this.groupBox1.Controls.Add(this.SelectOutputFolder);
+			this.groupBox1.Controls.Add(this.OutputFolder);
+			this.groupBox1.Location = new System.Drawing.Point(9, 7);
+			this.groupBox1.Name = "groupBox1";
+			this.groupBox1.Size = new System.Drawing.Size(795, 88);
+			this.groupBox1.TabIndex = 1;
+			this.groupBox1.TabStop = false;
+			this.groupBox1.Text = "Output folder";
+			// 
+			// OpenAfter
+			// 
+			this.OpenAfter.AutoSize = true;
+			this.OpenAfter.Location = new System.Drawing.Point(6, 60);
+			this.OpenAfter.Name = "OpenAfter";
+			this.OpenAfter.Size = new System.Drawing.Size(253, 19);
+			this.OpenAfter.TabIndex = 2;
+			this.OpenAfter.Text = "Open output file/folder after list generation";
+			this.OpenAfter.UseVisualStyleBackColor = true;
+			// 
+			// SelectOutputFolder
+			// 
+			this.SelectOutputFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.SelectOutputFolder.Location = new System.Drawing.Point(713, 21);
+			this.SelectOutputFolder.Name = "SelectOutputFolder";
+			this.SelectOutputFolder.Size = new System.Drawing.Size(75, 23);
+			this.SelectOutputFolder.TabIndex = 1;
+			this.SelectOutputFolder.Text = "Select";
+			this.SelectOutputFolder.UseVisualStyleBackColor = true;
+			// 
+			// OutputFolder
+			// 
+			this.OutputFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.OutputFolder.Location = new System.Drawing.Point(6, 22);
+			this.OutputFolder.Name = "OutputFolder";
+			this.OutputFolder.Size = new System.Drawing.Size(701, 21);
+			this.OutputFolder.TabIndex = 0;
+			// 
+			// SetDefault
+			// 
+			this.SetDefault.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.SetDefault.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.SetDefault.Location = new System.Drawing.Point(810, 7);
+			this.SetDefault.Name = "SetDefault";
+			this.SetDefault.Size = new System.Drawing.Size(119, 79);
+			this.SetDefault.TabIndex = 0;
+			this.SetDefault.Text = "Set default";
+			this.SetDefault.UseVisualStyleBackColor = true;
 			// 
 			// InputTab
 			// 
@@ -215,6 +467,7 @@ namespace Sander.DirLister.UI
 			// 
 			// RemoveAllButton
 			// 
+			this.RemoveAllButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.RemoveAllButton.Location = new System.Drawing.Point(588, 6);
 			this.RemoveAllButton.Name = "RemoveAllButton";
 			this.RemoveAllButton.Size = new System.Drawing.Size(93, 23);
@@ -222,17 +475,6 @@ namespace Sander.DirLister.UI
 			this.RemoveAllButton.Text = "Remove all";
 			this.RemoveAllButton.UseVisualStyleBackColor = true;
 			this.RemoveAllButton.Click += new System.EventHandler(this.RemoveAll_Click);
-			// 
-			// HistoryButton
-			// 
-			this.HistoryButton.Location = new System.Drawing.Point(118, 6);
-			this.HistoryButton.Menu = this.HistoryMenu;
-			this.HistoryButton.Name = "HistoryButton";
-			this.HistoryButton.Size = new System.Drawing.Size(75, 23);
-			this.HistoryButton.SplitWidth = 30;
-			this.HistoryButton.TabIndex = 6;
-			this.HistoryButton.Text = "History";
-			this.HistoryButton.UseVisualStyleBackColor = true;
 			// 
 			// DirectoryList
 			// 
@@ -393,6 +635,17 @@ namespace Sander.DirLister.UI
 			this.MoveDown.Text = "Move down";
 			this.MoveDown.Click += new System.EventHandler(this.MoveDown_Click);
 			// 
+			// HistoryButton
+			// 
+			this.HistoryButton.Location = new System.Drawing.Point(118, 6);
+			this.HistoryButton.Menu = this.HistoryMenu;
+			this.HistoryButton.Name = "HistoryButton";
+			this.HistoryButton.Size = new System.Drawing.Size(75, 23);
+			this.HistoryButton.SplitWidth = 30;
+			this.HistoryButton.TabIndex = 6;
+			this.HistoryButton.Text = "History";
+			this.HistoryButton.UseVisualStyleBackColor = true;
+			// 
 			// MainForm
 			// 
 			this.AllowDrop = true;
@@ -402,6 +655,7 @@ namespace Sander.DirLister.UI
 			this.Controls.Add(this.MainTabs);
 			this.Controls.Add(this.BottomPanel);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.MinimumSize = new System.Drawing.Size(961, 500);
 			this.Name = "MainForm";
 			this.Text = "DirLister v2";
 			this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
@@ -411,6 +665,15 @@ namespace Sander.DirLister.UI
 			this.HistoryMenu.ResumeLayout(false);
 			this.LogTab.ResumeLayout(false);
 			this.LogTab.PerformLayout();
+			this.OutputTab.ResumeLayout(false);
+			this.groupBox3.ResumeLayout(false);
+			this.groupBox3.PerformLayout();
+			this.groupBox2.ResumeLayout(false);
+			this.groupBox2.PerformLayout();
+			this.OutFormats.ResumeLayout(false);
+			this.OutFormats.PerformLayout();
+			this.groupBox1.ResumeLayout(false);
+			this.groupBox1.PerformLayout();
 			this.InputTab.ResumeLayout(false);
 			this.FilterBox.ResumeLayout(false);
 			this.FilterBox.PerformLayout();
@@ -453,6 +716,26 @@ namespace Sander.DirLister.UI
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripMenuItem MoveUp;
 		private System.Windows.Forms.ToolStripMenuItem MoveDown;
+		private System.Windows.Forms.Button SetDefault;
+		private System.Windows.Forms.GroupBox groupBox1;
+		private System.Windows.Forms.Button SelectOutputFolder;
+		private System.Windows.Forms.TextBox OutputFolder;
+		private System.Windows.Forms.CheckBox OpenAfter;
+		private System.Windows.Forms.GroupBox OutFormats;
+		private System.Windows.Forms.CheckBox MdCheck;
+		private System.Windows.Forms.CheckBox JsonCheck;
+		private System.Windows.Forms.CheckBox XmlCheck;
+		private System.Windows.Forms.CheckBox CsvCheck;
+		private System.Windows.Forms.CheckBox TxtCheck;
+		private System.Windows.Forms.CheckBox HtmlCheck;
+		private System.Windows.Forms.GroupBox groupBox2;
+		private System.Windows.Forms.CheckBox MediaInfoCheck;
+		private System.Windows.Forms.CheckBox FileDateCheck;
+		private System.Windows.Forms.CheckBox SizeCheck;
+		private System.Windows.Forms.GroupBox groupBox3;
+		private System.Windows.Forms.CheckBox OpenUiCheck;
+		private System.Windows.Forms.CheckBox EnableShellCheck;
+		private System.Windows.Forms.CheckBox ProgressWindowCheck;
 	}
 }
 

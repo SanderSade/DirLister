@@ -18,7 +18,8 @@ namespace Sander.DirLister.UI
 		{
 			_configuration = configuration;
 			InitializeComponent();
-			InitializeInput(configuration, inputFolders);
+			InitializeInput(inputFolders);
+			InitializeOutput();
 
 			if (logs != null && logs.Count > 0)
 			{
@@ -31,7 +32,7 @@ namespace Sander.DirLister.UI
 			if (Settings.Default.FirstRun)
 				MainTabs.SelectedTab = OutputTab;
 
-			
+
 			ConfigureCallbacks();
 		}
 
