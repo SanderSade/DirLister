@@ -134,7 +134,7 @@ namespace Sander.DirLister.Core.Application
 					if (!Directory.Exists(mappedFolder))
 					{
 						isValid = false;
-						_configuration.Log(TraceLevel.Warning,
+						_configuration.Log(TraceLevel.Error,
 							$"Folder \"{mappedFolder}\" does not exist.");
 					}
 					else

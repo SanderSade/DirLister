@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sander.DirLister.Core;
-using Sander.DirLister.UI.App;
-using Sander.DirLister.UI.DTO;
 using Sander.DirLister.UI.Properties;
 
 namespace Sander.DirLister.UI
@@ -22,7 +16,8 @@ namespace Sander.DirLister.UI
 			Application.SetCompatibleTextRenderingDefault(false);
 
 			var configuration = ReadConfiguration();
-
+			//folders = new[] { @"c:\dev", @"c:\tools", @"c:\temp" };
+			//configuration.IncludeMediaInfo = true;
 			if (/*Settings.Default.FirstRun ||*/ Settings.Default.ShowUiFromShell || folders == null || folders.Length == 0)
 			{
 
@@ -31,66 +26,11 @@ namespace Sander.DirLister.UI
 			}
 			else
 			{
-				RunSilent(folders, configuration);
+				var silent = new SilentRunner(configuration);
+				silent.RunSilent(folders);
 			}
 		}
 
-		private static void RunSilent(string[] folders, Configuration configuration)
-		{
-			configuration.InputFolders = new List<string>(folders);
-
-			var log = new ConcurrentBag<LogEntry>();
-			var hasError = false;
-
-			configuration.LoggingAction = delegate (TraceLevel level, string message)
-			{
-				if (level == TraceLevel.Error)
-					hasError = true;
-
-				log.Add(new LogEntry(level, message));
-			};
-
-			if (Settings.Default.ShowProgressWindow)
-			{
-				RunSilentWithProgress(configuration, hasError);
-			}
-			else
-				Core.DirLister.List(configuration);
-
-
-			if (hasError)
-			{
-				Application.Run(new MainForm(configuration, log.ToList(), folders));
-			}
-			else
-			{
-				AddToHistory(folders);
-				Settings.Default.Save();
-			}
-		}
-
-		private static void RunSilentWithProgress(Configuration configuration, bool hasError)
-		{
-			using (var progressForm = new ProgressForm { TopMost = true, StartPosition = FormStartPosition.Manual })
-			{
-				progressForm.Left = Screen.PrimaryScreen.WorkingArea.Right - progressForm.Width - 20;
-				progressForm.Top = Screen.PrimaryScreen.WorkingArea.Bottom - progressForm.Height - 30;
-
-				configuration.ProgressAction = delegate (int progress, string message)
-				{
-					//hide the window if we have an error. This may not be foolproof, so rethink
-					if (hasError)
-						progress = 100;
-
-					// ReSharper disable AccessToDisposedClosure
-					progressForm.Invoke(progressForm.ProgressDelegate, progress,
-						message);
-				};
-
-				Task.Run(() => Core.DirLister.List(configuration));
-				Application.Run(progressForm);
-			}
-		}
 
 		private static Configuration ReadConfiguration()
 		{
@@ -124,10 +64,13 @@ namespace Sander.DirLister.UI
 			configuration.IncludeSize = Settings.Default.IncludeSize;
 			configuration.IncludeSubfolders = Settings.Default.IncludeSubfolders;
 			configuration.OpenAfter = Settings.Default.OpenAfter;
-			configuration.OutputFolder = string.IsNullOrWhiteSpace(Settings.Default.OutputFolder) ? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "DirLister") : Settings.Default.OutputFolder;
+			configuration.OutputFolder = string.IsNullOrWhiteSpace(Settings.Default.OutputFolder)
+				? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "DirLister")
+				: Settings.Default.OutputFolder;
 
 			if (Settings.Default.OutputFormats != null && Settings.Default.OutputFormats.Count > 0)
-				configuration.OutputFormats = Settings.Default.OutputFormats.Cast<string>().Select(x => (OutputFormat)Enum.Parse(typeof(OutputFormat), x)).ToList();
+				configuration.OutputFormats = Settings.Default.OutputFormats.Cast<string>()
+					.Select(x => (OutputFormat)Enum.Parse(typeof(OutputFormat), x)).ToList();
 
 			return configuration;
 		}
@@ -143,7 +86,8 @@ namespace Sander.DirLister.UI
 			history.InsertRange(0, folders);
 
 			Settings.Default.DirectoryHistory.Clear();
-			Settings.Default.DirectoryHistory.AddRange(history.Distinct().Take(Settings.Default.HistoryLength).ToArray());
+			Settings.Default.DirectoryHistory.AddRange(
+				history.Distinct(StringComparer.OrdinalIgnoreCase).Take(Settings.Default.HistoryLength).ToArray());
 		}
 	}
 }

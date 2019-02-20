@@ -109,7 +109,7 @@ namespace Sander.DirLister.Core
 		/// </summary>
 		internal void SendProgress(int percentage, string description)
 		{
-			ProgressAction?.Invoke(percentage, description);
+			ProgressAction?.BeginInvoke(percentage, description, null, null);
 		}
 
 
