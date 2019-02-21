@@ -46,6 +46,35 @@ body {
 }
 
 
+@media print {
+	* {
+		background-color: #fff !important;
+	}
+
+	body {
+		padding: 0.3em !important;
+		width: 100% !important;
+		max-width: 100% !important;
+		box-shadow: none !important;
+	}
+
+	a:after {
+		content: "( "attr(href)" )" !important;
+	}
+
+	section {
+		padding: 0.1em !important;
+	}
+	aside {
+		display: none !important;
+	}
+
+	ul {
+		margin-left: -3em !important;
+	}
+}
+
+
 h2 {
 	font: 1.6em Helvetica, Verdana, sans-serif;
 	color: #8B5A00;

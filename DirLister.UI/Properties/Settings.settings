@@ -38,7 +38,7 @@
     <Setting Name="IncludeFileDates" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="FileDateFormat" Type="System.String" Scope="User">
+    <Setting Name="DateFormat" Type="System.String" Scope="User">
       <Value Profile="(Default)">yyyy-MM-dd HH:mm:ss</Value>
     </Setting>
     <Setting Name="CssFile" Type="System.String" Scope="User">

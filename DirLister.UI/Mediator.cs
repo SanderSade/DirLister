@@ -44,7 +44,7 @@ namespace Sander.DirLister.UI
 				configuration.CssContent = File.ReadAllText(Settings.Default.CssFile);
 
 			configuration.EnableMultithreading = Settings.Default.EnableMultithreading;
-			configuration.FileDateFormat = Settings.Default.FileDateFormat;
+			configuration.DateFormat = Settings.Default.DateFormat;
 
 			//see about less chatty implementation
 			switch (Settings.Default.SelectedFilter)

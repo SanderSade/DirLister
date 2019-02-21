@@ -11,7 +11,6 @@ namespace Sander.DirLister.Core.Application.Writers
 		protected List<FileEntry> Entries { get; }
 		protected readonly Configuration Configuration;
 		protected readonly DateTimeOffset EndDate;
-		protected string FileDateFormat;
 		private readonly Lazy<List<IGrouping<string, FileEntry>>> _lazyGrouped;
 
 		/// <summary>
@@ -25,7 +24,6 @@ namespace Sander.DirLister.Core.Application.Writers
 			Entries = entries;
 			Configuration = configuration;
 			EndDate = endDate;
-			FileDateFormat = configuration.FileDateFormat;
 			_lazyGrouped = new Lazy<List<IGrouping<string, FileEntry>>>(() => Entries.GroupBy(x => x.Folder).ToList());
 		}
 
@@ -43,19 +41,24 @@ namespace Sander.DirLister.Core.Application.Writers
 		protected internal string GetFilename(OutputFormat format)
 		{
 			if (Configuration.InputFolders.Count == 1)
-				return Path.Combine(Configuration.OutputFolder, $"DirLister.{EndDate.ToLocalTime():yyyy-MM-dd.HHmmss}.{ReplacePathCharacters(format)}");
+				return Path.Combine(Configuration.OutputFolder, $"DirLister.{EndDate.ToLocalTime():yyyy-MM-dd_HH-mm-ss}.{ReplacePathCharacters(format)}");
 
 			return
-				$"{Path.Combine(Configuration.OutputFolder, $"DirLister.{Configuration.InputFolders.Count} folders")}.{EndDate.ToLocalTime():yyyy-MM-dd.HHmmss}.{format.ToString().ToLowerInvariant()}";
+				$"{Path.Combine(Configuration.OutputFolder, $"DirLister.{Configuration.InputFolders.Count}-folders")}.{EndDate.ToLocalTime():yyyy-MM-dd_HH-mm-ss}.{format.ToString().ToLowerInvariant()}";
 		}
 
 		/// <summary>
-		/// Replace path characters in filename
+		/// Replace path and space characters in filename with underscores
 		/// </summary>
 		private string ReplacePathCharacters(OutputFormat format)
 		{
 			var chars = Path.GetInvalidFileNameChars();
-			var filename = chars.Aggregate(Configuration.InputFolders[0], (current, c) => current.Replace(c, '_')).Replace("__", "_").Trim('_', ' ');
+			var filename = chars
+				.Aggregate(Configuration.InputFolders[0], (current, c) => current.Replace(c, '_'));
+
+			filename = filename.Replace(' ', '_')
+			.Replace("__", "_")
+			.Trim('_');
 
 			return $"{filename}.{format.ToString().ToLowerInvariant()}";
 		}

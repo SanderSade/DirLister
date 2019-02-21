@@ -97,11 +97,11 @@ namespace Sander.DirLister.Core
 		public Action<int, string> ProgressAction { get; set; }
 
 		/// <summary>
-		/// Date format used in .txt and .html output when IncludeFileDates is set.
+		/// Date format, used throughout the human-readable output
 		/// See https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings for details.
 		/// Defaults to yyyy-MM-dd HH:mm:ss (ISO 8601)
 		/// </summary>
-		public string FileDateFormat { get; set; } = "yyyy-MM-dd HH:mm:ss";
+		public string DateFormat { get; set; } = "yyyy-MM-dd HH:mm:ss";
 
 
 		/// <summary>

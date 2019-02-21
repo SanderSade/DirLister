@@ -85,8 +85,8 @@ namespace Sander.DirLister.Core.Application
 				if (_configuration.Filter == null)
 					_configuration.Filter = new Filter();
 
-				if (string.IsNullOrWhiteSpace(_configuration.FileDateFormat))
-					_configuration.FileDateFormat = "yyyy-MM-dd HH:mm:ss";
+				if (string.IsNullOrWhiteSpace(_configuration.DateFormat))
+					_configuration.DateFormat = "yyyy-MM-dd HH:mm:ss";
 
 				if (!_skipListMaking)
 				{

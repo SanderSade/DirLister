@@ -85,7 +85,7 @@ namespace Sander.DirLister.Core.Application.Writers
 
 			if (Configuration.IncludeFileDates)
 				sb.Append(
-					$"&nbsp;|&nbsp;created: {entry.Created.ToString(FileDateFormat)}, modified: {entry.Modified.ToString(FileDateFormat)}");
+					$"&nbsp;|&nbsp;created: {entry.Created.ToString(Configuration.DateFormat)}, modified: {entry.Modified.ToString(Configuration.DateFormat)}");
 
 			if (Configuration.IncludeMediaInfo && entry.MediaInfo != null)
 			{
@@ -133,7 +133,7 @@ namespace Sander.DirLister.Core.Application.Writers
 			_sb.AppendLine("</aside>");
 			_sb.AppendLine("<header>");
 
-			_sb.AppendLine($"<h2>Directory listing by <a href=\"https://github.com/SanderSade/DirLister/\">DirLister</a>, {EndDate.ToLocalTime()}</h2>");
+			_sb.AppendLine($"<h2>Directory listing by <a href=\"https://github.com/SanderSade/DirLister/\">DirLister</a>, {EndDate.ToLocalTime().ToString(Configuration.DateFormat)}</h2>");
 			_sb.AppendLine("<ul>");
 
 			foreach (var folder in Configuration.InputFolders)

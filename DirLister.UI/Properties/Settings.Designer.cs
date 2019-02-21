@@ -159,12 +159,12 @@ namespace Sander.DirLister.UI.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("yyyy-MM-dd HH:mm:ss")]
-        public string FileDateFormat {
+        public string DateFormat {
             get {
-                return ((string)(this["FileDateFormat"]));
+                return ((string)(this["DateFormat"]));
             }
             set {
-                this["FileDateFormat"] = value;
+                this["DateFormat"] = value;
             }
         }
         

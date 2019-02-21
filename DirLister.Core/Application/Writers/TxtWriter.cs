@@ -43,7 +43,7 @@ namespace Sander.DirLister.Core.Application.Writers
 
 				if (Configuration.IncludeFileDates)
 					_sb.Append(
-						$" :: Created: {entry.Created.ToLocalTime().ToString(FileDateFormat)}, modified: {entry.Modified.ToLocalTime().ToString(FileDateFormat)}");
+						$" :: Created: {entry.Created.ToLocalTime().ToString(Configuration.DateFormat)}, modified: {entry.Modified.ToLocalTime().ToString(Configuration.DateFormat)}");
 
 				if (Configuration.IncludeMediaInfo && entry.MediaInfo != null)
 				{
@@ -85,13 +85,21 @@ namespace Sander.DirLister.Core.Application.Writers
 
 		private void AppendHeader()
 		{
-			_sb.AppendLine($"## Directory listing by DirLister, {EndDate.ToLocalTime()}:");
-			foreach (var inputFolder in Configuration.InputFolders)
+			_sb.AppendLine($"Directory listing by DirLister, {EndDate.ToLocalTime().ToString(Configuration.DateFormat)}:");
+			foreach (var folder in Configuration.InputFolders)
 			{
-				_sb.AppendLine($"* {inputFolder}");
+				var files = GroupedEntries.Where(x => x.Key.StartsWith(folder, StringComparison.Ordinal))
+					.SelectMany(x => x.ToList())
+					.ToList();
+				_sb.AppendLine(
+					$"* {folder} files: {files.Count}, size: {Utils.ReadableSize(files.Sum(x => x.Size))}");
 			}
 
-			_sb.AppendLine($"Total {Entries.Count} files, {Utils.ReadableSize(Entries.Sum(x => x.Size))}");
+			if (Configuration.InputFolders.Count > 1)
+			{
+				_sb.AppendLine();
+				_sb.AppendLine($"**Total: {Entries.Count} files, {Utils.ReadableSize(Entries.Sum(x => x.Size))}");
+			}
 			_sb.AppendLine();
 			_sb.AppendLine("Source, updates and support: https://github.com/SanderSade/DirLister/");
 		}
