@@ -9,16 +9,18 @@ namespace Sander.DirLister.Core.Application.Writers
 	{
 		private readonly StringBuilder _sb;
 
-		internal CsvWriter(Configuration configuration, DateTimeOffset endDate) : base(configuration, endDate)
+		internal CsvWriter(Configuration configuration, DateTimeOffset endDate, List<FileEntry> entries) : base(
+			configuration, endDate, entries)
 		{
 			_sb = new StringBuilder();
 		}
 
-		protected internal override string Write(List<FileEntry> entries)
+		protected internal override string Write()
 		{
 			GetHeaderLine();
 
-			foreach (var entry in entries) GetFileLine(entry);
+			foreach (var entry in Entries)
+				GetFileLine(entry);
 
 			return WriteFile(_sb, OutputFormat.Csv);
 		}

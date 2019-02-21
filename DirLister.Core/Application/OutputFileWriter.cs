@@ -28,22 +28,22 @@ namespace Sander.DirLister.Core.Application
 			//todo: more elegant than repeated if
 
 			if (_configuration.OutputFormats.Contains(OutputFormat.Csv))
-				tasks.Add(Task.Run(() => new CsvWriter(_configuration, endDate).Write(entries)));
+				tasks.Add(Task.Run(() => new CsvWriter(_configuration, endDate, entries).Write()));
 
 			if (_configuration.OutputFormats.Contains(OutputFormat.Html))
-				tasks.Add(Task.Run(() => new HtmlWriter(_configuration, endDate).Write(entries)));
+				tasks.Add(Task.Run(() => new HtmlWriter(_configuration, endDate, entries).Write()));
 
 			if (_configuration.OutputFormats.Contains(OutputFormat.Json))
-				tasks.Add(Task.Run(() => new JsonWriter(_configuration, endDate).Write(entries)));
+				tasks.Add(Task.Run(() => new JsonWriter(_configuration, endDate, entries).Write()));
 
 			if (_configuration.OutputFormats.Contains(OutputFormat.Txt))
-				tasks.Add(Task.Run(() => new TxtWriter(_configuration, endDate).Write(entries)));
+				tasks.Add(Task.Run(() => new TxtWriter(_configuration, endDate, entries).Write()));
 
 			if (_configuration.OutputFormats.Contains(OutputFormat.Xml))
-				tasks.Add(Task.Run(() => new XmlWriter(_configuration, endDate).Write(entries)));
+				tasks.Add(Task.Run(() => new XmlWriter(_configuration, endDate, entries).Write()));
 
 			if (_configuration.OutputFormats.Contains(OutputFormat.Md))
-				tasks.Add(Task.Run(() => new MarkdownWriter(_configuration, endDate).Write(entries)));
+				tasks.Add(Task.Run(() => new MarkdownWriter(_configuration, endDate, entries).Write()));
 
 			// ReSharper disable once CoVariantArrayConversion
 			Task.WaitAll(tasks.ToArray());

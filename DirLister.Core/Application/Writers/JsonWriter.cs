@@ -8,12 +8,12 @@ namespace Sander.DirLister.Core.Application.Writers
 {
 	internal sealed class JsonWriter : BaseWriter
 	{
-		public JsonWriter(Configuration configuration, DateTimeOffset endDate) : base(configuration, endDate)
+		public JsonWriter(Configuration configuration, DateTimeOffset endDate, List<FileEntry> entries) : base(configuration, endDate, entries)
 		{
 		}
 
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times")]
-		protected internal override string Write(List<FileEntry> entries)
+		protected internal override string Write()
 		{
 			var fileName = GetFilename(OutputFormat.Json);
 			using (var file = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.Read, 2 << 16))
@@ -23,7 +23,7 @@ namespace Sander.DirLister.Core.Application.Writers
 				{
 					var serializer = new DataContractJsonSerializer(typeof(List<FileEntry>),
 						new DataContractJsonSerializerSettings {SerializeReadOnlyTypes = true});
-					serializer.WriteObject(writer, entries);
+					serializer.WriteObject(writer, Entries);
 					writer.Flush();
 				}
 			}

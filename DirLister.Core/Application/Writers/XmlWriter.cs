@@ -7,21 +7,20 @@ namespace Sander.DirLister.Core.Application.Writers
 {
 	internal sealed class XmlWriter : BaseWriter
 	{
-		public XmlWriter(Configuration configuration, DateTimeOffset endDate) : base(configuration, endDate)
+		public XmlWriter(Configuration configuration, DateTimeOffset endDate, List<FileEntry> entries) : base(configuration, endDate, entries)
 		{
 		}
 
-		protected internal override string Write(List<FileEntry> entries)
+		protected internal override string Write()
 		{
-			var folders = GroupByFolder(entries);
 
 			var xRoot = new XElement(nameof(DirLister));
-			xRoot.SetAttributeValue("TotalFiles", entries.Count);
-			xRoot.SetAttributeValue("TotalSize", entries.Sum(x => x.Size));
-			xRoot.SetAttributeValue("RunDate", DateTimeOffset.Now);
+			xRoot.SetAttributeValue("TotalFiles", Entries.Count);
+			xRoot.SetAttributeValue("TotalSize", Entries.Sum(x => x.Size));
+			xRoot.SetAttributeValue("RunDate", EndDate);
 
 			var xFolders = new List<XElement>();
-			foreach (var fileEntries in folders)
+			foreach (var fileEntries in GroupedEntries)
 			{
 				var xFolder = GetFolderElement(fileEntries);
 				xFolders.Add(xFolder);

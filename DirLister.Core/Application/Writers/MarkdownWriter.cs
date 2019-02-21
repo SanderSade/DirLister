@@ -11,20 +11,18 @@ namespace Sander.DirLister.Core.Application.Writers
 		private readonly StringBuilder _sb;
 
 
-		internal MarkdownWriter(Configuration configuration, DateTimeOffset endDate) : base(configuration, endDate)
+		internal MarkdownWriter(Configuration configuration, DateTimeOffset endDate, List<FileEntry> entries) : base(configuration, endDate, entries)
 		{
 			_sb = new StringBuilder();
 		}
 
 
 		/// <inheritdoc />
-		protected internal override string Write(List<FileEntry> entries)
+		protected internal override string Write()
 		{
+			AppendHeader();
 
-			var groups = GroupByFolder(entries).ToList();
-			AppendHeader(groups, entries);
-
-			foreach (var group in groups)
+			foreach (var group in GroupedEntries)
 			{
 				AppendFolder(group);
 			}
@@ -94,13 +92,13 @@ namespace Sander.DirLister.Core.Application.Writers
 		}
 
 
-		private void AppendHeader(List<IGrouping<string, FileEntry>> folderList, List<FileEntry> entries)
+		private void AppendHeader()
 		{
-			_sb.AppendLine("## [DirLister](https://github.com/SanderSade/DirLister/) output for:");
+			_sb.AppendLine($"## Directory listing by [DirLister](https://github.com/SanderSade/DirLister/), {EndDate.ToLocalTime()}:");
 
 			foreach (var folder in Configuration.InputFolders)
 			{
-				var files = folderList.Where(x => x.Key.StartsWith(folder, StringComparison.Ordinal))
+				var files = GroupedEntries.Where(x => x.Key.StartsWith(folder, StringComparison.Ordinal))
 									  .SelectMany(x => x.ToList())
 									  .ToList();
 				_sb.AppendLine(
@@ -112,7 +110,7 @@ namespace Sander.DirLister.Core.Application.Writers
 				_sb.AppendLine();
 				{
 					_sb.AppendLine(
-						$"**Total: {entries.Count} files, {Utils.ReadableSize(entries.Sum(x => x.Size))}**");
+						$"**Total: {Entries.Count} files, {Utils.ReadableSize(Entries.Sum(x => x.Size))}**");
 				}
 			}
 		}

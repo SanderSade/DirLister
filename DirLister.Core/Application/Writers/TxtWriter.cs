@@ -9,17 +9,16 @@ namespace Sander.DirLister.Core.Application.Writers
 	{
 		private readonly StringBuilder _sb;
 
-		public TxtWriter(Configuration configuration, DateTimeOffset endDate) : base(configuration, endDate)
+		public TxtWriter(Configuration configuration, DateTimeOffset endDate, List<FileEntry> entries) : base(configuration, endDate, entries)
 		{
 			_sb = new StringBuilder();
 		}
 
-		protected internal override string Write(List<FileEntry> entries)
+		protected internal override string Write()
 		{
-			AppendHeader(entries);
-			var groups = GroupByFolder(entries);
+			AppendHeader();
 
-			foreach (var group in groups)
+			foreach (var group in GroupedEntries)
 			{
 				AppendFolder(group);
 			}
@@ -84,15 +83,15 @@ namespace Sander.DirLister.Core.Application.Writers
 				: FormattableString.Invariant($" {name}: {value.ToString()},");
 		}
 
-		private void AppendHeader(List<FileEntry> entries)
+		private void AppendHeader()
 		{
-			_sb.AppendLine("DirLister output for:");
+			_sb.AppendLine($"## Directory listing by DirLister, {EndDate.ToLocalTime()}:");
 			foreach (var inputFolder in Configuration.InputFolders)
 			{
 				_sb.AppendLine($"* {inputFolder}");
 			}
 
-			_sb.AppendLine($"Total {entries.Count} files, {Utils.ReadableSize(entries.Sum(x => x.Size))}");
+			_sb.AppendLine($"Total {Entries.Count} files, {Utils.ReadableSize(Entries.Sum(x => x.Size))}");
 			_sb.AppendLine();
 			_sb.AppendLine("Source, updates and support: https://github.com/SanderSade/DirLister/");
 		}

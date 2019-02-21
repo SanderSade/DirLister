@@ -10,9 +10,13 @@ namespace Sander.DirLister.Core.Application.Writers
 	{
 		protected List<FileEntry> Entries { get; }
 		protected readonly Configuration Configuration;
-		private readonly DateTimeOffset _endDate;
+		protected readonly DateTimeOffset EndDate;
 		protected string FileDateFormat;
 		private readonly Lazy<List<IGrouping<string, FileEntry>>> _lazyGrouped;
+
+		/// <summary>
+		/// Lazy-initialized list of entries grouped by folder
+		/// </summary>
 		protected List<IGrouping<string, FileEntry>> GroupedEntries => _lazyGrouped.Value;
 
 
@@ -20,7 +24,7 @@ namespace Sander.DirLister.Core.Application.Writers
 		{
 			Entries = entries;
 			Configuration = configuration;
-			_endDate = endDate;
+			EndDate = endDate;
 			FileDateFormat = configuration.FileDateFormat;
 			_lazyGrouped = new Lazy<List<IGrouping<string, FileEntry>>>(() => Entries.GroupBy(x => x.Folder).ToList());
 		}
@@ -39,10 +43,10 @@ namespace Sander.DirLister.Core.Application.Writers
 		protected internal string GetFilename(OutputFormat format)
 		{
 			if (Configuration.InputFolders.Count == 1)
-				return Path.Combine(Configuration.OutputFolder, $"DirLister.{_endDate.ToLocalTime():yyyy-MM-dd.HHmmss}.{ReplacePathCharacters(format)}");
+				return Path.Combine(Configuration.OutputFolder, $"DirLister.{EndDate.ToLocalTime():yyyy-MM-dd.HHmmss}.{ReplacePathCharacters(format)}");
 
 			return
-				$"{Path.Combine(Configuration.OutputFolder, $"DirLister.{Configuration.InputFolders.Count} folders")}.{_endDate.ToLocalTime():yyyy-MM-dd.HHmmss}.{format.ToString().ToLowerInvariant()}";
+				$"{Path.Combine(Configuration.OutputFolder, $"DirLister.{Configuration.InputFolders.Count} folders")}.{EndDate.ToLocalTime():yyyy-MM-dd.HHmmss}.{format.ToString().ToLowerInvariant()}";
 		}
 
 		/// <summary>
