@@ -8,24 +8,28 @@ namespace Sander.DirLister.Core.Application.Writers
 {
 	internal abstract class BaseWriter
 	{
+		protected List<FileEntry> Entries { get; }
 		protected readonly Configuration Configuration;
 		private readonly DateTimeOffset _endDate;
 		protected string FileDateFormat;
+		private readonly Lazy<List<IGrouping<string, FileEntry>>> _lazyGrouped;
+		protected List<IGrouping<string, FileEntry>> GroupedEntries => _lazyGrouped.Value;
 
 
-		protected BaseWriter(Configuration configuration, DateTimeOffset endDate)
+		protected BaseWriter(Configuration configuration, DateTimeOffset endDate, List<FileEntry> entries)
 		{
+			Entries = entries;
 			Configuration = configuration;
 			_endDate = endDate;
 			FileDateFormat = configuration.FileDateFormat;
+			_lazyGrouped = new Lazy<List<IGrouping<string, FileEntry>>>(() => Entries.GroupBy(x => x.Folder).ToList());
 		}
 
 		/// <summary>
 		///     Write output file, returning filename
 		/// </summary>
-		/// <param name="entries"></param>
-		/// <returns></returns>
-		protected internal abstract string Write(List<FileEntry> entries);
+		/// <returns>Filename</returns>
+		protected internal abstract string Write();
 
 		/// <summary>
 		///     Return filename, fullpath.
@@ -47,18 +51,12 @@ namespace Sander.DirLister.Core.Application.Writers
 		private string ReplacePathCharacters(OutputFormat format)
 		{
 			var chars = Path.GetInvalidFileNameChars();
-			var filename = chars.Aggregate(Configuration.InputFolders[0], (current, c) => current.Replace(c, '_'));
+			var filename = chars.Aggregate(Configuration.InputFolders[0], (current, c) => current.Replace(c, '_')).Replace("__", "_").Trim('_', ' ');
 
 			return $"{filename}.{format.ToString().ToLowerInvariant()}";
 		}
 
-		/// <summary>
-		/// Group entries by folder
-		/// </summary>
-		protected IEnumerable<IGrouping<string, FileEntry>> GroupByFolder(List<FileEntry> entries)
-		{
-			return entries.GroupBy(x => x.Folder);
-		}
+
 
 		/// <summary>
 		/// Format duration. Handles time better than inbuilt, but isn't culture-specific
