@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -11,9 +10,10 @@ using Sander.DirLister.UI.Properties;
 
 namespace Sander.DirLister.UI
 {
-	public partial class MainForm : Form
+	public sealed partial class MainForm : Form
 	{
 		private readonly Configuration _configuration;
+
 
 		public MainForm(Configuration configuration,
 			List<LogEntry> logs = null,
@@ -21,12 +21,16 @@ namespace Sander.DirLister.UI
 		{
 			_configuration = configuration;
 			InitializeComponent();
+			Text = Program.VersionString;
+			TopMost = Settings.Default.KeepOnTop;
+
 			InitializeInput(inputFolders);
 			InitializeOutput();
 
 			if (logs != null && logs.Count > 0)
 			{
-				LogBox.Lines = logs.Select(x => x.ToString()).ToArray();
+				LogBox.Lines = logs.Select(x => x.ToString())
+				                   .ToArray();
 				LogBox.SelectionStart = LogBox.Text.Length;
 				LogBox.ScrollToCaret();
 				MainTabs.SelectedTab = LogTab;
@@ -35,9 +39,10 @@ namespace Sander.DirLister.UI
 			if (Settings.Default.FirstRun)
 				MainTabs.SelectedTab = OutputTab;
 
-
+			
 			ConfigureCallbacks();
 		}
+
 
 		private void MainForm_DragEnter(object sender, DragEventArgs e)
 		{
@@ -45,13 +50,15 @@ namespace Sander.DirLister.UI
 				e.Effect = DragDropEffects.Copy;
 		}
 
+
 		private void MainForm_DragDrop(object sender, DragEventArgs e)
 		{
 			var folders = (string[])e.Data.GetData(DataFormats.FileDrop);
 
 			foreach (var folder in folders)
 			{
-				if (!File.GetAttributes(folder).HasFlag(FileAttributes.Directory))
+				if (!File.GetAttributes(folder)
+				         .HasFlag(FileAttributes.Directory))
 					continue;
 
 				var directory = Utils.EnsureBackslash(folder);
@@ -66,7 +73,5 @@ namespace Sander.DirLister.UI
 			LogBox.SelectionStart = LogBox.Text.Length;
 			LogBox.ScrollToCaret();
 		}
-
-
 	}
 }

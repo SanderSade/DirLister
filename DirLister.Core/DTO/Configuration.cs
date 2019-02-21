@@ -110,6 +110,7 @@ namespace Sander.DirLister.Core
 		internal void SendProgress(int percentage, string description)
 		{
 			ProgressAction?.BeginInvoke(percentage, description, null, null);
+			//ProgressAction?.Invoke(percentage, description);
 		}
 
 
@@ -119,6 +120,7 @@ namespace Sander.DirLister.Core
 		internal void Log(TraceLevel level, string message)
 		{
 			LoggingAction.BeginInvoke(level, message, null, null);
+			//LoggingAction.Invoke(level, message);
 		}
 	}
 }

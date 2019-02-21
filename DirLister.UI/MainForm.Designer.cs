@@ -2,7 +2,7 @@
 
 namespace Sander.DirLister.UI
 {
-	partial class MainForm
+	sealed partial class MainForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -44,14 +44,15 @@ namespace Sander.DirLister.UI
 			this.LogTab = new System.Windows.Forms.TabPage();
 			this.LogBox = new System.Windows.Forms.TextBox();
 			this.OutputTab = new System.Windows.Forms.TabPage();
+			this.KeepOnTop = new System.Windows.Forms.CheckBox();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.ProgressWindowCheck = new System.Windows.Forms.CheckBox();
 			this.OpenUiCheck = new System.Windows.Forms.CheckBox();
 			this.EnableShellCheck = new System.Windows.Forms.CheckBox();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.MediaInfoCheck = new System.Windows.Forms.CheckBox();
-			this.FileDateCheck = new System.Windows.Forms.CheckBox();
-			this.SizeCheck = new System.Windows.Forms.CheckBox();
+			this.IncludeMediaInfo = new System.Windows.Forms.CheckBox();
+			this.IncludeFileDates = new System.Windows.Forms.CheckBox();
+			this.IncludeSize = new System.Windows.Forms.CheckBox();
 			this.OutFormats = new System.Windows.Forms.GroupBox();
 			this.MdCheck = new System.Windows.Forms.CheckBox();
 			this.JsonCheck = new System.Windows.Forms.CheckBox();
@@ -73,7 +74,7 @@ namespace Sander.DirLister.UI
 			this.FilterBox = new System.Windows.Forms.GroupBox();
 			this.FilterLabel = new System.Windows.Forms.Label();
 			this.FilenameFilter = new System.Windows.Forms.ComboBox();
-			this.Recursive = new System.Windows.Forms.CheckBox();
+			this.IncludeSubfolders = new System.Windows.Forms.CheckBox();
 			this.IncludeHidden = new System.Windows.Forms.CheckBox();
 			this.MainTabs = new System.Windows.Forms.TabControl();
 			this.FolderSelectionDialog = new System.Windows.Forms.FolderBrowserDialog();
@@ -165,6 +166,7 @@ namespace Sander.DirLister.UI
 			this.StartButton.TabIndex = 0;
 			this.StartButton.Text = "Start";
 			this.StartButton.UseVisualStyleBackColor = false;
+			this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
 			// 
 			// HistoryMenu
 			// 
@@ -215,6 +217,7 @@ namespace Sander.DirLister.UI
 			// 
 			// OutputTab
 			// 
+			this.OutputTab.Controls.Add(this.KeepOnTop);
 			this.OutputTab.Controls.Add(this.groupBox3);
 			this.OutputTab.Controls.Add(this.groupBox2);
 			this.OutputTab.Controls.Add(this.OutFormats);
@@ -228,6 +231,18 @@ namespace Sander.DirLister.UI
 			this.OutputTab.Text = "Output";
 			this.OutputTab.UseVisualStyleBackColor = true;
 			// 
+			// KeepOnTop
+			// 
+			this.KeepOnTop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.KeepOnTop.AutoSize = true;
+			this.KeepOnTop.Location = new System.Drawing.Point(550, 322);
+			this.KeepOnTop.Name = "KeepOnTop";
+			this.KeepOnTop.Size = new System.Drawing.Size(256, 19);
+			this.KeepOnTop.TabIndex = 7;
+			this.KeepOnTop.Text = "Keep DirLister on top of the other windows";
+			this.KeepOnTop.UseVisualStyleBackColor = true;
+			this.KeepOnTop.CheckedChanged += new System.EventHandler(this.KeepOnTop_CheckedChanged);
+			// 
 			// groupBox3
 			// 
 			this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -237,7 +252,7 @@ namespace Sander.DirLister.UI
 			this.groupBox3.Controls.Add(this.EnableShellCheck);
 			this.groupBox3.Location = new System.Drawing.Point(419, 117);
 			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(510, 203);
+			this.groupBox3.Size = new System.Drawing.Size(510, 118);
 			this.groupBox3.TabIndex = 6;
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Windows Explorer integration";
@@ -278,9 +293,9 @@ namespace Sander.DirLister.UI
 			// 
 			// groupBox2
 			// 
-			this.groupBox2.Controls.Add(this.MediaInfoCheck);
-			this.groupBox2.Controls.Add(this.FileDateCheck);
-			this.groupBox2.Controls.Add(this.SizeCheck);
+			this.groupBox2.Controls.Add(this.IncludeMediaInfo);
+			this.groupBox2.Controls.Add(this.IncludeFileDates);
+			this.groupBox2.Controls.Add(this.IncludeSize);
 			this.groupBox2.Location = new System.Drawing.Point(203, 117);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Size = new System.Drawing.Size(200, 203);
@@ -288,35 +303,35 @@ namespace Sander.DirLister.UI
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Additional information";
 			// 
-			// MediaInfoCheck
+			// IncludeMediaInfo
 			// 
-			this.MediaInfoCheck.AutoSize = true;
-			this.MediaInfoCheck.Location = new System.Drawing.Point(7, 79);
-			this.MediaInfoCheck.Name = "MediaInfoCheck";
-			this.MediaInfoCheck.Size = new System.Drawing.Size(84, 19);
-			this.MediaInfoCheck.TabIndex = 2;
-			this.MediaInfoCheck.Text = "Media info";
-			this.MediaInfoCheck.UseVisualStyleBackColor = true;
+			this.IncludeMediaInfo.AutoSize = true;
+			this.IncludeMediaInfo.Location = new System.Drawing.Point(7, 79);
+			this.IncludeMediaInfo.Name = "IncludeMediaInfo";
+			this.IncludeMediaInfo.Size = new System.Drawing.Size(84, 19);
+			this.IncludeMediaInfo.TabIndex = 2;
+			this.IncludeMediaInfo.Text = "Media info";
+			this.IncludeMediaInfo.UseVisualStyleBackColor = true;
 			// 
-			// FileDateCheck
+			// IncludeFileDates
 			// 
-			this.FileDateCheck.AutoSize = true;
-			this.FileDateCheck.Location = new System.Drawing.Point(7, 50);
-			this.FileDateCheck.Name = "FileDateCheck";
-			this.FileDateCheck.Size = new System.Drawing.Size(153, 19);
-			this.FileDateCheck.TabIndex = 1;
-			this.FileDateCheck.Text = "Created/modified dates";
-			this.FileDateCheck.UseVisualStyleBackColor = true;
+			this.IncludeFileDates.AutoSize = true;
+			this.IncludeFileDates.Location = new System.Drawing.Point(7, 50);
+			this.IncludeFileDates.Name = "IncludeFileDates";
+			this.IncludeFileDates.Size = new System.Drawing.Size(153, 19);
+			this.IncludeFileDates.TabIndex = 1;
+			this.IncludeFileDates.Text = "Created/modified dates";
+			this.IncludeFileDates.UseVisualStyleBackColor = true;
 			// 
-			// SizeCheck
+			// IncludeSize
 			// 
-			this.SizeCheck.AutoSize = true;
-			this.SizeCheck.Location = new System.Drawing.Point(7, 21);
-			this.SizeCheck.Name = "SizeCheck";
-			this.SizeCheck.Size = new System.Drawing.Size(50, 19);
-			this.SizeCheck.TabIndex = 0;
-			this.SizeCheck.Text = "Size";
-			this.SizeCheck.UseVisualStyleBackColor = true;
+			this.IncludeSize.AutoSize = true;
+			this.IncludeSize.Location = new System.Drawing.Point(7, 21);
+			this.IncludeSize.Name = "IncludeSize";
+			this.IncludeSize.Size = new System.Drawing.Size(71, 19);
+			this.IncludeSize.TabIndex = 0;
+			this.IncludeSize.Text = "File size";
+			this.IncludeSize.UseVisualStyleBackColor = true;
 			// 
 			// OutFormats
 			// 
@@ -406,9 +421,9 @@ namespace Sander.DirLister.UI
 			this.groupBox1.Controls.Add(this.OpenAfter);
 			this.groupBox1.Controls.Add(this.SelectOutputFolder);
 			this.groupBox1.Controls.Add(this.OutputFolder);
-			this.groupBox1.Location = new System.Drawing.Point(9, 7);
+			this.groupBox1.Location = new System.Drawing.Point(12, 6);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(795, 88);
+			this.groupBox1.Size = new System.Drawing.Size(795, 79);
 			this.groupBox1.TabIndex = 1;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Output folder";
@@ -432,6 +447,7 @@ namespace Sander.DirLister.UI
 			this.SelectOutputFolder.TabIndex = 1;
 			this.SelectOutputFolder.Text = "Select";
 			this.SelectOutputFolder.UseVisualStyleBackColor = true;
+			this.SelectOutputFolder.Click += new System.EventHandler(this.SelectOutputFolder_Click);
 			// 
 			// OutputFolder
 			// 
@@ -444,9 +460,9 @@ namespace Sander.DirLister.UI
 			// 
 			// SetDefault
 			// 
-			this.SetDefault.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.SetDefault.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.SetDefault.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.SetDefault.Location = new System.Drawing.Point(810, 7);
+			this.SetDefault.Location = new System.Drawing.Point(812, 262);
 			this.SetDefault.Name = "SetDefault";
 			this.SetDefault.Size = new System.Drawing.Size(119, 79);
 			this.SetDefault.TabIndex = 0;
@@ -530,7 +546,7 @@ namespace Sander.DirLister.UI
 			// 
 			this.FilterBox.Controls.Add(this.FilterLabel);
 			this.FilterBox.Controls.Add(this.FilenameFilter);
-			this.FilterBox.Controls.Add(this.Recursive);
+			this.FilterBox.Controls.Add(this.IncludeSubfolders);
 			this.FilterBox.Controls.Add(this.IncludeHidden);
 			this.FilterBox.Dock = System.Windows.Forms.DockStyle.Right;
 			this.FilterBox.Location = new System.Drawing.Point(687, 3);
@@ -562,15 +578,15 @@ namespace Sander.DirLister.UI
 			this.FilenameFilter.Size = new System.Drawing.Size(226, 23);
 			this.FilenameFilter.TabIndex = 2;
 			// 
-			// Recursive
+			// IncludeSubfolders
 			// 
-			this.Recursive.AutoSize = true;
-			this.Recursive.Location = new System.Drawing.Point(7, 47);
-			this.Recursive.Name = "Recursive";
-			this.Recursive.Size = new System.Drawing.Size(226, 19);
-			this.Recursive.TabIndex = 1;
-			this.Recursive.Text = "Recursive mode (include subfolders)";
-			this.Recursive.UseVisualStyleBackColor = true;
+			this.IncludeSubfolders.AutoSize = true;
+			this.IncludeSubfolders.Location = new System.Drawing.Point(7, 47);
+			this.IncludeSubfolders.Name = "IncludeSubfolders";
+			this.IncludeSubfolders.Size = new System.Drawing.Size(226, 19);
+			this.IncludeSubfolders.TabIndex = 1;
+			this.IncludeSubfolders.Text = "Recursive mode (include subfolders)";
+			this.IncludeSubfolders.UseVisualStyleBackColor = true;
 			// 
 			// IncludeHidden
 			// 
@@ -670,6 +686,7 @@ namespace Sander.DirLister.UI
 			this.LogTab.ResumeLayout(false);
 			this.LogTab.PerformLayout();
 			this.OutputTab.ResumeLayout(false);
+			this.OutputTab.PerformLayout();
 			this.groupBox3.ResumeLayout(false);
 			this.groupBox3.PerformLayout();
 			this.groupBox2.ResumeLayout(false);
@@ -708,7 +725,7 @@ namespace Sander.DirLister.UI
 		private System.Windows.Forms.GroupBox FilterBox;
 		private System.Windows.Forms.Label FilterLabel;
 		private System.Windows.Forms.ComboBox FilenameFilter;
-		private System.Windows.Forms.CheckBox Recursive;
+		private System.Windows.Forms.CheckBox IncludeSubfolders;
 		private System.Windows.Forms.CheckBox IncludeHidden;
 		private System.Windows.Forms.TabControl MainTabs;
 		private System.Windows.Forms.Label LabelHomepage;
@@ -733,13 +750,14 @@ namespace Sander.DirLister.UI
 		private System.Windows.Forms.CheckBox TxtCheck;
 		private System.Windows.Forms.CheckBox HtmlCheck;
 		private System.Windows.Forms.GroupBox groupBox2;
-		private System.Windows.Forms.CheckBox MediaInfoCheck;
-		private System.Windows.Forms.CheckBox FileDateCheck;
-		private System.Windows.Forms.CheckBox SizeCheck;
+		private System.Windows.Forms.CheckBox IncludeMediaInfo;
+		private System.Windows.Forms.CheckBox IncludeFileDates;
+		private System.Windows.Forms.CheckBox IncludeSize;
 		private System.Windows.Forms.GroupBox groupBox3;
 		private System.Windows.Forms.CheckBox OpenUiCheck;
 		private System.Windows.Forms.CheckBox EnableShellCheck;
 		private System.Windows.Forms.CheckBox ProgressWindowCheck;
+		private System.Windows.Forms.CheckBox KeepOnTop;
 	}
 }
 

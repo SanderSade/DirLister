@@ -262,5 +262,17 @@ namespace Sander.DirLister.UI.Properties {
                 this["ShowUiFromShell"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool KeepOnTop {
+            get {
+                return ((bool)(this["KeepOnTop"]));
+            }
+            set {
+                this["KeepOnTop"] = value;
+            }
+        }
     }
 }

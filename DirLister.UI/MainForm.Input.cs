@@ -6,13 +6,12 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Sander.DirLister.Core;
 using Sander.DirLister.Core.Application;
 using Sander.DirLister.UI.Properties;
 
 namespace Sander.DirLister.UI
 {
-	public partial class MainForm
+	public sealed partial class MainForm
 	{
 		private void AddFolderToHistory(string directory, bool isStartup = false)
 		{
@@ -83,6 +82,11 @@ namespace Sander.DirLister.UI
 		private void InitializeInput(IEnumerable<string> inputFolders)
 		{
 			FilenameFilter.SelectedItem = Settings.Default.SelectedFilter;
+			if (string.IsNullOrWhiteSpace(FilenameFilter.Text))
+			{
+				FilenameFilter.SelectedIndex = 0;
+				Settings.Default.SelectedFilter = FilenameFilter.Text;
+			}
 			//todo: filters
 
 			if (Settings.Default?.DirectoryHistory != null)
@@ -98,7 +102,7 @@ namespace Sander.DirLister.UI
 			}
 
 			IncludeHidden.Checked = _configuration.IncludeHidden;
-			Recursive.Checked = _configuration.IncludeSubfolders;
+			IncludeSubfolders.Checked = _configuration.IncludeSubfolders;
 
 			FirstRunLabel.Visible = Settings.Default.FirstRun;
 			StartButton.Enabled = !Settings.Default.FirstRun;
@@ -146,8 +150,11 @@ namespace Sander.DirLister.UI
 			DirectoryList.FocusedItem.Remove();
 		}
 
-		private void BrowseButton_Click(object sender, System.EventArgs e)
+		private void BrowseButton_Click(object sender, EventArgs e)
 		{
+			FolderSelectionDialog.Description = "Select source folder";
+			FolderSelectionDialog.RootFolder = Environment.SpecialFolder.MyComputer;
+
 			if (FolderSelectionDialog.ShowDialog() == DialogResult.OK)
 			{
 				var directory = Utils.EnsureBackslash(FolderSelectionDialog.SelectedPath);

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Sander.DirLister.Core;
 using Sander.DirLister.Core.Application;
+using Sander.DirLister.UI.App;
 using Sander.DirLister.UI.Properties;
 
 namespace Sander.DirLister.UI

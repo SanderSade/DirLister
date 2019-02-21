@@ -43,7 +43,7 @@ namespace Sander.DirLister.Core.Application.Media
 			catch (Exception e)
 			{
 				Configuration.Log(TraceLevel.Warning,
-					$"Error getting image information for \"{entry.Fullname}\":{Environment.NewLine}, {e}");
+					$"Error getting image information for \"{entry.Fullname}\":{Environment.NewLine}, {e.Message}");
 			}
 		}
 

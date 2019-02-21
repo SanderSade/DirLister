@@ -38,9 +38,9 @@ namespace Sander.DirLister.Core.Application.Writers
 		private XElement GetFolderElement(IGrouping<string, FileEntry> entries)
 		{
 			var xfolder = new XElement("Directory");
-			xfolder.SetAttributeValue("Name", entries.Key);
+			xfolder.SetAttributeValue("Path", entries.Key);
 			xfolder.SetAttributeValue("FileCount", entries.Count());
-			xfolder.SetAttributeValue("TotalSize", entries.Sum(x => x.Size));
+			xfolder.SetAttributeValue("DirectorySize", entries.Sum(x => x.Size));
 			var files = new List<XElement>();
 			foreach (var entry in entries)
 				files.Add(GetFileElement(entry));

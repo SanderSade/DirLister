@@ -1,30 +1,33 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using IWshRuntimeLibrary;
 using Microsoft.Win32;
-
+using File = System.IO.File;
 
 namespace Sander.DirLister.UI.App
 {
 	internal static class ShellIntegration
 	{
+		private static readonly string Title = "DirLister (list files)";
+
+
 		private static void CreateShortcut()
 		{
 			var shortcutLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-				"Microsoft\\Windows\\SendTo\\DirLister (list files).lnk");
+				$@"Microsoft\Windows\SendTo\{Title}.lnk");
 			var shell = new WshShell();
 			var shortcut = (IWshShortcut)shell.CreateShortcut(shortcutLocation);
 			var target = Assembly.GetEntryAssembly()
 			                     .Location;
-			shortcut.Description = "DirLister (list directory contents)";
-			shortcut.IconLocation = $"{target}, 0";
+			shortcut.Description = Title;
+			shortcut.IconLocation = $"\"{target}\", 0";
 			shortcut.TargetPath = target;
-			shortcut.Save();
+			shortcut.Save();				
 		}
+
 
 		private static void CreateRegistryEntries()
 		{
@@ -34,6 +37,7 @@ namespace Sander.DirLister.UI.App
 			CreateRegistryEntry(@"Software\Classes\Drive\Background\", "v");
 		}
 
+
 		[SuppressMessage("ReSharper", "PossibleNullReferenceException")]
 		private static void CreateRegistryEntry(string parent, string value)
 		{
@@ -41,7 +45,7 @@ namespace Sander.DirLister.UI.App
 			{
 				using (var shellKey = directoryKey.CreateSubKey("shell", true))
 				{
-					using (var sub = shellKey.CreateSubKey("DirLister (list files)"))
+					using (var sub = shellKey.CreateSubKey(Title))
 					{
 						using (var commandKey = sub.CreateSubKey("Command"))
 						{
@@ -54,15 +58,24 @@ namespace Sander.DirLister.UI.App
 			}
 		}
 
+
 		internal static void Create()
 		{
 			CreateShortcut();
 			CreateRegistryEntries();
 		}
 
+
 		internal static void Remove()
 		{
-			throw new NotImplementedException();
+			var shortcutLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+				$@"Microsoft\Windows\SendTo\{Title}.lnk");
+			File.Delete(shortcutLocation);
+
+			Registry.CurrentUser.DeleteSubKeyTree($@"Software\Classes\Directory\shell\{Title}", false);
+			Registry.CurrentUser.DeleteSubKeyTree($@"Software\Classes\Directory\Background\shell\{Title}", false);
+			Registry.CurrentUser.DeleteSubKeyTree($@"Software\Classes\Drive\shell\{Title}", false);
+			Registry.CurrentUser.DeleteSubKeyTree($@"Software\Classes\Drive\Background\shell\{Title}", false);
 		}
 	}
 }
