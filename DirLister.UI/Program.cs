@@ -31,7 +31,7 @@ namespace Sander.DirLister.UI
 			if (Settings.Default.EnableShellIntegration)
 				Task.Run(() => ShellIntegration.Create());
 
-			Application.ApplicationExit += (sender, args) => Settings.Default.Save();
+			Application.ApplicationExit += (sender, args) => History.Default.Save();
 
 			Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
 

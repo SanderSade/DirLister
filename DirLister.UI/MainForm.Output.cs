@@ -85,8 +85,6 @@ namespace Sander.DirLister.UI
 
 			Settings.Default.OutputFormats = new StringCollection();
 			Settings.Default.OutputFormats.AddRange(formats.Select(x => x.ToString()).ToArray());
-
-			Settings.Default.SelectedFilter = FilenameFilter.Text;
 			Settings.Default.IncludeSize = IncludeSize.Checked;
 			Settings.Default.IncludeFileDates = IncludeFileDates.Checked;
 			Settings.Default.IncludeMediaInfo = IncludeMediaInfo.Checked;
@@ -131,10 +129,10 @@ namespace Sander.DirLister.UI
 				return false;
 			}
 
-			
+
 			formatList = formats.Select(x => (OutputFormat)Enum.Parse(typeof(OutputFormat), x, true))
 			                    .ToList();
-			
+
 			return true;
 		}
 

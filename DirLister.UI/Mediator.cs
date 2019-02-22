@@ -26,7 +26,6 @@ namespace Sander.DirLister.UI
 			{
 
 				Application.Run(new MainForm(configuration, null, folders));
-				Settings.Default.Save();
 			}
 			else
 			{
@@ -45,22 +44,6 @@ namespace Sander.DirLister.UI
 
 			configuration.EnableMultithreading = Settings.Default.EnableMultithreading;
 			configuration.DateFormat = Settings.Default.DateFormat;
-
-			//see about less chatty implementation
-			switch (Settings.Default.SelectedFilter)
-			{
-				case "Wildcard":
-					if (Settings.Default.WildcardFilter != null && Settings.Default.WildcardFilter.Count > 0)
-						configuration.Filter = new Filter(Settings.Default.WildcardFilter.Cast<string>().ToArray());
-					break;
-				case "Regular expression":
-					if (!string.IsNullOrWhiteSpace(Settings.Default.RegexFilter))
-						configuration.Filter = new Filter(Settings.Default.RegexFilter);
-					break;
-				default:
-					configuration.Filter = null;
-					break;
-			}
 
 			configuration.IncludeFileDates = Settings.Default.IncludeFileDates;
 			configuration.IncludeHidden = Settings.Default.IncludeHidden;
@@ -82,16 +65,17 @@ namespace Sander.DirLister.UI
 
 		internal static void AddToHistory(params string[] folders)
 		{
-			if (Settings.Default.DirectoryHistory == null)
-				Settings.Default.DirectoryHistory = new StringCollection();
+			if (History.Default.DirectoryHistory == null)
+				History.Default.DirectoryHistory = new StringCollection();
 
-			var history = Settings.Default.DirectoryHistory.Cast<string>().ToList();
+			var history = History.Default.DirectoryHistory.Cast<string>().ToList();
 
 			history.InsertRange(0, folders);
 
-			Settings.Default.DirectoryHistory.Clear();
-			Settings.Default.DirectoryHistory.AddRange(
-				history.Distinct(StringComparer.OrdinalIgnoreCase).Take(Settings.Default.HistoryLength).ToArray());
+			History.Default.DirectoryHistory.Clear();
+			History.Default.DirectoryHistory.AddRange(
+				history.Distinct(StringComparer.OrdinalIgnoreCase).Take(History.Default.DirectoryHistoryLength).ToArray());
+			History.Default.Save();
 		}
 	}
 }

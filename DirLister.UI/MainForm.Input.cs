@@ -23,8 +23,8 @@ namespace Sander.DirLister.UI
 
 			if (addToHistory)
 			{
-				while (HistoryMenu.Items.Count >= Settings.Default.HistoryLength)
-					HistoryMenu.Items.RemoveAt(Settings.Default.HistoryLength - 1);
+				while (HistoryMenu.Items.Count >= History.Default.DirectoryHistoryLength)
+					HistoryMenu.Items.RemoveAt(History.Default.DirectoryHistoryLength - 1);
 
 				var menuItem = new ToolStripMenuItem(directory) { Tag = "folder" };
 				menuItem.Click += delegate(object sender, EventArgs args)
@@ -75,22 +75,18 @@ namespace Sander.DirLister.UI
 		{
 			var count = HistoryMenu.Items.Count;
 			for (var i = 2; i < count; i++) HistoryMenu.Items.RemoveAt(2);
-			Settings.Default.DirectoryHistory.Clear();
+			History.Default.DirectoryHistory.Clear();
 		}
 
 
 		private void InitializeInput(IEnumerable<string> inputFolders)
 		{
-			FilenameFilter.SelectedItem = Settings.Default.SelectedFilter;
-			if (string.IsNullOrWhiteSpace(FilenameFilter.Text))
-			{
-				FilenameFilter.SelectedIndex = 0;
-				Settings.Default.SelectedFilter = FilenameFilter.Text;
-			}
+			FilenameFilter.SelectedIndex = 0;
+
 			//todo: filters
 
-			if (Settings.Default?.DirectoryHistory != null)
-				foreach (var folder in Settings.Default.DirectoryHistory)
+			if (History.Default?.DirectoryHistory != null)
+				foreach (var folder in History.Default.DirectoryHistory)
 					AddFolderToHistory(folder, true);
 
 			if (inputFolders != null)

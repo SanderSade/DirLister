@@ -58,6 +58,11 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DTO\LogEntry.cs" />
+    <Compile Include="Properties\History.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>History.settings</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.Input.cs">
       <SubType>Form</SubType>
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -96,6 +101,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Properties\History.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>History.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

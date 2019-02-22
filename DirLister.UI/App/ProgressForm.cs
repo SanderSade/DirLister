@@ -29,7 +29,7 @@ namespace Sander.DirLister.UI.App
 
 		private void ProgressForm_FormClosed(object sender, FormClosedEventArgs e)
 		{
-			Settings.Default.Save();
+			History.Default.Save();
 		}
 
 		private void HideLabel_Click(object sender, System.EventArgs e)

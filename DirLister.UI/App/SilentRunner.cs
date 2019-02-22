@@ -53,7 +53,6 @@ namespace Sander.DirLister.UI.App
 			else
 			{
 				Mediator.AddToHistory(folders);
-				Settings.Default.Save();
 			}
 		}
 

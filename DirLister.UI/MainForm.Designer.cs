@@ -84,6 +84,7 @@ namespace Sander.DirLister.UI
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.MoveUp = new System.Windows.Forms.ToolStripMenuItem();
 			this.MoveDown = new System.Windows.Forms.ToolStripMenuItem();
+			this.AboutTab = new System.Windows.Forms.TabPage();
 			this.BottomPanel.SuspendLayout();
 			this.HistoryMenu.SuspendLayout();
 			this.LogTab.SuspendLayout();
@@ -96,15 +97,16 @@ namespace Sander.DirLister.UI
 			this.FilterBox.SuspendLayout();
 			this.MainTabs.SuspendLayout();
 			this.DirectoryMenu.SuspendLayout();
+			this.AboutTab.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// BottomPanel
 			// 
-			this.BottomPanel.Controls.Add(this.LabelHomepage);
 			this.BottomPanel.Controls.Add(this.FirstRunLabel);
 			this.BottomPanel.Controls.Add(this.ProgressLabel);
 			this.BottomPanel.Controls.Add(this.Progress);
 			this.BottomPanel.Controls.Add(this.StartButton);
+			this.BottomPanel.Controls.Add(this.SetDefault);
 			this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.BottomPanel.Location = new System.Drawing.Point(0, 380);
 			this.BottomPanel.Name = "BottomPanel";
@@ -113,12 +115,14 @@ namespace Sander.DirLister.UI
 			// 
 			// LabelHomepage
 			// 
-			this.LabelHomepage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.LabelHomepage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.LabelHomepage.AutoSize = true;
 			this.LabelHomepage.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.LabelHomepage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.LabelHomepage.ForeColor = System.Drawing.Color.Navy;
-			this.LabelHomepage.Location = new System.Drawing.Point(718, 58);
+			this.LabelHomepage.Location = new System.Drawing.Point(349, 177);
 			this.LabelHomepage.Name = "LabelHomepage";
 			this.LabelHomepage.Size = new System.Drawing.Size(224, 15);
 			this.LabelHomepage.TabIndex = 5;
@@ -222,7 +226,6 @@ namespace Sander.DirLister.UI
 			this.OutputTab.Controls.Add(this.groupBox2);
 			this.OutputTab.Controls.Add(this.OutFormats);
 			this.OutputTab.Controls.Add(this.groupBox1);
-			this.OutputTab.Controls.Add(this.SetDefault);
 			this.OutputTab.Location = new System.Drawing.Point(4, 29);
 			this.OutputTab.Name = "OutputTab";
 			this.OutputTab.Padding = new System.Windows.Forms.Padding(3);
@@ -462,9 +465,9 @@ namespace Sander.DirLister.UI
 			// 
 			this.SetDefault.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.SetDefault.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.SetDefault.Location = new System.Drawing.Point(812, 262);
+			this.SetDefault.Location = new System.Drawing.Point(814, 6);
 			this.SetDefault.Name = "SetDefault";
-			this.SetDefault.Size = new System.Drawing.Size(119, 79);
+			this.SetDefault.Size = new System.Drawing.Size(121, 63);
 			this.SetDefault.TabIndex = 0;
 			this.SetDefault.Text = "Set default";
 			this.SetDefault.UseVisualStyleBackColor = true;
@@ -604,6 +607,7 @@ namespace Sander.DirLister.UI
 			this.MainTabs.Controls.Add(this.InputTab);
 			this.MainTabs.Controls.Add(this.OutputTab);
 			this.MainTabs.Controls.Add(this.LogTab);
+			this.MainTabs.Controls.Add(this.AboutTab);
 			this.MainTabs.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.MainTabs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.MainTabs.HotTrack = true;
@@ -666,6 +670,17 @@ namespace Sander.DirLister.UI
 			this.MoveDown.Text = "Move down";
 			this.MoveDown.Click += new System.EventHandler(this.MoveDown_Click);
 			// 
+			// AboutTab
+			// 
+			this.AboutTab.Controls.Add(this.LabelHomepage);
+			this.AboutTab.Location = new System.Drawing.Point(4, 29);
+			this.AboutTab.Name = "AboutTab";
+			this.AboutTab.Padding = new System.Windows.Forms.Padding(3);
+			this.AboutTab.Size = new System.Drawing.Size(937, 347);
+			this.AboutTab.TabIndex = 3;
+			this.AboutTab.Text = "About";
+			this.AboutTab.UseVisualStyleBackColor = true;
+			// 
 			// MainForm
 			// 
 			this.AllowDrop = true;
@@ -700,6 +715,8 @@ namespace Sander.DirLister.UI
 			this.FilterBox.PerformLayout();
 			this.MainTabs.ResumeLayout(false);
 			this.DirectoryMenu.ResumeLayout(false);
+			this.AboutTab.ResumeLayout(false);
+			this.AboutTab.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -758,6 +775,7 @@ namespace Sander.DirLister.UI
 		private System.Windows.Forms.CheckBox EnableShellCheck;
 		private System.Windows.Forms.CheckBox ProgressWindowCheck;
 		private System.Windows.Forms.CheckBox KeepOnTop;
+		private System.Windows.Forms.TabPage AboutTab;
 	}
 }
 

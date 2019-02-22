@@ -37,17 +37,6 @@ namespace Sander.DirLister.UI.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Collections.Specialized.StringCollection DirectoryHistory {
-            get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["DirectoryHistory"]));
-            }
-            set {
-                this["DirectoryHistory"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool IncludeHidden {
             get {
@@ -177,53 +166,6 @@ namespace Sander.DirLister.UI.Properties {
             }
             set {
                 this["CssFile"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("None")]
-        public string SelectedFilter {
-            get {
-                return ((string)(this["SelectedFilter"]));
-            }
-            set {
-                this["SelectedFilter"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Collections.Specialized.StringCollection WildcardFilter {
-            get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["WildcardFilter"]));
-            }
-            set {
-                this["WildcardFilter"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string RegexFilter {
-            get {
-                return ((string)(this["RegexFilter"]));
-            }
-            set {
-                this["RegexFilter"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("16")]
-        public int HistoryLength {
-            get {
-                return ((int)(this["HistoryLength"]));
-            }
-            set {
-                this["HistoryLength"] = value;
             }
         }
         
