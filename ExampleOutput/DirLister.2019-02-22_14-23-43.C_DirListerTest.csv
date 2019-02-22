@@ -1,4 +1,4 @@
-﻿"Path","File","Size","MediaType","Duration(seconds)" ,"Height","Width","BitsPerPixel","AudioBitRate","AudioChannels","AudioSampleRate"
+﻿"Path","File","Size","MediaType","Duration(seconds)","Height","Width","BitsPerPixel","AudioBitRate","AudioChannels","AudioSampleRate"
 "C:\DirListerTest\Audio\","32.mp3","513252","Audio","33","","","","128","1","44100"
 "C:\DirListerTest\Audio\","audiocheck.net_hdsweep_1Hz_44000Hz_-3dBFS_30s.wav","5292046","Audio","30","","","","1411","1","88200"
 "C:\DirListerTest\Audio\","piano2.aif","1210654","Audio","6","","","","1536","2","48000"
