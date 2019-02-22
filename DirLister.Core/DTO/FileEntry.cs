@@ -54,7 +54,7 @@ namespace Sander.DirLister.Core
 		public DateTimeOffset Created { get; set; }
 
 		[DataMember(Name = "created", EmitDefaultValue = false, IsRequired = false, Order = 3)]
-		private string CreatedString => Created.ToLocalTime().ToString("O", CultureInfo.InvariantCulture);
+		private string CreatedString => Created == DateTimeOffset.MinValue ? null : Created.ToLocalTime().ToString("O", CultureInfo.InvariantCulture);
 
 		/// <summary>
 		///     Last-modified date
@@ -62,7 +62,7 @@ namespace Sander.DirLister.Core
 		public DateTimeOffset Modified { get; set; }
 
 		[DataMember(Name = "modified", EmitDefaultValue = false, IsRequired = false, Order = 4)]
-		private string ModifiedString => Modified.ToLocalTime().ToString("O", CultureInfo.InvariantCulture);
+		private string ModifiedString => Modified == DateTimeOffset.MinValue ? null : Modified.ToLocalTime().ToString("O", CultureInfo.InvariantCulture);
 
 		/// <summary>
 		///     Media information, encapsulating image/audio/video data

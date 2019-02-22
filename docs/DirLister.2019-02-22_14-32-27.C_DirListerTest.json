@@ -2,8 +2,6 @@
 	{
 		"name": "C:\\DirListerTest\\Audio\\32.mp3",
 		"size": 513252,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Audio",
 			"duration": "33",
@@ -15,8 +13,6 @@
 	{
 		"name": "C:\\DirListerTest\\Audio\\audiocheck.net_hdsweep_1Hz_44000Hz_-3dBFS_30s.wav",
 		"size": 5292046,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Audio",
 			"duration": "30",
@@ -28,8 +24,6 @@
 	{
 		"name": "C:\\DirListerTest\\Audio\\piano2.aif",
 		"size": 1210654,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Audio",
 			"duration": "6",
@@ -41,8 +35,6 @@
 	{
 		"name": "C:\\DirListerTest\\Audio\\piano2-Audacity1.2.5.mp3",
 		"size": 102272,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Audio",
 			"duration": "7",
@@ -54,8 +46,6 @@
 	{
 		"name": "C:\\DirListerTest\\Audio\\piano2-CoolEdit.mp3",
 		"size": 101760,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Audio",
 			"duration": "7",
@@ -67,8 +57,6 @@
 	{
 		"name": "C:\\DirListerTest\\Audio\\Sample_BeeMoved_48kHz16bit.m4a",
 		"size": 1310720,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Audio",
 			"duration": "40",
@@ -80,8 +68,6 @@
 	{
 		"name": "C:\\DirListerTest\\Audio\\Sample_BeeMoved_96kHz24bit.flac",
 		"size": 16652777,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Audio",
 			"duration": "40",
@@ -93,8 +79,6 @@
 	{
 		"name": "C:\\DirListerTest\\Audio\\SampleAudio_0.4mb.mp3",
 		"size": 443926,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Audio",
 			"duration": "28",
@@ -106,8 +90,6 @@
 	{
 		"name": "C:\\DirListerTest\\Audio\\SampleAudio_0.7mb.mp3",
 		"size": 725240,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Audio",
 			"duration": "46",
@@ -119,8 +101,6 @@
 	{
 		"name": "C:\\DirListerTest\\Image\\SampleGIFImage_135kbmb.gif",
 		"size": 138380,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Image",
 			"height": 229,
@@ -131,8 +111,6 @@
 	{
 		"name": "C:\\DirListerTest\\Image\\SampleGIFImage_350kbmb (1).gif",
 		"size": 355854,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Image",
 			"height": 200,
@@ -143,8 +121,6 @@
 	{
 		"name": "C:\\DirListerTest\\Image\\SampleGIFImage_350kbmb.gif",
 		"size": 355854,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Image",
 			"height": 200,
@@ -155,8 +131,6 @@
 	{
 		"name": "C:\\DirListerTest\\Image\\SampleGIFImage_40kbmb (1).gif",
 		"size": 40316,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Image",
 			"height": 312,
@@ -167,8 +141,6 @@
 	{
 		"name": "C:\\DirListerTest\\Image\\SampleGIFImage_40kbmb.gif",
 		"size": 40316,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Image",
 			"height": 312,
@@ -179,8 +151,6 @@
 	{
 		"name": "C:\\DirListerTest\\Image\\SampleJPGImage_100kbmb.jpg",
 		"size": 102796,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Image",
 			"height": 689,
@@ -191,8 +161,6 @@
 	{
 		"name": "C:\\DirListerTest\\Image\\SampleJPGImage_1mbmb.jpg",
 		"size": 1033414,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Image",
 			"height": 2921,
@@ -203,8 +171,6 @@
 	{
 		"name": "C:\\DirListerTest\\Image\\SamplePNGImage_100kbmb.png",
 		"size": 104327,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Image",
 			"height": 170,
@@ -215,8 +181,6 @@
 	{
 		"name": "C:\\DirListerTest\\Image\\SamplePNGImage_3mbmb.png",
 		"size": 3124201,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Image",
 			"height": 1080,
@@ -226,27 +190,19 @@
 	},
 	{
 		"name": "C:\\DirListerTest\\Image\\SampleVideo_1280x720_10mb.flv",
-		"size": 10546977,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00"
+		"size": 10546977
 	},
 	{
 		"name": "C:\\DirListerTest\\Image\\SampleVideo_360x240_1mb.flv",
-		"size": 1054558,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00"
+		"size": 1054558
 	},
 	{
 		"name": "C:\\DirListerTest\\Image\\small.flv",
-		"size": 303327,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00"
+		"size": 303327
 	},
 	{
 		"name": "C:\\DirListerTest\\Image\\w3c_home.bmp",
 		"size": 10422,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Image",
 			"height": 48,
@@ -257,8 +213,6 @@
 	{
 		"name": "C:\\DirListerTest\\Image\\w3c_home.gif",
 		"size": 988,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Image",
 			"height": 48,
@@ -269,8 +223,6 @@
 	{
 		"name": "C:\\DirListerTest\\Image\\w3c_home.jpg",
 		"size": 2165,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Image",
 			"height": 48,
@@ -281,8 +233,6 @@
 	{
 		"name": "C:\\DirListerTest\\Image\\w3c_home.png",
 		"size": 2028,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Image",
 			"height": 48,
@@ -293,8 +243,6 @@
 	{
 		"name": "C:\\DirListerTest\\Image\\w3c_home_2.bmp",
 		"size": 638,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Image",
 			"height": 48,
@@ -305,8 +253,6 @@
 	{
 		"name": "C:\\DirListerTest\\Image\\w3c_home_2.gif",
 		"size": 333,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Image",
 			"height": 48,
@@ -317,8 +263,6 @@
 	{
 		"name": "C:\\DirListerTest\\Image\\w3c_home_2.jpg",
 		"size": 2332,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Image",
 			"height": 48,
@@ -329,8 +273,6 @@
 	{
 		"name": "C:\\DirListerTest\\Image\\w3c_home_2.png",
 		"size": 324,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Image",
 			"height": 48,
@@ -341,8 +283,6 @@
 	{
 		"name": "C:\\DirListerTest\\Image\\w3c_home_256.bmp",
 		"size": 4534,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Image",
 			"height": 48,
@@ -353,8 +293,6 @@
 	{
 		"name": "C:\\DirListerTest\\Image\\w3c_home_256.gif",
 		"size": 1667,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Image",
 			"height": 48,
@@ -365,8 +303,6 @@
 	{
 		"name": "C:\\DirListerTest\\Image\\w3c_home_256.jpg",
 		"size": 2159,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Image",
 			"height": 48,
@@ -377,8 +313,6 @@
 	{
 		"name": "C:\\DirListerTest\\Image\\w3c_home_animation.gif",
 		"size": 1927,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Image",
 			"height": 48,
@@ -388,15 +322,11 @@
 	},
 	{
 		"name": "C:\\DirListerTest\\Image\\w3c_home_animation.mng",
-		"size": 3983,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00"
+		"size": 3983
 	},
 	{
 		"name": "C:\\DirListerTest\\Image\\w3c_home_gray.bmp",
 		"size": 4534,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Image",
 			"height": 48,
@@ -407,8 +337,6 @@
 	{
 		"name": "C:\\DirListerTest\\Image\\w3c_home_gray.gif",
 		"size": 1628,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Image",
 			"height": 48,
@@ -419,8 +347,6 @@
 	{
 		"name": "C:\\DirListerTest\\Image\\w3c_home_gray.jpg",
 		"size": 2006,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Image",
 			"height": 48,
@@ -431,8 +357,6 @@
 	{
 		"name": "C:\\DirListerTest\\Image\\w3c_home_gray.png",
 		"size": 1623,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Image",
 			"height": 48,
@@ -442,33 +366,23 @@
 	},
 	{
 		"name": "C:\\DirListerTest\\Other\\SampleTextFile_1000kb.txt",
-		"size": 1023385,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00"
+		"size": 1023385
 	},
 	{
 		"name": "C:\\DirListerTest\\Other\\SampleTextFile_100kb.txt",
-		"size": 102180,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00"
+		"size": 102180
 	},
 	{
 		"name": "C:\\DirListerTest\\Other\\SampleTextFile_200kb.txt",
-		"size": 204118,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00"
+		"size": 204118
 	},
 	{
 		"name": "C:\\DirListerTest\\Other\\SampleTextFile_500kb.txt",
-		"size": 511274,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00"
+		"size": 511274
 	},
 	{
 		"name": "C:\\DirListerTest\\Video\\centaur_2.mpg",
 		"size": 10727428,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Video",
 			"duration": "14",
@@ -480,15 +394,11 @@
 	},
 	{
 		"name": "C:\\DirListerTest\\Video\\grb_2.mpg",
-		"size": 20895752,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00"
+		"size": 20895752
 	},
 	{
 		"name": "C:\\DirListerTest\\Video\\SampleVideo_1280x720_1mb.mp4",
 		"size": 1055736,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Video",
 			"duration": "5",
@@ -502,8 +412,6 @@
 	{
 		"name": "C:\\DirListerTest\\Video\\SampleVideo_1280x720_20mb.mkv",
 		"size": 20979826,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Video",
 			"duration": "113",
@@ -515,15 +423,11 @@
 	},
 	{
 		"name": "C:\\DirListerTest\\Video\\SampleVideo_176x144_2mb.3gp",
-		"size": 2112761,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00"
+		"size": 2112761
 	},
 	{
 		"name": "C:\\DirListerTest\\Video\\SampleVideo_360x240_2mb.mp4",
 		"size": 2100396,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Video",
 			"duration": "27",
@@ -536,15 +440,11 @@
 	},
 	{
 		"name": "C:\\DirListerTest\\Video\\small.3gp",
-		"size": 215799,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00"
+		"size": 215799
 	},
 	{
 		"name": "C:\\DirListerTest\\Video\\small.mp4",
 		"size": 383631,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00",
 		"mediaInfo": {
 			"mediaType": "Video",
 			"duration": "6",
@@ -557,14 +457,10 @@
 	},
 	{
 		"name": "C:\\DirListerTest\\Video\\small.ogv",
-		"size": 438268,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00"
+		"size": 438268
 	},
 	{
 		"name": "C:\\DirListerTest\\Video\\small.webm",
-		"size": 229455,
-		"created": "0001-01-01T02:00:00.0000000+02:00",
-		"modified": "0001-01-01T02:00:00.0000000+02:00"
+		"size": 229455
 	}
 ]
