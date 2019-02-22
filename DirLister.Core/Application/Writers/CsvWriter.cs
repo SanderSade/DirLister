@@ -43,7 +43,7 @@ namespace Sander.DirLister.Core.Application.Writers
 			if (Configuration.IncludeMediaInfo)
 			{
 				_sb.Append($",{Quote(nameof(FileEntry.MediaInfo.MediaType))}");
-				_sb.Append($",{Quote($"{nameof(FileEntry.MediaInfo.Duration)}(seconds)")} ");
+				_sb.Append($",{Quote($"{nameof(FileEntry.MediaInfo.Duration)}(seconds)")}");
 				_sb.Append($",{Quote(nameof(FileEntry.MediaInfo.Height))}");
 				_sb.Append($",{Quote(nameof(FileEntry.MediaInfo.Width))}");
 				_sb.Append($",{Quote(nameof(FileEntry.MediaInfo.BitsPerPixel))}");
@@ -69,16 +69,16 @@ namespace Sander.DirLister.Core.Application.Writers
 				_sb.Append($",{Quote(entry.Modified.ToLocalTime())}");
 			}
 
-			if (Configuration.IncludeMediaInfo && entry.MediaInfo != null)
+			if (Configuration.IncludeMediaInfo)
 			{
-				_sb.Append($",{Quote(entry.MediaInfo.MediaType.ToString())}");
-				_sb.Append($",{Quote(entry.MediaInfo.Duration.TotalSeconds)}");
-				_sb.Append($",{Quote(entry.MediaInfo.Height)}");
-				_sb.Append($",{Quote(entry.MediaInfo.Width)}");
-				_sb.Append($",{Quote(entry.MediaInfo.BitsPerPixel)}");
-				_sb.Append($",{Quote(entry.MediaInfo.AudioBitRate)}");
-				_sb.Append($",{Quote(entry.MediaInfo.AudioChannels)}");
-				_sb.Append($",{Quote(entry.MediaInfo.AudioSampleRate)}");
+				_sb.Append($",{Quote(entry.MediaInfo?.MediaType.ToString())}");
+				_sb.Append($",{Quote(entry.MediaInfo?.Duration.TotalSeconds)}");
+				_sb.Append($",{Quote(entry.MediaInfo?.Height)}");
+				_sb.Append($",{Quote(entry.MediaInfo?.Width)}");
+				_sb.Append($",{Quote(entry.MediaInfo?.BitsPerPixel)}");
+				_sb.Append($",{Quote(entry.MediaInfo?.AudioBitRate)}");
+				_sb.Append($",{Quote(entry.MediaInfo?.AudioChannels)}");
+				_sb.Append($",{Quote(entry.MediaInfo?.AudioSampleRate)}");
 			}
 
 			_sb.AppendLine();
@@ -87,9 +87,18 @@ namespace Sander.DirLister.Core.Application.Writers
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		private static string Quote<T>(T value)
 		{
-			return value == null || value.Equals(default(T))
-				? "\"\""
-				: FormattableString.Invariant($"\"{value.ToString()}\"");
+			if (value == null || value.Equals(default(T)))
+				return "\"\"";
+
+			switch (value)
+			{
+				case int i when i == 0:
+				// ReSharper disable once CompareOfFloatsByEqualityOperator
+				case double d when d == 0d:
+					return "\"\"";
+				default:
+					return FormattableString.Invariant($"\"{value.ToString()}\"");
+			}
 		}
 	}
 }

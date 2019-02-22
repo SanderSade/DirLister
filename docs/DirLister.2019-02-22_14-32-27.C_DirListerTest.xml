@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirLister TotalFiles="52" TotalSize="104576267" RunDate="2019-02-22T14:32:27.4879364+02:00">
+  <Directory Path="C:\DirListerTest\Audio\" FileCount="9" DirectorySize="26352647">
+    <File Name="32.mp3" Size="513252">
+      <MediaInfo MediaType="Audio" Duration="33" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="audiocheck.net_hdsweep_1Hz_44000Hz_-3dBFS_30s.wav" Size="5292046">
+      <MediaInfo MediaType="Audio" Duration="30" AudioBitRate="1411" AudioChannels="1" AudioSampleRate="88200" />
+    </File>
+    <File Name="piano2.aif" Size="1210654">
+      <MediaInfo MediaType="Audio" Duration="6" AudioBitRate="1536" AudioChannels="2" AudioSampleRate="48000" />
+    </File>
+    <File Name="piano2-Audacity1.2.5.mp3" Size="102272">
+      <MediaInfo MediaType="Audio" Duration="7" AudioBitRate="128" AudioChannels="2" AudioSampleRate="48000" />
+    </File>
+    <File Name="piano2-CoolEdit.mp3" Size="101760">
+      <MediaInfo MediaType="Audio" Duration="7" AudioBitRate="128" AudioChannels="2" AudioSampleRate="48000" />
+    </File>
+    <File Name="Sample_BeeMoved_48kHz16bit.m4a" Size="1310720">
+      <MediaInfo MediaType="Audio" Duration="40" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Sample_BeeMoved_96kHz24bit.flac" Size="16652777">
+      <MediaInfo MediaType="Audio" Duration="40" AudioBitRate="3328" AudioChannels="2" AudioSampleRate="96000" />
+    </File>
+    <File Name="SampleAudio_0.4mb.mp3" Size="443926">
+      <MediaInfo MediaType="Audio" Duration="28" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="SampleAudio_0.7mb.mp3" Size="725240">
+      <MediaInfo MediaType="Audio" Duration="46" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+  </Directory>
+  <Directory Path="C:\DirListerTest\Image\" FileCount="29" DirectorySize="17243611">
+    <File Name="SampleGIFImage_135kbmb.gif" Size="138380">
+      <MediaInfo MediaType="Image" Height="229" Width="492" BitsPerPixel="8" />
+    </File>
+    <File Name="SampleGIFImage_350kbmb (1).gif" Size="355854">
+      <MediaInfo MediaType="Image" Height="200" Width="400" BitsPerPixel="8" />
+    </File>
+    <File Name="SampleGIFImage_350kbmb.gif" Size="355854">
+      <MediaInfo MediaType="Image" Height="200" Width="400" BitsPerPixel="8" />
+    </File>
+    <File Name="SampleGIFImage_40kbmb (1).gif" Size="40316">
+      <MediaInfo MediaType="Image" Height="312" Width="312" BitsPerPixel="8" />
+    </File>
+    <File Name="SampleGIFImage_40kbmb.gif" Size="40316">
+      <MediaInfo MediaType="Image" Height="312" Width="312" BitsPerPixel="8" />
+    </File>
+    <File Name="SampleJPGImage_100kbmb.jpg" Size="102796">
+      <MediaInfo MediaType="Image" Height="689" Width="689" BitsPerPixel="24" />
+    </File>
+    <File Name="SampleJPGImage_1mbmb.jpg" Size="1033414">
+      <MediaInfo MediaType="Image" Height="2921" Width="2192" BitsPerPixel="24" />
+    </File>
+    <File Name="SamplePNGImage_100kbmb.png" Size="104327">
+      <MediaInfo MediaType="Image" Height="170" Width="272" BitsPerPixel="32" />
+    </File>
+    <File Name="SamplePNGImage_3mbmb.png" Size="3124201">
+      <MediaInfo MediaType="Image" Height="1080" Width="1920" BitsPerPixel="32" />
+    </File>
+    <File Name="SampleVideo_1280x720_10mb.flv" Size="10546977" />
+    <File Name="SampleVideo_360x240_1mb.flv" Size="1054558" />
+    <File Name="small.flv" Size="303327" />
+    <File Name="w3c_home.bmp" Size="10422">
+      <MediaInfo MediaType="Image" Height="48" Width="72" BitsPerPixel="24" />
+    </File>
+    <File Name="w3c_home.gif" Size="988">
+      <MediaInfo MediaType="Image" Height="48" Width="72" BitsPerPixel="8" />
+    </File>
+    <File Name="w3c_home.jpg" Size="2165">
+      <MediaInfo MediaType="Image" Height="48" Width="72" BitsPerPixel="24" />
+    </File>
+    <File Name="w3c_home.png" Size="2028">
+      <MediaInfo MediaType="Image" Height="48" Width="72" BitsPerPixel="24" />
+    </File>
+    <File Name="w3c_home_2.bmp" Size="638">
+      <MediaInfo MediaType="Image" Height="48" Width="72" BitsPerPixel="1" />
+    </File>
+    <File Name="w3c_home_2.gif" Size="333">
+      <MediaInfo MediaType="Image" Height="48" Width="72" BitsPerPixel="8" />
+    </File>
+    <File Name="w3c_home_2.jpg" Size="2332">
+      <MediaInfo MediaType="Image" Height="48" Width="72" BitsPerPixel="24" />
+    </File>
+    <File Name="w3c_home_2.png" Size="324">
+      <MediaInfo MediaType="Image" Height="48" Width="72" BitsPerPixel="1" />
+    </File>
+    <File Name="w3c_home_256.bmp" Size="4534">
+      <MediaInfo MediaType="Image" Height="48" Width="72" BitsPerPixel="8" />
+    </File>
+    <File Name="w3c_home_256.gif" Size="1667">
+      <MediaInfo MediaType="Image" Height="48" Width="72" BitsPerPixel="8" />
+    </File>
+    <File Name="w3c_home_256.jpg" Size="2159">
+      <MediaInfo MediaType="Image" Height="48" Width="72" BitsPerPixel="24" />
+    </File>
+    <File Name="w3c_home_animation.gif" Size="1927">
+      <MediaInfo MediaType="Image" Height="48" Width="72" BitsPerPixel="8" />
+    </File>
+    <File Name="w3c_home_animation.mng" Size="3983" />
+    <File Name="w3c_home_gray.bmp" Size="4534">
+      <MediaInfo MediaType="Image" Height="48" Width="72" BitsPerPixel="8" />
+    </File>
+    <File Name="w3c_home_gray.gif" Size="1628">
+      <MediaInfo MediaType="Image" Height="48" Width="72" BitsPerPixel="8" />
+    </File>
+    <File Name="w3c_home_gray.jpg" Size="2006">
+      <MediaInfo MediaType="Image" Height="48" Width="72" BitsPerPixel="24" />
+    </File>
+    <File Name="w3c_home_gray.png" Size="1623">
+      <MediaInfo MediaType="Image" Height="48" Width="72" BitsPerPixel="8" />
+    </File>
+  </Directory>
+  <Directory Path="C:\DirListerTest\Other\" FileCount="4" DirectorySize="1840957">
+    <File Name="SampleTextFile_1000kb.txt" Size="1023385" />
+    <File Name="SampleTextFile_100kb.txt" Size="102180" />
+    <File Name="SampleTextFile_200kb.txt" Size="204118" />
+    <File Name="SampleTextFile_500kb.txt" Size="511274" />
+  </Directory>
+  <Directory Path="C:\DirListerTest\Video\" FileCount="10" DirectorySize="59139052">
+    <File Name="centaur_2.mpg" Size="10727428">
+      <MediaInfo MediaType="Video" Duration="14" Height="480" Width="720" AudioChannels="2" AudioSampleRate="11025" />
+    </File>
+    <File Name="grb_2.mpg" Size="20895752" />
+    <File Name="SampleVideo_1280x720_1mb.mp4" Size="1055736">
+      <MediaInfo MediaType="Video" Duration="5" Height="720" Width="1280" AudioBitRate="384" AudioChannels="2" AudioSampleRate="48000" />
+    </File>
+    <File Name="SampleVideo_1280x720_20mb.mkv" Size="20979826">
+      <MediaInfo MediaType="Video" Duration="113" Height="720" Width="1280" AudioChannels="6" AudioSampleRate="48000" />
+    </File>
+    <File Name="SampleVideo_176x144_2mb.3gp" Size="2112761" />
+    <File Name="SampleVideo_360x240_2mb.mp4" Size="2100396">
+      <MediaInfo MediaType="Video" Duration="27" Height="240" Width="320" AudioBitRate="383" AudioChannels="2" AudioSampleRate="48000" />
+    </File>
+    <File Name="small.3gp" Size="215799" />
+    <File Name="small.mp4" Size="383631">
+      <MediaInfo MediaType="Video" Duration="6" Height="320" Width="560" AudioBitRate="83" AudioChannels="1" AudioSampleRate="48000" />
+    </File>
+    <File Name="small.ogv" Size="438268" />
+    <File Name="small.webm" Size="229455" />
+  </Directory>
+</DirLister>

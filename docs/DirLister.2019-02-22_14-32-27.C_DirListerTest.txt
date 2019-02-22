@@ -1,0 +1,76 @@
+﻿Directory listing by DirLister, 2019-02-22 14:32:27:
+* C:\DirListerTest\ files: 52, size: 99.73MB
+
+Source, updates and support: https://github.com/SanderSade/DirLister/
+
+
+=======================
+C:\DirListerTest\Audio\
+=======================
+32.mp3 :: 501.22KB :: Audio 0m33 :: audio bitrate: 128, channels: 1, sample rate: 44.1
+audiocheck.net_hdsweep_1Hz_44000Hz_-3dBFS_30s.wav :: 5.05MB :: Audio 0m30 :: audio bitrate: 1411, channels: 1, sample rate: 88.2
+piano2.aif :: 1.15MB :: Audio 0m6 :: audio bitrate: 1536, channels: 2, sample rate: 48
+piano2-Audacity1.2.5.mp3 :: 99.88KB :: Audio 0m7 :: audio bitrate: 128, channels: 2, sample rate: 48
+piano2-CoolEdit.mp3 :: 99.38KB :: Audio 0m7 :: audio bitrate: 128, channels: 2, sample rate: 48
+Sample_BeeMoved_48kHz16bit.m4a :: 1.25MB :: Audio 0m40 :: audio bitrate: 192, channels: 2, sample rate: 44.1
+Sample_BeeMoved_96kHz24bit.flac :: 15.88MB :: Audio 0m40 :: audio bitrate: 3328, channels: 2, sample rate: 96
+SampleAudio_0.4mb.mp3 :: 433.52KB :: Audio 0m28 :: audio bitrate: 128, channels: 2, sample rate: 44.1
+SampleAudio_0.7mb.mp3 :: 708.24KB :: Audio 0m46 :: audio bitrate: 128, channels: 2, sample rate: 44.1
+
+
+=======================
+C:\DirListerTest\Image\
+=======================
+SampleGIFImage_135kbmb.gif :: 135.14KB :: Image 229x492, bpp: 8
+SampleGIFImage_350kbmb (1).gif :: 347.51KB :: Image 200x400, bpp: 8
+SampleGIFImage_350kbmb.gif :: 347.51KB :: Image 200x400, bpp: 8
+SampleGIFImage_40kbmb (1).gif :: 39.37KB :: Image 312x312, bpp: 8
+SampleGIFImage_40kbmb.gif :: 39.37KB :: Image 312x312, bpp: 8
+SampleJPGImage_100kbmb.jpg :: 100.39KB :: Image 689x689, bpp: 24
+SampleJPGImage_1mbmb.jpg :: 1009.19KB :: Image 2921x2192, bpp: 24
+SamplePNGImage_100kbmb.png :: 101.88KB :: Image 170x272, bpp: 32
+SamplePNGImage_3mbmb.png :: 2.98MB :: Image 1080x1920, bpp: 32
+SampleVideo_1280x720_10mb.flv :: 10.06MB
+SampleVideo_360x240_1mb.flv :: 1MB
+small.flv :: 296.22KB
+w3c_home.bmp :: 10.18KB :: Image 48x72, bpp: 24
+w3c_home.gif :: 988B :: Image 48x72, bpp: 8
+w3c_home.jpg :: 2.11KB :: Image 48x72, bpp: 24
+w3c_home.png :: 1.98KB :: Image 48x72, bpp: 24
+w3c_home_2.bmp :: 638B :: Image 48x72, bpp: 1
+w3c_home_2.gif :: 333B :: Image 48x72, bpp: 8
+w3c_home_2.jpg :: 2.28KB :: Image 48x72, bpp: 24
+w3c_home_2.png :: 324B :: Image 48x72, bpp: 1
+w3c_home_256.bmp :: 4.43KB :: Image 48x72, bpp: 8
+w3c_home_256.gif :: 1.63KB :: Image 48x72, bpp: 8
+w3c_home_256.jpg :: 2.11KB :: Image 48x72, bpp: 24
+w3c_home_animation.gif :: 1.88KB :: Image 48x72, bpp: 8
+w3c_home_animation.mng :: 3.89KB
+w3c_home_gray.bmp :: 4.43KB :: Image 48x72, bpp: 8
+w3c_home_gray.gif :: 1.59KB :: Image 48x72, bpp: 8
+w3c_home_gray.jpg :: 1.96KB :: Image 48x72, bpp: 24
+w3c_home_gray.png :: 1.58KB :: Image 48x72, bpp: 8
+
+
+=======================
+C:\DirListerTest\Other\
+=======================
+SampleTextFile_1000kb.txt :: 999.4KB
+SampleTextFile_100kb.txt :: 99.79KB
+SampleTextFile_200kb.txt :: 199.33KB
+SampleTextFile_500kb.txt :: 499.29KB
+
+
+=======================
+C:\DirListerTest\Video\
+=======================
+centaur_2.mpg :: 10.23MB :: Video 0m14s 480x720 :: audio channels: 2, sample rate: 11.025
+grb_2.mpg :: 19.93MB
+SampleVideo_1280x720_1mb.mp4 :: 1.01MB :: Video 0m5s 720x1280 :: audio bitrate: 384, channels: 2, sample rate: 48
+SampleVideo_1280x720_20mb.mkv :: 20.01MB :: Video 1m53s 720x1280 :: audio channels: 6, sample rate: 48
+SampleVideo_176x144_2mb.3gp :: 2.01MB
+SampleVideo_360x240_2mb.mp4 :: 2MB :: Video 0m27s 240x320 :: audio bitrate: 383, channels: 2, sample rate: 48
+small.3gp :: 210.74KB
+small.mp4 :: 374.64KB :: Video 0m6s 320x560 :: audio bitrate: 83, channels: 1, sample rate: 48
+small.ogv :: 428KB
+small.webm :: 224.08KB
