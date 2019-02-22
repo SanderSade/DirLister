@@ -1,3 +1,8 @@
+
+These are example DirLister output files, including media information.
+
+
+### Test file sources
 * https://www.sample-videos.com/
 * https://helpguide.sony.net/high-res/sample1/v1/en/index.html
 * http://www.kozco.com/tech/soundtests.html
