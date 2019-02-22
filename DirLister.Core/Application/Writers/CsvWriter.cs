@@ -43,7 +43,7 @@ namespace Sander.DirLister.Core.Application.Writers
 			if (Configuration.IncludeMediaInfo)
 			{
 				_sb.Append($",{Quote(nameof(FileEntry.MediaInfo.MediaType))}");
-				_sb.Append($",{Quote($"{nameof(FileEntry.MediaInfo.Duration)}(seconds)")} ");
+				_sb.Append($",{Quote($"{nameof(FileEntry.MediaInfo.Duration)}(seconds)")}");
 				_sb.Append($",{Quote(nameof(FileEntry.MediaInfo.Height))}");
 				_sb.Append($",{Quote(nameof(FileEntry.MediaInfo.Width))}");
 				_sb.Append($",{Quote(nameof(FileEntry.MediaInfo.BitsPerPixel))}");
@@ -90,10 +90,15 @@ namespace Sander.DirLister.Core.Application.Writers
 			if (value == null || value.Equals(default(T)))
 				return "\"\"";
 
-			if (value is int i && i == 0)
-				return "\"\"";
-
-			return FormattableString.Invariant($"\"{value.ToString()}\"");
+			switch (value)
+			{
+				case int i when i == 0:
+				// ReSharper disable once CompareOfFloatsByEqualityOperator
+				case double d when d == 0d:
+					return "\"\"";
+				default:
+					return FormattableString.Invariant($"\"{value.ToString()}\"");
+			}
 		}
 	}
 }

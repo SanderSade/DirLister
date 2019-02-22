@@ -1,4 +1,4 @@
-﻿## Directory listing by [DirLister](https://github.com/SanderSade/DirLister/), 2019-02-22 14:23:43:
+﻿## Directory listing by [DirLister](https://github.com/SanderSade/DirLister/), 2019-02-22 14:32:27:
 * C:\DirListerTest\ `files: 52, size: 99.73MB`
 
 

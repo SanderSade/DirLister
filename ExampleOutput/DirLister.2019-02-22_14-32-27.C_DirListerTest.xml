@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DirLister TotalFiles="52" TotalSize="104576267" RunDate="2019-02-22T14:23:43.89699+02:00">
+<DirLister TotalFiles="52" TotalSize="104576267" RunDate="2019-02-22T14:32:27.4879364+02:00">
   <Directory Path="C:\DirListerTest\Audio\" FileCount="9" DirectorySize="26352647">
     <File Name="32.mp3" Size="513252">
       <MediaInfo MediaType="Audio" Duration="33" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
