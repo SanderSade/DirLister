@@ -98,7 +98,7 @@ namespace Sander.DirLister.Core.Application.Writers
 			if (Configuration.InputFolders.Count > 1)
 			{
 				_sb.AppendLine();
-				_sb.AppendLine($"**Total: {Entries.Count} files, {Utils.ReadableSize(Entries.Sum(x => x.Size))}");
+				_sb.AppendLine($"** Total: {Entries.Count} files, {Utils.ReadableSize(Entries.Sum(x => x.Size))}");
 			}
 			_sb.AppendLine();
 			_sb.AppendLine("Source, updates and support: https://github.com/SanderSade/DirLister/");
