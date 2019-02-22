@@ -1,0 +1,1075 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirLister TotalFiles="346" TotalSize="1337425149" RunDate="2019-02-22T13:57:44.4439284+02:00">
+  <Directory Path="C:\DirListerTest\TestData\Blues\Albert King [1989] - King Of The Blues Guitar\" FileCount="19" DirectorySize="76745114">
+    <File Name="Albert King - King Of The Blues Guitar - 01 - Laundromat Blues.mp3" Size="4852490">
+      <MediaInfo MediaType="Audio" Duration="203" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Albert King - King Of The Blues Guitar - 02 - Overall Junction.mp3" Size="3387961">
+      <MediaInfo MediaType="Audio" Duration="142" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Albert King - King Of The Blues Guitar - 03 - Oh, Pretty Woman.mp3" Size="4049380">
+      <MediaInfo MediaType="Audio" Duration="169" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Albert King - King Of The Blues Guitar - 04 - Funk Shun.mp3" Size="5441805">
+      <MediaInfo MediaType="Audio" Duration="227" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Albert King - King Of The Blues Guitar - 05 - Crosscut Saw.mp3" Size="3725250">
+      <MediaInfo MediaType="Audio" Duration="156" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Albert King - King Of The Blues Guitar - 06 - Down Don't Bother Me.mp3" Size="3159759">
+      <MediaInfo MediaType="Audio" Duration="132" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Albert King - King Of The Blues Guitar - 07 - Born Under a Bad Sign.mp3" Size="4039982">
+      <MediaInfo MediaType="Audio" Duration="169" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Albert King - King Of The Blues Guitar - 08 - Personal Manager.mp3" Size="6485665">
+      <MediaInfo MediaType="Audio" Duration="271" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Albert King - King Of The Blues Guitar - 09 - Kansas City.mp3" Size="3673840">
+      <MediaInfo MediaType="Audio" Duration="154" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Albert King - King Of The Blues Guitar - 10 - The Very Thought of You.mp3" Size="5502632">
+      <MediaInfo MediaType="Audio" Duration="230" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Albert King - King Of The Blues Guitar - 11 - The Hunter.mp3" Size="3976650">
+      <MediaInfo MediaType="Audio" Duration="166" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Albert King - King Of The Blues Guitar - 12 - I Almost Lost My Mind.mp3" Size="5078193">
+      <MediaInfo MediaType="Audio" Duration="212" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Albert King - King Of The Blues Guitar - 13 - As the Years Go Passing By.mp3" Size="5479439">
+      <MediaInfo MediaType="Audio" Duration="229" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Albert King - King Of The Blues Guitar - 14 - Cold Feet.mp3" Size="4033701">
+      <MediaInfo MediaType="Audio" Duration="169" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Albert King - King Of The Blues Guitar - 15 - You Sure Drive A Hard Bargain.mp3" Size="4828679">
+      <MediaInfo MediaType="Audio" Duration="202" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Albert King - King Of The Blues Guitar - 16 - I Love Lucy.mp3" Size="4014895">
+      <MediaInfo MediaType="Audio" Duration="168" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Albert King - King Of The Blues Guitar - 17 - You're Gonna Need Me.mp3" Size="4041862">
+      <MediaInfo MediaType="Audio" Duration="169" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Albert King - King Of The Blues Guitar - Back.jpg" Size="491725">
+      <MediaInfo MediaType="Image" Height="1352" Width="1584" BitsPerPixel="24" />
+    </File>
+    <File Name="Albert King - King Of The Blues Guitar - Front.jpg" Size="481206">
+      <MediaInfo MediaType="Image" Height="1379" Width="1421" BitsPerPixel="24" />
+    </File>
+  </Directory>
+  <Directory Path="C:\DirListerTest\TestData\Blues\Blues History\CD 1\" FileCount="14" DirectorySize="40889528">
+    <File Name="Blues History [1 of 4] - 01 - Waters, Muddy - Louisianna Blues.mp3" Size="2776129">
+      <MediaInfo MediaType="Audio" Duration="174" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History [1 of 4] - 02 - Hooker, John Lee - Ramblin' By Myself.mp3" Size="3242571">
+      <MediaInfo MediaType="Audio" Duration="203" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History [1 of 4] - 03 - Waters, Muddy - They Call Me Muddy Waters.mp3" Size="3283531">
+      <MediaInfo MediaType="Audio" Duration="206" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History [1 of 4] - 04 - Hooker, John Lee - Walkin' The Boogie.mp3" Size="2652413">
+      <MediaInfo MediaType="Audio" Duration="166" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History [1 of 4] - 05 - Little Walter - Blues With A Feeling.mp3" Size="3008096">
+      <MediaInfo MediaType="Audio" Duration="189" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History [1 of 4] - 06 - James, Elmore - Dust My Broom.mp3" Size="2799918">
+      <MediaInfo MediaType="Audio" Duration="176" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History [1 of 4] - 07 - King, Albert - Bad Luck Blues.mp3" Size="2909876">
+      <MediaInfo MediaType="Audio" Duration="182" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History [1 of 4] - 08 - James, Elmore - Whose Muddy Shoes.mp3" Size="3205373">
+      <MediaInfo MediaType="Audio" Duration="201" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History [1 of 4] - 09 - Howlin' Wolf - Smokestack Lightnin'.mp3" Size="2999737">
+      <MediaInfo MediaType="Audio" Duration="188" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History [1 of 4] - 10 - Lenoir, J.B. - I've Been Down For So Long.mp3" Size="3163995">
+      <MediaInfo MediaType="Audio" Duration="198" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History [1 of 4] - 11 - Little Walter - Just You Fool.mp3" Size="2333092">
+      <MediaInfo MediaType="Audio" Duration="146" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History [1 of 4] - 12 - Lenoir, J.B. - Mama What About Your Daughter.mp3" Size="2378650">
+      <MediaInfo MediaType="Audio" Duration="149" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History [1 of 4] - 13 - Williamson, Sonny Boy - 99.mp3" Size="4014542">
+      <MediaInfo MediaType="Audio" Duration="251" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History [1 of 4] - 14 - Guy, Buddy - The First Time I Met The Blues.mp3" Size="2121605">
+      <MediaInfo MediaType="Audio" Duration="133" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+  </Directory>
+  <Directory Path="C:\DirListerTest\TestData\Blues\Blues History\CD 2\" FileCount="14" DirectorySize="42168935">
+    <File Name="Blues History {Part 1} [2 of 4] - 01 - John Lee Hooker - One Bourbon, One Scotch, One Beer.mp3" Size="2883962">
+      <MediaInfo MediaType="Audio" Duration="181" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History {Part 1} [2 of 4] - 02 - Big Bill Broonzy &amp; Washboard Sam - Little City Woman.mp3" Size="2762754">
+      <MediaInfo MediaType="Audio" Duration="173" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History {Part 1} [2 of 4] - 03 - Little Milton - Stormy Monday.mp3" Size="4197608">
+      <MediaInfo MediaType="Audio" Duration="263" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History {Part 1} [2 of 4] - 04 - Koko Taylor - Wang Dang Doodle.mp3" Size="2886470">
+      <MediaInfo MediaType="Audio" Duration="181" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History {Part 1} [2 of 4] - 05 - B. B. King - Recession Blues.mp3" Size="2330584">
+      <MediaInfo MediaType="Audio" Duration="146" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History {Part 1} [2 of 4] - 06 - Howlin' Wolf - Goin' Down Slow.mp3" Size="3263051">
+      <MediaInfo MediaType="Audio" Duration="204" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History {Part 1} [2 of 4] - 07 - Sonny Boy Williamson - Nine Below Zero.mp3" Size="4116942">
+      <MediaInfo MediaType="Audio" Duration="258" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History {Part 1} [2 of 4] - 08 - Buddy Guy - When My Left Eye Jumps.mp3" Size="2695463">
+      <MediaInfo MediaType="Audio" Duration="169" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History {Part 1} [2 of 4] - 09 - Muddy Waters - (I'm Your) Hoochie Coochie Man.mp3" Size="2736841">
+      <MediaInfo MediaType="Audio" Duration="172" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History {Part 1} [2 of 4] - 10 - Lowell Fulson - Reconsider Baby.mp3" Size="3056579">
+      <MediaInfo MediaType="Audio" Duration="192" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History {Part 1} [2 of 4] - 11 - Howlin' Wolf - Evil.mp3" Size="2825030">
+      <MediaInfo MediaType="Audio" Duration="177" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History {Part 1} [2 of 4] - 12 - J.B. Lenoir - Eisenhower Blues.mp3" Size="2745200">
+      <MediaInfo MediaType="Audio" Duration="172" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History {Part 1} [2 of 4] - 13 - Little Walter &amp; His Night Cats - Juke.mp3" Size="2614797">
+      <MediaInfo MediaType="Audio" Duration="164" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History {Part 1} [2 of 4] - 14 - Otis Rush - So Many Roads, So Many Trains.mp3" Size="3053654">
+      <MediaInfo MediaType="Audio" Duration="191" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+  </Directory>
+  <Directory Path="C:\DirListerTest\TestData\Blues\Blues History\CD 3\" FileCount="14" DirectorySize="36329217">
+    <File Name="01 - Etta James - Etta James.mp3" Size="2518622">
+      <MediaInfo MediaType="Audio" Duration="158" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="02 - Memphis Slim - Mother Earth.mp3" Size="2574628">
+      <MediaInfo MediaType="Audio" Duration="161" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="03 - Howlin' Wolf - I Asked For Water.mp3" Size="1857622">
+      <MediaInfo MediaType="Audio" Duration="117" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="04 - Muddy Waters - Honey Bee.mp3" Size="3277217">
+      <MediaInfo MediaType="Audio" Duration="205" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="05 - Lowel Fulson - Loving You.mp3" Size="2945776">
+      <MediaInfo MediaType="Audio" Duration="185" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="06 - Big Bill Broonzy &amp; Washboard Sam - Diggin' my potatois.mp3" Size="2577136">
+      <MediaInfo MediaType="Audio" Duration="162" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="07 - John Lee Hooker - Down At The Landing.mp3" Size="2838778">
+      <MediaInfo MediaType="Audio" Duration="178" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="08 - Sonny Boy Williamson - One Way Out.mp3" Size="1943092">
+      <MediaInfo MediaType="Audio" Duration="122" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="09 - Little Milton - Who's Cheating Who-.mp3" Size="2883918">
+      <MediaInfo MediaType="Audio" Duration="181" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="10 - Muddy Waters - Mannish Boy.mp3" Size="2803670">
+      <MediaInfo MediaType="Audio" Duration="176" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="11 - Buddy Guy - Broken Hearted Blues.mp3" Size="3043160">
+      <MediaInfo MediaType="Audio" Duration="191" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="12 - Otis Rush - I Can't Stop Baby.mp3" Size="2161684">
+      <MediaInfo MediaType="Audio" Duration="136" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="13 - Little Walter - My Babe.mp3" Size="2616842">
+      <MediaInfo MediaType="Audio" Duration="164" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="14 - Elmore James - Madison Blues.mp3" Size="2287072">
+      <MediaInfo MediaType="Audio" Duration="143" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+  </Directory>
+  <Directory Path="C:\DirListerTest\TestData\Blues\Blues History\CD 4\" FileCount="14" DirectorySize="41919832">
+    <File Name="Blues History [4 of 4] - 01 - Williamson, John Lee Sonny Boy - Your Funeral My Trial.mp3" Size="2430895">
+      <MediaInfo MediaType="Audio" Duration="152" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History [4 of 4] - 02 - Guy, Buddy - My Time After A While.mp3" Size="3093360">
+      <MediaInfo MediaType="Audio" Duration="194" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History [4 of 4] - 03 - Broonzy &amp; Washboard Sam, Big Bill - Jacqueline.mp3" Size="2395368">
+      <MediaInfo MediaType="Audio" Duration="150" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History [4 of 4] - 04 - Waters, Muddy - I'm Ready.mp3" Size="2944984">
+      <MediaInfo MediaType="Audio" Duration="185" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History [4 of 4] - 05 - Hooker, John Lee - In The Mood.mp3" Size="2617304">
+      <MediaInfo MediaType="Audio" Duration="164" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History [4 of 4] - 06 - James, Etta &amp; Fuqua - If I Can't Have You.mp3" Size="2678744">
+      <MediaInfo MediaType="Audio" Duration="168" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History [4 of 4] - 07 - Howlin' Wolf - How Many More Years.mp3" Size="2590555">
+      <MediaInfo MediaType="Audio" Duration="162" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History [4 of 4] - 08 - Guy, Buddy - Stone Crazy.mp3" Size="7181837">
+      <MediaInfo MediaType="Audio" Duration="449" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History [4 of 4] - 09 - Waters, Muddy - Forty Days &amp; Forty Nights.mp3" Size="2771531">
+      <MediaInfo MediaType="Audio" Duration="174" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History [4 of 4] - 10 - Hooker, John Lee - Louise.mp3" Size="2961285">
+      <MediaInfo MediaType="Audio" Duration="186" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History [4 of 4] - 11 - Williamson, John Lee Sonny Boy - Don't Start me to Talkin'.mp3" Size="2506127">
+      <MediaInfo MediaType="Audio" Duration="157" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History [4 of 4] - 12 - Howlin' Wolf - Moanin' At Midnight.mp3" Size="2820015">
+      <MediaInfo MediaType="Audio" Duration="177" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History [4 of 4] - 13 - Fulson, Lowell - Blue Shadows.mp3" Size="2362768">
+      <MediaInfo MediaType="Audio" Duration="148" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues History [4 of 4] - 14 - Little Milton - We're Gonna Make It.mp3" Size="2565059">
+      <MediaInfo MediaType="Audio" Duration="161" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+  </Directory>
+  <Directory Path="C:\DirListerTest\TestData\Blues\Capital Gold - Blues Legends\CD 1\" FileCount="21" DirectorySize="110323868">
+    <File Name="Blues Legends - CD 1 - 01 - Fleetwood Mac Black Magic Woman.mp3" Size="4275526">
+      <MediaInfo MediaType="Audio" Duration="174" AudioBitRate="197" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 1 - 02 - Gary Moore Still Got The Blues.mp3" Size="6062767">
+      <MediaInfo MediaType="Audio" Duration="253" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 1 - 03 - The Animals The House Of The Rising Sun.mp3" Size="4334371">
+      <MediaInfo MediaType="Audio" Duration="271" AudioBitRate="128" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 1 - 04 - John Lee Hooker Boom Boom.mp3" Size="5641714">
+      <MediaInfo MediaType="Audio" Duration="258" AudioBitRate="175" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 1 - 05 - John Mayall &amp; The Bluesbreakers Crawling Up A Hill.mp3" Size="2228072">
+      <MediaInfo MediaType="Audio" Duration="137" AudioBitRate="130" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 1 - 06 - Stevie Ray Vaughan Pride And Joy.mp3" Size="5072808">
+      <MediaInfo MediaType="Audio" Duration="222" AudioBitRate="183" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 1 - 07 - The Robert Cray Band Smoking Gun.mp3" Size="6173822">
+      <MediaInfo MediaType="Audio" Duration="247" AudioBitRate="200" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 1 - 08 - Taj Mahal Six Days On The Road.mp3" Size="4561157">
+      <MediaInfo MediaType="Audio" Duration="182" AudioBitRate="200" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 1 - 09 - The Allman Brothers Band Statesboro Blues (Live).mp3" Size="6712328">
+      <MediaInfo MediaType="Audio" Duration="256" AudioBitRate="210" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 1 - 10 - Rory Gallagher Messin' With The Kid (Live).mp3" Size="8954306">
+      <MediaInfo MediaType="Audio" Duration="386" AudioBitRate="185" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 1 - 11 - George Thorogood &amp; The Destroyers Bad ToThe Bone.mp3" Size="6325189">
+      <MediaInfo MediaType="Audio" Duration="292" AudioBitRate="173" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 1 - 12 - Juicy Lucy Who Do You Love.mp3" Size="4200821">
+      <MediaInfo MediaType="Audio" Duration="183" AudioBitRate="184" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 1 - 13 - Dr Feelgood (Get Your Kicks On) Route 66 (Live).mp3" Size="5105302">
+      <MediaInfo MediaType="Audio" Duration="222" AudioBitRate="184" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 1 - 14 - Free The Hunter (Live).mp3" Size="7263192">
+      <MediaInfo MediaType="Audio" Duration="310" AudioBitRate="187" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 1 - 15 - Gary Moore &amp; B.B. King Since I Met You Baby.mp3" Size="3994779">
+      <MediaInfo MediaType="Audio" Duration="173" AudioBitRate="184" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 1 - 16 - Canned Heat Let's Work Together.mp3" Size="4597719">
+      <MediaInfo MediaType="Audio" Duration="168" AudioBitRate="218" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 1 - 17 - Johnny Winter Rollin' And Tumblin'.mp3" Size="4862145">
+      <MediaInfo MediaType="Audio" Duration="193" AudioBitRate="202" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 1 - 18 - Jeff Beck You Shook Me.mp3" Size="3810377">
+      <MediaInfo MediaType="Audio" Duration="153" AudioBitRate="199" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 1 - 19 - Sonny Terry &amp; Brownie McGhee Key To The Highway.mp3" Size="4501958">
+      <MediaInfo MediaType="Audio" Duration="208" AudioBitRate="173" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 1 - 20 - Chicken Shack I'd Rather Go Blind.mp3" Size="4638202">
+      <MediaInfo MediaType="Audio" Duration="197" AudioBitRate="188" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 1 - 21 - Bonnie Raitt Love Me Like A Man (Live).mp3" Size="7007313">
+      <MediaInfo MediaType="Audio" Duration="306" AudioBitRate="183" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+  </Directory>
+  <Directory Path="C:\DirListerTest\TestData\Blues\Capital Gold - Blues Legends\CD 2\" FileCount="24" DirectorySize="76417647">
+    <File Name="Blues Legends - CD 2 - 01 - B.B. King - The Thrill is Gone.mp3" Size="7249240">
+      <MediaInfo MediaType="Audio" Duration="304" AudioBitRate="191" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 2 - 02 - Muddy Waters - (I'm your) Hoochie Coochie Man.mp3" Size="2720531">
+      <MediaInfo MediaType="Audio" Duration="173" AudioBitRate="126" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 2 - 03 - Howlin' Wolf - Smokestack Lightning.mp3" Size="2988661">
+      <MediaInfo MediaType="Audio" Duration="189" AudioBitRate="126" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 2 - 04 - Elmore James - Dust my blues.mp3" Size="3030365">
+      <MediaInfo MediaType="Audio" Duration="192" AudioBitRate="126" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 2 - 05 - Big Mamma Thornton Feat. Johnny Otis &amp; His Orchestra - Hound Dog.mp3" Size="2709382">
+      <MediaInfo MediaType="Audio" Duration="172" AudioBitRate="126" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 2 - 06 - Etta James - I just want to make love to you.mp3" Size="4233889">
+      <MediaInfo MediaType="Audio" Duration="187" AudioBitRate="181" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 2 - 07 - Tommy Tucker - Hi-Healed Sneakers.mp3" Size="2713863">
+      <MediaInfo MediaType="Audio" Duration="172" AudioBitRate="126" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 2 - 08 - Smiley Lewis - I Hear you knocking.mp3" Size="2588867">
+      <MediaInfo MediaType="Audio" Duration="164" AudioBitRate="126" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 2 - 09 - T-Bone Walker - Call it stormy monday (But Tuesday is just as bad).mp3" Size="3117401">
+      <MediaInfo MediaType="Audio" Duration="183" AudioBitRate="136" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 2 - 10 - Nina Simone - Gin House Blues.mp3" Size="3432268">
+      <MediaInfo MediaType="Audio" Duration="183" AudioBitRate="150" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 2 - 11 - Aaron Neville - Tell it like it is.mp3" Size="2815235">
+      <MediaInfo MediaType="Audio" Duration="161" AudioBitRate="140" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 2 - 12 - Koko Taylor - Wang Dang Doodle.mp3" Size="4651295">
+      <MediaInfo MediaType="Audio" Duration="182" AudioBitRate="205" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 2 - 13 - John Mayall's Bluesbreakers With Eric Clapton - All your love.mp3" Size="5146719">
+      <MediaInfo MediaType="Audio" Duration="215" AudioBitRate="191" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 2 - 14 - Bobby 'Blue' Bland - Further on up the road.mp3" Size="2825826">
+      <MediaInfo MediaType="Audio" Duration="179" AudioBitRate="126" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 2 - 15 - Dale Hawkins - Susie Q.mp3" Size="2258202">
+      <MediaInfo MediaType="Audio" Duration="140" AudioBitRate="129" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 2 - 16 - Slim Harpo - I'm a king bee.mp3" Size="3049519">
+      <MediaInfo MediaType="Audio" Duration="185" AudioBitRate="131" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 2 - 17 - Chuck Berry - Down the road apiece.mp3" Size="2166661">
+      <MediaInfo MediaType="Audio" Duration="136" AudioBitRate="127" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 2 - 18 - Bo Diddley - Bo Diddley.mp3" Size="2367867">
+      <MediaInfo MediaType="Audio" Duration="150" AudioBitRate="126" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 2 - 19 - Lowell Fulson - Reconsider baby.mp3" Size="3054799">
+      <MediaInfo MediaType="Audio" Duration="191" AudioBitRate="127" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 2 - 20 - Buddy Guy - First time I met the blues.mp3" Size="2295169">
+      <MediaInfo MediaType="Audio" Duration="139" AudioBitRate="132" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 2 - 21 - Otis Rush - So many roads, so many trains.mp3" Size="3221735">
+      <MediaInfo MediaType="Audio" Duration="193" AudioBitRate="133" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 2 - 22 - Littel Walter - My Babe.mp3" Size="2538411">
+      <MediaInfo MediaType="Audio" Duration="160" AudioBitRate="127" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 2 - 23 - Fats Domino - Blue Monday.mp3" Size="2956446">
+      <MediaInfo MediaType="Audio" Duration="138" AudioBitRate="172" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Blues Legends - CD 2 - 24 - Shirley &amp; Lee - Let the good times roll.mp3" Size="2285296">
+      <MediaInfo MediaType="Audio" Duration="145" AudioBitRate="126" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+  </Directory>
+  <Directory Path="C:\DirListerTest\TestData\Blues\Charlie Patton - Founder of the Delta Blues\" FileCount="27" DirectorySize="138404602">
+    <File Name="Charley Patton - Founder of the Delta Blues - 00 - booklet scans.zip" Size="1097064" />
+    <File Name="Charlie Patton - Founder of the Delta Blues - 01 - Down The Dirt Road Blues.mp3" Size="4965504">
+      <MediaInfo MediaType="Audio" Duration="178" AudioBitRate="224" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Charlie Patton - Founder of the Delta Blues - 02 - Mississippi Bo Weavil Blues.mp3" Size="5264658">
+      <MediaInfo MediaType="Audio" Duration="189" AudioBitRate="224" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Charlie Patton - Founder of the Delta Blues - 03 - Screamin' And Hollerin' The Blues.mp3" Size="5233938">
+      <MediaInfo MediaType="Audio" Duration="187" AudioBitRate="224" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Charlie Patton - Founder of the Delta Blues - 04 - Stone Pony Blues.mp3" Size="4844087">
+      <MediaInfo MediaType="Audio" Duration="174" AudioBitRate="224" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Charlie Patton - Founder of the Delta Blues - 05 - It Won't Be Long.mp3" Size="5724727">
+      <MediaInfo MediaType="Audio" Duration="205" AudioBitRate="224" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Charlie Patton - Founder of the Delta Blues - 06 - Shake It And Break It.mp3" Size="5344384">
+      <MediaInfo MediaType="Audio" Duration="191" AudioBitRate="224" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Charlie Patton - Founder of the Delta Blues - 07 - Magnolia Blues.mp3" Size="5378761">
+      <MediaInfo MediaType="Audio" Duration="193" AudioBitRate="224" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Charlie Patton - Founder of the Delta Blues - 08 - Dry Well Blues.mp3" Size="5635493">
+      <MediaInfo MediaType="Audio" Duration="202" AudioBitRate="224" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Charlie Patton - Founder of the Delta Blues - 09 - High Water Everywhere Part 1.mp3" Size="5278555">
+      <MediaInfo MediaType="Audio" Duration="189" AudioBitRate="224" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Charlie Patton - Founder of the Delta Blues - 10 - High Water Everywhere Part 2.mp3" Size="5255150">
+      <MediaInfo MediaType="Audio" Duration="188" AudioBitRate="224" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Charlie Patton - Founder of the Delta Blues - 11 - Green River Blues.mp3" Size="5331218">
+      <MediaInfo MediaType="Audio" Duration="191" AudioBitRate="224" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Charlie Patton - Founder of the Delta Blues - 12 - Bird Nest Bound.mp3" Size="5403630">
+      <MediaInfo MediaType="Audio" Duration="194" AudioBitRate="224" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Charlie Patton - Founder of the Delta Blues - 13 - High Sheriff Blues.mp3" Size="5389733">
+      <MediaInfo MediaType="Audio" Duration="193" AudioBitRate="224" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Charlie Patton - Founder of the Delta Blues - 14 - A Spoonful Blues.mp3" Size="5429230">
+      <MediaInfo MediaType="Audio" Duration="194" AudioBitRate="224" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Charlie Patton - Founder of the Delta Blues - 15 - Moon Going Down.mp3" Size="5541138">
+      <MediaInfo MediaType="Audio" Duration="198" AudioBitRate="224" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Charlie Patton - Founder of the Delta Blues - 16 - Pony Blues.mp3" Size="5078875">
+      <MediaInfo MediaType="Audio" Duration="182" AudioBitRate="224" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Charlie Patton - Founder of the Delta Blues - 17 - Elder Green Blues.mp3" Size="5127150">
+      <MediaInfo MediaType="Audio" Duration="184" AudioBitRate="224" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Charlie Patton - Founder of the Delta Blues - 18 - Banty Rooster Blues.mp3" Size="5167378">
+      <MediaInfo MediaType="Audio" Duration="185" AudioBitRate="224" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Charlie Patton - Founder of the Delta Blues - 19 - Some Of These Days.mp3" Size="5553573">
+      <MediaInfo MediaType="Audio" Duration="199" AudioBitRate="224" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Charlie Patton - Founder of the Delta Blues - 20 - Tom Rushen Blues.mp3" Size="5258807">
+      <MediaInfo MediaType="Audio" Duration="188" AudioBitRate="224" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Charlie Patton - Founder of the Delta Blues - 21 - 34 Blues.mp3" Size="5022555">
+      <MediaInfo MediaType="Audio" Duration="180" AudioBitRate="224" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Charlie Patton - Founder of the Delta Blues - 22 - Going To Move To Alabama.mp3" Size="5074487">
+      <MediaInfo MediaType="Audio" Duration="182" AudioBitRate="224" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Charlie Patton - Founder of the Delta Blues - 23 - Hammer Blues.mp3" Size="5482624">
+      <MediaInfo MediaType="Audio" Duration="196" AudioBitRate="224" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Charlie Patton - Founder of the Delta Blues - 24 - Poor Me.mp3" Size="5008658">
+      <MediaInfo MediaType="Audio" Duration="179" AudioBitRate="224" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Charlie Patton - Founder of the Delta Blues - 25 - When Your Ways Get Dark.mp3" Size="5231744">
+      <MediaInfo MediaType="Audio" Duration="187" AudioBitRate="224" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Charlie Patton - Founder of the Delta Blues - 26 - Devil Sent The Rain.mp3" Size="5281481">
+      <MediaInfo MediaType="Audio" Duration="189" AudioBitRate="224" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+  </Directory>
+  <Directory Path="C:\DirListerTest\TestData\Blues\Howlin' Wolf [2000] - The Collection\" FileCount="18" DirectorySize="70049105">
+    <File Name="Howlin' Wolf - The Collection - 01 - Wang Dang Doodle.mp3" Size="3463450">
+      <MediaInfo MediaType="Audio" Duration="145" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Howlin' Wolf - The Collection - 02 - Spoonful.mp3" Size="3979413">
+      <MediaInfo MediaType="Audio" Duration="166" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Howlin' Wolf - The Collection - 03 - Smokestack Lightnin'.mp3" Size="4418909">
+      <MediaInfo MediaType="Audio" Duration="185" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Howlin' Wolf - The Collection - 04 - Back Door Man.mp3" Size="4078474">
+      <MediaInfo MediaType="Audio" Duration="170" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Howlin' Wolf - The Collection - 05 - The Little Red Rooster.mp3" Size="3516746">
+      <MediaInfo MediaType="Audio" Duration="147" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Howlin' Wolf - The Collection - 06 - Do The Do.mp3" Size="3165020">
+      <MediaInfo MediaType="Audio" Duration="132" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Howlin' Wolf - The Collection - 07 - I Ain't Superstitious.mp3" Size="4094783">
+      <MediaInfo MediaType="Audio" Duration="171" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Howlin' Wolf - The Collection - 08 - Tail Dragger.mp3" Size="4232073">
+      <MediaInfo MediaType="Audio" Duration="177" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Howlin' Wolf - The Collection - 09 - Built For Comfort.mp3" Size="3758113">
+      <MediaInfo MediaType="Audio" Duration="157" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Howlin' Wolf - The Collection - 10 - Evil.mp3" Size="4094140">
+      <MediaInfo MediaType="Audio" Duration="171" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Howlin' Wolf - The Collection - 11 - Sittin' On Top Of The World.mp3" Size="3642767">
+      <MediaInfo MediaType="Audio" Duration="152" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Howlin' Wolf - The Collection - 12 - I Asked For Water (She Gave Me Gasoline).mp3" Size="4071606">
+      <MediaInfo MediaType="Audio" Duration="170" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Howlin' Wolf - The Collection - 13 - The Natchez Burning.mp3" Size="3136192">
+      <MediaInfo MediaType="Audio" Duration="131" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Howlin' Wolf - The Collection - 14 - Three Hundred Pounds Of Joy.mp3" Size="4396974">
+      <MediaInfo MediaType="Audio" Duration="184" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Howlin' Wolf - The Collection - 15 - Down In The Bottom.mp3" Size="3137445">
+      <MediaInfo MediaType="Audio" Duration="131" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Howlin' Wolf - The Collection - 16 - How Many More Years.mp3" Size="3850903">
+      <MediaInfo MediaType="Audio" Duration="161" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Howlin' Wolf - The Collection - 17 - Killing Floor.mp3" Size="4079102">
+      <MediaInfo MediaType="Audio" Duration="170" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Howlin' Wolf - The Collection - 18 - Going Down Slow.mp3" Size="4932995">
+      <MediaInfo MediaType="Audio" Duration="206" AudioBitRate="192" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+  </Directory>
+  <Directory Path="C:\DirListerTest\TestData\Blues\John Lee Hooker - The Classic Early Years 1948-1951 CD 1\" FileCount="25" DirectorySize="75712640">
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 1 - 01 - Boogie Chillen.mp3" Size="3014784">
+      <MediaInfo MediaType="Audio" Duration="189" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 1 - 02 - Sally Mae.mp3" Size="3076096">
+      <MediaInfo MediaType="Audio" Duration="193" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 1 - 03 - See See Baby.mp3" Size="2234368">
+      <MediaInfo MediaType="Audio" Duration="140" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 1 - 04 - She Was In Chicago.mp3" Size="2844672">
+      <MediaInfo MediaType="Audio" Duration="178" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 1 - 05 - Stomp Boogie.mp3" Size="3035136">
+      <MediaInfo MediaType="Audio" Duration="190" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 1 - 06 - Who's Been Jiving You.mp3" Size="3045376">
+      <MediaInfo MediaType="Audio" Duration="191" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 1 - 07 - Black Man Blues.mp3" Size="3467264">
+      <MediaInfo MediaType="Audio" Duration="217" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 1 - 08 - Poor Joe.mp3" Size="2883584">
+      <MediaInfo MediaType="Audio" Duration="181" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 1 - 09 - Good Business.mp3" Size="3411968">
+      <MediaInfo MediaType="Audio" Duration="214" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 1 - 10 - Boogie Woogie.mp3" Size="3383296">
+      <MediaInfo MediaType="Audio" Duration="212" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 1 - 11 - Helpless Bogie.mp3" Size="3528704">
+      <MediaInfo MediaType="Audio" Duration="221" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 1 - 12 - Goin' Mad Blues.mp3" Size="3631104">
+      <MediaInfo MediaType="Audio" Duration="227" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 1 - 13 - Low Down Midnite Boggie.mp3" Size="3444736">
+      <MediaInfo MediaType="Audio" Duration="216" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 1 - 14 - Landing Blues.mp3" Size="3311616">
+      <MediaInfo MediaType="Audio" Duration="207" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 1 - 15 - Morning Blues.mp3" Size="2953216">
+      <MediaInfo MediaType="Audio" Duration="185" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 1 - 16 - Drifting From Door To Door.mp3" Size="2879488">
+      <MediaInfo MediaType="Audio" Duration="180" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 1 - 17 - Hobo Blues.mp3" Size="2906112">
+      <MediaInfo MediaType="Audio" Duration="182" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 1 - 18 - Howlin' Wolf.mp3" Size="2535424">
+      <MediaInfo MediaType="Audio" Duration="159" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 1 - 19 - Crawling King Snake.mp3" Size="2895872">
+      <MediaInfo MediaType="Audio" Duration="182" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 1 - 20 - She Ain't Good For Nothin'.mp3" Size="2670592">
+      <MediaInfo MediaType="Audio" Duration="167" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 1 - 21 - Cotton Pickin' Blues.mp3" Size="2637824">
+      <MediaInfo MediaType="Audio" Duration="165" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 1 - 22 - Must I Wait Til Your Man Is Gone.mp3" Size="2965504">
+      <MediaInfo MediaType="Audio" Duration="186" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 1 - 23 - We Gonna Make Everything Alright.mp3" Size="2963456">
+      <MediaInfo MediaType="Audio" Duration="186" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 1 - 24 - Miss Rosie Mae.mp3" Size="3024896">
+      <MediaInfo MediaType="Audio" Duration="190" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 1 - 25 - Highway Blues.mp3" Size="2967552">
+      <MediaInfo MediaType="Audio" Duration="186" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+  </Directory>
+  <Directory Path="C:\DirListerTest\TestData\Blues\John Lee Hooker - The Classic Early Years 1948-1951 CD 2\" FileCount="25" DirectorySize="73277440">
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 2 - 01 - Hoogie Boogie.mp3" Size="2840576">
+      <MediaInfo MediaType="Audio" Duration="178" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 2 - 02 - Graveyard Blues.mp3" Size="3121152">
+      <MediaInfo MediaType="Audio" Duration="196" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 2 - 03 - Whistlin' And Moaning Blues.mp3" Size="3008512">
+      <MediaInfo MediaType="Audio" Duration="189" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 2 - 04 - I Love To Boogie.mp3" Size="3092480">
+      <MediaInfo MediaType="Audio" Duration="194" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 2 - 05 - Miss Eloise.mp3" Size="2588672">
+      <MediaInfo MediaType="Audio" Duration="162" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 2 - 06 - Burnin' Hell.mp3" Size="2598912">
+      <MediaInfo MediaType="Audio" Duration="163" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 2 - 07 - I Had A Dream.mp3" Size="2889728">
+      <MediaInfo MediaType="Audio" Duration="181" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 2 - 08 - Nightmare Blues.mp3" Size="2770944">
+      <MediaInfo MediaType="Audio" Duration="174" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 2 - 09 - Late Last Night.mp3" Size="2926592">
+      <MediaInfo MediaType="Audio" Duration="183" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 2 - 10 - Wandering Blues.mp3" Size="3180544">
+      <MediaInfo MediaType="Audio" Duration="199" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 2 - 11 - Don't Go Baby.mp3" Size="3076096">
+      <MediaInfo MediaType="Audio" Duration="193" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 2 - 12 - Devil's Jump.mp3" Size="2779136">
+      <MediaInfo MediaType="Audio" Duration="174" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 2 - 13 - I' Gonna Kill That Woman.mp3" Size="2973696">
+      <MediaInfo MediaType="Audio" Duration="186" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 2 - 14 - Moaning Blues.mp3" Size="2918400">
+      <MediaInfo MediaType="Audio" Duration="183" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 2 - 15 - The Numbers.mp3" Size="3084288">
+      <MediaInfo MediaType="Audio" Duration="193" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 2 - 16 - Weeping Willow.mp3" Size="2715648">
+      <MediaInfo MediaType="Audio" Duration="170" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 2 - 17 - Miss Sadie Mae.mp3" Size="2670592">
+      <MediaInfo MediaType="Audio" Duration="167" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 2 - 18 - Sometime.mp3" Size="2883584">
+      <MediaInfo MediaType="Audio" Duration="181" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 2 - 19 - Forgive Me.mp3" Size="3108864">
+      <MediaInfo MediaType="Audio" Duration="195" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 2 - 20 - Heart Trouble Blues.mp3" Size="2940928">
+      <MediaInfo MediaType="Audio" Duration="184" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 2 - 21 - Slim's Stomp.mp3" Size="2953216">
+      <MediaInfo MediaType="Audio" Duration="185" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 2 - 22 - Miss Lorraine.mp3" Size="2942976">
+      <MediaInfo MediaType="Audio" Duration="184" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 2 - 23 - Talkin' Boogie.mp3" Size="3006464">
+      <MediaInfo MediaType="Audio" Duration="188" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 2 - 24 - Road Trouble.mp3" Size="3049472">
+      <MediaInfo MediaType="Audio" Duration="191" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 2 - 25 - 609 Boogie.mp3" Size="3155968">
+      <MediaInfo MediaType="Audio" Duration="198" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+  </Directory>
+  <Directory Path="C:\DirListerTest\TestData\Blues\John Lee Hooker - The Classic Early Years 1948-1951 CD 3\" FileCount="25" DirectorySize="68071424">
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 3 - 01 - No Friend Around.mp3" Size="2834432">
+      <MediaInfo MediaType="Audio" Duration="178" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 3 - 02 - Wednesday Evening.mp3" Size="2842624">
+      <MediaInfo MediaType="Audio" Duration="178" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 3 - 03 - Canal Street Blues.mp3" Size="2648064">
+      <MediaInfo MediaType="Audio" Duration="166" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 3 - 04 - Playin' The Races.mp3" Size="3035136">
+      <MediaInfo MediaType="Audio" Duration="190" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 3 - 05 - Huckle Up Baby.mp3" Size="2703360">
+      <MediaInfo MediaType="Audio" Duration="169" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 3 - 06 - Let Your Daddy Ride.mp3" Size="2803712">
+      <MediaInfo MediaType="Audio" Duration="176" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 3 - 07 - Goin' On Highway 51.mp3" Size="2404352">
+      <MediaInfo MediaType="Audio" Duration="151" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 3 - 08 - The Moon Above.mp3" Size="2560000">
+      <MediaInfo MediaType="Audio" Duration="161" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 3 - 09 - She Left Me By Myself.mp3" Size="2729984">
+      <MediaInfo MediaType="Audio" Duration="171" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 3 - 10 - No Mortgage One My Soul.mp3" Size="3170304">
+      <MediaInfo MediaType="Audio" Duration="199" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 3 - 11 - My Baby's Got Something.mp3" Size="2721792">
+      <MediaInfo MediaType="Audio" Duration="171" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 3 - 12 - Decoration Day Blues.mp3" Size="2924544">
+      <MediaInfo MediaType="Audio" Duration="183" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 3 - 13 - Boogie Chillen No. 2.mp3" Size="2662400">
+      <MediaInfo MediaType="Audio" Duration="167" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 3 - 14 - Roll 'n' Roll.mp3" Size="2531328">
+      <MediaInfo MediaType="Audio" Duration="159" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 3 - 15 - Crying All Night.mp3" Size="2633728">
+      <MediaInfo MediaType="Audio" Duration="165" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 3 - 16 - One More Time.mp3" Size="2838528">
+      <MediaInfo MediaType="Audio" Duration="178" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 3 - 17 - I Don't Be Welcome Here.mp3" Size="2918400">
+      <MediaInfo MediaType="Audio" Duration="183" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 3 - 18 - Welfare Blues.mp3" Size="2856960">
+      <MediaInfo MediaType="Audio" Duration="179" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 3 - 19 - Turnin' Gray Blues.mp3" Size="2705408">
+      <MediaInfo MediaType="Audio" Duration="170" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 3 - 20 - The Story Of A Married Woman.mp3" Size="2682880">
+      <MediaInfo MediaType="Audio" Duration="168" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 3 - 21 - Mad Man Blues.mp3" Size="2605056">
+      <MediaInfo MediaType="Audio" Duration="163" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 3 - 22 - Boogie Now.mp3" Size="1935360">
+      <MediaInfo MediaType="Audio" Duration="121" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 3 - 23 - Thinking Blues.mp3" Size="2883584">
+      <MediaInfo MediaType="Audio" Duration="181" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 3 - 24 - Don't You Remember Me.mp3" Size="2729984">
+      <MediaInfo MediaType="Audio" Duration="171" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 3 - 25 - Give Me Your Phone Number.mp3" Size="2709504">
+      <MediaInfo MediaType="Audio" Duration="170" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+  </Directory>
+  <Directory Path="C:\DirListerTest\TestData\Blues\John Lee Hooker - The Classic Early Years 1948-1951 CD 4\" FileCount="25" DirectorySize="72890624">
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 4 - 01 - Notoriety Woman.mp3" Size="3037184">
+      <MediaInfo MediaType="Audio" Duration="190" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 4 - 02 - Never Satisfied.mp3" Size="2887680">
+      <MediaInfo MediaType="Audio" Duration="181" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 4 - 03 - Moon Is Rising.mp3" Size="2717696">
+      <MediaInfo MediaType="Audio" Duration="170" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 4 - 04 - Please Have Mercy.mp3" Size="2637824">
+      <MediaInfo MediaType="Audio" Duration="165" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 4 - 05 - John L's House Rent Boogie.mp3" Size="2902016">
+      <MediaInfo MediaType="Audio" Duration="182" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 4 - 06 - Queen Bee.mp3" Size="2484224">
+      <MediaInfo MediaType="Audio" Duration="156" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 4 - 07 - You've Got Another Man.mp3" Size="3139584">
+      <MediaInfo MediaType="Audio" Duration="197" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 4 - 08 - If You Need My Lovin' Baby.mp3" Size="2629632">
+      <MediaInfo MediaType="Audio" Duration="165" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 4 - 09 - Nobody To Talk To Me.mp3" Size="2969600">
+      <MediaInfo MediaType="Audio" Duration="186" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 4 - 10 - Prison Bound.mp3" Size="3588096">
+      <MediaInfo MediaType="Audio" Duration="225" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 4 - 11 - Bumble Bee Blues.mp3" Size="2578432">
+      <MediaInfo MediaType="Audio" Duration="162" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 4 - 12 - Questionnaire Blues.mp3" Size="3311616">
+      <MediaInfo MediaType="Audio" Duration="207" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 4 - 13 - Real Good Gal.mp3" Size="3108864">
+      <MediaInfo MediaType="Audio" Duration="195" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 4 - 14 - Little Boy Blues.mp3" Size="2492416">
+      <MediaInfo MediaType="Audio" Duration="156" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 4 - 15 - My Daddy Was A Jockey.mp3" Size="3180544">
+      <MediaInfo MediaType="Audio" Duration="199" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 4 - 16 - Mean Old Train.mp3" Size="3045504">
+      <MediaInfo MediaType="Audio" Duration="191" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 4 - 17 - Catfish.mp3" Size="3018752">
+      <MediaInfo MediaType="Audio" Duration="189" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 4 - 18 - Louise.mp3" Size="2963456">
+      <MediaInfo MediaType="Audio" Duration="186" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 4 - 19 - I'm Going Away.mp3" Size="2930688">
+      <MediaInfo MediaType="Audio" Duration="184" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 4 - 20 - Tease Me Baby.mp3" Size="2930688">
+      <MediaInfo MediaType="Audio" Duration="184" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 4 - 21 - Streets Is Filled With Women.mp3" Size="3106816">
+      <MediaInfo MediaType="Audio" Duration="195" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 4 - 22 - Me And My Woman.mp3" Size="2572288">
+      <MediaInfo MediaType="Audio" Duration="161" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 4 - 23 - Whistle Done Blown.mp3" Size="3063808">
+      <MediaInfo MediaType="Audio" Duration="192" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 4 - 24 - How Can You Do It.mp3" Size="2588672">
+      <MediaInfo MediaType="Audio" Duration="162" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - The Classic Early Years 1948-1951 CD 4 - 25 - I'm In The Mood.mp3" Size="3004544">
+      <MediaInfo MediaType="Audio" Duration="188" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+  </Directory>
+  <Directory Path="C:\DirListerTest\TestData\Blues\John Lee Hooker [1992] - Boom Boom\" FileCount="16" DirectorySize="266387389">
+    <File Name="John Lee Hooker - Boom Boom - 01 - Boom Boom.flac" Size="14938999">
+      <MediaInfo MediaType="Audio" Duration="152" AudioBitRate="783" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - Boom Boom - 02 - Process.flac" Size="20224882">
+      <MediaInfo MediaType="Audio" Duration="219" AudioBitRate="739" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - Boom Boom - 03 - Lost A Good Girl.flac" Size="17176429">
+      <MediaInfo MediaType="Audio" Duration="172" AudioBitRate="796" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - Boom Boom - 04 - A New Leaf.flac" Size="14261658">
+      <MediaInfo MediaType="Audio" Duration="152" AudioBitRate="752" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - Boom Boom - 05 - Blues Before Sunrise.flac" Size="21638075">
+      <MediaInfo MediaType="Audio" Duration="231" AudioBitRate="749" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - Boom Boom - 06 - Let's Make It.flac" Size="14262955">
+      <MediaInfo MediaType="Audio" Duration="144" AudioBitRate="792" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - Boom Boom - 07 - I Got A Letter.flac" Size="14436737">
+      <MediaInfo MediaType="Audio" Duration="165" AudioBitRate="699" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - Boom Boom - 08 - Thelma.flac" Size="19983036">
+      <MediaInfo MediaType="Audio" Duration="212" AudioBitRate="754" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - Boom Boom - 09 - House Rent Boogie.flac" Size="24660985">
+      <MediaInfo MediaType="Audio" Duration="243" AudioBitRate="811" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - Boom Boom - 10 - Keep Your Hands To Yourself.flac" Size="13970617">
+      <MediaInfo MediaType="Audio" Duration="141" AudioBitRate="791" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - Boom Boom - 11 - What Do You Say.flac" Size="14752739">
+      <MediaInfo MediaType="Audio" Duration="152" AudioBitRate="776" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - Boom Boom - 12 - Big Legs, Tight Skirt.flac" Size="13000383">
+      <MediaInfo MediaType="Audio" Duration="138" AudioBitRate="752" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - Boom Boom - 13 - Everybody Rockin'.flac" Size="14214317">
+      <MediaInfo MediaType="Audio" Duration="162" AudioBitRate="700" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - Boom Boom - 14 - Onions.flac" Size="12716156">
+      <MediaInfo MediaType="Audio" Duration="133" AudioBitRate="763" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - Boom Boom - 15 - Wheel And Deal.flac" Size="13859572">
+      <MediaInfo MediaType="Audio" Duration="154" AudioBitRate="720" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="John Lee Hooker - Boom Boom - 16 - Sadie Mae.flac" Size="22289849">
+      <MediaInfo MediaType="Audio" Duration="242" AudioBitRate="737" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+  </Directory>
+  <Directory Path="C:\DirListerTest\TestData\Blues\Robert Johnson - King Of The Delta Blues Singers\" FileCount="17" DirectorySize="44335738">
+    <File Name="Robert Johnson - King Of The Delta Blues Singers - 01 - Cross Road Blues.mp3" Size="2430976">
+      <MediaInfo MediaType="Audio" Duration="122" AudioBitRate="160" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - King Of The Delta Blues Singers - 02 - Terraplane Blues.mp3" Size="2936832">
+      <MediaInfo MediaType="Audio" Duration="147" AudioBitRate="160" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - King Of The Delta Blues Singers - 03 - Come On In My Kitchen.mp3" Size="2783232">
+      <MediaInfo MediaType="Audio" Duration="140" AudioBitRate="160" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - King Of The Delta Blues Singers - 04 - Walkin' Blues.mp3" Size="2439168">
+      <MediaInfo MediaType="Audio" Duration="122" AudioBitRate="160" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - King Of The Delta Blues Singers - 05 - Last Fair Deal Gone Down.mp3" Size="2578432">
+      <MediaInfo MediaType="Audio" Duration="129" AudioBitRate="160" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - King Of The Delta Blues Singers - 06 - 32-20 Blues.mp3" Size="2756608">
+      <MediaInfo MediaType="Audio" Duration="138" AudioBitRate="160" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - King Of The Delta Blues Singers - 07 - Kind Hearted Woman Blues.mp3" Size="2770944">
+      <MediaInfo MediaType="Audio" Duration="139" AudioBitRate="160" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - King Of The Delta Blues Singers - 08 - If I Had Possession Over Judgement Day.mp3" Size="2525184">
+      <MediaInfo MediaType="Audio" Duration="127" AudioBitRate="160" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - King Of The Delta Blues Singers - 09 - Preachin' Blues (Up Jumped The Devil).mp3" Size="2785280">
+      <MediaInfo MediaType="Audio" Duration="140" AudioBitRate="160" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - King Of The Delta Blues Singers - 10 - When You Got A Good Friend.mp3" Size="2564096">
+      <MediaInfo MediaType="Audio" Duration="129" AudioBitRate="160" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - King Of The Delta Blues Singers - 11 - Ramblin' On My Mind.mp3" Size="2779453">
+      <MediaInfo MediaType="Audio" Duration="139" AudioBitRate="160" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - King Of The Delta Blues Singers - 12 - Stones In My Passway.mp3" Size="2410813">
+      <MediaInfo MediaType="Audio" Duration="121" AudioBitRate="160" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - King Of The Delta Blues Singers - 13 - Traveling Riverside Blues.mp3" Size="2707456">
+      <MediaInfo MediaType="Audio" Duration="136" AudioBitRate="160" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - King Of The Delta Blues Singers - 14 - Milkcow's Calf Blues.mp3" Size="2234368">
+      <MediaInfo MediaType="Audio" Duration="112" AudioBitRate="160" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - King Of The Delta Blues Singers - 15 - Me And The Devil Blues.mp3" Size="2506752">
+      <MediaInfo MediaType="Audio" Duration="126" AudioBitRate="160" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - King Of The Delta Blues Singers - 16 - Hell Hound On My Trail.mp3" Size="2566144">
+      <MediaInfo MediaType="Audio" Duration="129" AudioBitRate="160" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - King Of The Delta Blues Singers - 17 - Traveling Riverside Blues (Previously Unissued Alternate Take.mp3" Size="2560000">
+      <MediaInfo MediaType="Audio" Duration="129" AudioBitRate="160" AudioChannels="2" AudioSampleRate="44100" />
+    </File>
+  </Directory>
+  <Directory Path="C:\DirListerTest\TestData\Blues\Robert Johnson - The Complete Recordings\CD 1\" FileCount="23" DirectorySize="53095484">
+    <File Name="Robert Johnson - The Complete Recordings - Disk 1 - 100a - CD-1 label.jpg" Size="91801">
+      <MediaInfo MediaType="Image" Height="800" Width="806" BitsPerPixel="24" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings - Disk 1 - 100b - CD-1 front.jpg" Size="112390">
+      <MediaInfo MediaType="Image" Height="800" Width="805" BitsPerPixel="24" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings - Disk 1 - 100c - CD-1 tray.jpg" Size="101743">
+      <MediaInfo MediaType="Image" Height="800" Width="1021" BitsPerPixel="24" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD1) - 01 - Kind Hearted Woman Blues (Take 1).mp3" Size="2773120">
+      <MediaInfo MediaType="Audio" Duration="174" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD1) - 02 - Kind Hearted Woman Blues (Take 2).mp3" Size="2457728">
+      <MediaInfo MediaType="Audio" Duration="154" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD1) - 03 - I Believe I'll Dust My Broom.mp3" Size="2865280">
+      <MediaInfo MediaType="Audio" Duration="180" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD1) - 04 - Sweet Home Chicago.mp3" Size="2922624">
+      <MediaInfo MediaType="Audio" Duration="183" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD1) - 05 - Ramblin' On My Mind (Take 1).mp3" Size="2781312">
+      <MediaInfo MediaType="Audio" Duration="174" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD1) - 06 - Ramblin' On My Mind (Take 2).mp3" Size="2297984">
+      <MediaInfo MediaType="Audio" Duration="144" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD1) - 07 - When You Got A Good Friend (Take 1).mp3" Size="2558080">
+      <MediaInfo MediaType="Audio" Duration="160" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD1) - 08 - When You Got A Good Friend (Take 2).mp3" Size="2769024">
+      <MediaInfo MediaType="Audio" Duration="174" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD1) - 09 - Come On In My Kitchen (Take 1).mp3" Size="2734208">
+      <MediaInfo MediaType="Audio" Duration="171" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD1) - 10 - Come On In My Kitchen (Take 2).mp3" Size="2535552">
+      <MediaInfo MediaType="Audio" Duration="159" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD1) - 11 - Terraplane Blues.mp3" Size="2916480">
+      <MediaInfo MediaType="Audio" Duration="183" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD1) - 12 - Phonograph Blues (Take 1).mp3" Size="2574254">
+      <MediaInfo MediaType="Audio" Duration="161" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD1) - 13 - Phonograph Blues (Take 2).mp3" Size="2476160">
+      <MediaInfo MediaType="Audio" Duration="155" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD1) - 14 - 32-20 Blues.mp3" Size="2791552">
+      <MediaInfo MediaType="Audio" Duration="175" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD1) - 15 - They're Red Hot.mp3" Size="2893952">
+      <MediaInfo MediaType="Audio" Duration="181" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD1) - 16 - Dead Shrimp Blues.mp3" Size="2447488">
+      <MediaInfo MediaType="Audio" Duration="153" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD1) - 17 - Cross Road Blues (Take 1).mp3" Size="2586752">
+      <MediaInfo MediaType="Audio" Duration="162" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD1) - 18 - Cross Road Blues (Take 2).mp3" Size="2437248">
+      <MediaInfo MediaType="Audio" Duration="153" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD1) - 19 - Walkin' Blues.mp3" Size="2424960">
+      <MediaInfo MediaType="Audio" Duration="152" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD1) - 20 - Last Fair Deal Gone Down.mp3" Size="2545792">
+      <MediaInfo MediaType="Audio" Duration="160" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+  </Directory>
+  <Directory Path="C:\DirListerTest\TestData\Blues\Robert Johnson - The Complete Recordings\CD 2\" FileCount="24" DirectorySize="50260015">
+    <File Name="Robert Johnson - The Complete Recordings - Disk 2 - 200a - CD-2 label.jpg" Size="92494">
+      <MediaInfo MediaType="Image" Height="800" Width="807" BitsPerPixel="24" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings - Disk 2 - 200b - CD-2 front.jpg" Size="106398">
+      <MediaInfo MediaType="Image" Height="800" Width="810" BitsPerPixel="24" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings - Disk 2 - 200c - CD-2 tray.jpg" Size="114573">
+      <MediaInfo MediaType="Image" Height="800" Width="1021" BitsPerPixel="24" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD2) - 01 - Praching Blues (Up jumped the devil).mp3" Size="2776964">
+      <MediaInfo MediaType="Audio" Duration="174" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD2) - 02 - If I Had Possession Over Judgement Day.mp3" Size="2517120">
+      <MediaInfo MediaType="Audio" Duration="158" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD2) - 03 - Stomes In My Passway.mp3" Size="2414720">
+      <MediaInfo MediaType="Audio" Duration="151" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD2) - 04 - I'm a Steady Rollin' Man.mp3" Size="2531456">
+      <MediaInfo MediaType="Audio" Duration="159" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD2) - 05 - From Four 'til Late.mp3" Size="2330752">
+      <MediaInfo MediaType="Audio" Duration="146" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD2) - 06 - Hellhound on my Trail.mp3" Size="2533504">
+      <MediaInfo MediaType="Audio" Duration="159" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD2) - 07 - Little Queen of Spades.mp3" Size="2156672">
+      <MediaInfo MediaType="Audio" Duration="135" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD2) - 08 - Little Queen of Spades V2.mp3" Size="2203524">
+      <MediaInfo MediaType="Audio" Duration="138" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD2) - 09 - Malted Milk.mp3" Size="2246784">
+      <MediaInfo MediaType="Audio" Duration="141" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD2) - 10 - Drunken Hearted Man.mp3" Size="2367616">
+      <MediaInfo MediaType="Audio" Duration="148" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD2) - 11 - Drunkeen Hearted Man V2.mp3" Size="2269312">
+      <MediaInfo MediaType="Audio" Duration="142" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD2) - 12 - Me and the Devil Blues.mp3" Size="2529408">
+      <MediaInfo MediaType="Audio" Duration="159" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD2) - 13 - Me and the Devil Blues V2.mp3" Size="2433152">
+      <MediaInfo MediaType="Audio" Duration="153" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD2) - 14 - Stop Breakin' Down Blues.mp3" Size="2226304">
+      <MediaInfo MediaType="Audio" Duration="140" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD2) - 15 - Stop Breaking Down Blues.mp3" Size="2318464">
+      <MediaInfo MediaType="Audio" Duration="145" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD2) - 16 - Travelling Riverside Blues.mp3" Size="2719872">
+      <MediaInfo MediaType="Audio" Duration="171" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD2) - 17 - Honeymoon Blues.mp3" Size="2224256">
+      <MediaInfo MediaType="Audio" Duration="140" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD2) - 18 - Love in Vain.mp3" Size="2435200">
+      <MediaInfo MediaType="Audio" Duration="153" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD2) - 19 - Love in Vain V2.mp3" Size="2271360">
+      <MediaInfo MediaType="Audio" Duration="142" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD2) - 20 - Milkcow's Calf Blues.mp3" Size="2205614">
+      <MediaInfo MediaType="Audio" Duration="138" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+    <File Name="Robert Johnson - The Complete Recordings (CD2) - 21 - Milkcow's Calf Blues V2.mp3" Size="2234496">
+      <MediaInfo MediaType="Audio" Duration="140" AudioBitRate="128" AudioChannels="1" AudioSampleRate="44100" />
+    </File>
+  </Directory>
+  <Directory Path="C:\DirListerTest\TestData\Blues\Robert Johnson - The Complete Recordings\" FileCount="1" DirectorySize="146547">
+    <File Name="Robert Johnson - The Complete Recordings - 001 - Robert Johnson - portrait.jpg" Size="146547">
+      <MediaInfo MediaType="Image" Height="800" Width="1015" BitsPerPixel="24" />
+    </File>
+  </Directory>
+</DirLister>
