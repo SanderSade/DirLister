@@ -1,0 +1,260 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>DirLister&nbsp;2019-02-22 14:23:43 +02:00</title>
+  <meta name="generator" content="DirLister v2" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+BQMBvwAAAD4AAAAAAAAAAAUDAb8FAwG/BQMBvwUDAb8FAwG/BQMBvwUDAb8FAwG/BQMBvwAAAAAAAAAABQMBvwMCAf8FAwG/AAAAAAAAAAADAgH/AwIB/wMCAf8DAgH/AwIB/wMCAf8DAgH/AwIB/wMCAf8AAAAAAAAAAAAAAD4FAwG/AAAAPgAAAAAAAAAAAAAAPgAAAD4AAAA+AAAAPgAAAD4AAAA+AAAAPgAAAD4AAAA+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD4FAwG/AAAAPgAAAAAAAAAABQMBvwUDAb8FAwG/BQMBvwUDAb8FAwG/BQMBvwUDAb8FAwG/AAAAAAAAAAAFAwG/AwIB/wUDAb8AAAAAAAAAAAMCAf8DAgH/AwIB/wMCAf8DAgH/AwIB/wMCAf8DAgH/AwIB/wAAAAAAAAAAAAAAPgUDAb8AAAA+AAAAAAAAAAAAAAA+AAAAPgAAAD4AAAA+AAAAPgAAAD4AAAA+AAAAPgAAAD4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPgUDAb8AAAA+AAAAAAAAAAAFAwG/BQMBvwUDAb8FAwG/BQMBvwUDAb8FAwG/BQMBvwUDAb8AAAAAAAAAAAUDAb8DAgH/BQMBvwAAAAAAAAAAAwIB/wMCAf8DAgH/AwIB/wMCAf8DAgH/AwIB/wMCAf8DAgH/AAAAAAAAAAAAAAA+BQMBvwAAAD4AAAAAAAAAAAAAAD4AAAA+AAAAPgAAAD4AAAA+AAAAPgAAAD4AAAA+AAAAPgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP//AADcAQAAjAEAAN//AAD//wAA//8AANwBAACMAQAA3/8AAP//AAD//wAA3AEAAIwBAADf/wAA//8AAA==" />
+<style>
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	margin-top: 0;
+	outline: none !important;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	hyphens: auto;
+}
+
+html {
+	background: black;
+}
+
+header {
+	margin-bottom: 1em;
+}
+
+body {
+	background-color: rgb(255, 253, 247);
+	margin: 0 auto;
+	padding: 2em;
+	max-width: 95%;
+	width: 80%;
+	box-shadow: 6px 0 4px orange;
+}
+
+@media only screen and (max-width:1080px) {
+	body {
+		padding: 0.3em;
+		width: 100%;
+		max-width: 100%;
+		box-shadow: none;
+		font-size-adjust: 80;
+	}
+
+	section {
+		padding: 0.1em;
+	}
+
+	ul {
+		margin-left: -3em;
+	}
+}
+
+
+@media print {
+	* {
+		background-color: #fff !important;
+	}
+
+	body {
+		padding: 0.3em !important;
+		width: 100% !important;
+		max-width: 100% !important;
+		box-shadow: none !important;
+	}
+
+	a:after {
+		content: "( "attr(href)" )" !important;
+	}
+
+	section {
+		padding: 0.1em !important;
+	}
+	aside {
+		display: none !important;
+	}
+
+	ul {
+		margin-left: -3em !important;
+	}
+}
+
+
+h2 {
+	font: 1.6em Helvetica, Verdana, sans-serif;
+	color: #8B5A00;
+}
+
+aside {
+	display: block;
+	float: right;
+}
+
+	aside a, a:visited {
+		color: orangered;
+		text-decoration: none;
+		font-family: monospace;
+		font-size: 95%;
+	}
+
+details {
+	margin: 0;
+	padding: 0;
+}
+
+
+summary {
+	box-shadow: 3px 3px 4px silver;
+	font: 1.2em Helvetica, Verdana, sans-serif;
+	color: orange;
+	padding: 0.1em;
+	margin-bottom: 0.2em;
+}
+
+li {
+	padding: 2px;
+	user-select: all;
+}
+
+	li > span, summary > span {
+		color: gray;
+		font-family: consolas;
+		font-size: 80%;
+		margin-left: 1em;
+	}
+
+ul {
+	font: 0.9em Helvetica, Verdana, sans-serif;
+	list-style-type: none;
+}
+
+li:hover {
+	background: #f6f6f6;
+	box-shadow: 1px 1px 2px silver;
+}
+
+section {
+	padding: 0.6em;
+}
+
+
+footer {
+	background-color: #800000;
+	bottom: 0;
+	clear: both;
+	color: #ff4;
+	display: inline-block;
+	font-size: 0.7em;
+	left: 0;
+	margin: 0 auto;
+	padding: 3px;
+	position: fixed;
+	text-align: center;
+	width: 99.5%;
+}
+
+
+	footer a, footer a:visited {
+		color: #ff4;
+		text-decoration: none;
+	}
+
+</style>
+</head>
+<body>
+<aside>
+<a href="javascript:void(0)" onclick="var els = document.getElementsByTagName('details');for (var i=0; i < els.length; i++) { els[i].setAttribute('open', 'open');}">open all</a>&nbsp;|&nbsp;<a href="javascript:void(0)" onclick="var els = document.getElementsByTagName('details');for (var i=0; i < els.length; i++) { els[i].removeAttribute('open');}">collapse all</a>
+</aside>
+<header>
+<h2>Directory listing by DirLister, 2019-02-22 14:23:43</h2>
+<ul>
+<li>C:\DirListerTest\ <span>files: 52, size: 99.73MB</span></li>
+</ul>
+</header>
+<footer><a href="https://github.com/SanderSade/DirLister/"><strong>DirLister v2</strong>&nbsp;|&nbsp;Source, updates & support</a></footer>
+<section>
+<details open="">
+<summary>C:\DirListerTest\Audio\<span>files: 9&nbsp;(25.13MB)</span></summary>
+<ul>
+<li>32.mp3<span>501.22KB&nbsp;|&nbsp;Audio 0m33s&nbsp;|&nbsp;audio bitrate: 128, channels: 1, sample rate: 44.1</span></li>
+<li>audiocheck.net_hdsweep_1Hz_44000Hz_-3dBFS_30s.wav<span>5.05MB&nbsp;|&nbsp;Audio 0m30s&nbsp;|&nbsp;audio bitrate: 1411, channels: 1, sample rate: 88.2</span></li>
+<li>piano2.aif<span>1.15MB&nbsp;|&nbsp;Audio 0m6s&nbsp;|&nbsp;audio bitrate: 1536, channels: 2, sample rate: 48</span></li>
+<li>piano2-Audacity1.2.5.mp3<span>99.88KB&nbsp;|&nbsp;Audio 0m7s&nbsp;|&nbsp;audio bitrate: 128, channels: 2, sample rate: 48</span></li>
+<li>piano2-CoolEdit.mp3<span>99.38KB&nbsp;|&nbsp;Audio 0m7s&nbsp;|&nbsp;audio bitrate: 128, channels: 2, sample rate: 48</span></li>
+<li>Sample_BeeMoved_48kHz16bit.m4a<span>1.25MB&nbsp;|&nbsp;Audio 0m40s&nbsp;|&nbsp;audio bitrate: 192, channels: 2, sample rate: 44.1</span></li>
+<li>Sample_BeeMoved_96kHz24bit.flac<span>15.88MB&nbsp;|&nbsp;Audio 0m40s&nbsp;|&nbsp;audio bitrate: 3328, channels: 2, sample rate: 96</span></li>
+<li>SampleAudio_0.4mb.mp3<span>433.52KB&nbsp;|&nbsp;Audio 0m28s&nbsp;|&nbsp;audio bitrate: 128, channels: 2, sample rate: 44.1</span></li>
+<li>SampleAudio_0.7mb.mp3<span>708.24KB&nbsp;|&nbsp;Audio 0m46s&nbsp;|&nbsp;audio bitrate: 128, channels: 2, sample rate: 44.1</span></li>
+</ul>
+</details>
+</section>
+<section>
+<details open="">
+<summary>C:\DirListerTest\Image\<span>files: 29&nbsp;(16.44MB)</span></summary>
+<ul>
+<li>SampleGIFImage_135kbmb.gif<span>135.14KB&nbsp;|&nbsp;Image 229x492, bpp: 8</span></li>
+<li>SampleGIFImage_350kbmb (1).gif<span>347.51KB&nbsp;|&nbsp;Image 200x400, bpp: 8</span></li>
+<li>SampleGIFImage_350kbmb.gif<span>347.51KB&nbsp;|&nbsp;Image 200x400, bpp: 8</span></li>
+<li>SampleGIFImage_40kbmb (1).gif<span>39.37KB&nbsp;|&nbsp;Image 312x312, bpp: 8</span></li>
+<li>SampleGIFImage_40kbmb.gif<span>39.37KB&nbsp;|&nbsp;Image 312x312, bpp: 8</span></li>
+<li>SampleJPGImage_100kbmb.jpg<span>100.39KB&nbsp;|&nbsp;Image 689x689, bpp: 24</span></li>
+<li>SampleJPGImage_1mbmb.jpg<span>1009.19KB&nbsp;|&nbsp;Image 2921x2192, bpp: 24</span></li>
+<li>SamplePNGImage_100kbmb.png<span>101.88KB&nbsp;|&nbsp;Image 170x272, bpp: 32</span></li>
+<li>SamplePNGImage_3mbmb.png<span>2.98MB&nbsp;|&nbsp;Image 1080x1920, bpp: 32</span></li>
+<li>SampleVideo_1280x720_10mb.flv<span>10.06MB</span></li>
+<li>SampleVideo_360x240_1mb.flv<span>1MB</span></li>
+<li>small.flv<span>296.22KB</span></li>
+<li>w3c_home.bmp<span>10.18KB&nbsp;|&nbsp;Image 48x72, bpp: 24</span></li>
+<li>w3c_home.gif<span>988B&nbsp;|&nbsp;Image 48x72, bpp: 8</span></li>
+<li>w3c_home.jpg<span>2.11KB&nbsp;|&nbsp;Image 48x72, bpp: 24</span></li>
+<li>w3c_home.png<span>1.98KB&nbsp;|&nbsp;Image 48x72, bpp: 24</span></li>
+<li>w3c_home_2.bmp<span>638B&nbsp;|&nbsp;Image 48x72, bpp: 1</span></li>
+<li>w3c_home_2.gif<span>333B&nbsp;|&nbsp;Image 48x72, bpp: 8</span></li>
+<li>w3c_home_2.jpg<span>2.28KB&nbsp;|&nbsp;Image 48x72, bpp: 24</span></li>
+<li>w3c_home_2.png<span>324B&nbsp;|&nbsp;Image 48x72, bpp: 1</span></li>
+<li>w3c_home_256.bmp<span>4.43KB&nbsp;|&nbsp;Image 48x72, bpp: 8</span></li>
+<li>w3c_home_256.gif<span>1.63KB&nbsp;|&nbsp;Image 48x72, bpp: 8</span></li>
+<li>w3c_home_256.jpg<span>2.11KB&nbsp;|&nbsp;Image 48x72, bpp: 24</span></li>
+<li>w3c_home_animation.gif<span>1.88KB&nbsp;|&nbsp;Image 48x72, bpp: 8</span></li>
+<li>w3c_home_animation.mng<span>3.89KB</span></li>
+<li>w3c_home_gray.bmp<span>4.43KB&nbsp;|&nbsp;Image 48x72, bpp: 8</span></li>
+<li>w3c_home_gray.gif<span>1.59KB&nbsp;|&nbsp;Image 48x72, bpp: 8</span></li>
+<li>w3c_home_gray.jpg<span>1.96KB&nbsp;|&nbsp;Image 48x72, bpp: 24</span></li>
+<li>w3c_home_gray.png<span>1.58KB&nbsp;|&nbsp;Image 48x72, bpp: 8</span></li>
+</ul>
+</details>
+</section>
+<section>
+<details open="">
+<summary>C:\DirListerTest\Other\<span>files: 4&nbsp;(1.75MB)</span></summary>
+<ul>
+<li>SampleTextFile_1000kb.txt<span>999.4KB</span></li>
+<li>SampleTextFile_100kb.txt<span>99.79KB</span></li>
+<li>SampleTextFile_200kb.txt<span>199.33KB</span></li>
+<li>SampleTextFile_500kb.txt<span>499.29KB</span></li>
+</ul>
+</details>
+</section>
+<section>
+<details open="">
+<summary>C:\DirListerTest\Video\<span>files: 10&nbsp;(56.4MB)</span></summary>
+<ul>
+<li>centaur_2.mpg<span>10.23MB&nbsp;|&nbsp;Video 0m14s, 480x720&nbsp;|&nbsp;audio channels: 2, sample rate: 11.025</span></li>
+<li>grb_2.mpg<span>19.93MB</span></li>
+<li>SampleVideo_1280x720_1mb.mp4<span>1.01MB&nbsp;|&nbsp;Video 0m5s, 720x1280&nbsp;|&nbsp;audio bitrate: 384, channels: 2, sample rate: 48</span></li>
+<li>SampleVideo_1280x720_20mb.mkv<span>20.01MB&nbsp;|&nbsp;Video 1m53s, 720x1280&nbsp;|&nbsp;audio channels: 6, sample rate: 48</span></li>
+<li>SampleVideo_176x144_2mb.3gp<span>2.01MB</span></li>
+<li>SampleVideo_360x240_2mb.mp4<span>2MB&nbsp;|&nbsp;Video 0m27s, 240x320&nbsp;|&nbsp;audio bitrate: 383, channels: 2, sample rate: 48</span></li>
+<li>small.3gp<span>210.74KB</span></li>
+<li>small.mp4<span>374.64KB&nbsp;|&nbsp;Video 0m6s, 320x560&nbsp;|&nbsp;audio bitrate: 83, channels: 1, sample rate: 48</span></li>
+<li>small.ogv<span>428KB</span></li>
+<li>small.webm<span>224.08KB</span></li>
+</ul>
+</details>
+</section>
+</body>
+</html>

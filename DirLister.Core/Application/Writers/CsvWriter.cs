@@ -69,16 +69,16 @@ namespace Sander.DirLister.Core.Application.Writers
 				_sb.Append($",{Quote(entry.Modified.ToLocalTime())}");
 			}
 
-			if (Configuration.IncludeMediaInfo && entry.MediaInfo != null)
+			if (Configuration.IncludeMediaInfo)
 			{
-				_sb.Append($",{Quote(entry.MediaInfo.MediaType.ToString())}");
-				_sb.Append($",{Quote(entry.MediaInfo.Duration.TotalSeconds)}");
-				_sb.Append($",{Quote(entry.MediaInfo.Height)}");
-				_sb.Append($",{Quote(entry.MediaInfo.Width)}");
-				_sb.Append($",{Quote(entry.MediaInfo.BitsPerPixel)}");
-				_sb.Append($",{Quote(entry.MediaInfo.AudioBitRate)}");
-				_sb.Append($",{Quote(entry.MediaInfo.AudioChannels)}");
-				_sb.Append($",{Quote(entry.MediaInfo.AudioSampleRate)}");
+				_sb.Append($",{Quote(entry.MediaInfo?.MediaType.ToString())}");
+				_sb.Append($",{Quote(entry.MediaInfo?.Duration.TotalSeconds)}");
+				_sb.Append($",{Quote(entry.MediaInfo?.Height)}");
+				_sb.Append($",{Quote(entry.MediaInfo?.Width)}");
+				_sb.Append($",{Quote(entry.MediaInfo?.BitsPerPixel)}");
+				_sb.Append($",{Quote(entry.MediaInfo?.AudioBitRate)}");
+				_sb.Append($",{Quote(entry.MediaInfo?.AudioChannels)}");
+				_sb.Append($",{Quote(entry.MediaInfo?.AudioSampleRate)}");
 			}
 
 			_sb.AppendLine();
@@ -87,9 +87,13 @@ namespace Sander.DirLister.Core.Application.Writers
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		private static string Quote<T>(T value)
 		{
-			return value == null || value.Equals(default(T))
-				? "\"\""
-				: FormattableString.Invariant($"\"{value.ToString()}\"");
+			if (value == null || value.Equals(default(T)))
+				return "\"\"";
+
+			if (value is int i && i == 0)
+				return "\"\"";
+
+			return FormattableString.Invariant($"\"{value.ToString()}\"");
 		}
 	}
 }
