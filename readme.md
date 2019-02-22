@@ -2,6 +2,14 @@
 
 
 
+### TODO
+* Win32 Installer
+* UWP installer
+* Hints
+* About tab contents
+* Improve JSON format?
+* Handle directory & other history order properly
+
 
 ### Used components
 
