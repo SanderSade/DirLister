@@ -48,7 +48,7 @@ namespace Sander.DirLister.UI
 			StartButton.Enabled = false;
 			MainTabs.SelectedTab = LogTab;
 			var t = Task.Run(() => Core.DirLister.List(_configuration));
-			
+			t.Wait();
 			StartButton.Enabled = true;
 		}
 
@@ -95,7 +95,16 @@ namespace Sander.DirLister.UI
 
 		private Filter GetFilter()
 		{
-			return null;
+			switch (FilterTabs.SelectedIndex)
+			{
+				case 1://wildcard
+					if (WildcardList.Items.Count == 0)
+						return null;
+					return new Filter(WildcardList.Items.Cast<ListViewItem>().Select(x => x.Text).ToArray());
+				default:
+					return null;
+
+			}
 		}
 	}
 }

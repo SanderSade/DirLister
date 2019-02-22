@@ -68,5 +68,17 @@ namespace Sander.DirLister.UI.Properties {
                 this["DirectoryHistoryLength"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("8")]
+        public int FilterHistoryLength {
+            get {
+                return ((int)(this["FilterHistoryLength"]));
+            }
+            set {
+                this["FilterHistoryLength"] = value;
+            }
+        }
     }
 }

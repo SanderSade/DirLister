@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -24,13 +25,14 @@ namespace Sander.DirLister.UI
 			Text = Program.VersionString;
 			TopMost = Settings.Default.KeepOnTop;
 
+			FilterTabs.SelectedTab = NoneTab;
 			InitializeInput(inputFolders);
 			InitializeOutput();
 
 			if (logs != null && logs.Count > 0)
 			{
 				LogBox.Lines = logs.Select(x => x.ToString())
-				                   .ToArray();
+								   .ToArray();
 				LogBox.SelectionStart = LogBox.Text.Length;
 				LogBox.ScrollToCaret();
 				MainTabs.SelectedTab = LogTab;
@@ -39,7 +41,7 @@ namespace Sander.DirLister.UI
 			if (Settings.Default.FirstRun)
 				MainTabs.SelectedTab = OutputTab;
 
-			
+
 			ConfigureCallbacks();
 		}
 
@@ -58,7 +60,7 @@ namespace Sander.DirLister.UI
 			foreach (var folder in folders)
 			{
 				if (!File.GetAttributes(folder)
-				         .HasFlag(FileAttributes.Directory))
+						 .HasFlag(FileAttributes.Directory))
 					continue;
 
 				var directory = Utils.EnsureBackslash(folder);
@@ -73,5 +75,7 @@ namespace Sander.DirLister.UI
 			LogBox.SelectionStart = LogBox.Text.Length;
 			LogBox.ScrollToCaret();
 		}
+
+	
 	}
 }

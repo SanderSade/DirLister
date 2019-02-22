@@ -33,11 +33,12 @@ namespace Sander.DirLister.UI
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.BottomPanel = new System.Windows.Forms.Panel();
-			this.LabelHomepage = new System.Windows.Forms.Label();
 			this.FirstRunLabel = new System.Windows.Forms.Label();
 			this.ProgressLabel = new System.Windows.Forms.Label();
 			this.Progress = new System.Windows.Forms.ProgressBar();
 			this.StartButton = new System.Windows.Forms.Button();
+			this.SetDefault = new System.Windows.Forms.Button();
+			this.LabelHomepage = new System.Windows.Forms.Label();
 			this.HistoryMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.HistoryClearMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.HistorySeparator = new System.Windows.Forms.ToolStripSeparator();
@@ -64,7 +65,6 @@ namespace Sander.DirLister.UI
 			this.OpenAfter = new System.Windows.Forms.CheckBox();
 			this.SelectOutputFolder = new System.Windows.Forms.Button();
 			this.OutputFolder = new System.Windows.Forms.TextBox();
-			this.SetDefault = new System.Windows.Forms.Button();
 			this.InputTab = new System.Windows.Forms.TabPage();
 			this.RemoveAllButton = new System.Windows.Forms.Button();
 			this.HistoryButton = new Sander.DirLister.UI.App.SplitButton();
@@ -72,11 +72,21 @@ namespace Sander.DirLister.UI
 			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.BrowseButton = new System.Windows.Forms.Button();
 			this.FilterBox = new System.Windows.Forms.GroupBox();
+			this.FilterTabs = new System.Windows.Forms.TabControl();
+			this.NoneTab = new System.Windows.Forms.TabPage();
+			this.label1 = new System.Windows.Forms.Label();
+			this.WildcardTab = new System.Windows.Forms.TabPage();
+			this.WildcardList = new System.Windows.Forms.ListView();
+			this.WildcardColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.ClearWildcardsButton = new System.Windows.Forms.Button();
+			this.AddWildcardButton = new System.Windows.Forms.Button();
+			this.WildcardEdit = new System.Windows.Forms.ComboBox();
+			this.RegexTab = new System.Windows.Forms.TabPage();
 			this.FilterLabel = new System.Windows.Forms.Label();
-			this.FilenameFilter = new System.Windows.Forms.ComboBox();
 			this.IncludeSubfolders = new System.Windows.Forms.CheckBox();
 			this.IncludeHidden = new System.Windows.Forms.CheckBox();
 			this.MainTabs = new System.Windows.Forms.TabControl();
+			this.AboutTab = new System.Windows.Forms.TabPage();
 			this.FolderSelectionDialog = new System.Windows.Forms.FolderBrowserDialog();
 			this.DirectoryMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.OpenFolder = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,7 +94,6 @@ namespace Sander.DirLister.UI
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.MoveUp = new System.Windows.Forms.ToolStripMenuItem();
 			this.MoveDown = new System.Windows.Forms.ToolStripMenuItem();
-			this.AboutTab = new System.Windows.Forms.TabPage();
 			this.BottomPanel.SuspendLayout();
 			this.HistoryMenu.SuspendLayout();
 			this.LogTab.SuspendLayout();
@@ -95,9 +104,12 @@ namespace Sander.DirLister.UI
 			this.groupBox1.SuspendLayout();
 			this.InputTab.SuspendLayout();
 			this.FilterBox.SuspendLayout();
+			this.FilterTabs.SuspendLayout();
+			this.NoneTab.SuspendLayout();
+			this.WildcardTab.SuspendLayout();
 			this.MainTabs.SuspendLayout();
-			this.DirectoryMenu.SuspendLayout();
 			this.AboutTab.SuspendLayout();
+			this.DirectoryMenu.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// BottomPanel
@@ -113,23 +125,6 @@ namespace Sander.DirLister.UI
 			this.BottomPanel.Size = new System.Drawing.Size(945, 81);
 			this.BottomPanel.TabIndex = 0;
 			// 
-			// LabelHomepage
-			// 
-			this.LabelHomepage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.LabelHomepage.AutoSize = true;
-			this.LabelHomepage.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.LabelHomepage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.LabelHomepage.ForeColor = System.Drawing.Color.Navy;
-			this.LabelHomepage.Location = new System.Drawing.Point(349, 177);
-			this.LabelHomepage.Name = "LabelHomepage";
-			this.LabelHomepage.Size = new System.Drawing.Size(224, 15);
-			this.LabelHomepage.TabIndex = 5;
-			this.LabelHomepage.Text = "https://github.com/SanderSade/DirLister";
-			this.LabelHomepage.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-			this.LabelHomepage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.LabelHomepage_MouseClick);
-			// 
 			// FirstRunLabel
 			// 
 			this.FirstRunLabel.AutoSize = true;
@@ -137,9 +132,9 @@ namespace Sander.DirLister.UI
 			this.FirstRunLabel.ForeColor = System.Drawing.Color.Red;
 			this.FirstRunLabel.Location = new System.Drawing.Point(156, 17);
 			this.FirstRunLabel.Name = "FirstRunLabel";
-			this.FirstRunLabel.Size = new System.Drawing.Size(391, 16);
+			this.FirstRunLabel.Size = new System.Drawing.Size(456, 16);
 			this.FirstRunLabel.TabIndex = 3;
-			this.FirstRunLabel.Text = "First run - choose the default output options and click \"Set default\"";
+			this.FirstRunLabel.Text = "First run - choose the default output options and click \"Set as default options\"";
 			// 
 			// ProgressLabel
 			// 
@@ -168,9 +163,38 @@ namespace Sander.DirLister.UI
 			this.StartButton.Name = "StartButton";
 			this.StartButton.Size = new System.Drawing.Size(121, 63);
 			this.StartButton.TabIndex = 0;
-			this.StartButton.Text = "Start";
+			this.StartButton.Text = "&Start";
 			this.StartButton.UseVisualStyleBackColor = false;
 			this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
+			// 
+			// SetDefault
+			// 
+			this.SetDefault.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.SetDefault.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.SetDefault.Location = new System.Drawing.Point(814, 6);
+			this.SetDefault.Name = "SetDefault";
+			this.SetDefault.Size = new System.Drawing.Size(121, 63);
+			this.SetDefault.TabIndex = 0;
+			this.SetDefault.Text = "Set as &default options";
+			this.SetDefault.UseVisualStyleBackColor = true;
+			this.SetDefault.Click += new System.EventHandler(this.SetDefault_Click);
+			// 
+			// LabelHomepage
+			// 
+			this.LabelHomepage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.LabelHomepage.AutoSize = true;
+			this.LabelHomepage.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.LabelHomepage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.LabelHomepage.ForeColor = System.Drawing.Color.Navy;
+			this.LabelHomepage.Location = new System.Drawing.Point(349, 177);
+			this.LabelHomepage.Name = "LabelHomepage";
+			this.LabelHomepage.Size = new System.Drawing.Size(224, 15);
+			this.LabelHomepage.TabIndex = 5;
+			this.LabelHomepage.Text = "https://github.com/SanderSade/DirLister";
+			this.LabelHomepage.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+			this.LabelHomepage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.LabelHomepage_MouseClick);
 			// 
 			// HistoryMenu
 			// 
@@ -236,9 +260,9 @@ namespace Sander.DirLister.UI
 			// 
 			// KeepOnTop
 			// 
-			this.KeepOnTop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.KeepOnTop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.KeepOnTop.AutoSize = true;
-			this.KeepOnTop.Location = new System.Drawing.Point(550, 322);
+			this.KeepOnTop.Location = new System.Drawing.Point(436, 283);
 			this.KeepOnTop.Name = "KeepOnTop";
 			this.KeepOnTop.Size = new System.Drawing.Size(256, 19);
 			this.KeepOnTop.TabIndex = 7;
@@ -461,18 +485,6 @@ namespace Sander.DirLister.UI
 			this.OutputFolder.Size = new System.Drawing.Size(701, 21);
 			this.OutputFolder.TabIndex = 0;
 			// 
-			// SetDefault
-			// 
-			this.SetDefault.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.SetDefault.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.SetDefault.Location = new System.Drawing.Point(814, 6);
-			this.SetDefault.Name = "SetDefault";
-			this.SetDefault.Size = new System.Drawing.Size(121, 63);
-			this.SetDefault.TabIndex = 0;
-			this.SetDefault.Text = "Set default";
-			this.SetDefault.UseVisualStyleBackColor = true;
-			this.SetDefault.Click += new System.EventHandler(this.SetDefault_Click);
-			// 
 			// InputTab
 			// 
 			this.InputTab.Controls.Add(this.RemoveAllButton);
@@ -491,11 +503,11 @@ namespace Sander.DirLister.UI
 			// RemoveAllButton
 			// 
 			this.RemoveAllButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.RemoveAllButton.Location = new System.Drawing.Point(588, 6);
+			this.RemoveAllButton.Location = new System.Drawing.Point(559, 6);
 			this.RemoveAllButton.Name = "RemoveAllButton";
 			this.RemoveAllButton.Size = new System.Drawing.Size(93, 23);
 			this.RemoveAllButton.TabIndex = 7;
-			this.RemoveAllButton.Text = "Remove all";
+			this.RemoveAllButton.Text = "Remove &all";
 			this.RemoveAllButton.UseVisualStyleBackColor = true;
 			this.RemoveAllButton.Click += new System.EventHandler(this.RemoveAll_Click);
 			// 
@@ -507,7 +519,7 @@ namespace Sander.DirLister.UI
 			this.HistoryButton.Size = new System.Drawing.Size(75, 23);
 			this.HistoryButton.SplitWidth = 30;
 			this.HistoryButton.TabIndex = 6;
-			this.HistoryButton.Text = "History";
+			this.HistoryButton.Text = "&History";
 			this.HistoryButton.UseVisualStyleBackColor = true;
 			// 
 			// DirectoryList
@@ -524,7 +536,7 @@ namespace Sander.DirLister.UI
 			this.DirectoryList.LabelWrap = false;
 			this.DirectoryList.Location = new System.Drawing.Point(9, 37);
 			this.DirectoryList.Name = "DirectoryList";
-			this.DirectoryList.Size = new System.Drawing.Size(672, 297);
+			this.DirectoryList.Size = new System.Drawing.Size(643, 297);
 			this.DirectoryList.TabIndex = 5;
 			this.DirectoryList.UseCompatibleStateImageBehavior = false;
 			this.DirectoryList.View = System.Windows.Forms.View.Details;
@@ -541,50 +553,150 @@ namespace Sander.DirLister.UI
 			this.BrowseButton.Name = "BrowseButton";
 			this.BrowseButton.Size = new System.Drawing.Size(103, 23);
 			this.BrowseButton.TabIndex = 2;
-			this.BrowseButton.Text = "&Select folder";
+			this.BrowseButton.Text = "Select &folder";
 			this.BrowseButton.UseVisualStyleBackColor = true;
 			this.BrowseButton.Click += new System.EventHandler(this.BrowseButton_Click);
 			// 
 			// FilterBox
 			// 
+			this.FilterBox.Controls.Add(this.FilterTabs);
 			this.FilterBox.Controls.Add(this.FilterLabel);
-			this.FilterBox.Controls.Add(this.FilenameFilter);
 			this.FilterBox.Controls.Add(this.IncludeSubfolders);
 			this.FilterBox.Controls.Add(this.IncludeHidden);
 			this.FilterBox.Dock = System.Windows.Forms.DockStyle.Right;
-			this.FilterBox.Location = new System.Drawing.Point(687, 3);
+			this.FilterBox.Location = new System.Drawing.Point(658, 3);
 			this.FilterBox.Name = "FilterBox";
-			this.FilterBox.Size = new System.Drawing.Size(247, 341);
+			this.FilterBox.Size = new System.Drawing.Size(276, 341);
 			this.FilterBox.TabIndex = 0;
 			this.FilterBox.TabStop = false;
 			this.FilterBox.Text = "Options";
 			// 
+			// FilterTabs
+			// 
+			this.FilterTabs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.FilterTabs.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
+			this.FilterTabs.Controls.Add(this.NoneTab);
+			this.FilterTabs.Controls.Add(this.WildcardTab);
+			this.FilterTabs.Controls.Add(this.RegexTab);
+			this.FilterTabs.HotTrack = true;
+			this.FilterTabs.ItemSize = new System.Drawing.Size(67, 23);
+			this.FilterTabs.Location = new System.Drawing.Point(10, 97);
+			this.FilterTabs.Name = "FilterTabs";
+			this.FilterTabs.SelectedIndex = 0;
+			this.FilterTabs.Size = new System.Drawing.Size(260, 238);
+			this.FilterTabs.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+			this.FilterTabs.TabIndex = 4;
+			// 
+			// NoneTab
+			// 
+			this.NoneTab.BackColor = System.Drawing.Color.LightGray;
+			this.NoneTab.Controls.Add(this.label1);
+			this.NoneTab.Location = new System.Drawing.Point(4, 27);
+			this.NoneTab.Name = "NoneTab";
+			this.NoneTab.Padding = new System.Windows.Forms.Padding(3);
+			this.NoneTab.Size = new System.Drawing.Size(252, 207);
+			this.NoneTab.TabIndex = 0;
+			this.NoneTab.Text = "None";
+			// 
+			// label1
+			// 
+			this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.label1.Location = new System.Drawing.Point(3, 3);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(246, 201);
+			this.label1.TabIndex = 0;
+			this.label1.Text = "Filters are disabled for listings run from the shell integration (Explorer right-" +
+    "click menu).";
+			// 
+			// WildcardTab
+			// 
+			this.WildcardTab.Controls.Add(this.WildcardList);
+			this.WildcardTab.Controls.Add(this.ClearWildcardsButton);
+			this.WildcardTab.Controls.Add(this.AddWildcardButton);
+			this.WildcardTab.Controls.Add(this.WildcardEdit);
+			this.WildcardTab.Location = new System.Drawing.Point(4, 27);
+			this.WildcardTab.Name = "WildcardTab";
+			this.WildcardTab.Padding = new System.Windows.Forms.Padding(3);
+			this.WildcardTab.Size = new System.Drawing.Size(252, 207);
+			this.WildcardTab.TabIndex = 1;
+			this.WildcardTab.Text = "Wildcard";
+			this.WildcardTab.UseVisualStyleBackColor = true;
+			// 
+			// WildcardList
+			// 
+			this.WildcardList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+			this.WildcardList.BackColor = System.Drawing.Color.LightGray;
+			this.WildcardList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.WildcardList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.WildcardColumn});
+			this.WildcardList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+			this.WildcardList.LabelWrap = false;
+			this.WildcardList.Location = new System.Drawing.Point(7, 37);
+			this.WildcardList.Name = "WildcardList";
+			this.WildcardList.Size = new System.Drawing.Size(166, 164);
+			this.WildcardList.TabIndex = 3;
+			this.WildcardList.UseCompatibleStateImageBehavior = false;
+			this.WildcardList.View = System.Windows.Forms.View.Details;
+			// 
+			// WildcardColumn
+			// 
+			this.WildcardColumn.Width = 9000;
+			// 
+			// ClearWildcardsButton
+			// 
+			this.ClearWildcardsButton.AutoSize = true;
+			this.ClearWildcardsButton.Location = new System.Drawing.Point(179, 37);
+			this.ClearWildcardsButton.Name = "ClearWildcardsButton";
+			this.ClearWildcardsButton.Size = new System.Drawing.Size(67, 25);
+			this.ClearWildcardsButton.TabIndex = 2;
+			this.ClearWildcardsButton.Text = "Clear";
+			this.ClearWildcardsButton.UseVisualStyleBackColor = true;
+			this.ClearWildcardsButton.Click += new System.EventHandler(this.ClearWildcardsButton_Click);
+			// 
+			// AddWildcardButton
+			// 
+			this.AddWildcardButton.AutoSize = true;
+			this.AddWildcardButton.Location = new System.Drawing.Point(179, 6);
+			this.AddWildcardButton.Name = "AddWildcardButton";
+			this.AddWildcardButton.Size = new System.Drawing.Size(67, 25);
+			this.AddWildcardButton.TabIndex = 1;
+			this.AddWildcardButton.Text = "Add";
+			this.AddWildcardButton.UseVisualStyleBackColor = true;
+			this.AddWildcardButton.Click += new System.EventHandler(this.AddWildcardButton_Click);
+			// 
+			// WildcardEdit
+			// 
+			this.WildcardEdit.Location = new System.Drawing.Point(7, 6);
+			this.WildcardEdit.Name = "WildcardEdit";
+			this.WildcardEdit.Size = new System.Drawing.Size(166, 23);
+			this.WildcardEdit.TabIndex = 0;
+			this.WildcardEdit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.WildcardEdit_KeyDown);
+			// 
+			// RegexTab
+			// 
+			this.RegexTab.Location = new System.Drawing.Point(4, 27);
+			this.RegexTab.Name = "RegexTab";
+			this.RegexTab.Padding = new System.Windows.Forms.Padding(3);
+			this.RegexTab.Size = new System.Drawing.Size(252, 207);
+			this.RegexTab.TabIndex = 2;
+			this.RegexTab.Text = "Regex";
+			this.RegexTab.UseVisualStyleBackColor = true;
+			// 
 			// FilterLabel
 			// 
 			this.FilterLabel.AutoSize = true;
-			this.FilterLabel.Location = new System.Drawing.Point(6, 79);
+			this.FilterLabel.Location = new System.Drawing.Point(7, 69);
 			this.FilterLabel.Name = "FilterLabel";
 			this.FilterLabel.Size = new System.Drawing.Size(88, 15);
 			this.FilterLabel.TabIndex = 3;
 			this.FilterLabel.Text = "Filename filter:";
 			// 
-			// FilenameFilter
-			// 
-			this.FilenameFilter.DisplayMember = "0";
-			this.FilenameFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.FilenameFilter.Items.AddRange(new object[] {
-            "None",
-            "Wildcard",
-            "Regular expression"});
-			this.FilenameFilter.Location = new System.Drawing.Point(7, 106);
-			this.FilenameFilter.Name = "FilenameFilter";
-			this.FilenameFilter.Size = new System.Drawing.Size(226, 23);
-			this.FilenameFilter.TabIndex = 2;
-			// 
 			// IncludeSubfolders
 			// 
 			this.IncludeSubfolders.AutoSize = true;
-			this.IncludeSubfolders.Location = new System.Drawing.Point(7, 47);
+			this.IncludeSubfolders.Location = new System.Drawing.Point(7, 45);
 			this.IncludeSubfolders.Name = "IncludeSubfolders";
 			this.IncludeSubfolders.Size = new System.Drawing.Size(226, 19);
 			this.IncludeSubfolders.TabIndex = 1;
@@ -618,6 +730,17 @@ namespace Sander.DirLister.UI
 			this.MainTabs.SelectedIndex = 0;
 			this.MainTabs.Size = new System.Drawing.Size(945, 380);
 			this.MainTabs.TabIndex = 1;
+			// 
+			// AboutTab
+			// 
+			this.AboutTab.Controls.Add(this.LabelHomepage);
+			this.AboutTab.Location = new System.Drawing.Point(4, 29);
+			this.AboutTab.Name = "AboutTab";
+			this.AboutTab.Padding = new System.Windows.Forms.Padding(3);
+			this.AboutTab.Size = new System.Drawing.Size(937, 347);
+			this.AboutTab.TabIndex = 3;
+			this.AboutTab.Text = "About";
+			this.AboutTab.UseVisualStyleBackColor = true;
 			// 
 			// FolderSelectionDialog
 			// 
@@ -670,17 +793,6 @@ namespace Sander.DirLister.UI
 			this.MoveDown.Text = "Move down";
 			this.MoveDown.Click += new System.EventHandler(this.MoveDown_Click);
 			// 
-			// AboutTab
-			// 
-			this.AboutTab.Controls.Add(this.LabelHomepage);
-			this.AboutTab.Location = new System.Drawing.Point(4, 29);
-			this.AboutTab.Name = "AboutTab";
-			this.AboutTab.Padding = new System.Windows.Forms.Padding(3);
-			this.AboutTab.Size = new System.Drawing.Size(937, 347);
-			this.AboutTab.TabIndex = 3;
-			this.AboutTab.Text = "About";
-			this.AboutTab.UseVisualStyleBackColor = true;
-			// 
 			// MainForm
 			// 
 			this.AllowDrop = true;
@@ -713,10 +825,14 @@ namespace Sander.DirLister.UI
 			this.InputTab.ResumeLayout(false);
 			this.FilterBox.ResumeLayout(false);
 			this.FilterBox.PerformLayout();
+			this.FilterTabs.ResumeLayout(false);
+			this.NoneTab.ResumeLayout(false);
+			this.WildcardTab.ResumeLayout(false);
+			this.WildcardTab.PerformLayout();
 			this.MainTabs.ResumeLayout(false);
-			this.DirectoryMenu.ResumeLayout(false);
 			this.AboutTab.ResumeLayout(false);
 			this.AboutTab.PerformLayout();
+			this.DirectoryMenu.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -741,7 +857,6 @@ namespace Sander.DirLister.UI
 		private System.Windows.Forms.Button BrowseButton;
 		private System.Windows.Forms.GroupBox FilterBox;
 		private System.Windows.Forms.Label FilterLabel;
-		private System.Windows.Forms.ComboBox FilenameFilter;
 		private System.Windows.Forms.CheckBox IncludeSubfolders;
 		private System.Windows.Forms.CheckBox IncludeHidden;
 		private System.Windows.Forms.TabControl MainTabs;
@@ -776,6 +891,16 @@ namespace Sander.DirLister.UI
 		private System.Windows.Forms.CheckBox ProgressWindowCheck;
 		private System.Windows.Forms.CheckBox KeepOnTop;
 		private System.Windows.Forms.TabPage AboutTab;
+		private System.Windows.Forms.TabControl FilterTabs;
+		private System.Windows.Forms.TabPage NoneTab;
+		private System.Windows.Forms.TabPage WildcardTab;
+		private System.Windows.Forms.TabPage RegexTab;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.ComboBox WildcardEdit;
+		private System.Windows.Forms.Button AddWildcardButton;
+		private System.Windows.Forms.Button ClearWildcardsButton;
+		private System.Windows.Forms.ListView WildcardList;
+		private System.Windows.Forms.ColumnHeader WildcardColumn;
 	}
 }
 
