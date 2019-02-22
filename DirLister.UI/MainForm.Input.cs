@@ -77,6 +77,8 @@ namespace Sander.DirLister.UI
 		private void HistoryClearMenuItem_Click(object sender, EventArgs e)
 		{
 			var count = HistoryMenu.Items.Count;
+			if (count == 2)
+				return;
 			for (var i = 2; i < count; i++) HistoryMenu.Items.RemoveAt(2);
 			History.Default.DirectoryHistory.Clear();
 		}

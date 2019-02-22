@@ -74,7 +74,7 @@ namespace Sander.DirLister.UI.App
 						message);
 				};
 
-				var task = Task.Run(() => Core.DirLister.List(_configuration));
+				var task = Core.DirLister.ListAsync(_configuration);
 				Application.Run(_progressForm);
 				task.GetAwaiter().GetResult();
 			}

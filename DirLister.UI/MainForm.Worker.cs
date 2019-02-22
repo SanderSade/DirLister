@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sander.DirLister.Core;
 
@@ -39,7 +38,7 @@ namespace Sander.DirLister.UI
 			_configuration.ProgressAction = (progress, message) => Invoke(ProgressDelegate, progress, message);
 		}
 
-		private void StartButton_Click(object sender, EventArgs e)
+		private async void StartButton_Click(object sender, EventArgs e)
 		{
 			if (!UpdateConfiguration())
 				return;
@@ -47,8 +46,7 @@ namespace Sander.DirLister.UI
 			ResetUi();
 			StartButton.Enabled = false;
 			MainTabs.SelectedTab = LogTab;
-			var t = Task.Run(() => Core.DirLister.List(_configuration));
-			t.Wait();
+			await Core.DirLister.ListAsync(_configuration);			
 			StartButton.Enabled = true;
 		}
 
