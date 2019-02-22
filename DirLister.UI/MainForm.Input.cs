@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sander.DirLister.Core.Application;
@@ -95,6 +97,12 @@ namespace Sander.DirLister.UI
 			{
 				// ReSharper disable once CoVariantArrayConversion
 				WildcardEdit.Items.AddRange(History.Default.WildcardFilter.Cast<string>().Distinct().ToArray());
+			}
+
+			if (History.Default?.RegexFilter != null)
+			{
+				// ReSharper disable once CoVariantArrayConversion
+				RegexCombo.Items.AddRange(History.Default.RegexFilter.Cast<string>().Distinct().ToArray());
 			}
 
 			if (inputFolders != null)
@@ -220,6 +228,68 @@ namespace Sander.DirLister.UI
 		private void ClearWildcardsButton_Click(object sender, EventArgs e)
 		{
 			WildcardList.Items.Clear();
+		}
+
+		private void ValidateRegexButton_Click(object sender, EventArgs e)
+		{
+			RegexErrorLabel.Text = string.Empty;
+			RegexErrorLabel.ForeColor = Color.Black;
+			if (string.IsNullOrWhiteSpace(RegexCombo.Text))
+				return;
+
+			string validationError = null;
+			var regex = ValidateRegex(ref validationError);
+			if (regex != null)
+			{
+				RegexErrorLabel.Text = "Valid!";
+				AddRegexToHistory(regex);
+			}
+			else
+			{
+				RegexErrorLabel.ForeColor = Color.Red;
+				RegexErrorLabel.Text = validationError;
+			}
+		}
+
+		private Regex ValidateRegex(ref string regexError)
+		{
+			try
+			{
+				return new Regex(RegexCombo.Text,
+					RegexOptions.CultureInvariant | RegexOptions.IgnoreCase | RegexOptions.Singleline);
+			}
+			catch (Exception e)
+			{
+				regexError = e.Message;
+				return null;
+			}
+		}
+
+		private void RegexCombo_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Enter)
+				ValidateRegexButton_Click(sender, e);
+			else
+				RegexErrorLabel.Text = string.Empty;
+		}
+
+		private void AddRegexToHistory(Regex regex)
+		{
+			var regexSource = regex.ToString();
+
+			var regexes = RegexCombo.Items.Cast<string>().ToList();
+			if (regexes.Any(x => string.Compare(x, regexSource, StringComparison.OrdinalIgnoreCase) == 0))
+				return;
+
+			RegexCombo.Items.Add(regexSource);
+
+			if (History.Default.RegexFilter == null)
+				History.Default.RegexFilter = new StringCollection();
+
+			regexes.Insert(0, regexSource);
+			History.Default.RegexFilter.AddRange(regexes.Take(History.Default.FilterHistoryLength).ToArray());
+
+			History.Default.Save();
 		}
 	}
 }

@@ -47,10 +47,9 @@ namespace Sander.DirLister.UI.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string RegexFilter {
+        public global::System.Collections.Specialized.StringCollection RegexFilter {
             get {
-                return ((string)(this["RegexFilter"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["RegexFilter"]));
             }
             set {
                 this["RegexFilter"] = value;

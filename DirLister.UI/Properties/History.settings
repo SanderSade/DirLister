@@ -8,7 +8,7 @@
     <Setting Name="WildcardFilter" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="RegexFilter" Type="System.String" Scope="User">
+    <Setting Name="RegexFilter" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="DirectoryHistoryLength" Type="System.Int32" Scope="User">

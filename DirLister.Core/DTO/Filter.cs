@@ -16,7 +16,7 @@ namespace Sander.DirLister.Core
 		/// <summary>
 		///     No-filtering constructor
 		/// </summary>
-		internal Filter()
+		public Filter()
 		{
 			_isWildcard = true;
 		}
@@ -35,9 +35,10 @@ namespace Sander.DirLister.Core
 		///     Apply regex filter
 		/// </summary>
 		/// <param name="regex"></param>
-		public Filter(string regex)
+		public Filter(Regex regex)
 		{
-			_regex = new Regex(regex, RegexOptions.CultureInvariant);
+			if (regex != null)
+				_regex = regex;
 		}
 
 		/// <summary>

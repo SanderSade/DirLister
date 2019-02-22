@@ -47,6 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\HyperlinkLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="App\ProgressForm.cs">
       <SubType>Form</SubType>
     </Compile>

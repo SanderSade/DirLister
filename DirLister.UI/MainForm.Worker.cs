@@ -71,17 +71,21 @@ namespace Sander.DirLister.UI
 
 			if (DirectoryList.Items.Count == 0)
 			{
-				MessageBox.Show(this,"No folders selected!", "Cannot continue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show(this, "No folders selected!", "Cannot continue", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return false;
 			}
 
 			_configuration.InputFolders = DirectoryList.Items.OfType<ListViewItem>()
-			                                           .Select(x => x.Text)
-			                                           .ToList();
+													   .Select(x => x.Text)
+													   .ToList();
 
 			_configuration.OutputFormats = formats;
 			_configuration.OutputFolder = OutputFolder.Text;
-			_configuration.Filter = GetFilter();
+			var filter = GetFilter();
+			if (filter == null)
+				return false;
+
+			_configuration.Filter = filter;
 			_configuration.IncludeFileDates = IncludeFileDates.Checked;
 			_configuration.IncludeHidden = IncludeHidden.Checked;
 			_configuration.IncludeMediaInfo = IncludeMediaInfo.Checked;
@@ -93,16 +97,32 @@ namespace Sander.DirLister.UI
 		}
 
 
+		/// <summary>
+		/// Returns filter or null in case of error
+		/// </summary>
+		/// <returns></returns>
 		private Filter GetFilter()
 		{
 			switch (FilterTabs.SelectedIndex)
 			{
 				case 1://wildcard
 					if (WildcardList.Items.Count == 0)
-						return null;
+						return new Filter();
 					return new Filter(WildcardList.Items.Cast<ListViewItem>().Select(x => x.Text).ToArray());
-				default:
+				case 2: //regex
+					if (string.IsNullOrWhiteSpace(RegexCombo.Text))
+						return new Filter();
+					string error = null;
+					var regex = ValidateRegex(ref error);
+					if (regex != null)
+					{
+						AddRegexToHistory(regex);
+						return new Filter(regex);
+					}
+					MessageBox.Show(this, $"Invalid regex:{Environment.NewLine}{Environment.NewLine}{error}", "Invalid filter!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					return null;
+				default://none
+					return new Filter();
 
 			}
 		}

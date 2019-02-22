@@ -25,16 +25,16 @@ namespace Sander.DirLister.UI.App
 
 		protected override void OnMouseDown(MouseEventArgs mevent)
 		{
-			var splitRect = new Rectangle(Width - SplitWidth, 0, SplitWidth, Height);
+			//var splitRect = new Rectangle(Width - SplitWidth, 0, SplitWidth, Height);
 
 			// Figure out if the button click was on the button itself or the menu split
 			if (Menu != null &&
-				mevent.Button == MouseButtons.Left 
+				mevent.Button == MouseButtons.Left
 				//&& splitRect.Contains(mevent.Location)
 				)
 			{
 				Menu.Show(this, 0, Height);    // Shows menu under button
-													//Menu.Show(this, mevent.Location); // Shows menu at click location
+											   //Menu.Show(this, mevent.Location); // Shows menu at click location
 			}
 			else
 			{
