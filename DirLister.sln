@@ -18,6 +18,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirLister.UI", "DirLister.UI\DirLister.UI.csproj", "{99BCB95A-0895-49BF-92EC-C6710224444E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{30C0EB98-D796-4144-8AC3-ECCD42400A19}"
+	ProjectSection(SolutionItems) = preProject
+		docs\DirLister.2019-02-22_14-32-27.C_DirListerTest.csv = docs\DirLister.2019-02-22_14-32-27.C_DirListerTest.csv
+		docs\DirLister.2019-02-22_14-32-27.C_DirListerTest.html = docs\DirLister.2019-02-22_14-32-27.C_DirListerTest.html
+		docs\DirLister.2019-02-22_14-32-27.C_DirListerTest.json = docs\DirLister.2019-02-22_14-32-27.C_DirListerTest.json
+		docs\DirLister.2019-02-22_14-32-27.C_DirListerTest.md = docs\DirLister.2019-02-22_14-32-27.C_DirListerTest.md
+		docs\DirLister.2019-02-22_14-32-27.C_DirListerTest.txt = docs\DirLister.2019-02-22_14-32-27.C_DirListerTest.txt
+		docs\DirLister.2019-02-22_14-32-27.C_DirListerTest.xml = docs\DirLister.2019-02-22_14-32-27.C_DirListerTest.xml
+		docs\readme.md = docs\readme.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +53,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8305FA79-5B08-4266-A9AC-2ECA859CDE15} = {572181EE-738E-4894-9305-4F5E178D247B}
+		{30C0EB98-D796-4144-8AC3-ECCD42400A19} = {1C02106B-EE71-49CD-B971-01937F1B397C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {93EE51C7-3B6F-4EFE-A53B-977458248E0E}
