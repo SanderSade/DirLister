@@ -6,9 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sander.DirLister.Core.Application;
 using Sander.DirLister.UI.Properties;
@@ -21,12 +19,8 @@ namespace Sander.DirLister.UI
 		{
 			Mediator.AddToHistory(directory);
 			while (HistoryMenu.Items.Count > 2)
-			{
 				HistoryMenu.Items.RemoveAt(2);
-			}
 			AddHistoryToMenu();
-
-
 		}
 
 		private void AddHistoryToMenu()
@@ -56,12 +50,12 @@ namespace Sander.DirLister.UI
 				if (string.Compare(listItem.Text, directory, StringComparison.OrdinalIgnoreCase) == 0)
 					addToList = false;
 
-			if (addToList) DirectoryList.Items.Add(new ListViewItem { Text = directory });
+			if (addToList) DirectoryList.Items.Add(new ListViewItem {Text = directory});
 		}
 
 
 		/// <summary>
-		/// Remove all items from DirectoryList
+		///     Remove all items from DirectoryList
 		/// </summary>
 		private void RemoveAll_Click(object sender, EventArgs e)
 		{
@@ -70,17 +64,17 @@ namespace Sander.DirLister.UI
 
 
 		/// <summary>
-		/// Open folder in Explorer
+		///     Open folder in Explorer
 		/// </summary>
 		private void DirectoryList_DoubleClick(object sender, EventArgs e)
 		{
 			Process.Start("explorer.exe", DirectoryList.SelectedItems[0]
-													   .Text);
+				.Text);
 		}
 
 
 		/// <summary>
-		/// Clear history menu
+		///     Clear history menu
 		/// </summary>
 		private void HistoryClearMenuItem_Click(object sender, EventArgs e)
 		{
@@ -99,24 +93,14 @@ namespace Sander.DirLister.UI
 				AddHistoryToMenu();
 
 			if (History.Default?.WildcardFilter != null)
-			{
-				// ReSharper disable once CoVariantArrayConversion
 				WildcardEdit.Items.AddRange(History.Default.WildcardFilter.Cast<string>().Distinct().ToArray());
-			}
 
 			if (History.Default?.RegexFilter != null)
-			{
-				// ReSharper disable once CoVariantArrayConversion
 				RegexCombo.Items.AddRange(History.Default.RegexFilter.Cast<string>().Distinct().ToArray());
-			}
 
 			if (inputFolders != null)
-			{
 				foreach (var folder in inputFolders)
-				{
 					AddFolderToList(folder);
-				}
-			}
 
 			IncludeHidden.Checked = _configuration.IncludeHidden;
 			IncludeSubfolders.Checked = _configuration.IncludeSubfolders;
@@ -130,17 +114,15 @@ namespace Sander.DirLister.UI
 		private void DirectoryList_MouseClick(object sender, MouseEventArgs e)
 		{
 			if (e.Button == MouseButtons.Right)
-			{
 				if (DirectoryList.FocusedItem.Bounds.Contains(e.Location))
 				{
 					DirectoryMenu.Items[nameof(MoveUp)]
-								 .Visible = DirectoryList.FocusedItem.Index > 0;
+							.Visible = DirectoryList.FocusedItem.Index > 0;
 
 					DirectoryMenu.Items[nameof(MoveDown)]
-								 .Visible = DirectoryList.FocusedItem.Index < DirectoryList.Items.Count - 1;
+							.Visible = DirectoryList.FocusedItem.Index < DirectoryList.Items.Count - 1;
 					DirectoryMenu.Show(Cursor.Position);
 				}
-			}
 		}
 
 
@@ -183,7 +165,9 @@ namespace Sander.DirLister.UI
 		private void LabelHomepage_MouseClick(object sender, MouseEventArgs e)
 		{
 			if (e.Button == MouseButtons.Right)
-				Process.Start("explorer.exe", Path.GetDirectoryName(ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath));
+				Process.Start("explorer.exe",
+					Path.GetDirectoryName(ConfigurationManager
+						.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath));
 			else
 				Process.Start("https://github.com/SanderSade/DirLister");
 		}
@@ -203,7 +187,7 @@ namespace Sander.DirLister.UI
 
 			if (addToList)
 			{
-				WildcardList.Items.Add(new ListViewItem { Text = wildcard });
+				WildcardList.Items.Add(new ListViewItem {Text = wildcard});
 				WildcardEdit.Text = string.Empty;
 
 				var wildcards = WildcardEdit.Items.Cast<string>().ToList();
@@ -227,7 +211,6 @@ namespace Sander.DirLister.UI
 		{
 			if (!string.IsNullOrWhiteSpace(WildcardEdit.Text))
 				AddWildcard(WildcardEdit.Text);
-
 		}
 
 		private void ClearWildcardsButton_Click(object sender, EventArgs e)
