@@ -21,11 +21,12 @@ namespace Sander.DirLister.Core.Application
 			_skipListMaking = skipListMaking;
 		}
 
-		internal List<FileEntry> Run()
+		internal List<FileEntry> Run(out bool noErrors)
 		{
 			if (!ValidateConfiguration())
 			{
 				Trace.Flush();
+				noErrors = false;
 				return null;
 			}
 
@@ -37,6 +38,7 @@ namespace Sander.DirLister.Core.Application
 			if (entries == null || entries.Count == 0)
 			{
 				_configuration.Log(TraceLevel.Error, "No files found or error gathering data!");
+				noErrors = false;
 				return null;
 			}
 
@@ -49,6 +51,7 @@ namespace Sander.DirLister.Core.Application
 			if (_skipListMaking)
 			{
 				RunComplete(sw, entries);
+				noErrors = true;
 				return entries;
 			}
 
@@ -61,7 +64,7 @@ namespace Sander.DirLister.Core.Application
 
 			if (_configuration.OpenAfter)
 				writer.OpenFileOrFolder();
-
+			noErrors = true;
 			return entries;
 		}
 

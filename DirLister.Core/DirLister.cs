@@ -13,19 +13,20 @@ namespace Sander.DirLister.Core
 		/// Run directory listing with specified configuration, creating output files as needed
 		/// </summary>
 		/// <param name="configuration"></param>
-		public static void List(Configuration configuration)
+		public static bool List(Configuration configuration)
 		{
 			var runner = new Runner(configuration, false);
-			runner.Run();
+			runner.Run(out var noErrors);
+			return noErrors;
 		}
 
 		/// <summary>
 		/// Run directory listing with specified configuration, creating output files as needed
 		/// </summary>
 		/// <param name="configuration"></param>
-		public static async Task ListAsync(Configuration configuration)
-		{			
-			await Task.Run(() => List(configuration));
+		public static async Task<bool> ListAsync(Configuration configuration)
+		{
+			return await Task.Run(() => List(configuration));
 		}
 
 
@@ -40,7 +41,7 @@ namespace Sander.DirLister.Core
 		public static List<FileEntry> Run(Configuration configuration)
 		{
 			var runner = new Runner(configuration, true);
-			return runner.Run();
+			return runner.Run(out var noErrors);
 		}
 
 

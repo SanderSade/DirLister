@@ -103,6 +103,8 @@
 			this.ShowInTaskbar = false;
 			this.Text = "ProgressForm";
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ProgressForm_FormClosed);
+			this.Load += new System.EventHandler(this.ProgressForm_Load);
+			this.Shown += new System.EventHandler(this.ProgressForm_Shown);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

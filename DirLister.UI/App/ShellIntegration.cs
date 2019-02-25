@@ -25,7 +25,7 @@ namespace Sander.DirLister.UI.App
 			shortcut.Description = Title;
 			shortcut.IconLocation = $"\"{target}\", 0";
 			shortcut.TargetPath = target;
-			shortcut.Save();				
+			shortcut.Save();
 		}
 
 

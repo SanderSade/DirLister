@@ -57,7 +57,7 @@ namespace Sander.DirLister.UI
 		{
 			MessageBox.Show($"Fatal error. {message}\r\n\r\n{ex}",
 				"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			Environment.Exit(0);
+			Environment.Exit(1);
 		}
 	}
 }

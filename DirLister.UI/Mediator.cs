@@ -20,17 +20,20 @@ namespace Sander.DirLister.UI
 			folders = folders?.Select(x => Utils.EnsureBackslash(x.Trim('"'))).ToArray();
 
 			var configuration = ReadConfiguration();
-			//folders = new[] { @"c:\dev", @"c:\tools", @"c:\temp" };
-			//configuration.IncludeMediaInfo = true;
+
 			if (Settings.Default.FirstRun || Settings.Default.ShowUiFromShell || folders == null || folders.Length == 0)
 			{
 
 				Application.Run(new MainForm(configuration, null, folders));
+				Application.Exit();
+				Environment.Exit(0);
 			}
 			else
 			{
 				var silent = new SilentRunner(configuration);
 				silent.RunSilent(folders);
+				Application.Exit();
+				Environment.Exit(0);
 			}
 		}
 
