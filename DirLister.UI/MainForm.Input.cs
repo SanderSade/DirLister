@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,28 +17,35 @@ namespace Sander.DirLister.UI
 {
 	public sealed partial class MainForm
 	{
-		private void AddFolderToHistory(string directory, bool isStartup = false)
+		private void AddFolderToHistory(string directory)
 		{
-			var addToHistory = true;
-
-			foreach (var historyMenuItem in HistoryMenu.Items.OfType<ToolStripMenuItem>())
-				if (string.Compare(historyMenuItem.Text, directory, StringComparison.OrdinalIgnoreCase) == 0)
-					addToHistory = false;
-
-			if (addToHistory)
+			Mediator.AddToHistory(directory);
+			while (HistoryMenu.Items.Count > 2)
 			{
-				while (HistoryMenu.Items.Count >= History.Default.DirectoryHistoryLength)
-					HistoryMenu.Items.RemoveAt(History.Default.DirectoryHistoryLength - 1);
-
-				var menuItem = new ToolStripMenuItem(directory) { Tag = "folder" };
-				menuItem.Click += delegate (object sender, EventArgs args)
-								  {
-									  if (sender is ToolStripMenuItem item) AddFolderToList(item.Text);
-								  };
-				HistoryMenu.Items.Insert(2, menuItem);
+				HistoryMenu.Items.RemoveAt(2);
 			}
+			AddHistoryToMenu();
 
-			if (!isStartup) Task.Run(() => Mediator.AddToHistory(directory));
+
+		}
+
+		private void AddHistoryToMenu()
+		{
+			HistoryMenu.Items.AddRange(
+				// ReSharper disable once CoVariantArrayConversion
+				History.Default.DirectoryHistory
+					.Cast<string>()
+					.Distinct()
+					.Select(x =>
+					{
+						var menuItem = new ToolStripMenuItem(x);
+						menuItem.Click += delegate(object sender, EventArgs args)
+						{
+							if (sender is ToolStripMenuItem item) AddFolderToList(item.Text);
+						};
+						return menuItem;
+					})
+					.ToArray());
 		}
 
 
@@ -81,19 +89,14 @@ namespace Sander.DirLister.UI
 				return;
 			for (var i = 2; i < count; i++) HistoryMenu.Items.RemoveAt(2);
 			History.Default.DirectoryHistory.Clear();
+			History.Default.Save();
 		}
 
 
 		private void InitializeInput(IEnumerable<string> inputFolders)
 		{
-			//todo: filters
-
 			if (History.Default?.DirectoryHistory != null)
-			{
-				foreach (var folder in History.Default.DirectoryHistory)
-					AddFolderToHistory(folder, true);
-
-			}
+				AddHistoryToMenu();
 
 			if (History.Default?.WildcardFilter != null)
 			{

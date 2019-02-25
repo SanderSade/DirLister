@@ -74,7 +74,10 @@ namespace Sander.DirLister.UI
 
 			History.Default.DirectoryHistory.Clear();
 			History.Default.DirectoryHistory.AddRange(
-				history.Distinct(StringComparer.OrdinalIgnoreCase).Take(History.Default.DirectoryHistoryLength).ToArray());
+				history
+					.Distinct(StringComparer.OrdinalIgnoreCase)
+					.Take(History.Default.DirectoryHistoryLength)
+					.ToArray());
 			History.Default.Save();
 		}
 	}
