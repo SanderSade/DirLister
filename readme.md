@@ -3,7 +3,7 @@
 Easy-to use utility for quickly listing folder or drive contents. DirLister may be run from graphical interface or Windows Explorer right-click menu 
 
 ### Features
-* Multi-format output: HTML, plain text (.txt), CSV, JSON, XML, Markdown (.md). See output examples [here](https://github.com/SanderSade/DirLister/tree/master/docs)
+* Multi-format output: HTML, plain text (.txt), CSV, JSON, XML, Markdown (.md). See output examples [here](https://github.com/SanderSade/DirLister/tree/master/docs), also [rendered HTML page](https://sandersade.github.io/DirLister/DirLister.2019-02-22_14-32-27.C_DirListerTest.html)
 * Filtering by filename (multiple wildcards or regular expression)
 * Shell integration - can be run from right-click menu for folders and drives, with or without opening UI. Use Sent To --> DirLister to create a list of multiple folders directly from Explorer.
 * Can include file sizes
