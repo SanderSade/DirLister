@@ -67,6 +67,7 @@ namespace Sander.DirLister.UI
 			this.OutputFolder = new System.Windows.Forms.TextBox();
 			this.InputTab = new System.Windows.Forms.TabPage();
 			this.RemoveAllButton = new System.Windows.Forms.Button();
+			this.HistoryButton = new Sander.DirLister.UI.App.SplitButton();
 			this.DirectoryList = new System.Windows.Forms.ListView();
 			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.BrowseButton = new System.Windows.Forms.Button();
@@ -81,6 +82,10 @@ namespace Sander.DirLister.UI
 			this.AddWildcardButton = new System.Windows.Forms.Button();
 			this.WildcardEdit = new System.Windows.Forms.ComboBox();
 			this.RegexTab = new System.Windows.Forms.TabPage();
+			this.RegexHelpPanel = new System.Windows.Forms.Panel();
+			this.txt2re = new Sander.DirLister.UI.App.HyperlinkLabel();
+			this.regexr = new Sander.DirLister.UI.App.HyperlinkLabel();
+			this.regexstorm = new Sander.DirLister.UI.App.HyperlinkLabel();
 			this.RegexErrorLabel = new System.Windows.Forms.Label();
 			this.ValidateRegexButton = new System.Windows.Forms.Button();
 			this.RegexCombo = new System.Windows.Forms.ComboBox();
@@ -96,11 +101,6 @@ namespace Sander.DirLister.UI
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.MoveUp = new System.Windows.Forms.ToolStripMenuItem();
 			this.MoveDown = new System.Windows.Forms.ToolStripMenuItem();
-			this.RegexHelpPanel = new System.Windows.Forms.Panel();
-			this.HistoryButton = new Sander.DirLister.UI.App.SplitButton();
-			this.regexstorm = new Sander.DirLister.UI.App.HyperlinkLabel();
-			this.regexr = new Sander.DirLister.UI.App.HyperlinkLabel();
-			this.txt2re = new Sander.DirLister.UI.App.HyperlinkLabel();
 			this.BottomPanel.SuspendLayout();
 			this.HistoryMenu.SuspendLayout();
 			this.LogTab.SuspendLayout();
@@ -115,10 +115,10 @@ namespace Sander.DirLister.UI
 			this.NoneTab.SuspendLayout();
 			this.WildcardTab.SuspendLayout();
 			this.RegexTab.SuspendLayout();
+			this.RegexHelpPanel.SuspendLayout();
 			this.MainTabs.SuspendLayout();
 			this.AboutTab.SuspendLayout();
 			this.DirectoryMenu.SuspendLayout();
-			this.RegexHelpPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// BottomPanel
@@ -520,6 +520,17 @@ namespace Sander.DirLister.UI
 			this.RemoveAllButton.UseVisualStyleBackColor = true;
 			this.RemoveAllButton.Click += new System.EventHandler(this.RemoveAll_Click);
 			// 
+			// HistoryButton
+			// 
+			this.HistoryButton.Location = new System.Drawing.Point(118, 6);
+			this.HistoryButton.Menu = this.HistoryMenu;
+			this.HistoryButton.Name = "HistoryButton";
+			this.HistoryButton.Size = new System.Drawing.Size(75, 23);
+			this.HistoryButton.SplitWidth = 30;
+			this.HistoryButton.TabIndex = 6;
+			this.HistoryButton.Text = "&History";
+			this.HistoryButton.UseVisualStyleBackColor = true;
+			// 
 			// DirectoryList
 			// 
 			this.DirectoryList.Activation = System.Windows.Forms.ItemActivation.OneClick;
@@ -686,6 +697,56 @@ namespace Sander.DirLister.UI
 			this.RegexTab.Text = "Regex";
 			this.RegexTab.UseVisualStyleBackColor = true;
 			// 
+			// RegexHelpPanel
+			// 
+			this.RegexHelpPanel.Controls.Add(this.txt2re);
+			this.RegexHelpPanel.Controls.Add(this.regexr);
+			this.RegexHelpPanel.Controls.Add(this.regexstorm);
+			this.RegexHelpPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.RegexHelpPanel.Location = new System.Drawing.Point(3, 143);
+			this.RegexHelpPanel.Name = "RegexHelpPanel";
+			this.RegexHelpPanel.Size = new System.Drawing.Size(246, 61);
+			this.RegexHelpPanel.TabIndex = 3;
+			// 
+			// txt2re
+			// 
+			this.txt2re.AutoSize = true;
+			this.txt2re.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.txt2re.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline);
+			this.txt2re.ForeColor = System.Drawing.Color.Navy;
+			this.txt2re.Location = new System.Drawing.Point(3, 45);
+			this.txt2re.Name = "txt2re";
+			this.txt2re.Size = new System.Drawing.Size(99, 15);
+			this.txt2re.TabIndex = 2;
+			this.txt2re.Text = "https://txt2re.com";
+			this.txt2re.Url = "https://txt2re.com";
+			// 
+			// regexr
+			// 
+			this.regexr.AutoSize = true;
+			this.regexr.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.regexr.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline);
+			this.regexr.ForeColor = System.Drawing.Color.Navy;
+			this.regexr.Location = new System.Drawing.Point(3, 5);
+			this.regexr.Name = "regexr";
+			this.regexr.Size = new System.Drawing.Size(104, 15);
+			this.regexr.TabIndex = 1;
+			this.regexr.Text = "https://regexr.com";
+			this.regexr.Url = "https://regexr.com";
+			// 
+			// regexstorm
+			// 
+			this.regexstorm.AutoSize = true;
+			this.regexstorm.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.regexstorm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline);
+			this.regexstorm.ForeColor = System.Drawing.Color.Navy;
+			this.regexstorm.Location = new System.Drawing.Point(3, 25);
+			this.regexstorm.Name = "regexstorm";
+			this.regexstorm.Size = new System.Drawing.Size(118, 15);
+			this.regexstorm.TabIndex = 0;
+			this.regexstorm.Text = "http://regexstorm.net";
+			this.regexstorm.Url = "http://regexstorm.net/tester";
+			// 
 			// RegexErrorLabel
 			// 
 			this.RegexErrorLabel.Location = new System.Drawing.Point(3, 49);
@@ -823,67 +884,6 @@ namespace Sander.DirLister.UI
 			this.MoveDown.Text = "Move down";
 			this.MoveDown.Click += new System.EventHandler(this.MoveDown_Click);
 			// 
-			// RegexHelpPanel
-			// 
-			this.RegexHelpPanel.Controls.Add(this.txt2re);
-			this.RegexHelpPanel.Controls.Add(this.regexr);
-			this.RegexHelpPanel.Controls.Add(this.regexstorm);
-			this.RegexHelpPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.RegexHelpPanel.Location = new System.Drawing.Point(3, 143);
-			this.RegexHelpPanel.Name = "RegexHelpPanel";
-			this.RegexHelpPanel.Size = new System.Drawing.Size(246, 61);
-			this.RegexHelpPanel.TabIndex = 3;
-			// 
-			// HistoryButton
-			// 
-			this.HistoryButton.Location = new System.Drawing.Point(118, 6);
-			this.HistoryButton.Menu = this.HistoryMenu;
-			this.HistoryButton.Name = "HistoryButton";
-			this.HistoryButton.Size = new System.Drawing.Size(75, 23);
-			this.HistoryButton.SplitWidth = 30;
-			this.HistoryButton.TabIndex = 6;
-			this.HistoryButton.Text = "&History";
-			this.HistoryButton.UseVisualStyleBackColor = true;
-			// 
-			// regexstorm
-			// 
-			this.regexstorm.AutoSize = true;
-			this.regexstorm.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.regexstorm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline);
-			this.regexstorm.ForeColor = System.Drawing.Color.Navy;
-			this.regexstorm.Location = new System.Drawing.Point(3, 25);
-			this.regexstorm.Name = "regexstorm";
-			this.regexstorm.Size = new System.Drawing.Size(118, 15);
-			this.regexstorm.TabIndex = 0;
-			this.regexstorm.Text = "http://regexstorm.net";
-			this.regexstorm.Url = "http://regexstorm.net/tester";
-			// 
-			// regexr
-			// 
-			this.regexr.AutoSize = true;
-			this.regexr.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.regexr.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline);
-			this.regexr.ForeColor = System.Drawing.Color.Navy;
-			this.regexr.Location = new System.Drawing.Point(3, 5);
-			this.regexr.Name = "regexr";
-			this.regexr.Size = new System.Drawing.Size(104, 15);
-			this.regexr.TabIndex = 1;
-			this.regexr.Text = "https://regexr.com";
-			this.regexr.Url = "https://regexr.com";
-			// 
-			// txt2re
-			// 
-			this.txt2re.AutoSize = true;
-			this.txt2re.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.txt2re.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline);
-			this.txt2re.ForeColor = System.Drawing.Color.Navy;
-			this.txt2re.Location = new System.Drawing.Point(3, 45);
-			this.txt2re.Name = "txt2re";
-			this.txt2re.Size = new System.Drawing.Size(99, 15);
-			this.txt2re.TabIndex = 2;
-			this.txt2re.Text = "https://txt2re.com";
-			this.txt2re.Url = "https://txt2re.com";
-			// 
 			// MainForm
 			// 
 			this.AllowDrop = true;
@@ -896,6 +896,8 @@ namespace Sander.DirLister.UI
 			this.MinimumSize = new System.Drawing.Size(961, 500);
 			this.Name = "MainForm";
 			this.Text = "DirLister v2";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
 			this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
 			this.BottomPanel.ResumeLayout(false);
@@ -921,12 +923,12 @@ namespace Sander.DirLister.UI
 			this.WildcardTab.ResumeLayout(false);
 			this.WildcardTab.PerformLayout();
 			this.RegexTab.ResumeLayout(false);
+			this.RegexHelpPanel.ResumeLayout(false);
+			this.RegexHelpPanel.PerformLayout();
 			this.MainTabs.ResumeLayout(false);
 			this.AboutTab.ResumeLayout(false);
 			this.AboutTab.PerformLayout();
 			this.DirectoryMenu.ResumeLayout(false);
-			this.RegexHelpPanel.ResumeLayout(false);
-			this.RegexHelpPanel.PerformLayout();
 			this.ResumeLayout(false);
 
 		}

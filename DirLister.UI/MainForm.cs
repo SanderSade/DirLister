@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Sander.DirLister.Core;
 using Sander.DirLister.Core.Application;
@@ -77,6 +76,35 @@ namespace Sander.DirLister.UI
 			LogBox.ScrollToCaret();
 		}
 
-	
+		private void MainForm_Load(object sender, EventArgs e)
+		{
+			if (Settings.Default.FirstRun || History.Default.WindowSize == Rectangle.Empty)
+				return;
+
+			//default is Normal and we never want to minimize the on load
+			if (History.Default.WindowState == FormWindowState.Maximized)
+			{
+				WindowState = FormWindowState.Maximized;
+				return;
+			}
+
+			var size = History.Default.WindowSize;
+
+			Top = size.Top;
+			Left = size.Left;
+			Width = size.Width;
+			Height = size.Height;
+		}
+
+		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			History.Default.WindowState = WindowState;
+			if (WindowState != FormWindowState.Maximized)
+			{
+				History.Default.WindowSize = new Rectangle(Location, Size);
+			}
+
+			History.Default.Save();
+		}
 	}
 }
