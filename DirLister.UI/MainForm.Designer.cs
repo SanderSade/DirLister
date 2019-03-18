@@ -38,7 +38,6 @@ namespace Sander.DirLister.UI
 			this.Progress = new System.Windows.Forms.ProgressBar();
 			this.StartButton = new System.Windows.Forms.Button();
 			this.SetDefault = new System.Windows.Forms.Button();
-			this.LabelHomepage = new System.Windows.Forms.Label();
 			this.HistoryMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.HistoryClearMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.HistorySeparator = new System.Windows.Forms.ToolStripSeparator();
@@ -62,12 +61,12 @@ namespace Sander.DirLister.UI
 			this.TxtCheck = new System.Windows.Forms.CheckBox();
 			this.HtmlCheck = new System.Windows.Forms.CheckBox();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.OpenFolderButton = new System.Windows.Forms.Button();
 			this.OpenAfter = new System.Windows.Forms.CheckBox();
 			this.SelectOutputFolder = new System.Windows.Forms.Button();
 			this.OutputFolder = new System.Windows.Forms.TextBox();
 			this.InputTab = new System.Windows.Forms.TabPage();
 			this.RemoveAllButton = new System.Windows.Forms.Button();
-			this.HistoryButton = new Sander.DirLister.UI.App.SplitButton();
 			this.DirectoryList = new System.Windows.Forms.ListView();
 			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.BrowseButton = new System.Windows.Forms.Button();
@@ -83,9 +82,6 @@ namespace Sander.DirLister.UI
 			this.WildcardEdit = new System.Windows.Forms.ComboBox();
 			this.RegexTab = new System.Windows.Forms.TabPage();
 			this.RegexHelpPanel = new System.Windows.Forms.Panel();
-			this.txt2re = new Sander.DirLister.UI.App.HyperlinkLabel();
-			this.regexr = new Sander.DirLister.UI.App.HyperlinkLabel();
-			this.regexstorm = new Sander.DirLister.UI.App.HyperlinkLabel();
 			this.RegexErrorLabel = new System.Windows.Forms.Label();
 			this.ValidateRegexButton = new System.Windows.Forms.Button();
 			this.RegexCombo = new System.Windows.Forms.ComboBox();
@@ -94,6 +90,8 @@ namespace Sander.DirLister.UI
 			this.IncludeHidden = new System.Windows.Forms.CheckBox();
 			this.MainTabs = new System.Windows.Forms.TabControl();
 			this.AboutTab = new System.Windows.Forms.TabPage();
+			this.AboutPanel = new System.Windows.Forms.Panel();
+			this.VersionLabel = new System.Windows.Forms.Label();
 			this.FolderSelectionDialog = new System.Windows.Forms.FolderBrowserDialog();
 			this.DirectoryMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.OpenFolder = new System.Windows.Forms.ToolStripMenuItem();
@@ -101,6 +99,16 @@ namespace Sander.DirLister.UI
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.MoveUp = new System.Windows.Forms.ToolStripMenuItem();
 			this.MoveDown = new System.Windows.Forms.ToolStripMenuItem();
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.ConfigurationFolderButton = new System.Windows.Forms.Button();
+			this.ProgramFolderButton = new System.Windows.Forms.Button();
+			this.HistoryButton = new Sander.DirLister.UI.App.SplitButton();
+			this.txt2re = new Sander.DirLister.UI.App.HyperlinkLabel();
+			this.regexr = new Sander.DirLister.UI.App.HyperlinkLabel();
+			this.regexstorm = new Sander.DirLister.UI.App.HyperlinkLabel();
+			this.hyperlinkLabel1 = new Sander.DirLister.UI.App.HyperlinkLabel();
+			this.WikiLabel = new Sander.DirLister.UI.App.HyperlinkLabel();
+			this.HomeLabel = new Sander.DirLister.UI.App.HyperlinkLabel();
 			this.BottomPanel.SuspendLayout();
 			this.HistoryMenu.SuspendLayout();
 			this.LogTab.SuspendLayout();
@@ -118,6 +126,7 @@ namespace Sander.DirLister.UI
 			this.RegexHelpPanel.SuspendLayout();
 			this.MainTabs.SuspendLayout();
 			this.AboutTab.SuspendLayout();
+			this.AboutPanel.SuspendLayout();
 			this.DirectoryMenu.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -187,23 +196,6 @@ namespace Sander.DirLister.UI
 			this.SetDefault.Text = "Set as &default options";
 			this.SetDefault.UseVisualStyleBackColor = true;
 			this.SetDefault.Click += new System.EventHandler(this.SetDefault_Click);
-			// 
-			// LabelHomepage
-			// 
-			this.LabelHomepage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.LabelHomepage.AutoSize = true;
-			this.LabelHomepage.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.LabelHomepage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.LabelHomepage.ForeColor = System.Drawing.Color.Navy;
-			this.LabelHomepage.Location = new System.Drawing.Point(349, 177);
-			this.LabelHomepage.Name = "LabelHomepage";
-			this.LabelHomepage.Size = new System.Drawing.Size(224, 15);
-			this.LabelHomepage.TabIndex = 5;
-			this.LabelHomepage.Text = "https://github.com/SanderSade/DirLister";
-			this.LabelHomepage.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-			this.LabelHomepage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.LabelHomepage_MouseClick);
 			// 
 			// HistoryMenu
 			// 
@@ -452,22 +444,33 @@ namespace Sander.DirLister.UI
 			// 
 			// groupBox1
 			// 
-			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox1.Controls.Add(this.OpenFolderButton);
 			this.groupBox1.Controls.Add(this.OpenAfter);
 			this.groupBox1.Controls.Add(this.SelectOutputFolder);
 			this.groupBox1.Controls.Add(this.OutputFolder);
-			this.groupBox1.Location = new System.Drawing.Point(12, 6);
+			this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+			this.groupBox1.Location = new System.Drawing.Point(3, 3);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(795, 79);
+			this.groupBox1.Size = new System.Drawing.Size(931, 94);
 			this.groupBox1.TabIndex = 1;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Output folder";
 			// 
+			// OpenFolderButton
+			// 
+			this.OpenFolderButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.OpenFolderButton.Location = new System.Drawing.Point(849, 50);
+			this.OpenFolderButton.Name = "OpenFolderButton";
+			this.OpenFolderButton.Size = new System.Drawing.Size(75, 23);
+			this.OpenFolderButton.TabIndex = 3;
+			this.OpenFolderButton.Text = "Open";
+			this.OpenFolderButton.UseVisualStyleBackColor = true;
+			this.OpenFolderButton.Click += new System.EventHandler(this.OpenFolderButton_Click);
+			// 
 			// OpenAfter
 			// 
 			this.OpenAfter.AutoSize = true;
-			this.OpenAfter.Location = new System.Drawing.Point(6, 60);
+			this.OpenAfter.Location = new System.Drawing.Point(9, 69);
 			this.OpenAfter.Name = "OpenAfter";
 			this.OpenAfter.Size = new System.Drawing.Size(253, 19);
 			this.OpenAfter.TabIndex = 2;
@@ -477,7 +480,7 @@ namespace Sander.DirLister.UI
 			// SelectOutputFolder
 			// 
 			this.SelectOutputFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.SelectOutputFolder.Location = new System.Drawing.Point(713, 21);
+			this.SelectOutputFolder.Location = new System.Drawing.Point(849, 21);
 			this.SelectOutputFolder.Name = "SelectOutputFolder";
 			this.SelectOutputFolder.Size = new System.Drawing.Size(75, 23);
 			this.SelectOutputFolder.TabIndex = 1;
@@ -491,7 +494,7 @@ namespace Sander.DirLister.UI
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.OutputFolder.Location = new System.Drawing.Point(6, 22);
 			this.OutputFolder.Name = "OutputFolder";
-			this.OutputFolder.Size = new System.Drawing.Size(701, 21);
+			this.OutputFolder.Size = new System.Drawing.Size(837, 21);
 			this.OutputFolder.TabIndex = 0;
 			// 
 			// InputTab
@@ -519,17 +522,6 @@ namespace Sander.DirLister.UI
 			this.RemoveAllButton.Text = "Remove &all";
 			this.RemoveAllButton.UseVisualStyleBackColor = true;
 			this.RemoveAllButton.Click += new System.EventHandler(this.RemoveAll_Click);
-			// 
-			// HistoryButton
-			// 
-			this.HistoryButton.Location = new System.Drawing.Point(118, 6);
-			this.HistoryButton.Menu = this.HistoryMenu;
-			this.HistoryButton.Name = "HistoryButton";
-			this.HistoryButton.Size = new System.Drawing.Size(75, 23);
-			this.HistoryButton.SplitWidth = 30;
-			this.HistoryButton.TabIndex = 6;
-			this.HistoryButton.Text = "&History";
-			this.HistoryButton.UseVisualStyleBackColor = true;
 			// 
 			// DirectoryList
 			// 
@@ -708,45 +700,6 @@ namespace Sander.DirLister.UI
 			this.RegexHelpPanel.Size = new System.Drawing.Size(246, 61);
 			this.RegexHelpPanel.TabIndex = 3;
 			// 
-			// txt2re
-			// 
-			this.txt2re.AutoSize = true;
-			this.txt2re.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.txt2re.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline);
-			this.txt2re.ForeColor = System.Drawing.Color.Navy;
-			this.txt2re.Location = new System.Drawing.Point(3, 45);
-			this.txt2re.Name = "txt2re";
-			this.txt2re.Size = new System.Drawing.Size(99, 15);
-			this.txt2re.TabIndex = 2;
-			this.txt2re.Text = "https://txt2re.com";
-			this.txt2re.Url = "https://txt2re.com";
-			// 
-			// regexr
-			// 
-			this.regexr.AutoSize = true;
-			this.regexr.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.regexr.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline);
-			this.regexr.ForeColor = System.Drawing.Color.Navy;
-			this.regexr.Location = new System.Drawing.Point(3, 5);
-			this.regexr.Name = "regexr";
-			this.regexr.Size = new System.Drawing.Size(104, 15);
-			this.regexr.TabIndex = 1;
-			this.regexr.Text = "https://regexr.com";
-			this.regexr.Url = "https://regexr.com";
-			// 
-			// regexstorm
-			// 
-			this.regexstorm.AutoSize = true;
-			this.regexstorm.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.regexstorm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline);
-			this.regexstorm.ForeColor = System.Drawing.Color.Navy;
-			this.regexstorm.Location = new System.Drawing.Point(3, 25);
-			this.regexstorm.Name = "regexstorm";
-			this.regexstorm.Size = new System.Drawing.Size(118, 15);
-			this.regexstorm.TabIndex = 0;
-			this.regexstorm.Text = "http://regexstorm.net";
-			this.regexstorm.Url = "http://regexstorm.net/tester";
-			// 
 			// RegexErrorLabel
 			// 
 			this.RegexErrorLabel.Location = new System.Drawing.Point(3, 49);
@@ -824,7 +777,7 @@ namespace Sander.DirLister.UI
 			// 
 			// AboutTab
 			// 
-			this.AboutTab.Controls.Add(this.LabelHomepage);
+			this.AboutTab.Controls.Add(this.AboutPanel);
 			this.AboutTab.Location = new System.Drawing.Point(4, 29);
 			this.AboutTab.Name = "AboutTab";
 			this.AboutTab.Padding = new System.Windows.Forms.Padding(3);
@@ -832,6 +785,32 @@ namespace Sander.DirLister.UI
 			this.AboutTab.TabIndex = 3;
 			this.AboutTab.Text = "About";
 			this.AboutTab.UseVisualStyleBackColor = true;
+			// 
+			// AboutPanel
+			// 
+			this.AboutPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.AboutPanel.Controls.Add(this.ConfigurationFolderButton);
+			this.AboutPanel.Controls.Add(this.ProgramFolderButton);
+			this.AboutPanel.Controls.Add(this.panel1);
+			this.AboutPanel.Controls.Add(this.hyperlinkLabel1);
+			this.AboutPanel.Controls.Add(this.WikiLabel);
+			this.AboutPanel.Controls.Add(this.HomeLabel);
+			this.AboutPanel.Controls.Add(this.VersionLabel);
+			this.AboutPanel.Location = new System.Drawing.Point(271, 6);
+			this.AboutPanel.Name = "AboutPanel";
+			this.AboutPanel.Size = new System.Drawing.Size(395, 322);
+			this.AboutPanel.TabIndex = 7;
+			// 
+			// VersionLabel
+			// 
+			this.VersionLabel.Dock = System.Windows.Forms.DockStyle.Top;
+			this.VersionLabel.Font = new System.Drawing.Font("Palatino Linotype", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.VersionLabel.Location = new System.Drawing.Point(0, 0);
+			this.VersionLabel.Name = "VersionLabel";
+			this.VersionLabel.Size = new System.Drawing.Size(395, 50);
+			this.VersionLabel.TabIndex = 7;
+			this.VersionLabel.Text = "DirLister";
+			this.VersionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// FolderSelectionDialog
 			// 
@@ -884,6 +863,133 @@ namespace Sander.DirLister.UI
 			this.MoveDown.Text = "Move down";
 			this.MoveDown.Click += new System.EventHandler(this.MoveDown_Click);
 			// 
+			// panel1
+			// 
+			this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel1.Location = new System.Drawing.Point(0, 155);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(395, 33);
+			this.panel1.TabIndex = 13;
+			// 
+			// ConfigurationFolderButton
+			// 
+			this.ConfigurationFolderButton.Dock = System.Windows.Forms.DockStyle.Top;
+			this.ConfigurationFolderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.ConfigurationFolderButton.Location = new System.Drawing.Point(0, 218);
+			this.ConfigurationFolderButton.Name = "ConfigurationFolderButton";
+			this.ConfigurationFolderButton.Size = new System.Drawing.Size(395, 30);
+			this.ConfigurationFolderButton.TabIndex = 15;
+			this.ConfigurationFolderButton.Text = "Open DirLister configuration folder";
+			this.ConfigurationFolderButton.UseVisualStyleBackColor = true;
+			this.ConfigurationFolderButton.Click += new System.EventHandler(this.ConfigurationFolderButton_Click);
+			// 
+			// ProgramFolderButton
+			// 
+			this.ProgramFolderButton.Dock = System.Windows.Forms.DockStyle.Top;
+			this.ProgramFolderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.ProgramFolderButton.Location = new System.Drawing.Point(0, 188);
+			this.ProgramFolderButton.Name = "ProgramFolderButton";
+			this.ProgramFolderButton.Size = new System.Drawing.Size(395, 30);
+			this.ProgramFolderButton.TabIndex = 14;
+			this.ProgramFolderButton.Text = "Open DirLister installation folder";
+			this.ProgramFolderButton.UseVisualStyleBackColor = true;
+			this.ProgramFolderButton.Click += new System.EventHandler(this.ProgramFolderButton_Click);
+			// 
+			// HistoryButton
+			// 
+			this.HistoryButton.Location = new System.Drawing.Point(118, 6);
+			this.HistoryButton.Menu = this.HistoryMenu;
+			this.HistoryButton.Name = "HistoryButton";
+			this.HistoryButton.Size = new System.Drawing.Size(75, 23);
+			this.HistoryButton.SplitWidth = 30;
+			this.HistoryButton.TabIndex = 6;
+			this.HistoryButton.Text = "&History";
+			this.HistoryButton.UseVisualStyleBackColor = true;
+			// 
+			// txt2re
+			// 
+			this.txt2re.AutoSize = true;
+			this.txt2re.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.txt2re.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline);
+			this.txt2re.ForeColor = System.Drawing.Color.Navy;
+			this.txt2re.Location = new System.Drawing.Point(3, 45);
+			this.txt2re.Name = "txt2re";
+			this.txt2re.Size = new System.Drawing.Size(99, 15);
+			this.txt2re.TabIndex = 2;
+			this.txt2re.Text = "https://txt2re.com";
+			this.txt2re.Url = "https://txt2re.com";
+			// 
+			// regexr
+			// 
+			this.regexr.AutoSize = true;
+			this.regexr.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.regexr.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline);
+			this.regexr.ForeColor = System.Drawing.Color.Navy;
+			this.regexr.Location = new System.Drawing.Point(3, 5);
+			this.regexr.Name = "regexr";
+			this.regexr.Size = new System.Drawing.Size(104, 15);
+			this.regexr.TabIndex = 1;
+			this.regexr.Text = "https://regexr.com";
+			this.regexr.Url = "https://regexr.com";
+			// 
+			// regexstorm
+			// 
+			this.regexstorm.AutoSize = true;
+			this.regexstorm.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.regexstorm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline);
+			this.regexstorm.ForeColor = System.Drawing.Color.Navy;
+			this.regexstorm.Location = new System.Drawing.Point(3, 25);
+			this.regexstorm.Name = "regexstorm";
+			this.regexstorm.Size = new System.Drawing.Size(118, 15);
+			this.regexstorm.TabIndex = 0;
+			this.regexstorm.Text = "http://regexstorm.net";
+			this.regexstorm.Url = "http://regexstorm.net/tester";
+			// 
+			// hyperlinkLabel1
+			// 
+			this.hyperlinkLabel1.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.hyperlinkLabel1.Dock = System.Windows.Forms.DockStyle.Top;
+			this.hyperlinkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline);
+			this.hyperlinkLabel1.ForeColor = System.Drawing.Color.Navy;
+			this.hyperlinkLabel1.Location = new System.Drawing.Point(0, 120);
+			this.hyperlinkLabel1.Name = "hyperlinkLabel1";
+			this.hyperlinkLabel1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+			this.hyperlinkLabel1.Size = new System.Drawing.Size(395, 35);
+			this.hyperlinkLabel1.TabIndex = 10;
+			this.hyperlinkLabel1.Text = "Mozilla Public License 2.0";
+			this.hyperlinkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.hyperlinkLabel1.Url = "https://github.com/SanderSade/DirLister/blob/master/LICENSE";
+			// 
+			// WikiLabel
+			// 
+			this.WikiLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.WikiLabel.Dock = System.Windows.Forms.DockStyle.Top;
+			this.WikiLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline);
+			this.WikiLabel.ForeColor = System.Drawing.Color.Navy;
+			this.WikiLabel.Location = new System.Drawing.Point(0, 85);
+			this.WikiLabel.Name = "WikiLabel";
+			this.WikiLabel.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+			this.WikiLabel.Size = new System.Drawing.Size(395, 35);
+			this.WikiLabel.TabIndex = 9;
+			this.WikiLabel.Text = "Wiki (help)";
+			this.WikiLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.WikiLabel.Url = "https://github.com/SanderSade/DirLister/wiki";
+			// 
+			// HomeLabel
+			// 
+			this.HomeLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.HomeLabel.Dock = System.Windows.Forms.DockStyle.Top;
+			this.HomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline);
+			this.HomeLabel.ForeColor = System.Drawing.Color.Navy;
+			this.HomeLabel.Location = new System.Drawing.Point(0, 50);
+			this.HomeLabel.Name = "HomeLabel";
+			this.HomeLabel.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+			this.HomeLabel.Size = new System.Drawing.Size(395, 35);
+			this.HomeLabel.TabIndex = 8;
+			this.HomeLabel.Text = "Home page (support, updates, source)";
+			this.HomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.HomeLabel.Url = "https://github.com/SanderSade/DirLister";
+			// 
 			// MainForm
 			// 
 			this.AllowDrop = true;
@@ -927,7 +1033,7 @@ namespace Sander.DirLister.UI
 			this.RegexHelpPanel.PerformLayout();
 			this.MainTabs.ResumeLayout(false);
 			this.AboutTab.ResumeLayout(false);
-			this.AboutTab.PerformLayout();
+			this.AboutPanel.ResumeLayout(false);
 			this.DirectoryMenu.ResumeLayout(false);
 			this.ResumeLayout(false);
 
@@ -956,7 +1062,6 @@ namespace Sander.DirLister.UI
 		private System.Windows.Forms.CheckBox IncludeSubfolders;
 		private System.Windows.Forms.CheckBox IncludeHidden;
 		private System.Windows.Forms.TabControl MainTabs;
-		private System.Windows.Forms.Label LabelHomepage;
 		private System.Windows.Forms.Button RemoveAllButton;
 		private System.Windows.Forms.FolderBrowserDialog FolderSelectionDialog;
 		private System.Windows.Forms.ContextMenuStrip DirectoryMenu;
@@ -1004,6 +1109,15 @@ namespace Sander.DirLister.UI
 		private HyperlinkLabel regexstorm;
 		private HyperlinkLabel regexr;
 		private HyperlinkLabel txt2re;
+		private System.Windows.Forms.Panel AboutPanel;
+		private System.Windows.Forms.Label VersionLabel;
+		private HyperlinkLabel HomeLabel;
+		private HyperlinkLabel WikiLabel;
+		private HyperlinkLabel hyperlinkLabel1;
+		private System.Windows.Forms.Button OpenFolderButton;
+		private System.Windows.Forms.Button ConfigurationFolderButton;
+		private System.Windows.Forms.Button ProgramFolderButton;
+		private System.Windows.Forms.Panel panel1;
 	}
 }
 

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -151,6 +152,12 @@ namespace Sander.DirLister.UI
 		private void KeepOnTop_CheckedChanged(object sender, EventArgs e)
 		{
 			TopMost = KeepOnTop.Checked;
+		}
+
+
+		private void OpenFolderButton_Click(object sender, EventArgs e)
+		{
+			Process.Start("explorer.exe", OutputFolder.Text);
 		}
 	}
 }

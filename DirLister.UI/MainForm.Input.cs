@@ -162,16 +162,6 @@ namespace Sander.DirLister.UI
 			}
 		}
 
-		private void LabelHomepage_MouseClick(object sender, MouseEventArgs e)
-		{
-			if (e.Button == MouseButtons.Right)
-				Process.Start("explorer.exe",
-					Path.GetDirectoryName(ConfigurationManager
-						.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath));
-			else
-				Process.Start("https://github.com/SanderSade/DirLister");
-		}
-
 		private void WildcardEdit_KeyDown(object sender, KeyEventArgs e)
 		{
 			if (e.KeyCode == Keys.Enter && !string.IsNullOrWhiteSpace(WildcardEdit.Text))

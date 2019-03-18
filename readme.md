@@ -35,7 +35,6 @@ Click on image to enlarge
 * Win32 Installer
 * UWP installer
 * Hints on form elements
-* About tab contents
 * Improve JSON format?
 
 #### Advanced

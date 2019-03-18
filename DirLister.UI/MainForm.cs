@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
-using Sander.DirLister.Core;
 using Sander.DirLister.Core.Application;
 using Sander.DirLister.UI.DTO;
 using Sander.DirLister.UI.Properties;
+using Configuration = Sander.DirLister.Core.Configuration;
 
 namespace Sander.DirLister.UI
 {
@@ -22,7 +25,9 @@ namespace Sander.DirLister.UI
 		{
 			_configuration = configuration;
 			InitializeComponent();
-			Text = Program.VersionString;
+			VersionLabel.Text = Text = Program.VersionString;
+
+
 			TopMost = Settings.Default.KeepOnTop;
 
 			FilterTabs.SelectedTab = NoneTab;
@@ -105,6 +110,19 @@ namespace Sander.DirLister.UI
 			}
 
 			History.Default.Save();
+		}
+
+		private void ConfigurationFolderButton_Click(object sender, EventArgs e)
+		{
+				Process.Start("explorer.exe",
+					Path.GetDirectoryName(ConfigurationManager
+						.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath));
+		}
+
+		private void ProgramFolderButton_Click(object sender, EventArgs e)
+		{
+			Process.Start("explorer.exe",
+				Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
 		}
 	}
 }
