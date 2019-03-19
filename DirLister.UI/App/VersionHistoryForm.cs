@@ -8,9 +8,14 @@ namespace Sander.DirLister.UI.App
 		{
 			InitializeComponent();
 			VersionAvailable.Text =
-				$"New version available! Current version: {Program.Version}, new version {newVersion}. Click the link to get the new version";
+				$"New version available! Current version: \"{Program.Version}\", new version \"{newVersion}\"";
 
 			HistoryView.DocumentText = historyHtml;
+		}
+
+		private void HomepageLinkLabel_Click(object sender, System.EventArgs e)
+		{
+			Close();
 		}
 	}
 }

@@ -9,6 +9,7 @@ using System.Net;
 using System.Reflection;
 using System.Windows.Forms;
 using Sander.DirLister.Core.Application;
+using Sander.DirLister.UI.App;
 using Sander.DirLister.UI.DTO;
 using Sander.DirLister.UI.Properties;
 using Configuration = Sander.DirLister.Core.Configuration;
@@ -146,6 +147,13 @@ namespace Sander.DirLister.UI
 					SetLog(TraceLevel.Info, $"Update found: \"{version}\", fetching release notes...");
 					var releaseNotes = await client.DownloadStringTaskAsync(
 						new Uri("https://raw.githubusercontent.com/SanderSade/DirLister/master/VersionHistory.html"));
+
+					SetLog(TraceLevel.Info, "Received release notes");
+
+					using (var historyForm = new VersionHistoryForm(version, releaseNotes))
+					{
+						historyForm.ShowDialog(this);
+					}
 				}
 			}
 			catch (Exception ex)

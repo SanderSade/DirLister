@@ -60,7 +60,7 @@ While most of the preferences can be set from UI, there are some advanced option
 	<li>Add "Open" button to output folder</li>
 	<li>Fix some form element resizing issues</li>
 	<li>Initial work on the About tab</li>
-	<li>Update check functionality</li>
+	<li>On-demand update check functionality</li>
 </ul>
 
 <h4>v2.beta 1</h4>

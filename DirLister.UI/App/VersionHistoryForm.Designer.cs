@@ -32,13 +32,13 @@
 			this.TopPanel = new System.Windows.Forms.Panel();
 			this.HistoryView = new System.Windows.Forms.WebBrowser();
 			this.VersionAvailable = new System.Windows.Forms.Label();
-			this.hyperlinkLabel1 = new Sander.DirLister.UI.App.HyperlinkLabel();
+			this.HomepageLinkLabel = new Sander.DirLister.UI.App.HyperlinkLabel();
 			this.TopPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// TopPanel
 			// 
-			this.TopPanel.Controls.Add(this.hyperlinkLabel1);
+			this.TopPanel.Controls.Add(this.HomepageLinkLabel);
 			this.TopPanel.Controls.Add(this.VersionAvailable);
 			this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
 			this.TopPanel.Location = new System.Drawing.Point(0, 0);
@@ -62,25 +62,27 @@
 			// 
 			// VersionAvailable
 			// 
-			this.VersionAvailable.AutoSize = true;
-			this.VersionAvailable.Location = new System.Drawing.Point(12, 9);
+			this.VersionAvailable.Dock = System.Windows.Forms.DockStyle.Top;
+			this.VersionAvailable.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.VersionAvailable.Location = new System.Drawing.Point(0, 0);
 			this.VersionAvailable.Name = "VersionAvailable";
-			this.VersionAvailable.Size = new System.Drawing.Size(174, 13);
+			this.VersionAvailable.Size = new System.Drawing.Size(800, 18);
 			this.VersionAvailable.TabIndex = 0;
 			this.VersionAvailable.Text = "New version of DirLister is available";
 			// 
-			// hyperlinkLabel1
+			// HomepageLinkLabel
 			// 
-			this.hyperlinkLabel1.AutoSize = true;
-			this.hyperlinkLabel1.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.hyperlinkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline);
-			this.hyperlinkLabel1.ForeColor = System.Drawing.Color.Navy;
-			this.hyperlinkLabel1.Location = new System.Drawing.Point(11, 35);
-			this.hyperlinkLabel1.Name = "hyperlinkLabel1";
-			this.hyperlinkLabel1.Size = new System.Drawing.Size(292, 20);
-			this.hyperlinkLabel1.TabIndex = 1;
-			this.hyperlinkLabel1.Text = "https://github.com/SanderSade/DirLister";
-			this.hyperlinkLabel1.Url = "https://github.com/SanderSade/DirLister";
+			this.HomepageLinkLabel.AutoSize = true;
+			this.HomepageLinkLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.HomepageLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline);
+			this.HomepageLinkLabel.ForeColor = System.Drawing.Color.Navy;
+			this.HomepageLinkLabel.Location = new System.Drawing.Point(12, 32);
+			this.HomepageLinkLabel.Name = "HomepageLinkLabel";
+			this.HomepageLinkLabel.Size = new System.Drawing.Size(292, 20);
+			this.HomepageLinkLabel.TabIndex = 1;
+			this.HomepageLinkLabel.Text = "https://github.com/SanderSade/DirLister";
+			this.HomepageLinkLabel.Url = "https://github.com/SanderSade/DirLister";
+			this.HomepageLinkLabel.Click += new System.EventHandler(this.HomepageLinkLabel_Click);
 			// 
 			// VersionHistoryForm
 			// 
@@ -106,6 +108,6 @@
 		private System.Windows.Forms.Panel TopPanel;
 		private System.Windows.Forms.WebBrowser HistoryView;
 		private System.Windows.Forms.Label VersionAvailable;
-		private HyperlinkLabel hyperlinkLabel1;
+		private HyperlinkLabel HomepageLinkLabel;
 	}
 }
