@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Windows.Forms;
 using Sander.DirLister.Core.Application;
@@ -37,7 +38,7 @@ namespace Sander.DirLister.UI
 			if (logs != null && logs.Count > 0)
 			{
 				LogBox.Lines = logs.Select(x => x.ToString())
-								   .ToArray();
+					.ToArray();
 				LogBox.SelectionStart = LogBox.Text.Length;
 				LogBox.ScrollToCaret();
 				MainTabs.SelectedTab = LogTab;
@@ -65,7 +66,7 @@ namespace Sander.DirLister.UI
 			foreach (var folder in folders)
 			{
 				if (!File.GetAttributes(folder)
-						 .HasFlag(FileAttributes.Directory))
+					.HasFlag(FileAttributes.Directory))
 					continue;
 
 				var directory = Utils.EnsureBackslash(folder);
@@ -105,24 +106,58 @@ namespace Sander.DirLister.UI
 		{
 			History.Default.WindowState = WindowState;
 			if (WindowState != FormWindowState.Maximized)
-			{
 				History.Default.WindowSize = new Rectangle(Location, Size);
-			}
 
 			History.Default.Save();
 		}
 
 		private void ConfigurationFolderButton_Click(object sender, EventArgs e)
 		{
-				Process.Start("explorer.exe",
-					Path.GetDirectoryName(ConfigurationManager
-						.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath));
+			Process.Start("explorer.exe",
+				Path.GetDirectoryName(ConfigurationManager
+					.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath));
 		}
 
 		private void ProgramFolderButton_Click(object sender, EventArgs e)
 		{
 			Process.Start("explorer.exe",
 				Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
+		}
+
+		private async void UpdateCheck_Click(object sender, EventArgs e)
+		{
+			UpdateCheck.Enabled = false;
+			try
+			{
+				SetLog(TraceLevel.Info, "Checking for updates");
+				using (var client = new WebClient())
+				{
+					var version = await client.DownloadStringTaskAsync(
+						new Uri("https://raw.githubusercontent.com/SanderSade/DirLister/master/Version.txt"));
+					version = version.Trim();
+					if (string.Compare(version, Program.Version, StringComparison.OrdinalIgnoreCase) == 0)
+					{
+						SetLog(TraceLevel.Info, $"Found \"{version}\". No updates available");
+						MessageBox.Show("You have the latest version", "No updates available", MessageBoxButtons.OK,
+							MessageBoxIcon.Information);
+						return;
+					}
+
+					SetLog(TraceLevel.Info, $"Update found: \"{version}\", fetching release notes...");
+					var releaseNotes = await client.DownloadStringTaskAsync(
+						new Uri("https://raw.githubusercontent.com/SanderSade/DirLister/master/VersionHistory.html"));
+				}
+			}
+			catch (Exception ex)
+			{
+				var message = $"Error getting version information:\r\n{ex}";
+				SetLog(TraceLevel.Error, message);
+				MessageBox.Show(message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+			finally
+			{
+				UpdateCheck.Enabled = true;
+			}
 		}
 	}
 }

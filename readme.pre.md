@@ -52,18 +52,3 @@ While most of the preferences can be set from UI, there are some advanced option
 * Code from [taglib#](https://github.com/mono/taglib-sharp), licensed under [GNU Lesser General Public License v2.1](https://github.com/mono/taglib-sharp/blob/master/COPYING). Heavily modified.
 
 
-
-<h3>Version history</h3>
-
-<h4>v2.beta 2</h4>
-<ul>
-	<li>Add "Open" button to output folder</li>
-	<li>Fix some form element resizing issues</li>
-	<li>Initial work on the About tab</li>
-	<li>Update check functionality</li>
-</ul>
-
-<h4>v2.beta 1</h4>
-<ul>
-	<li>Everything is new
-</ul>

@@ -91,6 +91,9 @@ namespace Sander.DirLister.UI
 			this.MainTabs = new System.Windows.Forms.TabControl();
 			this.AboutTab = new System.Windows.Forms.TabPage();
 			this.AboutPanel = new System.Windows.Forms.Panel();
+			this.ConfigurationFolderButton = new System.Windows.Forms.Button();
+			this.ProgramFolderButton = new System.Windows.Forms.Button();
+			this.panel1 = new System.Windows.Forms.Panel();
 			this.VersionLabel = new System.Windows.Forms.Label();
 			this.FolderSelectionDialog = new System.Windows.Forms.FolderBrowserDialog();
 			this.DirectoryMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -99,9 +102,6 @@ namespace Sander.DirLister.UI
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.MoveUp = new System.Windows.Forms.ToolStripMenuItem();
 			this.MoveDown = new System.Windows.Forms.ToolStripMenuItem();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.ConfigurationFolderButton = new System.Windows.Forms.Button();
-			this.ProgramFolderButton = new System.Windows.Forms.Button();
 			this.HistoryButton = new Sander.DirLister.UI.App.SplitButton();
 			this.txt2re = new Sander.DirLister.UI.App.HyperlinkLabel();
 			this.regexr = new Sander.DirLister.UI.App.HyperlinkLabel();
@@ -109,6 +109,7 @@ namespace Sander.DirLister.UI
 			this.hyperlinkLabel1 = new Sander.DirLister.UI.App.HyperlinkLabel();
 			this.WikiLabel = new Sander.DirLister.UI.App.HyperlinkLabel();
 			this.HomeLabel = new Sander.DirLister.UI.App.HyperlinkLabel();
+			this.UpdateCheck = new System.Windows.Forms.Button();
 			this.BottomPanel.SuspendLayout();
 			this.HistoryMenu.SuspendLayout();
 			this.LogTab.SuspendLayout();
@@ -789,6 +790,7 @@ namespace Sander.DirLister.UI
 			// AboutPanel
 			// 
 			this.AboutPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.AboutPanel.Controls.Add(this.UpdateCheck);
 			this.AboutPanel.Controls.Add(this.ConfigurationFolderButton);
 			this.AboutPanel.Controls.Add(this.ProgramFolderButton);
 			this.AboutPanel.Controls.Add(this.panel1);
@@ -800,6 +802,38 @@ namespace Sander.DirLister.UI
 			this.AboutPanel.Name = "AboutPanel";
 			this.AboutPanel.Size = new System.Drawing.Size(395, 322);
 			this.AboutPanel.TabIndex = 7;
+			// 
+			// ConfigurationFolderButton
+			// 
+			this.ConfigurationFolderButton.Dock = System.Windows.Forms.DockStyle.Top;
+			this.ConfigurationFolderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.ConfigurationFolderButton.Location = new System.Drawing.Point(0, 218);
+			this.ConfigurationFolderButton.Name = "ConfigurationFolderButton";
+			this.ConfigurationFolderButton.Size = new System.Drawing.Size(395, 30);
+			this.ConfigurationFolderButton.TabIndex = 15;
+			this.ConfigurationFolderButton.Text = "Open DirLister configuration folder";
+			this.ConfigurationFolderButton.UseVisualStyleBackColor = true;
+			this.ConfigurationFolderButton.Click += new System.EventHandler(this.ConfigurationFolderButton_Click);
+			// 
+			// ProgramFolderButton
+			// 
+			this.ProgramFolderButton.Dock = System.Windows.Forms.DockStyle.Top;
+			this.ProgramFolderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.ProgramFolderButton.Location = new System.Drawing.Point(0, 188);
+			this.ProgramFolderButton.Name = "ProgramFolderButton";
+			this.ProgramFolderButton.Size = new System.Drawing.Size(395, 30);
+			this.ProgramFolderButton.TabIndex = 14;
+			this.ProgramFolderButton.Text = "Open DirLister installation folder";
+			this.ProgramFolderButton.UseVisualStyleBackColor = true;
+			this.ProgramFolderButton.Click += new System.EventHandler(this.ProgramFolderButton_Click);
+			// 
+			// panel1
+			// 
+			this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel1.Location = new System.Drawing.Point(0, 155);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(395, 33);
+			this.panel1.TabIndex = 13;
 			// 
 			// VersionLabel
 			// 
@@ -862,38 +896,6 @@ namespace Sander.DirLister.UI
 			this.MoveDown.Size = new System.Drawing.Size(112, 22);
 			this.MoveDown.Text = "Move down";
 			this.MoveDown.Click += new System.EventHandler(this.MoveDown_Click);
-			// 
-			// panel1
-			// 
-			this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel1.Location = new System.Drawing.Point(0, 155);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(395, 33);
-			this.panel1.TabIndex = 13;
-			// 
-			// ConfigurationFolderButton
-			// 
-			this.ConfigurationFolderButton.Dock = System.Windows.Forms.DockStyle.Top;
-			this.ConfigurationFolderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.ConfigurationFolderButton.Location = new System.Drawing.Point(0, 218);
-			this.ConfigurationFolderButton.Name = "ConfigurationFolderButton";
-			this.ConfigurationFolderButton.Size = new System.Drawing.Size(395, 30);
-			this.ConfigurationFolderButton.TabIndex = 15;
-			this.ConfigurationFolderButton.Text = "Open DirLister configuration folder";
-			this.ConfigurationFolderButton.UseVisualStyleBackColor = true;
-			this.ConfigurationFolderButton.Click += new System.EventHandler(this.ConfigurationFolderButton_Click);
-			// 
-			// ProgramFolderButton
-			// 
-			this.ProgramFolderButton.Dock = System.Windows.Forms.DockStyle.Top;
-			this.ProgramFolderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.ProgramFolderButton.Location = new System.Drawing.Point(0, 188);
-			this.ProgramFolderButton.Name = "ProgramFolderButton";
-			this.ProgramFolderButton.Size = new System.Drawing.Size(395, 30);
-			this.ProgramFolderButton.TabIndex = 14;
-			this.ProgramFolderButton.Text = "Open DirLister installation folder";
-			this.ProgramFolderButton.UseVisualStyleBackColor = true;
-			this.ProgramFolderButton.Click += new System.EventHandler(this.ProgramFolderButton_Click);
 			// 
 			// HistoryButton
 			// 
@@ -989,6 +991,18 @@ namespace Sander.DirLister.UI
 			this.HomeLabel.Text = "Home page (support, updates, source)";
 			this.HomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.HomeLabel.Url = "https://github.com/SanderSade/DirLister";
+			// 
+			// UpdateCheck
+			// 
+			this.UpdateCheck.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.UpdateCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.UpdateCheck.Location = new System.Drawing.Point(0, 292);
+			this.UpdateCheck.Name = "UpdateCheck";
+			this.UpdateCheck.Size = new System.Drawing.Size(395, 30);
+			this.UpdateCheck.TabIndex = 16;
+			this.UpdateCheck.Text = "Check for updates";
+			this.UpdateCheck.UseVisualStyleBackColor = true;
+			this.UpdateCheck.Click += new System.EventHandler(this.UpdateCheck_Click);
 			// 
 			// MainForm
 			// 
@@ -1118,6 +1132,7 @@ namespace Sander.DirLister.UI
 		private System.Windows.Forms.Button ConfigurationFolderButton;
 		private System.Windows.Forms.Button ProgramFolderButton;
 		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Button UpdateCheck;
 	}
 }
 

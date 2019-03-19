@@ -14,6 +14,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{
 		favicon.ico = favicon.ico
 		LICENSE = LICENSE
 		readme.md = readme.md
+		readme.pre.md = readme.pre.md
+		Version.txt = Version.txt
+		VersionHistory.html = VersionHistory.html
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirLister.UI", "DirLister.UI\DirLister.UI.csproj", "{99BCB95A-0895-49BF-92EC-C6710224444E}"
