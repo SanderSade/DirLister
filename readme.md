@@ -35,6 +35,7 @@ Click on image to enlarge
 * Win32 Installer
 * UWP installer
 * Hints on form elements
+* Release DirLister.Core as NuGet package
 * Improve JSON format?
 
 #### Advanced

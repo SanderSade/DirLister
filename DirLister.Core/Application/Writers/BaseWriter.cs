@@ -92,6 +92,7 @@ namespace Sander.DirLister.Core.Application.Writers
 			using (var sw = new StreamWriter(fileName, false, Encoding.UTF8, 2 << 16 /* 128KB*/))
 			{
 				sw.Write(sb.ToString());
+				sw.Flush();
 			}
 
 			return fileName;
