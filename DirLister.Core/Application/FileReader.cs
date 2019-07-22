@@ -223,7 +223,7 @@ namespace Sander.DirLister.Core.Application
 			var fileEntry = new FileEntry
 			{
 				Fullname = fullPath,
-				Size = findData.nFileSizeLow,
+				Size = (long) (uint)findData.nFileSizeHigh << 0x20 | (uint)findData.nFileSizeLow
 			};
 
 			if (_configuration.IncludeFileDates)
