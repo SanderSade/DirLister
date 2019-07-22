@@ -223,7 +223,7 @@ namespace Sander.DirLister.Core.Application
 			var fileEntry = new FileEntry
 			{
 				Fullname = fullPath,
-				Size = (long) (uint)findData.nFileSizeHigh << 0x20 | (uint)findData.nFileSizeLow
+				Size = (long) findData.nFileSizeHigh << 0x20 | findData.nFileSizeLow
 			};
 
 			if (_configuration.IncludeFileDates)
@@ -245,8 +245,8 @@ namespace Sander.DirLister.Core.Application
 			internal readonly FILETIME ftLastAccessTime;
 			internal readonly FILETIME ftLastWriteTime;
 #pragma warning restore 618
-			internal readonly int nFileSizeHigh;
-			internal readonly int nFileSizeLow;
+			internal readonly uint nFileSizeHigh;
+			internal readonly uint nFileSizeLow;
 			internal readonly int dwReserved0;
 			internal readonly int dwReserved1;
 			[MarshalAs(UnmanagedType.ByValTStr, SizeConst = 260)]
