@@ -13,6 +13,9 @@ Easy-to use utility for quickly listing folder or drive contents. DirLister may 
 * Can include system and hidden files
 * Fast, free, open source
 
+#### Reviews
+* https://www.ghacks.net/2019/07/22/dirlister-open-source-program-to-print-a-list-of-files-and-folders/
+
 ### Installation
 
 * Download from [Releases](https://github.com/SanderSade/DirLister/releases)

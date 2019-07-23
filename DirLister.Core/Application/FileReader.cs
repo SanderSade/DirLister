@@ -48,8 +48,9 @@ namespace Sander.DirLister.Core.Application
 			float maxProgress = _configuration.IncludeMediaInfo ? 30 : 80;
 			var stepSize = (int)Math.Round(maxProgress / _configuration.InputFolders.Count, 0);
 			var position = 10;
-			foreach (var inputFolder in _configuration.InputFolders)
+			for (var i = 0; i < _configuration.InputFolders.Count; i++)
 			{
+				var inputFolder = _configuration.InputFolders[i];
 				var files = ParallelFindNextFile(inputFolder);
 				position += stepSize;
 				_configuration.SendProgress(position, "Gathering files");
@@ -194,8 +195,9 @@ namespace Sander.DirLister.Core.Application
 						{
 							if (FindNextFile(x, out var subDirectoryFileList))
 							{
-								foreach (var entry in subDirectoryFileList)
+								for (var i = 0; i < subDirectoryFileList.Count; i++)
 								{
+									var entry = subDirectoryFileList[i];
 									fileList.Add(entry);
 								}
 							}
