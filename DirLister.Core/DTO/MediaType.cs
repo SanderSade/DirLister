@@ -1,20 +1,22 @@
 ﻿namespace Sander.DirLister.Core
 {
 	/// <summary>
-	/// Type of the media file.
+	///     Type of the media file.
 	/// </summary>
 	public enum MediaType
 	{
 		/// <summary>
-		/// Image
+		///     Image
 		/// </summary>
 		Image,
+
 		/// <summary>
-		/// Video
+		///     Video
 		/// </summary>
 		Video,
+
 		/// <summary>
-		/// Audio
+		///     Audio
 		/// </summary>
 		Audio
 	}

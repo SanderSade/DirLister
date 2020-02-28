@@ -5,7 +5,6 @@ namespace Sander.DirLister.UI.DTO
 {
 	public sealed class LogEntry
 	{
-
 		public LogEntry(TraceLevel level, string message)
 		{
 			Level = level;
@@ -13,9 +12,11 @@ namespace Sander.DirLister.UI.DTO
 			Timestamp = DateTimeOffset.UtcNow;
 		}
 
+
 		internal DateTimeOffset Timestamp { get; set; }
 		internal TraceLevel Level { get; set; }
 		internal string Message { get; set; }
+
 
 		public override string ToString()
 		{

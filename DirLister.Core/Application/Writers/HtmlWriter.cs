@@ -24,6 +24,7 @@ namespace Sander.DirLister.Core.Application.Writers
 			                 Configuration.IncludeMediaInfo;
 		}
 
+
 		protected internal override string Write()
 		{
 			BuildHtmlHeader();
@@ -33,8 +34,12 @@ namespace Sander.DirLister.Core.Application.Writers
 				"<footer><a href=\"https://github.com/SanderSade/DirLister/\"><strong>DirLister v2</strong>&nbsp;|&nbsp;Source, updates & support</a></footer>");
 
 			foreach (var folder in GroupedEntries)
+			{
 				if (folder.Any())
+				{
 					CreateFolder(folder);
+				}
+			}
 
 
 			_sb.AppendLine("</body>");
@@ -43,6 +48,7 @@ namespace Sander.DirLister.Core.Application.Writers
 			return WriteFile(_sb, OutputFormat.Html);
 		}
 
+
 		private void CreateFolder(IGrouping<string, FileEntry> folder)
 		{
 			_sb.AppendLine("<section>");
@@ -50,17 +56,22 @@ namespace Sander.DirLister.Core.Application.Writers
 
 			_sb.Append($"<summary>{WebUtility.HtmlEncode(folder.Key)}<span>files: {folder.Count()}");
 			if (Configuration.IncludeSize)
+			{
 				_sb.Append($"&nbsp;({Utils.ReadableSize(folder.Sum(x => x.Size))})");
+			}
 
 			_sb.AppendLine("</span></summary>");
 			_sb.AppendLine("<ul>");
 			foreach (var entry in folder)
+			{
 				_sb.AppendLine($"<li>{WebUtility.HtmlEncode(entry.Filename)}{GetFileDetails(entry)}</li>");
+			}
 
 			_sb.AppendLine("</ul>");
 			_sb.AppendLine("</details>");
 			_sb.AppendLine("</section>");
 		}
+
 
 		/// <summary>
 		///     File details, as needed
@@ -77,25 +88,35 @@ namespace Sander.DirLister.Core.Application.Writers
 			}
 
 			if (!_needsFileInfo)
+			{
 				return string.Empty;
+			}
 
 			var sb = new StringBuilder("<span>");
 			if (Configuration.IncludeSize)
+			{
 				sb.Append(entry.ReadableSize);
+			}
 
 			if (Configuration.IncludeFileDates)
+			{
 				sb.Append(
 					$"&nbsp;|&nbsp;created: {entry.Created.ToString(Configuration.DateFormat)}, modified: {entry.Modified.ToString(Configuration.DateFormat)}");
+			}
 
 			if (Configuration.IncludeMediaInfo && entry.MediaInfo != null)
 			{
 				sb.Append("&nbsp;|&nbsp;");
 				sb.Append($"{entry.MediaInfo.MediaType}");
 				if (entry.MediaInfo.Duration != TimeSpan.Zero)
+				{
 					sb.Append($" {FormatDuration(entry.MediaInfo.Duration)},");
+				}
 
 				if (entry.MediaInfo.Height > 0)
+				{
 					sb.Append($" {entry.MediaInfo.Height}x{entry.MediaInfo.Width},");
+				}
 
 				sb.Append(GetMediaInfo("bpp", entry.MediaInfo.BitsPerPixel));
 
@@ -108,7 +129,9 @@ namespace Sander.DirLister.Core.Application.Writers
 					sb.Append(GetMediaInfo("channels", entry.MediaInfo.AudioChannels));
 
 					if (entry.MediaInfo.AudioSampleRate > 0)
+					{
 						sb.Append(GetMediaInfo("sample rate", entry.MediaInfo.AudioSampleRate / 1000f));
+					}
 				}
 
 				sb.Remove(sb.Length - 1, 1); //remove trailing comma
@@ -128,8 +151,10 @@ namespace Sander.DirLister.Core.Application.Writers
 			_sb.AppendLine("<aside>");
 			_sb.Append(
 				"<a href=\"javascript:void(0)\" onclick=\"var els = document.getElementsByTagName('details');for (var i=0; i < els.length; i++) { els[i].setAttribute('open', 'open');}\">open all</a>&nbsp;|&nbsp;");
+
 			_sb.AppendLine(
 				"<a href=\"javascript:void(0)\" onclick=\"var els = document.getElementsByTagName('details');for (var i=0; i < els.length; i++) { els[i].removeAttribute('open');}\">collapse all</a>");
+
 			_sb.AppendLine("</aside>");
 			_sb.AppendLine("<header>");
 
@@ -140,6 +165,7 @@ namespace Sander.DirLister.Core.Application.Writers
 			{
 				var files = GroupedEntries.Where(x => x.Key.StartsWith(folder, StringComparison.Ordinal))
 					.SelectMany(x => x.ToList()).ToList();
+
 				_sb.AppendLine(
 					$"<li>{WebUtility.HtmlEncode(folder)} <span>files: {files.Count}, size: {Utils.ReadableSize(files.Sum(x => x.Size))}</span></li>");
 			}
@@ -147,10 +173,14 @@ namespace Sander.DirLister.Core.Application.Writers
 			_sb.AppendLine("</ul>");
 
 			if (Configuration.InputFolders.Count > 1)
+			{
 				_sb.AppendLine(
 					$"<strong>Total: {Entries.Count} files, {Utils.ReadableSize(Entries.Sum(x => x.Size))}</strong>");
+			}
+
 			_sb.AppendLine("</header>");
 		}
+
 
 		/// <summary>
 		///     Standard HTML header, including CSS
@@ -165,9 +195,11 @@ namespace Sander.DirLister.Core.Application.Writers
   <title>DirLister&nbsp;{EndDate.ToLocalTime()}</title>
   <meta name=""generator"" content=""DirLister v2"" />
   <meta name=""viewport"" content=""width=device-width, initial-scale=1"">");
+
 			//favicon - based on https://www.favicon.cc/?action=icon&file_id=474715 (Creative Commons, no attribution)
 			_sb.AppendLine(
 				"<link rel=\"shortcut icon\" href=\"data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+BQMBvwAAAD4AAAAAAAAAAAUDAb8FAwG/BQMBvwUDAb8FAwG/BQMBvwUDAb8FAwG/BQMBvwAAAAAAAAAABQMBvwMCAf8FAwG/AAAAAAAAAAADAgH/AwIB/wMCAf8DAgH/AwIB/wMCAf8DAgH/AwIB/wMCAf8AAAAAAAAAAAAAAD4FAwG/AAAAPgAAAAAAAAAAAAAAPgAAAD4AAAA+AAAAPgAAAD4AAAA+AAAAPgAAAD4AAAA+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD4FAwG/AAAAPgAAAAAAAAAABQMBvwUDAb8FAwG/BQMBvwUDAb8FAwG/BQMBvwUDAb8FAwG/AAAAAAAAAAAFAwG/AwIB/wUDAb8AAAAAAAAAAAMCAf8DAgH/AwIB/wMCAf8DAgH/AwIB/wMCAf8DAgH/AwIB/wAAAAAAAAAAAAAAPgUDAb8AAAA+AAAAAAAAAAAAAAA+AAAAPgAAAD4AAAA+AAAAPgAAAD4AAAA+AAAAPgAAAD4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPgUDAb8AAAA+AAAAAAAAAAAFAwG/BQMBvwUDAb8FAwG/BQMBvwUDAb8FAwG/BQMBvwUDAb8AAAAAAAAAAAUDAb8DAgH/BQMBvwAAAAAAAAAAAwIB/wMCAf8DAgH/AwIB/wMCAf8DAgH/AwIB/wMCAf8DAgH/AAAAAAAAAAAAAAA+BQMBvwAAAD4AAAAAAAAAAAAAAD4AAAA+AAAAPgAAAD4AAAA+AAAAPgAAAD4AAAA+AAAAPgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP//AADcAQAAjAEAAN//AAD//wAA//8AANwBAACMAQAA3/8AAP//AAD//wAA3AEAAIwBAADf/wAA//8AAA==\" />");
+
 			string css;
 			if (string.IsNullOrWhiteSpace(Configuration.CssContent))
 			{

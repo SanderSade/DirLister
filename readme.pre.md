@@ -1,20 +1,21 @@
 # DirLister v2 beta
 
-Easy-to use utility for quickly listing folder or drive contents. DirLister may be run from graphical interface or Windows Explorer right-click menu 
+Easy-to use utility for quickly listing folder or drive contents. DirLister can be run from the graphical interface or Windows Explorer right-click menu 
 
 ### Features
 * Multi-format output: HTML, plain text (.txt), CSV, JSON, XML, Markdown (.md). See output examples [here](https://github.com/SanderSade/DirLister/tree/master/docs), also [rendered HTML page](https://sandersade.github.io/DirLister/DirLister.2019-02-22_14-32-27.C_DirListerTest.html)
 * Filtering by filename (multiple wildcards or regular expression)
-* Shell integration - can be run from right-click menu for folders and drives, with or without opening UI. Use Sent To --> DirLister to create a list of multiple folders directly from Explorer.
+* Shell integration - can be run from right-click menu for folders and drives, with or without opening the UI. Use Sent To --> DirLister to create a list of multiple folders directly from Explorer.
 * Can include file sizes
 * Option to include media info
-* Option to include file creation and modified dates
+* Option to include file creation and modification dates
 * Drag'n'drop support
 * Can include system and hidden files
 * Fast, free, open source
 
 #### Reviews
 * https://www.ghacks.net/2019/07/22/dirlister-open-source-program-to-print-a-list-of-files-and-folders/
+* https://www.softpedia.com/get/System/File-Management/DirLister.shtml
 
 ### Installation
 
@@ -54,5 +55,3 @@ While most of the preferences can be set from UI, there are some advanced option
 ### Used components
 
 * Code from [taglib#](https://github.com/mono/taglib-sharp), licensed under [GNU Lesser General Public License v2.1](https://github.com/mono/taglib-sharp/blob/master/COPYING). Heavily modified.
-
-

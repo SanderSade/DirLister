@@ -4,42 +4,43 @@ using System.Globalization;
 namespace Sander.DirLister.Core.TagLib.Riff
 {
 	/// <summary>
-	///    This structure provides a representation of a Microsoft
-	///    BitmapInfoHeader structure.
+	///     This structure provides a representation of a Microsoft
+	///     BitmapInfoHeader structure.
 	/// </summary>
 	public struct BitmapInfoHeader : IVideoCodec
 	{
-
 		/// <summary>
-		///    Contains the video width.
+		///     Contains the video width.
 		/// </summary>
 		private readonly uint width;
 
 		/// <summary>
-		///    Contains the video height.
+		///     Contains the video height.
 		/// </summary>
 		private readonly uint height;
 
 		/// <summary>
-		///    Contains the number of important colors.
+		///     Contains the number of important colors.
 		/// </summary>
 		private readonly uint colors_important;
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="BitmapInfoHeader" /> by reading the raw structure
-		///    from the beginning of a <see cref="ByteVector" /> object.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="BitmapInfoHeader" />
+		///     by reading the raw structure
+		///     from the beginning of a <see cref="ByteVector" /> object.
 		/// </summary>
 		/// <param name="data">
-		///    A <see cref="ByteVector" /> object containing the raw
-		///    data structure.
+		///     A <see cref="ByteVector" /> object containing the raw
+		///     data structure.
 		/// </param>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="data" /> is <see langword="null" />.
+		///     <paramref name="data" /> is <see langword="null" />.
 		/// </exception>
 		/// <exception cref="CorruptFileException">
-		///    <paramref name="data" /> contains less than 40 bytes.
+		///     <paramref name="data" /> contains less than 40 bytes.
 		/// </exception>
 		[Obsolete("Use BitmapInfoHeader(ByteVector,int)")]
 		public BitmapInfoHeader(ByteVector data) : this(data, 0)
@@ -48,204 +49,222 @@ namespace Sander.DirLister.Core.TagLib.Riff
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="BitmapInfoHeader" /> by reading the raw structure
-		///    from a specified position in a <see cref="ByteVector" />
-		///    object.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="BitmapInfoHeader" />
+		///     by reading the raw structure
+		///     from a specified position in a <see cref="ByteVector" />
+		///     object.
 		/// </summary>
 		/// <param name="data">
-		///    A <see cref="ByteVector" /> object containing the raw
-		///    data structure.
+		///     A <see cref="ByteVector" /> object containing the raw
+		///     data structure.
 		/// </param>
 		/// <param name="offset">
-		///    A <see cref="int" /> value specifying the index in
-		///    <paramref name="data"/> at which the structure begins.
+		///     A <see cref="int" /> value specifying the index in
+		///     <paramref name="data" /> at which the structure begins.
 		/// </param>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="data" /> is <see langword="null" />.
+		///     <paramref name="data" /> is <see langword="null" />.
 		/// </exception>
 		/// <exception cref="ArgumentOutOfRangeException">
-		///    <paramref name="offset" /> is less than zero.
+		///     <paramref name="offset" /> is less than zero.
 		/// </exception>
 		/// <exception cref="CorruptFileException">
-		///    <paramref name="data" /> contains less than 16 bytes at
-		///    <paramref name="offset" />.
+		///     <paramref name="data" /> contains less than 16 bytes at
+		///     <paramref name="offset" />.
 		/// </exception>
 		public BitmapInfoHeader(ByteVector data, int offset)
 		{
 			if (data == null)
+			{
 				throw new ArgumentNullException("data");
+			}
 
 			if (offset + 40 > data.Count)
+			{
 				throw new CorruptFileException(
 					"Expected 40 bytes.");
+			}
 
 			if (offset < 0)
+			{
 				throw new ArgumentOutOfRangeException(
 					"offset");
+			}
 
 			HeaderSize = data.Mid(offset + 0, 4)
-			           .ToUInt(false);
+				.ToUInt(false);
+
 			width = data.Mid(offset + 4, 4)
-			            .ToUInt(false);
+				.ToUInt(false);
+
 			height = data.Mid(offset + 8, 4)
-			             .ToUInt(false);
+				.ToUInt(false);
+
 			Planes = data.Mid(offset + 12, 2)
-			             .ToUShort(false);
+				.ToUShort(false);
+
 			BitCount = data.Mid(offset + 14, 2)
-			                .ToUShort(false);
+				.ToUShort(false);
+
 			CompressionId = data.Mid(offset + 16, 4);
 			ImageSize = data.Mid(offset + 20, 4)
-			                    .ToUInt(false);
+				.ToUInt(false);
+
 			XPixelsPerMeter = data.Mid(offset + 24, 4)
-			                         .ToUInt(false);
+				.ToUInt(false);
+
 			YPixelsPerMeter = data.Mid(offset + 28, 4)
-			                         .ToUInt(false);
+				.ToUInt(false);
+
 			ColorsUsed = data.Mid(offset + 32, 4)
-			                  .ToUInt(false);
+				.ToUInt(false);
+
 			colors_important = data.Mid(offset + 36, 4)
-			                       .ToUInt(false);
+				.ToUInt(false);
 		}
 
 
 		/// <summary>
-		///    Gets the size of the structure in bytes.
+		///     Gets the size of the structure in bytes.
 		/// </summary>
 		/// <value>
-		///    A <see cref="uint" /> value containing the number of
-		///    bytes in the structure.
+		///     A <see cref="uint" /> value containing the number of
+		///     bytes in the structure.
 		/// </value>
 		public uint HeaderSize { get; }
 
 		/// <summary>
-		///    Gets the number of planes in the image.
+		///     Gets the number of planes in the image.
 		/// </summary>
 		/// <value>
-		///    A <see cref="ushort" /> value containing the number of
-		///    planes.
+		///     A <see cref="ushort" /> value containing the number of
+		///     planes.
 		/// </value>
 		public ushort Planes { get; }
 
 		/// <summary>
-		///    Gets the number of bits per pixel.
+		///     Gets the number of bits per pixel.
 		/// </summary>
 		/// <value>
-		///    A <see cref="ushort" /> value containing the number of
-		///    bits per pixel, equivalent to the log base 2 of the
-		///    maximum number of colors.
+		///     A <see cref="ushort" /> value containing the number of
+		///     bits per pixel, equivalent to the log base 2 of the
+		///     maximum number of colors.
 		/// </value>
 		public ushort BitCount { get; }
 
 		/// <summary>
-		///    Gets the compression ID for image.
+		///     Gets the compression ID for image.
 		/// </summary>
 		/// <value>
-		///    A four-byte <see cref="ByteVector" /> object containing
-		///    the ID of the compression system (codec) used by the
-		///    image.
+		///     A four-byte <see cref="ByteVector" /> object containing
+		///     the ID of the compression system (codec) used by the
+		///     image.
 		/// </value>
 		public ByteVector CompressionId { get; }
 
 		/// <summary>
-		///    Gets the size of the image in bytes.
+		///     Gets the size of the image in bytes.
 		/// </summary>
 		/// <value>
-		///    A <see cref="uint" /> value containing the number of
-		///    bytes in the image.
+		///     A <see cref="uint" /> value containing the number of
+		///     bytes in the image.
 		/// </value>
 		public uint ImageSize { get; }
 
 		/// <summary>
-		///    Gets the horizontal resolution of the target device.
+		///     Gets the horizontal resolution of the target device.
 		/// </summary>
 		/// <value>
-		///    A <see cref="uint" /> value containing the number of
-		///    pixels-per-meter in the hoizontal direction for the
-		///    target device.
+		///     A <see cref="uint" /> value containing the number of
+		///     pixels-per-meter in the hoizontal direction for the
+		///     target device.
 		/// </value>
 		public uint XPixelsPerMeter { get; }
 
 		/// <summary>
-		///    Gets the vertical resolution of the target device.
+		///     Gets the vertical resolution of the target device.
 		/// </summary>
 		/// <value>
-		///    A <see cref="uint" /> value containing the number of
-		///    pixels-per-meter in the vertical direction for the
-		///    target device.
+		///     A <see cref="uint" /> value containing the number of
+		///     pixels-per-meter in the vertical direction for the
+		///     target device.
 		/// </value>
 		public uint YPixelsPerMeter { get; }
 
 		/// <summary>
-		///    Gets the number of colors in the image.
+		///     Gets the number of colors in the image.
 		/// </summary>
 		/// <value>
-		///    A <see cref="uint" /> value containing the number of
-		///    colors.
+		///     A <see cref="uint" /> value containing the number of
+		///     colors.
 		/// </value>
 		public uint ColorsUsed { get; }
 
 		/// <summary>
-		///    Gets the number of colors important in displaying the
-		///    image.
+		///     Gets the number of colors important in displaying the
+		///     image.
 		/// </summary>
 		/// <value>
-		///    A <see cref="uint" /> value containing the number of
-		///    important colors.
+		///     A <see cref="uint" /> value containing the number of
+		///     important colors.
 		/// </value>
 		public uint ImportantColors => colors_important;
 
 		/// <summary>
-		///    Gets the width of the video represented by the current
-		///    instance.
+		///     Gets the width of the video represented by the current
+		///     instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="int" /> value containing the width of the
-		///    video represented by the current instance.
+		///     A <see cref="int" /> value containing the width of the
+		///     video represented by the current instance.
 		/// </value>
 		public int VideoWidth => (int)width;
 
 		/// <summary>
-		///    Gets the height of the video represented by the current
-		///    instance.
+		///     Gets the height of the video represented by the current
+		///     instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="int" /> value containing the height of the
-		///    video represented by the current instance.
+		///     A <see cref="int" /> value containing the height of the
+		///     video represented by the current instance.
 		/// </value>
 		public int VideoHeight => (int)height;
 
 		/// <summary>
-		///    Gets the types of media represented by the current
-		///    instance.
+		///     Gets the types of media represented by the current
+		///     instance.
 		/// </summary>
 		/// <value>
-		///    Always <see cref="MediaTypes.Video" />.
+		///     Always <see cref="MediaTypes.Video" />.
 		/// </value>
 		public MediaTypes MediaTypes => MediaTypes.Video;
 
 		/// <summary>
-		///    Gets the duration of the media represented by the current
-		///    instance.
+		///     Gets the duration of the media represented by the current
+		///     instance.
 		/// </summary>
 		/// <value>
-		///    Always <see cref="TimeSpan.Zero" />.
+		///     Always <see cref="TimeSpan.Zero" />.
 		/// </value>
 		public TimeSpan Duration => TimeSpan.Zero;
 
 		/// <summary>
-		///    Gets a text description of the media represented by the
-		///    current instance.
+		///     Gets a text description of the media represented by the
+		///     current instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="string" /> object containing a description
-		///    of the media represented by the current instance.
+		///     A <see cref="string" /> object containing a description
+		///     of the media represented by the current instance.
 		/// </value>
 		public string Description
 		{
 			get
 			{
 				var id = CompressionId.ToString(StringType.UTF8)
-				                      .ToUpper(CultureInfo.InvariantCulture);
+					.ToUpper(CultureInfo.InvariantCulture);
+
 				switch (id)
 				{
 					case "AEMI":
@@ -645,11 +664,11 @@ namespace Sander.DirLister.Core.TagLib.Riff
 
 
 		/// <summary>
-		///    Generates a hash code for the current instance.
+		///     Generates a hash code for the current instance.
 		/// </summary>
 		/// <returns>
-		///    A <see cref="int" /> value containing the hash code for
-		///    the current instance.
+		///     A <see cref="int" /> value containing the hash code for
+		///     the current instance.
 		/// </returns>
 		public override int GetHashCode()
 		{
@@ -665,38 +684,40 @@ namespace Sander.DirLister.Core.TagLib.Riff
 
 
 		/// <summary>
-		///    Checks whether or not the current instance is equal to
-		///    another object.
+		///     Checks whether or not the current instance is equal to
+		///     another object.
 		/// </summary>
 		/// <param name="other">
-		///    A <see cref="object" /> to compare to the current
-		///    instance.
+		///     A <see cref="object" /> to compare to the current
+		///     instance.
 		/// </param>
 		/// <returns>
-		///    A <see cref="bool" /> value indicating whether or not the
-		///    current instance is equal to <paramref name="other" />.
+		///     A <see cref="bool" /> value indicating whether or not the
+		///     current instance is equal to <paramref name="other" />.
 		/// </returns>
 		/// <seealso cref="M:System.IEquatable`1.Equals" />
 		public override bool Equals(object other)
 		{
 			if (!(other is BitmapInfoHeader))
+			{
 				return false;
+			}
 
 			return Equals((BitmapInfoHeader)other);
 		}
 
 
 		/// <summary>
-		///    Checks whether or not the current instance is equal to
-		///    another instance of <see cref="BitmapInfoHeader" />.
+		///     Checks whether or not the current instance is equal to
+		///     another instance of <see cref="BitmapInfoHeader" />.
 		/// </summary>
 		/// <param name="other">
-		///    A <see cref="BitmapInfoHeader" /> object to compare to
-		///    the current instance.
+		///     A <see cref="BitmapInfoHeader" /> object to compare to
+		///     the current instance.
 		/// </param>
 		/// <returns>
-		///    A <see cref="bool" /> value indicating whether or not the
-		///    current instance is equal to <paramref name="other" />.
+		///     A <see cref="bool" /> value indicating whether or not the
+		///     current instance is equal to <paramref name="other" />.
 		/// </returns>
 		/// <seealso cref="M:System.IEquatable`1.Equals" />
 		public bool Equals(BitmapInfoHeader other)
@@ -714,19 +735,23 @@ namespace Sander.DirLister.Core.TagLib.Riff
 
 
 		/// <summary>
-		///    Gets whether or not two instances of <see
-		///    cref="WaveFormatEx" /> are equal to eachother.
+		///     Gets whether or not two instances of
+		///     <see
+		///         cref="WaveFormatEx" />
+		///     are equal to eachother.
 		/// </summary>
 		/// <param name="first">
-		///    A <see cref="BitmapInfoHeader" /> object to compare.
+		///     A <see cref="BitmapInfoHeader" /> object to compare.
 		/// </param>
 		/// <param name="second">
-		///    A <see cref="BitmapInfoHeader" /> object to compare.
+		///     A <see cref="BitmapInfoHeader" /> object to compare.
 		/// </param>
 		/// <returns>
-		///    <see langword="true" /> if <paramref name="first" /> is
-		///    equal to <paramref name="second" />. Otherwise, <see
-		///    langword="false" />.
+		///     <see langword="true" /> if <paramref name="first" /> is
+		///     equal to <paramref name="second" />. Otherwise,
+		///     <see
+		///         langword="false" />
+		///     .
 		/// </returns>
 		public static bool operator ==(BitmapInfoHeader first,
 			BitmapInfoHeader second)
@@ -736,19 +761,23 @@ namespace Sander.DirLister.Core.TagLib.Riff
 
 
 		/// <summary>
-		///    Gets whether or not two instances of <see
-		///    cref="BitmapInfoHeader" /> differ.
+		///     Gets whether or not two instances of
+		///     <see
+		///         cref="BitmapInfoHeader" />
+		///     differ.
 		/// </summary>
 		/// <param name="first">
-		///    A <see cref="BitmapInfoHeader" /> object to compare.
+		///     A <see cref="BitmapInfoHeader" /> object to compare.
 		/// </param>
 		/// <param name="second">
-		///    A <see cref="BitmapInfoHeader" /> object to compare.
+		///     A <see cref="BitmapInfoHeader" /> object to compare.
 		/// </param>
 		/// <returns>
-		///    <see langword="true" /> if <paramref name="first" /> is
-		///    unequal to <paramref name="second" />. Otherwise, <see
-		///    langword="false" />.
+		///     <see langword="true" /> if <paramref name="first" /> is
+		///     unequal to <paramref name="second" />. Otherwise,
+		///     <see
+		///         langword="false" />
+		///     .
 		/// </returns>
 		public static bool operator !=(BitmapInfoHeader first,
 			BitmapInfoHeader second)

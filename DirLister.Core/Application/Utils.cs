@@ -8,13 +8,12 @@ using System.Text;
 namespace Sander.DirLister.Core.Application
 {
 	/// <summary>
-	/// Misc utils
+	///     Misc utils
 	/// </summary>
 	public static class Utils
 	{
-
 		/// <summary>
-		/// Found from the internets, heavily modified for optimization and flexibility
+		///     Found from the internets, heavily modified for optimization and flexibility
 		/// </summary>
 		/// <param name="size">Size in bytes</param>
 		/// <param name="numberFormat">Format of the returned number. Defaults to 0.##</param>
@@ -65,8 +64,9 @@ namespace Sander.DirLister.Core.Application
 			return FormattableString.Invariant($"{(readable / 1024).ToString(numberFormat, CultureInfo.InvariantCulture)}{suffix}");
 		}
 
+
 		/// <summary>
-		/// Return folder name. Should be faster than inbuilt method.
+		///     Return folder name. Should be faster than inbuilt method.
 		/// </summary>
 		/// <returns></returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -75,8 +75,9 @@ namespace Sander.DirLister.Core.Application
 			return fullname.Substring(0, fullname.LastIndexOf(Path.DirectorySeparatorChar) + 1);
 		}
 
+
 		/// <summary>
-		/// Return pathless filename. Should be faster than inbuilt method
+		///     Return pathless filename. Should be faster than inbuilt method
 		/// </summary>
 		/// <param name="fullname"></param>
 		/// <returns></returns>
@@ -86,8 +87,9 @@ namespace Sander.DirLister.Core.Application
 			return fullname.Substring(fullname.LastIndexOf(Path.DirectorySeparatorChar) + 1);
 		}
 
+
 		/// <summary>
-		/// Return extension without the period (.). Should be slightly faster than inbuilt method
+		///     Return extension without the period (.). Should be slightly faster than inbuilt method
 		/// </summary>
 		/// <returns></returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -95,12 +97,16 @@ namespace Sander.DirLister.Core.Application
 		{
 			var lastDot = filename.LastIndexOf('.');
 			if (lastDot == -1 || lastDot == 0) //not found or .file
+			{
 				return null;
+			}
+
 			return filename.Substring(lastDot + 1);
 		}
 
+
 		/// <summary>
-		/// DateTimeOffset from FILETIME.
+		///     DateTimeOffset from FILETIME.
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 #pragma warning disable 618
@@ -110,8 +116,9 @@ namespace Sander.DirLister.Core.Application
 			return DateTimeOffset.FromFileTime(((long)filetime.dwHighDateTime << 32) + filetime.dwLowDateTime);
 		}
 
+
 		/// <summary>
-		/// Ensure path ends with backslash
+		///     Ensure path ends with backslash
 		/// </summary>
 		/// <param name="directory"></param>
 		/// <returns></returns>
@@ -129,16 +136,19 @@ namespace Sander.DirLister.Core.Application
 			[MarshalAs(UnmanagedType.LPTStr)] StringBuilder remoteName,
 			ref int length);
 
+
 		/// <summary>
-		/// From https://www.wiredprairie.us/blog/index.php/archives/22, modified
-		/// Given a path, returns the UNC path or the original. (No exceptions
-		/// are raised by this function directly). For example, "P:\2008-02-29"
-		/// might return: "\\networkserver\Shares\Photos\2008-02-09"
+		///     From https://www.wiredprairie.us/blog/index.php/archives/22, modified
+		///     Given a path, returns the UNC path or the original. (No exceptions
+		///     are raised by this function directly). For example, "P:\2008-02-29"
+		///     might return: "\\networkserver\Shares\Photos\2008-02-09"
 		/// </summary>
 		/// <param name="originalPath">The path to convert to a UNC Path</param>
-		/// <returns>A UNC path. If a network drive letter is specified, the
-		/// drive letter is converted to a UNC or network path. If the
-		/// originalPath cannot be converted, it is returned unchanged.</returns>
+		/// <returns>
+		///     A UNC path. If a network drive letter is specified, the
+		///     drive letter is converted to a UNC or network path. If the
+		///     originalPath cannot be converted, it is returned unchanged.
+		/// </returns>
 		internal static string GetUncPath(string originalPath)
 		{
 			var sb = new StringBuilder(512);
@@ -154,11 +164,12 @@ namespace Sander.DirLister.Core.Application
 				{
 					var error = WNetGetConnection(originalPath.Substring(0, 2),
 						sb, ref size);
+
 					if (error == 0)
 					{
-
 						var path = Path.GetFullPath(originalPath)
 							.Substring(Path.GetPathRoot(originalPath).Length);
+
 						return Path.Combine(sb.ToString().TrimEnd(), path);
 					}
 				}

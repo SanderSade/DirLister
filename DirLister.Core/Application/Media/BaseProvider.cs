@@ -18,6 +18,7 @@ namespace Sander.DirLister.Core.Application.Media
 			Configuration = configuration;
 		}
 
+
 		/// <summary>
 		///     Can be handled by current provider
 		/// </summary>

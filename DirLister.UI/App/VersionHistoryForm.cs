@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace Sander.DirLister.UI.App
 {
@@ -13,7 +14,8 @@ namespace Sander.DirLister.UI.App
 			HistoryView.DocumentText = historyHtml;
 		}
 
-		private void HomepageLinkLabel_Click(object sender, System.EventArgs e)
+
+		private void HomepageLinkLabel_Click(object sender, EventArgs e)
 		{
 			Close();
 		}

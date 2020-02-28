@@ -8,18 +8,19 @@ using Sander.DirLister.Core.Application.Media;
 namespace Sander.DirLister.Core.Application
 {
 	/// <summary>
-	///
 	/// </summary>
 	internal sealed class Runner
 	{
 		private readonly Configuration _configuration;
 		private readonly bool _skipListMaking;
 
+
 		internal Runner(Configuration configuration, bool skipListMaking)
 		{
 			_configuration = configuration;
 			_skipListMaking = skipListMaking;
 		}
+
 
 		internal List<FileEntry> Run(out bool noErrors)
 		{
@@ -63,33 +64,45 @@ namespace Sander.DirLister.Core.Application
 			RunComplete(sw, entries);
 
 			if (_configuration.OpenAfter)
+			{
 				writer.OpenFileOrFolder();
+			}
+
 			noErrors = true;
 			return entries;
 		}
+
 
 		private void RunComplete(Stopwatch sw, List<FileEntry> entries)
 		{
 			_configuration.SendProgress(100, "All done");
 			_configuration.Log(TraceLevel.Info,
 				$"All done. Total time: {sw.Elapsed}, total files: {entries.Count}, total size: {Utils.ReadableSize(entries.Sum(x => x.Size))}");
+
 			//this has no useful effect if our LoggingAction is not Trace-based
 			Trace.Flush();
 		}
 
+
 		internal bool ValidateConfiguration()
 		{
 			if (_configuration.LoggingAction == null)
+			{
 				throw new MissingMethodException("Logging action is null in configuration. Cannot continue.");
+			}
 
 			var isValid = true;
 			try
 			{
 				if (_configuration.Filter == null)
+				{
 					_configuration.Filter = new Filter();
+				}
 
 				if (string.IsNullOrWhiteSpace(_configuration.DateFormat))
+				{
 					_configuration.DateFormat = "yyyy-MM-dd HH:mm:ss";
+				}
 
 				if (!_skipListMaking)
 				{
@@ -100,7 +113,9 @@ namespace Sander.DirLister.Core.Application
 							"At least one output format needs to be set!");
 					}
 					else
+					{
 						_configuration.OutputFormats = _configuration.OutputFormats.Distinct().ToList();
+					}
 
 					Directory.CreateDirectory(_configuration.OutputFolder);
 				}
@@ -115,6 +130,7 @@ namespace Sander.DirLister.Core.Application
 				return false;
 			}
 		}
+
 
 		private void ValidateInputFolders(ref bool isValid)
 		{
@@ -132,7 +148,9 @@ namespace Sander.DirLister.Core.Application
 					var mappedFolder = Utils.GetUncPath(inputFolder);
 
 					if (string.Compare(mappedFolder, inputFolder, StringComparison.Ordinal) != 0)
+					{
 						_configuration.Log(TraceLevel.Warning, $"Using \"{inputFolder}\" as UNC path \"{mappedFolder}\"");
+					}
 
 					if (!Directory.Exists(mappedFolder))
 					{
@@ -142,13 +160,12 @@ namespace Sander.DirLister.Core.Application
 					}
 					else
 					{
-					folders.Add(Utils.EnsureBackslash(mappedFolder));
+						folders.Add(Utils.EnsureBackslash(mappedFolder));
 					}
 				}
 
 				_configuration.InputFolders = folders;
 			}
 		}
-
 	}
 }

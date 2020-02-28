@@ -5,12 +5,12 @@ using Sander.DirLister.Core.Application;
 namespace Sander.DirLister.Core
 {
 	/// <summary>
-	/// Create directory listings
+	///     Create directory listings
 	/// </summary>
 	public static class DirLister
 	{
 		/// <summary>
-		/// Run directory listing with specified configuration, creating output files as needed
+		///     Run directory listing with specified configuration, creating output files as needed
 		/// </summary>
 		/// <param name="configuration"></param>
 		public static bool List(Configuration configuration)
@@ -20,8 +20,9 @@ namespace Sander.DirLister.Core
 			return noErrors;
 		}
 
+
 		/// <summary>
-		/// Run directory listing with specified configuration, creating output files as needed
+		///     Run directory listing with specified configuration, creating output files as needed
 		/// </summary>
 		/// <param name="configuration"></param>
 		public static async Task<bool> ListAsync(Configuration configuration)
@@ -31,10 +32,10 @@ namespace Sander.DirLister.Core
 
 
 		/// <summary>
-		/// Run directory listing with specified configuration, returning file info.
-		/// Output files are not created.
-		/// This is intended to be used by other apps.
-		/// Can return null in case of issues.
+		///     Run directory listing with specified configuration, returning file info.
+		///     Output files are not created.
+		///     This is intended to be used by other apps.
+		///     Can return null in case of issues.
 		/// </summary>
 		/// <param name="configuration"></param>
 		/// <returns></returns>
@@ -45,12 +46,11 @@ namespace Sander.DirLister.Core
 		}
 
 
-
 		/// <summary>
-		/// Run directory listing with specified configuration, returning file info.
-		/// Output files are not created.
-		/// This is intended to be used by other apps.
-		/// Can return null as task result in case of issues.
+		///     Run directory listing with specified configuration, returning file info.
+		///     Output files are not created.
+		///     This is intended to be used by other apps.
+		///     Can return null as task result in case of issues.
 		/// </summary>
 		/// <param name="configuration"></param>
 		/// <returns></returns>

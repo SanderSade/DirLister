@@ -22,7 +22,6 @@ mka, mks, mkv, mp+, mp1, mp2, mp3, mp4, mpc, mpe, mpeg, mpg, mpp, mpv2, oga, ogg
 		}
 
 
-
 		internal void GetMediaInfo(FileEntry entry)
 		{
 			try
@@ -30,7 +29,9 @@ mka, mks, mkv, mp+, mp1, mp2, mp3, mp4, mpc, mpe, mpeg, mpg, mpp, mpv2, oga, ogg
 				using (var file = File.Create(new File.LocalFileAbstraction(entry.Fullname), null, ReadStyle.Average))
 				{
 					if (file == null || file.Properties.Duration == TimeSpan.Zero)
+					{
 						return;
+					}
 
 					if ((file.Properties.MediaTypes & MediaTypes.Video) != 0)
 					{
@@ -51,6 +52,7 @@ mka, mks, mkv, mp+, mp1, mp2, mp3, mp4, mpc, mpe, mpeg, mpg, mpp, mpv2, oga, ogg
 			}
 		}
 
+
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		private MediaInfo GetAudioInfo(Properties fileProperties)
 		{
@@ -61,18 +63,21 @@ mka, mks, mkv, mp+, mp1, mp2, mp3, mp4, mpc, mpe, mpeg, mpg, mpp, mpv2, oga, ogg
 				AudioSampleRate = fileProperties.AudioSampleRate,
 				AudioBitRate = fileProperties.AudioBitrate
 			};
+
 			return mediaInfo;
 		}
 
+
 		/// <summary>
-		/// Round seconds to closest. No one is interested in fractional seconds...
-		/// Also, some old AVIs report negative duration
+		///     Round seconds to closest. No one is interested in fractional seconds...
+		///     Also, some old AVIs report negative duration
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		private TimeSpan RoundDuration(TimeSpan duration)
 		{
-			return duration == TimeSpan.Zero ? TimeSpan.Zero : TimeSpan.FromSeconds((int) Math.Round(Math.Abs(duration.TotalSeconds), MidpointRounding.ToEven));
+			return duration == TimeSpan.Zero ? TimeSpan.Zero : TimeSpan.FromSeconds((int)Math.Round(Math.Abs(duration.TotalSeconds), MidpointRounding.ToEven));
 		}
+
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		private MediaInfo GetVideoInfo(Properties fileProperties)
@@ -87,8 +92,8 @@ mka, mks, mkv, mp+, mp1, mp2, mp3, mp4, mpc, mpe, mpeg, mpg, mpp, mpv2, oga, ogg
 				AudioSampleRate = fileProperties.AudioSampleRate,
 				AudioBitRate = fileProperties.AudioBitrate
 			};
+
 			return mediaInfo;
 		}
-
 	}
 }

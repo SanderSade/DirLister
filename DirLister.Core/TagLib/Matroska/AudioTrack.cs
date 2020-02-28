@@ -3,22 +3,15 @@
 namespace Sander.DirLister.Core.TagLib.Matroska
 {
 	/// <summary>
-	/// Describes a Matroska Audio track.
+	///     Describes a Matroska Audio track.
 	/// </summary>
 	public class AudioTrack : Track, IAudioCodec
 	{
-#pragma warning disable 414 // Assigned, never used
-		private readonly double rate;
-		private readonly ulong channels;
-		private readonly ulong depth;
-#pragma warning restore 414
-
-
 		/// <summary>
-		///  Construct a <see cref="AudioTrack" /> reading information from 
-		///  provided file data.
-		/// Parsing will be done reading from _file at position references by 
-		/// parent element's data section.
+		///     Construct a <see cref="AudioTrack" /> reading information from
+		///     provided file data.
+		///     Parsing will be done reading from _file at position references by
+		///     parent element's data section.
 		/// </summary>
 		/// <param name="_file"><see cref="File" /> instance to read from.</param>
 		/// <param name="element">Parent <see cref="EBMLreader" />.</param>
@@ -75,28 +68,33 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 
 
 		/// <summary>
-		/// List of unknown elements encountered while parsing.
+		///     List of unknown elements encountered while parsing.
 		/// </summary>
 		public new List<EBMLreader> UnknownElements { get; } = new List<EBMLreader>();
 
 		/// <summary>
-		/// This type of track only has audio media type.
+		///     This type of track only has audio media type.
 		/// </summary>
 		public override MediaTypes MediaTypes => MediaTypes.Audio;
 
 		/// <summary>
-		/// Audio track bitrate.
+		///     Audio track bitrate.
 		/// </summary>
 		public int AudioBitrate => 0;
 
 		/// <summary>
-		/// Audio track sampling rate.
+		///     Audio track sampling rate.
 		/// </summary>
 		public int AudioSampleRate => (int)rate;
 
 		/// <summary>
-		/// Number of audio channels in this track.
+		///     Number of audio channels in this track.
 		/// </summary>
 		public int AudioChannels => (int)channels;
+#pragma warning disable 414 // Assigned, never used
+		private readonly double rate;
+		private readonly ulong channels;
+		private readonly ulong depth;
+#pragma warning restore 414
 	}
 }

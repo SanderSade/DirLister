@@ -6,21 +6,23 @@ using System.Text;
 namespace Sander.DirLister.Core.TagLib
 {
 	/// <summary>
-	///    This class implements <see cref="T:System.Collections.Generic`1"/>
-	///    for objects that implement <see cref="T:System.IComparable`1"/>,
-	///    providing extra features used in lists in TagLib#.
+	///     This class implements <see cref="T:System.Collections.Generic`1" />
+	///     for objects that implement <see cref="T:System.IComparable`1" />,
+	///     providing extra features used in lists in TagLib#.
 	/// </summary>
 	public class ListBase<T> : IList<T> where T : IComparable<T>
 	{
 		/// <summary>
-		///    Contains the internal list.
+		///     Contains the internal list.
 		/// </summary>
 		private readonly List<T> data = new List<T>();
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="T:Sander.DirLister.Core.TagLib.ListBase`1" /> with no contents.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="T:Sander.DirLister.Core.TagLib.ListBase`1" />
+		///     with no contents.
 		/// </summary>
 		public ListBase()
 		{
@@ -28,81 +30,88 @@ namespace Sander.DirLister.Core.TagLib
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="T:Sander.DirLister.Core.TagLib.ListBase`1" /> with specified contents.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="T:Sander.DirLister.Core.TagLib.ListBase`1" />
+		///     with specified contents.
 		/// </summary>
 		/// <param name="list">
-		///   A <see cref="T:System.Collections.Generic.IEnumerable`1"
-		///   /> containing objects to add to the current instance.
+		///     A <see cref="T:System.Collections.Generic.IEnumerable`1" /> containing objects to add to the current instance.
 		/// </param>
 		public ListBase(ListBase<T> list)
 		{
 			if (list != null)
+			{
 				Add(list);
+			}
 		}
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="T:Sander.DirLister.Core.TagLib.ListBase`1" /> with specified contents.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="T:Sander.DirLister.Core.TagLib.ListBase`1" />
+		///     with specified contents.
 		/// </summary>
 		/// <param name="list">
-		///   A <see cref="System.Array" /> containing objects to add to
-		///   the current instance.
+		///     A <see cref="System.Array" /> containing objects to add to
+		///     the current instance.
 		/// </param>
 		public ListBase(params T[] list)
 		{
 			if (list != null)
+			{
 				Add(list);
+			}
 		}
 
 
 		/// <summary>
-		///    Gets whether or not the current instance is empty.
+		///     Gets whether or not the current instance is empty.
 		/// </summary>
 		/// <value>
-		///    <see langword="true" /> if the current instance is empty;
-		///    otherwise <see langword="false" />.
+		///     <see langword="true" /> if the current instance is empty;
+		///     otherwise <see langword="false" />.
 		/// </value>
 		public bool IsEmpty => Count == 0;
 
 		/// <summary>
-		///    Gets whether or not the current instance has a fixed
-		///    size.
+		///     Gets whether or not the current instance has a fixed
+		///     size.
 		/// </summary>
 		/// <value>
-		///    Always <see langword="false" />.
+		///     Always <see langword="false" />.
 		/// </value>
 		public bool IsFixedSize => false;
 
 		/// <summary>
-		///    Gets whether or not the current instance is synchronized.
+		///     Gets whether or not the current instance is synchronized.
 		/// </summary>
 		/// <value>
-		///    Always <see langword="false" />.
+		///     Always <see langword="false" />.
 		/// </value>
 		public bool IsSynchronized => false;
 
 		/// <summary>
-		///    Gets the object that can be used to synchronize the
-		///    current instance.
+		///     Gets the object that can be used to synchronize the
+		///     current instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="object" /> that can be used to synchronize
-		///    the current instance.
+		///     A <see cref="object" /> that can be used to synchronize
+		///     the current instance.
 		/// </value>
 		public object SyncRoot => this;
 
 		/// <summary>
-		///    Gets whether or not the current instance is read-only.
+		///     Gets whether or not the current instance is read-only.
 		/// </summary>
 		/// <value>
-		///    Always <see langword="false" />.
+		///     Always <see langword="false" />.
 		/// </value>
 		public bool IsReadOnly => false;
 
 		/// <summary>
-		///    Gets and sets the value as a specified index.
+		///     Gets and sets the value as a specified index.
 		/// </summary>
 		public T this[int index]
 		{
@@ -112,10 +121,10 @@ namespace Sander.DirLister.Core.TagLib
 
 
 		/// <summary>
-		///    Adds a single item to end of the current instance.
+		///     Adds a single item to end of the current instance.
 		/// </summary>
 		/// <param name="item">
-		///    An object to add to the end of the current instance.
+		///     An object to add to the end of the current instance.
 		/// </param>
 		public void Add(T item)
 		{
@@ -124,7 +133,7 @@ namespace Sander.DirLister.Core.TagLib
 
 
 		/// <summary>
-		///    Clears the contents of the current instance.
+		///     Clears the contents of the current instance.
 		/// </summary>
 		public void Clear()
 		{
@@ -133,15 +142,15 @@ namespace Sander.DirLister.Core.TagLib
 
 
 		/// <summary>
-		///    Gets whether or not the current instance contains a
-		///    specified object.
+		///     Gets whether or not the current instance contains a
+		///     specified object.
 		/// </summary>
 		/// <param name="item">
-		///    An object to look for in the current instance.
+		///     An object to look for in the current instance.
 		/// </param>
 		/// <returns>
-		///    <see langword="true" /> if the item could be found;
-		///    otherwise <see langword="false" />.
+		///     <see langword="true" /> if the item could be found;
+		///     otherwise <see langword="false" />.
 		/// </returns>
 		public bool Contains(T item)
 		{
@@ -150,14 +159,14 @@ namespace Sander.DirLister.Core.TagLib
 
 
 		/// <summary>
-		///    Gets the index of the first occurance of a value.
+		///     Gets the index of the first occurance of a value.
 		/// </summary>
 		/// <param name="item">
-		///    A object to find in the current instance.
+		///     A object to find in the current instance.
 		/// </param>
 		/// <returns>
-		///    A <see cref="int" /> value containing the first index
-		///    at which the value was found, or -1 if it was not found.
+		///     A <see cref="int" /> value containing the first index
+		///     at which the value was found, or -1 if it was not found.
 		/// </returns>
 		public int IndexOf(T item)
 		{
@@ -166,15 +175,15 @@ namespace Sander.DirLister.Core.TagLib
 
 
 		/// <summary>
-		///    Inserts a single value into the current instance at a
-		///    specified index.
+		///     Inserts a single value into the current instance at a
+		///     specified index.
 		/// </summary>
 		/// <param name="index">
-		///    A <see cref="int" /> value specifying the position at
-		///    which to insert the value.
+		///     A <see cref="int" /> value specifying the position at
+		///     which to insert the value.
 		/// </param>
 		/// <param name="item">
-		///    An object to insert into the current instance.
+		///     An object to insert into the current instance.
 		/// </param>
 		public void Insert(int index, T item)
 		{
@@ -183,16 +192,16 @@ namespace Sander.DirLister.Core.TagLib
 
 
 		/// <summary>
-		///    Removes the first occurance of an object from the current
-		///    instance.
+		///     Removes the first occurance of an object from the current
+		///     instance.
 		/// </summary>
 		/// <param name="item">
-		///    An object to remove from the current instance.
+		///     An object to remove from the current instance.
 		/// </param>
 		/// <returns>
-		///    <see langword="true" /> if the value was removed;
-		///    otherwise the value did not appear in the current
-		///    instance and <see langword="false" /> is returned.
+		///     <see langword="true" /> if the value was removed;
+		///     otherwise the value did not appear in the current
+		///     instance and <see langword="false" /> is returned.
 		/// </returns>
 		public bool Remove(T item)
 		{
@@ -201,11 +210,11 @@ namespace Sander.DirLister.Core.TagLib
 
 
 		/// <summary>
-		///    Removes the item at the specified index.
+		///     Removes the item at the specified index.
 		/// </summary>
 		/// <param name="index">
-		///    A <see cref="int" /> value specifying the position at
-		///    which to remove an item.
+		///     A <see cref="int" /> value specifying the position at
+		///     which to remove an item.
 		/// </param>
 		public void RemoveAt(int index)
 		{
@@ -214,25 +223,25 @@ namespace Sander.DirLister.Core.TagLib
 
 
 		/// <summary>
-		///    Gets the number of elements in the current instance.
+		///     Gets the number of elements in the current instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="int" /> value containing the number of
-		///    elements in the current instance.
+		///     A <see cref="int" /> value containing the number of
+		///     elements in the current instance.
 		/// </value>
 		public int Count => data.Count;
 
 
 		/// <summary>
-		///    Copies the current instance to an array, starting at a
-		///    specified index.
+		///     Copies the current instance to an array, starting at a
+		///     specified index.
 		/// </summary>
 		/// <param name="array">
-		///    An array to copy to.
+		///     An array to copy to.
 		/// </param>
 		/// <param name="arrayIndex">
-		///    A <see cref="int" /> value indicating the index in
-		///    <paramref name="array" /> at which to start copying.
+		///     A <see cref="int" /> value indicating the index in
+		///     <paramref name="array" /> at which to start copying.
 		/// </param>
 		public void CopyTo(T[] array, int arrayIndex)
 		{
@@ -241,12 +250,12 @@ namespace Sander.DirLister.Core.TagLib
 
 
 		/// <summary>
-		///    Gets an enumerator for enumerating through the elements
-		///    in the current instance.
+		///     Gets an enumerator for enumerating through the elements
+		///     in the current instance.
 		/// </summary>
 		/// <returns>
-		///    A <see cref="T:System.Collections.IEnumerator`1" /> for
-		///    enumerating through the tag's data boxes.
+		///     A <see cref="T:System.Collections.IEnumerator`1" /> for
+		///     enumerating through the tag's data boxes.
 		/// </returns>
 		public IEnumerator<T> GetEnumerator()
 		{
@@ -261,11 +270,11 @@ namespace Sander.DirLister.Core.TagLib
 
 
 		/// <summary>
-		///    Adds a collection of elements to the current instance.
+		///     Adds a collection of elements to the current instance.
 		/// </summary>
 		/// <param name="list">
-		///    A <see cref="T:Sander.DirLister.Core.TagLib.ListBase`1"/> object containing
-		///    elements to add to the current instance.
+		///     A <see cref="T:Sander.DirLister.Core.TagLib.ListBase`1" /> object containing
+		///     elements to add to the current instance.
 		/// </param>
 		public void Add(ListBase<T> list)
 		{
@@ -277,11 +286,11 @@ namespace Sander.DirLister.Core.TagLib
 
 
 		/// <summary>
-		///    Adds a collection of elements to the current instance.
+		///     Adds a collection of elements to the current instance.
 		/// </summary>
 		/// <param name="list">
-		///    A <see cref="T:System.Collections.Generic.IEnumerable`1"/> object containing
-		///    elements to add to the current instance.
+		///     A <see cref="T:System.Collections.Generic.IEnumerable`1" /> object containing
+		///     elements to add to the current instance.
 		/// </param>
 		public void Add(IEnumerable<T> list)
 		{
@@ -293,11 +302,11 @@ namespace Sander.DirLister.Core.TagLib
 
 
 		/// <summary>
-		///    Adds a collection of elements to the current instance.
+		///     Adds a collection of elements to the current instance.
 		/// </summary>
 		/// <param name="list">
-		///    An array containing elements to add to the current
-		///    instance.
+		///     An array containing elements to add to the current
+		///     instance.
 		/// </param>
 		public void Add(T[] list)
 		{
@@ -309,24 +318,26 @@ namespace Sander.DirLister.Core.TagLib
 
 
 		/// <summary>
-		///    Performs a sorted insert of an object into the current
-		///    instance, optionally only adding if the item is unique.
+		///     Performs a sorted insert of an object into the current
+		///     instance, optionally only adding if the item is unique.
 		/// </summary>
 		/// <param name="item">
-		///    An object to add to the current instance.
+		///     An object to add to the current instance.
 		/// </param>
 		/// <param name="unique">
-		///    If <see langword="true" />, the object will only be added
-		///    if an identical value is not already contained in the
-		///    current instance.
+		///     If <see langword="true" />, the object will only be added
+		///     if an identical value is not already contained in the
+		///     current instance.
 		/// </param>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="item" /> is <see langword="null" />.
+		///     <paramref name="item" /> is <see langword="null" />.
 		/// </exception>
 		public virtual void SortedInsert(T item, bool unique)
 		{
 			if (item == null)
+			{
 				throw new ArgumentNullException("item");
+			}
 
 			var i = 0;
 			for (; i < data.Count; i++)
@@ -347,30 +358,32 @@ namespace Sander.DirLister.Core.TagLib
 
 
 		/// <summary>
-		///    Performs a sorted insert of an object into the current
-		///    instance.
+		///     Performs a sorted insert of an object into the current
+		///     instance.
 		/// </summary>
 		/// <param name="item">
-		///    An object to add to the current instance.
+		///     An object to add to the current instance.
 		/// </param>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="item" /> is <see langword="null" />.
+		///     <paramref name="item" /> is <see langword="null" />.
 		/// </exception>
 		public void SortedInsert(T item)
 		{
 			if (item == null)
+			{
 				throw new ArgumentNullException("item");
+			}
 
 			SortedInsert(item, false);
 		}
 
 
 		/// <summary>
-		///    Converts the current instance to an array.
+		///     Converts the current instance to an array.
 		/// </summary>
 		/// <returns>
-		///    A <see cref="System.Array" /> containing the contents of
-		///    the current instance.
+		///     A <see cref="System.Array" /> containing the contents of
+		///     the current instance.
 		/// </returns>
 		public T[] ToArray()
 		{
@@ -379,16 +392,16 @@ namespace Sander.DirLister.Core.TagLib
 
 
 		/// <summary>
-		///    Gets a string representation of the contents of the
-		///    current instance, joined by a separator.
+		///     Gets a string representation of the contents of the
+		///     current instance, joined by a separator.
 		/// </summary>
 		/// <param name="separator">
-		///    A <see cref="string" /> object to separate the items
-		///    with.
+		///     A <see cref="string" /> object to separate the items
+		///     with.
 		/// </param>
 		/// <returns>
-		///    A <see cref="string" /> object containing the contents
-		///    of the current instance.
+		///     A <see cref="string" /> object containing the contents
+		///     of the current instance.
 		/// </returns>
 		public string ToString(string separator)
 		{
@@ -409,12 +422,12 @@ namespace Sander.DirLister.Core.TagLib
 
 
 		/// <summary>
-		///    Gets a string representation of the contents of the
-		///    current instance, joined by commas.
+		///     Gets a string representation of the contents of the
+		///     current instance, joined by commas.
 		/// </summary>
 		/// <returns>
-		///    A <see cref="string" /> object containing the contents
-		///    of the current instance.
+		///     A <see cref="string" /> object containing the contents
+		///     of the current instance.
 		/// </returns>
 		public override string ToString()
 		{

@@ -4,82 +4,84 @@ using System.Collections.Generic;
 namespace Sander.DirLister.Core.TagLib.Ogg
 {
 	/// <summary>
-	///    Indicates the special properties of a <see cref="Page" />.
+	///     Indicates the special properties of a <see cref="Page" />.
 	/// </summary>
 	[Flags]
 	public enum PageFlags : byte
 	{
 		/// <summary>
-		///    The page is a normal page.
+		///     The page is a normal page.
 		/// </summary>
 		None = 0,
 
 		/// <summary>
-		///    The first packet of the page is continued from the
-		///    previous page.
+		///     The first packet of the page is continued from the
+		///     previous page.
 		/// </summary>
 		FirstPacketContinued = 1,
 
 		/// <summary>
-		///    The page is the first page of the stream.
+		///     The page is the first page of the stream.
 		/// </summary>
 		FirstPageOfStream = 2,
 
 		/// <summary>
-		///    The page is the last page of the stream.
+		///     The page is the last page of the stream.
 		/// </summary>
 		LastPageOfStream = 4
 	}
 
 	/// <summary>
-	///    This structure provides a representation of an Ogg page header.
+	///     This structure provides a representation of an Ogg page header.
 	/// </summary>
 	public struct PageHeader
 	{
 		/// <summary>
-		///    Contains the sizes of the packets contained in the
-		///    current instance.
+		///     Contains the sizes of the packets contained in the
+		///     current instance.
 		/// </summary>
 		private readonly List<int> packet_sizes;
 
 		/// <summary>
-		///    Contains the OGG version.
+		///     Contains the OGG version.
 		/// </summary>
 		private readonly byte version;
 
 		/// <summary>
-		///    Contains the page absolute granular postion.
+		///     Contains the page absolute granular postion.
 		/// </summary>
 		private readonly ulong absolute_granular_position;
 
 		/// <summary>
-		///    Contains the page sequence number.
+		///     Contains the page sequence number.
 		/// </summary>
 		private readonly uint page_sequence_number;
 
 		/// <summary>
-		///    Contains the data size on disk.
+		///     Contains the data size on disk.
 		/// </summary>
 		private readonly uint data_size;
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="PageHeader" /> with a given serial number, page
-		///    number, and flags.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="PageHeader" />
+		///     with a given serial number, page
+		///     number, and flags.
 		/// </summary>
 		/// <param name="streamSerialNumber">
-		///    A <see cref="uint" /> value containing the serial number
-		///    for the stream containing the page described by the new
-		///    instance.
+		///     A <see cref="uint" /> value containing the serial number
+		///     for the stream containing the page described by the new
+		///     instance.
 		/// </param>
 		/// <param name="pageNumber">
-		///    A <see cref="uint" /> value containing the index of the
-		///    page described by the new instance in the stream.
+		///     A <see cref="uint" /> value containing the index of the
+		///     page described by the new instance in the stream.
 		/// </param>
 		/// <param name="flags">
-		///    A <see cref="PageFlags" /> object containing the flags
-		///    that apply to the page described by the new instance.
+		///     A <see cref="PageFlags" /> object containing the flags
+		///     that apply to the page described by the new instance.
 		/// </param>
 		public PageHeader(uint streamSerialNumber, uint pageNumber,
 			PageFlags flags)
@@ -95,42 +97,50 @@ namespace Sander.DirLister.Core.TagLib.Ogg
 
 			if (pageNumber == 0 &&
 			    (flags & PageFlags.FirstPacketContinued) == 0)
+			{
 				Flags |= PageFlags.FirstPageOfStream;
+			}
 		}
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="PageHeader" /> by reading a raw Ogg page header
-		///    from a specified position in a specified file.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="PageHeader" />
+		///     by reading a raw Ogg page header
+		///     from a specified position in a specified file.
 		/// </summary>
 		/// <param name="file">
-		///    A <see cref="File" /> object containing the file from
-		///    which the contents of the new instance are to be read.
+		///     A <see cref="File" /> object containing the file from
+		///     which the contents of the new instance are to be read.
 		/// </param>
 		/// <param name="position">
-		///    A <see cref="long" /> value specify at what position to
-		///    read.
+		///     A <see cref="long" /> value specify at what position to
+		///     read.
 		/// </param>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="file" /> is <see langword="null" />.
+		///     <paramref name="file" /> is <see langword="null" />.
 		/// </exception>
 		/// <exception cref="ArgumentOutOfRangeException">
-		///    <paramref name="position" /> is less than zero or greater
-		///    than the size of the file.
+		///     <paramref name="position" /> is less than zero or greater
+		///     than the size of the file.
 		/// </exception>
 		/// <exception cref="CorruptFileException">
-		///    The Ogg identifier could not be found at the correct
-		///    location.
+		///     The Ogg identifier could not be found at the correct
+		///     location.
 		/// </exception>
 		public PageHeader(File file, long position)
 		{
 			if (file == null)
+			{
 				throw new ArgumentNullException("file");
+			}
 
 			if (position < 0 || position > file.Length - 27)
+			{
 				throw new ArgumentOutOfRangeException(
 					"position");
+			}
 
 			file.Seek(position);
 
@@ -140,18 +150,22 @@ namespace Sander.DirLister.Core.TagLib.Ogg
 
 			var data = file.ReadBlock(27);
 			if (data.Count < 27 || !data.StartsWith("OggS"))
+			{
 				throw new CorruptFileException(
 					"Error reading page header");
+			}
 
 			version = data[4];
 			Flags = (PageFlags)data[5];
 			absolute_granular_position = data.Mid(6, 8)
-			                                 .ToULong(
-				                                 false);
+				.ToULong(
+					false);
+
 			StreamSerialNumber = data.Mid(14, 4)
-			                           .ToUInt(false);
+				.ToUInt(false);
+
 			page_sequence_number = data.Mid(18, 4)
-			                           .ToUInt(false);
+				.ToUInt(false);
 
 			// Byte number 27 is the number of page segments, which
 			// is the only variable length portion of the page
@@ -165,8 +179,10 @@ namespace Sander.DirLister.Core.TagLib.Ogg
 			// Another sanity check.
 			if (page_segment_count < 1 ||
 			    page_segments.Count != page_segment_count)
+			{
 				throw new CorruptFileException(
 					"Incorrect number of page segments");
+			}
 
 			// The base size of an Ogg page 27 bytes plus the number
 			// of lacing values.
@@ -189,27 +205,31 @@ namespace Sander.DirLister.Core.TagLib.Ogg
 			}
 
 			if (packet_size > 0)
+			{
 				packet_sizes.Add(packet_size);
+			}
 		}
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="PageHeader" /> by copying the values from another
-		///    instance, offsetting the page number and applying new
-		///    flags.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="PageHeader" />
+		///     by copying the values from another
+		///     instance, offsetting the page number and applying new
+		///     flags.
 		/// </summary>
 		/// <param name="original">
-		///    A <see cref="PageHeader"/> object to copy the values
-		///    from.
+		///     A <see cref="PageHeader" /> object to copy the values
+		///     from.
 		/// </param>
 		/// <param name="offset">
-		///    A <see cref="uint"/> value specifying how much to offset
-		///    the page sequence number in the new instance.
+		///     A <see cref="uint" /> value specifying how much to offset
+		///     the page sequence number in the new instance.
 		/// </param>
 		/// <param name="flags">
-		///    A <see cref="PageFlags"/> value specifying the flags to
-		///    use in the new instance.
+		///     A <see cref="PageFlags" /> value specifying the flags to
+		///     use in the new instance.
 		/// </param>
 		public PageHeader(PageHeader original, uint offset,
 			PageFlags flags)
@@ -218,25 +238,29 @@ namespace Sander.DirLister.Core.TagLib.Ogg
 			Flags = flags;
 			absolute_granular_position =
 				original.absolute_granular_position;
+
 			StreamSerialNumber = original.StreamSerialNumber;
 			page_sequence_number =
 				original.page_sequence_number + offset;
+
 			Size = original.Size;
 			data_size = original.data_size;
 			packet_sizes = new List<int>();
 
 			if (page_sequence_number == 0 &&
 			    (flags & PageFlags.FirstPacketContinued) == 0)
+			{
 				Flags |= PageFlags.FirstPageOfStream;
+			}
 		}
 
 
 		/// <summary>
-		///    Gets and sets the sizes for the packets in the page
-		///    described by the current instance.
+		///     Gets and sets the sizes for the packets in the page
+		///     described by the current instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="T:int[]" /> containing the packet sizes.
+		///     A <see cref="T:int[]" /> containing the packet sizes.
 		/// </value>
 		public int[] PacketSizes
 		{
@@ -249,69 +273,69 @@ namespace Sander.DirLister.Core.TagLib.Ogg
 		}
 
 		/// <summary>
-		///    Gets the flags for the page described by the current
-		///    instance.
+		///     Gets the flags for the page described by the current
+		///     instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="PageFlags" /> value containing the page
-		///    flags.
+		///     A <see cref="PageFlags" /> value containing the page
+		///     flags.
 		/// </value>
 		public PageFlags Flags { get; }
 
 		/// <summary>
-		///    Gets the absolute granular position of the page described
-		///    by the current instance.
+		///     Gets the absolute granular position of the page described
+		///     by the current instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="long" /> value containing the absolute
-		///    granular position of the page.
+		///     A <see cref="long" /> value containing the absolute
+		///     granular position of the page.
 		/// </value>
 		public long AbsoluteGranularPosition => (long)absolute_granular_position;
 
 		/// <summary>
-		///    Gets the sequence number of the page described by the
-		///    current instance.
+		///     Gets the sequence number of the page described by the
+		///     current instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="uint" /> value containing the sequence
-		///    number of the page.
+		///     A <see cref="uint" /> value containing the sequence
+		///     number of the page.
 		/// </value>
 		public uint PageSequenceNumber => page_sequence_number;
 
 		/// <summary>
-		///    Gets the serial number of stream that the page described
-		///    by the current instance belongs to.
+		///     Gets the serial number of stream that the page described
+		///     by the current instance belongs to.
 		/// </summary>
 		/// <value>
-		///    A <see cref="uint" /> value containing the stream serial
-		///    number.
+		///     A <see cref="uint" /> value containing the stream serial
+		///     number.
 		/// </value>
 		public uint StreamSerialNumber { get; }
 
 		/// <summary>
-		///    Gets the size of the header as it appeared on disk.
+		///     Gets the size of the header as it appeared on disk.
 		/// </summary>
 		/// <value>
-		///    A <see cref="uint" /> value containing the header size.
+		///     A <see cref="uint" /> value containing the header size.
 		/// </value>
 		public uint Size { get; }
 
 		/// <summary>
-		///    Gets the size of the data portion of the page described
-		///    by the current instance as it appeared on disk.
+		///     Gets the size of the data portion of the page described
+		///     by the current instance as it appeared on disk.
 		/// </summary>
 		/// <value>
-		///    A <see cref="uint" /> value containing the data size.
+		///     A <see cref="uint" /> value containing the data size.
 		/// </value>
 		public uint DataSize => data_size;
 
 
 		/// <summary>
-		///    Renders the current instance as a raw Ogg page header.
+		///     Renders the current instance as a raw Ogg page header.
 		/// </summary>
 		/// <returns>
-		///    A <see cref="ByteVector" /> object containing the
-		///    rendered version of the current instance.
+		///     A <see cref="ByteVector" /> object containing the
+		///     rendered version of the current instance.
 		/// </returns>
 		public ByteVector Render()
 		{
@@ -328,6 +352,7 @@ namespace Sander.DirLister.Core.TagLib.Ogg
 					page_sequence_number, false),
 				new ByteVector(4, 0) // checksum, to be filled in later.
 			};
+
 			var page_segments = LacingValues;
 			data.Add((byte)page_segments.Count);
 			data.Add(page_segments);
@@ -337,11 +362,11 @@ namespace Sander.DirLister.Core.TagLib.Ogg
 
 
 		/// <summary>
-		///    Gets the rendered lacing values for the current instance.
+		///     Gets the rendered lacing values for the current instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="ByteVector" /> object containing the
-		///    rendered lacing values.
+		///     A <see cref="ByteVector" /> object containing the
+		///     rendered lacing values.
 		/// </value>
 		private ByteVector LacingValues
 		{
@@ -365,11 +390,15 @@ namespace Sander.DirLister.Core.TagLib.Ogg
 					var rem = sizes[i] % 255;
 
 					for (var j = 0; j < quot; j++)
+					{
 						data.Add(255);
+					}
 
 					if (i < sizes.Length - 1 ||
 					    packet_sizes[i] % 255 != 0)
+					{
 						data.Add((byte)rem);
+					}
 				}
 
 				return data;
@@ -378,11 +407,11 @@ namespace Sander.DirLister.Core.TagLib.Ogg
 
 
 		/// <summary>
-		///    Generates a hash code for the current instance.
+		///     Generates a hash code for the current instance.
 		/// </summary>
 		/// <returns>
-		///    A <see cref="int" /> value containing the hash code for
-		///    the current instance.
+		///     A <see cref="int" /> value containing the hash code for
+		///     the current instance.
 		/// </returns>
 		public override int GetHashCode()
 		{
@@ -399,38 +428,40 @@ namespace Sander.DirLister.Core.TagLib.Ogg
 
 
 		/// <summary>
-		///    Checks whether or not the current instance is equal to
-		///    another object.
+		///     Checks whether or not the current instance is equal to
+		///     another object.
 		/// </summary>
 		/// <param name="other">
-		///    A <see cref="object" /> to compare to the current
-		///    instance.
+		///     A <see cref="object" /> to compare to the current
+		///     instance.
 		/// </param>
 		/// <returns>
-		///    A <see cref="bool" /> value indicating whether or not the
-		///    current instance is equal to <paramref name="other" />.
+		///     A <see cref="bool" /> value indicating whether or not the
+		///     current instance is equal to <paramref name="other" />.
 		/// </returns>
 		/// <seealso cref="M:System.IEquatable`1.Equals" />
 		public override bool Equals(object other)
 		{
 			if (!(other is PageHeader))
+			{
 				return false;
+			}
 
 			return Equals((PageHeader)other);
 		}
 
 
 		/// <summary>
-		///    Checks whether or not the current instance is equal to
-		///    another instance of <see cref="PageHeader" />.
+		///     Checks whether or not the current instance is equal to
+		///     another instance of <see cref="PageHeader" />.
 		/// </summary>
 		/// <param name="other">
-		///    A <see cref="PageHeader" /> object to compare to the
-		///    current instance.
+		///     A <see cref="PageHeader" /> object to compare to the
+		///     current instance.
 		/// </param>
 		/// <returns>
-		///    A <see cref="bool" /> value indicating whether or not the
-		///    current instance is equal to <paramref name="other" />.
+		///     A <see cref="bool" /> value indicating whether or not the
+		///     current instance is equal to <paramref name="other" />.
 		/// </returns>
 		/// <seealso cref="M:System.IEquatable`1.Equals" />
 		public bool Equals(PageHeader other)
@@ -450,19 +481,23 @@ namespace Sander.DirLister.Core.TagLib.Ogg
 
 
 		/// <summary>
-		///    Gets whether or not two instances of <see
-		///    cref="PageHeader" /> are equal to eachother.
+		///     Gets whether or not two instances of
+		///     <see
+		///         cref="PageHeader" />
+		///     are equal to eachother.
 		/// </summary>
 		/// <param name="first">
-		///    A <see cref="PageHeader" /> object to compare.
+		///     A <see cref="PageHeader" /> object to compare.
 		/// </param>
 		/// <param name="second">
-		///    A <see cref="PageHeader" /> object to compare.
+		///     A <see cref="PageHeader" /> object to compare.
 		/// </param>
 		/// <returns>
-		///    <see langword="true" /> if <paramref name="first" /> is
-		///    equal to <paramref name="second" />. Otherwise, <see
-		///    langword="false" />.
+		///     <see langword="true" /> if <paramref name="first" /> is
+		///     equal to <paramref name="second" />. Otherwise,
+		///     <see
+		///         langword="false" />
+		///     .
 		/// </returns>
 		public static bool operator ==(PageHeader first,
 			PageHeader second)
@@ -472,19 +507,23 @@ namespace Sander.DirLister.Core.TagLib.Ogg
 
 
 		/// <summary>
-		///    Gets whether or not two instances of <see
-		///    cref="PageHeader" /> differ.
+		///     Gets whether or not two instances of
+		///     <see
+		///         cref="PageHeader" />
+		///     differ.
 		/// </summary>
 		/// <param name="first">
-		///    A <see cref="PageHeader" /> object to compare.
+		///     A <see cref="PageHeader" /> object to compare.
 		/// </param>
 		/// <param name="second">
-		///    A <see cref="PageHeader" /> object to compare.
+		///     A <see cref="PageHeader" /> object to compare.
 		/// </param>
 		/// <returns>
-		///    <see langword="true" /> if <paramref name="first" /> is
-		///    unequal to <paramref name="second" />. Otherwise, <see
-		///    langword="false" />.
+		///     <see langword="true" /> if <paramref name="first" /> is
+		///     unequal to <paramref name="second" />. Otherwise,
+		///     <see
+		///         langword="false" />
+		///     .
 		/// </returns>
 		public static bool operator !=(PageHeader first,
 			PageHeader second)

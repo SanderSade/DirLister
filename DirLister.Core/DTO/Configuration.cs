@@ -29,7 +29,7 @@ namespace Sander.DirLister.Core
 		/// <summary>
 		///     Output formats. Defaults to HTML if omitted
 		/// </summary>
-		public List<OutputFormat> OutputFormats { get; set; } = new List<OutputFormat> {OutputFormat.Html};
+		public List<OutputFormat> OutputFormats { get; set; } = new List<OutputFormat> { OutputFormat.Html };
 
 		/// <summary>
 		///     Output folder. Will be created if doesn't exist.
@@ -97,9 +97,9 @@ namespace Sander.DirLister.Core
 		public Action<int, string> ProgressAction { get; set; }
 
 		/// <summary>
-		/// Date format, used throughout the human-readable output
-		/// See https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings for details.
-		/// Defaults to yyyy-MM-dd HH:mm:ss (ISO 8601)
+		///     Date format, used throughout the human-readable output
+		///     See https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings for details.
+		///     Defaults to yyyy-MM-dd HH:mm:ss (ISO 8601)
 		/// </summary>
 		public string DateFormat { get; set; } = "yyyy-MM-dd HH:mm:ss";
 

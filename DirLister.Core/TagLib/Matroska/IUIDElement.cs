@@ -3,23 +3,23 @@
 namespace Sander.DirLister.Core.TagLib.Matroska
 {
 	/// <summary>
-	/// Represent a Matroska element that has an Unique Identifier, and can be tagged.
+	///     Represent a Matroska element that has an Unique Identifier, and can be tagged.
 	/// </summary>
 	public interface IUIDElement
 	{
 		/// <summary>
-		/// Unique ID representing the file, as random as possible (setting zero will generate automatically a new one).
+		///     Unique ID representing the file, as random as possible (setting zero will generate automatically a new one).
 		/// </summary>
 		ulong UID { get; set; }
 
 		/// <summary>
-		/// Get the Tag type the UID should be represented by, or 0 if undefined
+		///     Get the Tag type the UID should be represented by, or 0 if undefined
 		/// </summary>
 		MatroskaID UIDType { get; }
 	}
 
 	/// <summary>
-	/// Represent a basic Matroska UID element
+	///     Represent a basic Matroska UID element
 	/// </summary>
 	public class UIDElement : IUIDElement
 	{
@@ -29,7 +29,7 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 
 
 		/// <summary>
-		/// Create a UIDElement Stub
+		///     Create a UIDElement Stub
 		/// </summary>
 		/// <param name="type">Tag-type the UID represents</param>
 		/// <param name="uid">UID of the element</param>
@@ -41,13 +41,18 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 			    || type == MatroskaID.TagChapterUID
 			    || type == MatroskaID.TagAttachmentUID
 			)
+			{
 				UIDType = type;
-			else UIDType = 0;
+			}
+			else
+			{
+				UIDType = 0;
+			}
 		}
 
 
 		/// <summary>
-		/// Unique ID representing the element, as random as possible (setting zero will generate automatically a new one).
+		///     Unique ID representing the element, as random as possible (setting zero will generate automatically a new one).
 		/// </summary>
 		public ulong UID
 		{
@@ -56,13 +61,13 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 		}
 
 		/// <summary>
-		/// Get the Tag type the UID should be represented by, or 0 if undefined
+		///     Get the Tag type the UID should be represented by, or 0 if undefined
 		/// </summary>
 		public MatroskaID UIDType { get; } = 0;
 
 
 		/// <summary>
-		/// Generate a new random UID
+		///     Generate a new random UID
 		/// </summary>
 		/// <param name="ret">Value of the UID to be generated. A zero value will randomize it.</param>
 		/// <returns>Generated UID.</returns>

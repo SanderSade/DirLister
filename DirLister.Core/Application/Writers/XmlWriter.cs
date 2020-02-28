@@ -11,9 +11,9 @@ namespace Sander.DirLister.Core.Application.Writers
 		{
 		}
 
+
 		protected internal override string Write()
 		{
-
 			var xRoot = new XElement(nameof(DirLister));
 			xRoot.SetAttributeValue("TotalFiles", Entries.Count);
 			xRoot.SetAttributeValue("TotalSize", Entries.Sum(x => x.Size));
@@ -34,6 +34,7 @@ namespace Sander.DirLister.Core.Application.Writers
 			return fileName;
 		}
 
+
 		private XElement GetFolderElement(IGrouping<string, FileEntry> entries)
 		{
 			var xfolder = new XElement("Directory");
@@ -42,12 +43,15 @@ namespace Sander.DirLister.Core.Application.Writers
 			xfolder.SetAttributeValue("DirectorySize", entries.Sum(x => x.Size));
 			var files = new List<XElement>();
 			foreach (var entry in entries)
+			{
 				files.Add(GetFileElement(entry));
+			}
 
 			xfolder.Add(files);
 
 			return xfolder;
 		}
+
 
 		private XElement GetFileElement(FileEntry entry)
 		{
@@ -55,7 +59,9 @@ namespace Sander.DirLister.Core.Application.Writers
 			file.SetAttributeValue("Name", entry.Filename);
 
 			if (Configuration.IncludeSize)
+			{
 				file.SetAttributeValue(nameof(entry.Size), entry.Size);
+			}
 
 			if (Configuration.IncludeFileDates)
 			{
@@ -72,12 +78,15 @@ namespace Sander.DirLister.Core.Application.Writers
 			return file;
 		}
 
+
 		private static XElement GetMediaInfo(FileEntry entry)
 		{
 			void NonZeroInsert(XElement element, string name, int value)
 			{
 				if (value != 0)
+				{
 					element.SetAttributeValue(name, value);
+				}
 			}
 
 
@@ -85,7 +94,9 @@ namespace Sander.DirLister.Core.Application.Writers
 			media.SetAttributeValue(nameof(entry.MediaInfo.MediaType), entry.MediaInfo.MediaType);
 
 			if (entry.MediaInfo.Duration != TimeSpan.Zero)
+			{
 				media.SetAttributeValue(nameof(entry.MediaInfo.Duration), entry.MediaInfo.Duration.TotalSeconds);
+			}
 
 			NonZeroInsert(media, nameof(entry.MediaInfo.Height), entry.MediaInfo.Height);
 			NonZeroInsert(media, nameof(entry.MediaInfo.Width), entry.MediaInfo.Width);

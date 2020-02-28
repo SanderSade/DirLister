@@ -4,27 +4,18 @@ using System.Collections.Generic;
 namespace Sander.DirLister.Core.TagLib.Matroska
 {
 	/// <summary>
-	/// Describes a Matroska Track.
+	///     Describes a Matroska Track.
 	/// </summary>
 	public class Track : ICodec, IUIDElement
 	{
-#pragma warning disable 414 // Assigned, never used
-		private readonly ulong track_number;
-		private readonly string track_codec_id;
-		private readonly string track_codec_name;
-		private readonly string track_name;
-		private readonly string track_language;
-		private readonly bool track_enabled;
-		private readonly bool track_default;
-		private readonly ByteVector codec_data;
-#pragma warning restore 414
+		private ulong _UID = UIDElement.GenUID();
 
 
 		/// <summary>
-		/// Constructs a <see cref="Track" /> parsing from provided 
-		/// file data.
-		/// Parsing will be done reading from _file at position references by 
-		/// parent element's data section.
+		///     Constructs a <see cref="Track" /> parsing from provided
+		///     file data.
+		///     Parsing will be done reading from _file at position references by
+		///     parent element's data section.
 		/// </summary>
 		/// <param name="_file"><see cref="File" /> instance to read from.</param>
 		/// <param name="element">Parent <see cref="EBMLreader" />.</param>
@@ -78,27 +69,27 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 
 
 		/// <summary>
-		/// List of unknown elements encountered while parsing.
+		///     List of unknown elements encountered while parsing.
 		/// </summary>
 		public List<EBMLreader> UnknownElements { get; } = new List<EBMLreader>();
 
 		/// <summary>
-		/// Describes track duration.
-		/// </summary>
-		public virtual TimeSpan Duration => TimeSpan.Zero;
-
-		/// <summary>
-		/// Describes track media types.
-		/// </summary>
-		public virtual MediaTypes MediaTypes => MediaTypes.None;
-
-		/// <summary>
-		/// Track description.
+		///     Track description.
 		/// </summary>
 		public virtual string Description => string.Format("{0} {1}", track_codec_name, track_language);
 
 		/// <summary>
-		/// Unique ID representing the element, as random as possible (setting zero will generate automatically a new one).
+		///     Describes track duration.
+		/// </summary>
+		public virtual TimeSpan Duration => TimeSpan.Zero;
+
+		/// <summary>
+		///     Describes track media types.
+		/// </summary>
+		public virtual MediaTypes MediaTypes => MediaTypes.None;
+
+		/// <summary>
+		///     Unique ID representing the element, as random as possible (setting zero will generate automatically a new one).
 		/// </summary>
 		public ulong UID
 		{
@@ -106,11 +97,19 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 			set => _UID = UIDElement.GenUID(value);
 		}
 
-		private ulong _UID = UIDElement.GenUID();
-
 		/// <summary>
-		/// Get the Tag type the UID should be represented by, or 0 if undefined
+		///     Get the Tag type the UID should be represented by, or 0 if undefined
 		/// </summary>
 		public MatroskaID UIDType => MatroskaID.TagTrackUID;
+#pragma warning disable 414 // Assigned, never used
+		private readonly ulong track_number;
+		private readonly string track_codec_id;
+		private readonly string track_codec_name;
+		private readonly string track_name;
+		private readonly string track_language;
+		private readonly bool track_enabled;
+		private readonly bool track_default;
+		private readonly ByteVector codec_data;
+#pragma warning restore 414
 	}
 }

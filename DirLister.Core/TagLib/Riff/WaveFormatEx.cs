@@ -3,42 +3,43 @@ using System;
 namespace Sander.DirLister.Core.TagLib.Riff
 {
 	/// <summary>
-	///    This structure provides a representation of a Microsoft
-	///    WaveFormatEx structure.
+	///     This structure provides a representation of a Microsoft
+	///     WaveFormatEx structure.
 	/// </summary>
 	public struct WaveFormatEx : IAudioCodec, ILosslessAudioCodec
 	{
-
 		/// <summary>
-		///    Contains the number of audio channels.
+		///     Contains the number of audio channels.
 		/// </summary>
 		private readonly ushort channels;
 
 		/// <summary>
-		///    Contains the number of samples per second.
+		///     Contains the number of samples per second.
 		/// </summary>
 		private readonly uint samples_per_second;
 
 		/// <summary>
-		///    Contains the number of bits per sample.
+		///     Contains the number of bits per sample.
 		/// </summary>
 		private readonly ushort bits_per_sample;
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="WaveFormatEx" /> by reading the raw structure from
-		///    the beginning of a <see cref="ByteVector" /> object.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="WaveFormatEx" />
+		///     by reading the raw structure from
+		///     the beginning of a <see cref="ByteVector" /> object.
 		/// </summary>
 		/// <param name="data">
-		///    A <see cref="ByteVector" /> object containing the raw
-		///    data structure.
+		///     A <see cref="ByteVector" /> object containing the raw
+		///     data structure.
 		/// </param>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="data" /> is <see langword="null" />.
+		///     <paramref name="data" /> is <see langword="null" />.
 		/// </exception>
 		/// <exception cref="CorruptFileException">
-		///    <paramref name="data" /> contains less than 16 bytes.
+		///     <paramref name="data" /> contains less than 16 bytes.
 		/// </exception>
 		[Obsolete("Use WaveFormatEx(ByteVector,int)")]
 		public WaveFormatEx(ByteVector data) : this(data, 0)
@@ -47,150 +48,161 @@ namespace Sander.DirLister.Core.TagLib.Riff
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="WaveFormatEx" /> by reading the raw structure from
-		///    a specified position in a <see cref="ByteVector" />
-		///    object.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="WaveFormatEx" />
+		///     by reading the raw structure from
+		///     a specified position in a <see cref="ByteVector" />
+		///     object.
 		/// </summary>
 		/// <param name="data">
-		///    A <see cref="ByteVector" /> object containing the raw
-		///    data structure.
+		///     A <see cref="ByteVector" /> object containing the raw
+		///     data structure.
 		/// </param>
 		/// <param name="offset">
-		///    A <see cref="int" /> value specifying the index in
-		///    <paramref name="data"/> at which the structure begins.
+		///     A <see cref="int" /> value specifying the index in
+		///     <paramref name="data" /> at which the structure begins.
 		/// </param>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="data" /> is <see langword="null" />.
+		///     <paramref name="data" /> is <see langword="null" />.
 		/// </exception>
 		/// <exception cref="ArgumentOutOfRangeException">
-		///    <paramref name="offset" /> is less than zero.
+		///     <paramref name="offset" /> is less than zero.
 		/// </exception>
 		/// <exception cref="CorruptFileException">
-		///    <paramref name="data" /> contains less than 16 bytes at
-		///    <paramref name="offset" />.
+		///     <paramref name="data" /> contains less than 16 bytes at
+		///     <paramref name="offset" />.
 		/// </exception>
 		public WaveFormatEx(ByteVector data, int offset)
 		{
 			if (data == null)
+			{
 				throw new ArgumentNullException("data");
+			}
 
 			if (offset < 0)
+			{
 				throw new ArgumentOutOfRangeException(
 					"offset");
+			}
 
 			if (offset + 16 > data.Count)
+			{
 				throw new CorruptFileException(
 					"Expected 16 bytes.");
+			}
 
 			FormatTag = data.Mid(offset, 2)
-			                 .ToUShort(false);
+				.ToUShort(false);
+
 			channels = data.Mid(offset + 2, 2)
-			               .ToUShort(false);
+				.ToUShort(false);
+
 			samples_per_second = data.Mid(offset + 4, 4)
-			                         .ToUInt(false);
+				.ToUInt(false);
+
 			AverageBytesPerSecond = data.Mid(offset + 8, 4)
-			                               .ToUInt(false);
+				.ToUInt(false);
+
 			bits_per_sample = data.Mid(offset + 14, 2)
-			                      .ToUShort(false);
+				.ToUShort(false);
 		}
 
 
 		/// <summary>
-		///    Gets the format tag of the audio described by the
-		///    current instance.
+		///     Gets the format tag of the audio described by the
+		///     current instance.
 		/// </summary>
 		/// <returns>
-		///    A <see cref="ushort" /> value containing the format tag
-		///    of the audio.
+		///     A <see cref="ushort" /> value containing the format tag
+		///     of the audio.
 		/// </returns>
 		/// <remarks>
-		///    Format tags indicate the codec of the audio contained in
-		///    the file and are contained in a Microsoft registry. For
-		///    a description of the format, use <see cref="Description"
-		///    />.
+		///     Format tags indicate the codec of the audio contained in
+		///     the file and are contained in a Microsoft registry. For
+		///     a description of the format, use <see cref="Description" />.
 		/// </remarks>
 		public ushort FormatTag { get; }
 
 		/// <summary>
-		///    Gets the average bytes per second of the audio described
-		///    by the current instance.
+		///     Gets the average bytes per second of the audio described
+		///     by the current instance.
 		/// </summary>
 		/// <returns>
-		///    A <see cref="ushort" /> value containing the average
-		///    bytes per second of the audio.
+		///     A <see cref="ushort" /> value containing the average
+		///     bytes per second of the audio.
 		/// </returns>
 		public uint AverageBytesPerSecond { get; }
 
 		/// <summary>
-		///    Gets the bits per sample of the audio described by the
-		///    current instance.
+		///     Gets the bits per sample of the audio described by the
+		///     current instance.
 		/// </summary>
 		/// <returns>
-		///    A <see cref="ushort" /> value containing the bits per
-		///    sample of the audio.
+		///     A <see cref="ushort" /> value containing the bits per
+		///     sample of the audio.
 		/// </returns>
 		public ushort BitsPerSample => bits_per_sample;
 
 		int ILosslessAudioCodec.BitsPerSample => bits_per_sample;
 
 		/// <summary>
-		///    Gets the bitrate of the audio represented by the current
-		///    instance.
+		///     Gets the bitrate of the audio represented by the current
+		///     instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="int" /> value containing a bitrate of the
-		///    audio represented by the current instance.
+		///     A <see cref="int" /> value containing a bitrate of the
+		///     audio represented by the current instance.
 		/// </value>
 		public int AudioBitrate => (int)Math.Round(
 			AverageBytesPerSecond * 8d / 1000d);
 
 		/// <summary>
-		///    Gets the sample rate of the audio represented by the
-		///    current instance.
+		///     Gets the sample rate of the audio represented by the
+		///     current instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="int" /> value containing the sample rate of
-		///    the audio represented by the current instance.
+		///     A <see cref="int" /> value containing the sample rate of
+		///     the audio represented by the current instance.
 		/// </value>
 		public int AudioSampleRate => (int)samples_per_second;
 
 		/// <summary>
-		///    Gets the number of channels in the audio represented by
-		///    the current instance.
+		///     Gets the number of channels in the audio represented by
+		///     the current instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="int" /> value containing the number of
-		///    channels in the audio represented by the current
-		///    instance.
+		///     A <see cref="int" /> value containing the number of
+		///     channels in the audio represented by the current
+		///     instance.
 		/// </value>
 		public int AudioChannels => channels;
 
 		/// <summary>
-		///    Gets the types of media represented by the current
-		///    instance.
+		///     Gets the types of media represented by the current
+		///     instance.
 		/// </summary>
 		/// <value>
-		///    Always <see cref="MediaTypes.Audio" />.
+		///     Always <see cref="MediaTypes.Audio" />.
 		/// </value>
 		public MediaTypes MediaTypes => MediaTypes.Audio;
 
 		/// <summary>
-		///    Gets the duration of the media represented by the current
-		///    instance.
+		///     Gets the duration of the media represented by the current
+		///     instance.
 		/// </summary>
 		/// <value>
-		///    Always <see cref="TimeSpan.Zero" />.
+		///     Always <see cref="TimeSpan.Zero" />.
 		/// </value>
 		public TimeSpan Duration => TimeSpan.Zero;
 
 		/// <summary>
-		///    Gets a text description of the media represented by the
-		///    current instance.
+		///     Gets a text description of the media represented by the
+		///     current instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="string" /> object containing a description
-		///    of the media represented by the current instance.
+		///     A <see cref="string" /> object containing a description
+		///     of the media represented by the current instance.
 		/// </value>
 		public string Description
 		{
@@ -599,11 +611,11 @@ namespace Sander.DirLister.Core.TagLib.Riff
 
 
 		/// <summary>
-		///    Generates a hash code for the current instance.
+		///     Generates a hash code for the current instance.
 		/// </summary>
 		/// <returns>
-		///    A <see cref="int" /> value containing the hash code for
-		///    the current instance.
+		///     A <see cref="int" /> value containing the hash code for
+		///     the current instance.
 		/// </returns>
 		public override int GetHashCode()
 		{
@@ -618,38 +630,40 @@ namespace Sander.DirLister.Core.TagLib.Riff
 
 
 		/// <summary>
-		///    Checks whether or not the current instance is equal to
-		///    another object.
+		///     Checks whether or not the current instance is equal to
+		///     another object.
 		/// </summary>
 		/// <param name="other">
-		///    A <see cref="object" /> to compare to the current
-		///    instance.
+		///     A <see cref="object" /> to compare to the current
+		///     instance.
 		/// </param>
 		/// <returns>
-		///    A <see cref="bool" /> value indicating whether or not the
-		///    current instance is equal to <paramref name="other" />.
+		///     A <see cref="bool" /> value indicating whether or not the
+		///     current instance is equal to <paramref name="other" />.
 		/// </returns>
 		/// <seealso cref="M:System.IEquatable`1.Equals" />
 		public override bool Equals(object other)
 		{
 			if (!(other is WaveFormatEx))
+			{
 				return false;
+			}
 
 			return Equals((WaveFormatEx)other);
 		}
 
 
 		/// <summary>
-		///    Checks whether or not the current instance is equal to
-		///    another instance of <see cref="WaveFormatEx" />.
+		///     Checks whether or not the current instance is equal to
+		///     another instance of <see cref="WaveFormatEx" />.
 		/// </summary>
 		/// <param name="other">
-		///    A <see cref="WaveFormatEx" /> object to compare to the
-		///    current instance.
+		///     A <see cref="WaveFormatEx" /> object to compare to the
+		///     current instance.
 		/// </param>
 		/// <returns>
-		///    A <see cref="bool" /> value indicating whether or not the
-		///    current instance is equal to <paramref name="other" />.
+		///     A <see cref="bool" /> value indicating whether or not the
+		///     current instance is equal to <paramref name="other" />.
 		/// </returns>
 		/// <seealso cref="M:System.IEquatable`1.Equals" />
 		public bool Equals(WaveFormatEx other)
@@ -663,19 +677,23 @@ namespace Sander.DirLister.Core.TagLib.Riff
 
 
 		/// <summary>
-		///    Gets whether or not two instances of <see
-		///    cref="WaveFormatEx" /> are equal to eachother.
+		///     Gets whether or not two instances of
+		///     <see
+		///         cref="WaveFormatEx" />
+		///     are equal to eachother.
 		/// </summary>
 		/// <param name="first">
-		///    A <see cref="WaveFormatEx" /> object to compare.
+		///     A <see cref="WaveFormatEx" /> object to compare.
 		/// </param>
 		/// <param name="second">
-		///    A <see cref="WaveFormatEx" /> object to compare.
+		///     A <see cref="WaveFormatEx" /> object to compare.
 		/// </param>
 		/// <returns>
-		///    <see langword="true" /> if <paramref name="first" /> is
-		///    equal to <paramref name="second" />. Otherwise, <see
-		///    langword="false" />.
+		///     <see langword="true" /> if <paramref name="first" /> is
+		///     equal to <paramref name="second" />. Otherwise,
+		///     <see
+		///         langword="false" />
+		///     .
 		/// </returns>
 		public static bool operator ==(WaveFormatEx first,
 			WaveFormatEx second)
@@ -685,19 +703,23 @@ namespace Sander.DirLister.Core.TagLib.Riff
 
 
 		/// <summary>
-		///    Gets whether or not two instances of <see
-		///    cref="WaveFormatEx" /> differ.
+		///     Gets whether or not two instances of
+		///     <see
+		///         cref="WaveFormatEx" />
+		///     differ.
 		/// </summary>
 		/// <param name="first">
-		///    A <see cref="WaveFormatEx" /> object to compare.
+		///     A <see cref="WaveFormatEx" /> object to compare.
 		/// </param>
 		/// <param name="second">
-		///    A <see cref="WaveFormatEx" /> object to compare.
+		///     A <see cref="WaveFormatEx" /> object to compare.
 		/// </param>
 		/// <returns>
-		///    <see langword="true" /> if <paramref name="first" /> is
-		///    unequal to <paramref name="second" />. Otherwise, <see
-		///    langword="false" />.
+		///     <see langword="true" /> if <paramref name="first" /> is
+		///     unequal to <paramref name="second" />. Otherwise,
+		///     <see
+		///         langword="false" />
+		///     .
 		/// </returns>
 		public static bool operator !=(WaveFormatEx first,
 			WaveFormatEx second)

@@ -5,8 +5,8 @@ using Sander.DirLister.Core.TagLib.Mpeg4.Boxes;
 namespace Sander.DirLister.Core.TagLib.Mpeg4
 {
 	/// <summary>
-	///    This class extends <see cref="TagLib.File" /> to provide tagging
-	///    and properties support for MPEG-4 files.
+	///     This class extends <see cref="TagLib.File" /> to provide tagging
+	///     and properties support for MPEG-4 files.
 	/// </summary>
 	[SupportedMimeType("taglib/m4a", "m4a")]
 	[SupportedMimeType("taglib/m4b", "m4b")]
@@ -16,32 +16,36 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4
 	public sealed class File : TagLib.File
 	{
 		/// <summary>
-		///    Contains the ISO user data boxes.
+		///     Contains the ISO user data boxes.
 		/// </summary>
 		private readonly List<IsoUserDataBox> udta_boxes = new List<IsoUserDataBox>();
 
 		/// <summary>
-		///    Contains the media properties.
+		///     Contains the media properties.
 		/// </summary>
 		private Properties properties;
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="File" /> for a specified path in the local file
-		///    system and specified read style.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="File" />
+		///     for a specified path in the local file
+		///     system and specified read style.
 		/// </summary>
 		/// <param name="path">
-		///    A <see cref="string" /> object containing the path of the
-		///    file to use in the new instance.
+		///     A <see cref="string" /> object containing the path of the
+		///     file to use in the new instance.
 		/// </param>
 		/// <param name="propertiesStyle">
-		///    A <see cref="ReadStyle" /> value specifying at what level
-		///    of accuracy to read the media properties, or <see
-		///    cref="ReadStyle.None" /> to ignore the properties.
+		///     A <see cref="ReadStyle" /> value specifying at what level
+		///     of accuracy to read the media properties, or
+		///     <see
+		///         cref="ReadStyle.None" />
+		///     to ignore the properties.
 		/// </param>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="path" /> is <see langword="null" />.
+		///     <paramref name="path" /> is <see langword="null" />.
 		/// </exception>
 		public File(string path, ReadStyle propertiesStyle)
 			: base(path)
@@ -51,16 +55,18 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="File" /> for a specified path in the local file
-		///    system with an average read style.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="File" />
+		///     for a specified path in the local file
+		///     system with an average read style.
 		/// </summary>
 		/// <param name="path">
-		///    A <see cref="string" /> object containing the path of the
-		///    file to use in the new instance.
+		///     A <see cref="string" /> object containing the path of the
+		///     file to use in the new instance.
 		/// </param>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="path" /> is <see langword="null" />.
+		///     <paramref name="path" /> is <see langword="null" />.
 		/// </exception>
 		public File(string path) : this(path, ReadStyle.Average)
 		{
@@ -68,22 +74,25 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="File" /> for a specified file abstraction and
-		///    specified read style.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="File" />
+		///     for a specified file abstraction and
+		///     specified read style.
 		/// </summary>
 		/// <param name="abstraction">
-		///    A <see cref="TagLib.File.IFileAbstraction" /> object to use when
-		///    reading from and writing to the file.
+		///     A <see cref="TagLib.File.IFileAbstraction" /> object to use when
+		///     reading from and writing to the file.
 		/// </param>
 		/// <param name="propertiesStyle">
-		///    A <see cref="ReadStyle" /> value specifying at what level
-		///    of accuracy to read the media properties, or <see
-		///    cref="ReadStyle.None" /> to ignore the properties.
+		///     A <see cref="ReadStyle" /> value specifying at what level
+		///     of accuracy to read the media properties, or
+		///     <see
+		///         cref="ReadStyle.None" />
+		///     to ignore the properties.
 		/// </param>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="abstraction" /> is <see langword="null"
-		///    />.
+		///     <paramref name="abstraction" /> is <see langword="null" />.
 		/// </exception>
 		public File(IFileAbstraction abstraction,
 			ReadStyle propertiesStyle)
@@ -94,17 +103,18 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="File" /> for a specified file abstraction with an
-		///    average read style.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="File" />
+		///     for a specified file abstraction with an
+		///     average read style.
 		/// </summary>
 		/// <param name="abstraction">
-		///    A <see cref="TagLib.File.IFileAbstraction" /> object to use when
-		///    reading from and writing to the file.
+		///     A <see cref="TagLib.File.IFileAbstraction" /> object to use when
+		///     reading from and writing to the file.
 		/// </param>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="abstraction" /> is <see langword="null"
-		///    />.
+		///     <paramref name="abstraction" /> is <see langword="null" />.
 		/// </exception>
 		public File(IFileAbstraction abstraction)
 			: this(abstraction, ReadStyle.Average)
@@ -113,24 +123,26 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4
 
 
 		/// <summary>
-		///    Gets the media properties of the file represented by the
-		///    current instance.
+		///     Gets the media properties of the file represented by the
+		///     current instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="TagLib.Properties" /> object containing the
-		///    media properties of the file represented by the current
-		///    instance.
+		///     A <see cref="TagLib.Properties" /> object containing the
+		///     media properties of the file represented by the current
+		///     instance.
 		/// </value>
 		public override Properties Properties => properties;
 
 
 		/// <summary>
-		///    Reads the file with a specified read style.
+		///     Reads the file with a specified read style.
 		/// </summary>
 		/// <param name="propertiesStyle">
-		///    A <see cref="ReadStyle" /> value specifying at what level
-		///    of accuracy to read the media properties, or <see
-		///    cref="ReadStyle.None" /> to ignore the properties.
+		///     A <see cref="ReadStyle" /> value specifying at what level
+		///     of accuracy to read the media properties, or
+		///     <see
+		///         cref="ReadStyle.None" />
+		///     to ignore the properties.
 		/// </param>
 		private void Read(ReadStyle propertiesStyle)
 		{
@@ -141,9 +153,13 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4
 				var parser = new FileParser(this);
 
 				if ((propertiesStyle & ReadStyle.Average) == 0)
+				{
 					parser.ParseTag();
+				}
 				else
+				{
 					parser.ParseTagAndProperties();
+				}
 
 				InvariantStartPosition = parser.MdatStartPosition;
 				InvariantEndPosition = parser.MdatEndPosition;
@@ -175,6 +191,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4
 
 				var audio_sample_entry =
 					parser.AudioSampleEntry;
+
 				var visual_sample_entry =
 					parser.VisualSampleEntry;
 

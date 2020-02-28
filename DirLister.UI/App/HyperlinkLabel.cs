@@ -18,6 +18,7 @@ namespace Sander.DirLister.UI.App
 			Font = new Font(DefaultFont, FontStyle.Underline);
 		}
 
+
 		[DefaultValue(null)]
 		[Browsable(true)]
 		[DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]

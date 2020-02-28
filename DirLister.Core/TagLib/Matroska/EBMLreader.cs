@@ -1,16 +1,17 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Sander.DirLister.Core.TagLib.Matroska
 {
 	/// <summary>
-	/// Read a Matroska EBML element from a file, but also provides basic modifications to an
-	/// EBML element directly on the file (write). This can also represent an abstract EBML
-	/// on the file (placeholder).
+	///     Read a Matroska EBML element from a file, but also provides basic modifications to an
+	///     EBML element directly on the file (write). This can also represent an abstract EBML
+	///     on the file (placeholder).
 	/// </summary>
 	/// <remarks>
-	///  This was intitialy called <see cref="EBMLelement"/>, but this was in fact a file-reader.
-	///  The name <see cref="EBMLelement"/> correspond more to the class which has been created to
-	///  represent an EBML structure (regardless of file-issues) to support the EBML writing to file.
+	///     This was intitialy called <see cref="EBMLelement" />, but this was in fact a file-reader.
+	///     The name <see cref="EBMLelement" /> correspond more to the class which has been created to
+	///     represent an EBML structure (regardless of file-issues) to support the EBML writing to file.
 	/// </remarks>
 	public class EBMLreader
 	{
@@ -20,8 +21,8 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 
 
 		/// <summary>
-		/// Constructs a root <see cref="EBMLreader" /> instance, by reading from
-		/// the provided file position.
+		///     Constructs a root <see cref="EBMLreader" /> instance, by reading from
+		///     the provided file position.
 		/// </summary>
 		/// <param name="_file"><see cref="File" /> File instance to read from.</param>
 		/// <param name="position">Position in the file to start reading from.</param>
@@ -43,15 +44,17 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 
 
 		/// <summary>
-		/// Constructs a child <see cref="EBMLreader" /> reading the data from the
-		/// EBML parent at the provided file position.
+		///     Constructs a child <see cref="EBMLreader" /> reading the data from the
+		///     EBML parent at the provided file position.
 		/// </summary>
 		/// <param name="parent">The <see cref="EBMLreader" /> that contains the instance to be created.</param>
 		/// <param name="position">Position in the file to start reading from.</param>
 		public EBMLreader(EBMLreader parent, ulong position)
 		{
 			if (parent == null)
+			{
 				throw new ArgumentNullException("file");
+			}
 
 			// Keep a reference to the file
 			file = parent.file;
@@ -69,8 +72,8 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 
 
 		/// <summary>
-		/// Create a new abstract <see cref="EBMLreader" /> with arbitrary attributes,
-		/// without reading its information on the file.
+		///     Create a new abstract <see cref="EBMLreader" /> with arbitrary attributes,
+		///     without reading its information on the file.
 		/// </summary>
 		/// <param name="parent">The <see cref="EBMLreader" /> that contains the instance to be described.</param>
 		/// <param name="position">Position in the file.</param>
@@ -79,7 +82,11 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 		public EBMLreader(EBMLreader parent, ulong position, MatroskaID ebmlid, ulong size = 0)
 		{
 			// Keep a reference to the file
-			if (parent != null) file = parent.file;
+			if (parent != null)
+			{
+				file = parent.file;
+			}
+
 			Parent = parent;
 
 			// Initialize attributes
@@ -91,17 +98,17 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 
 
 		/// <summary>
-		/// EBML Element Identifier.
+		///     EBML Element Identifier.
 		/// </summary>
 		public MatroskaID ID => (MatroskaID)ebml_id;
 
 		/// <summary>
-		/// EBML Parent instance.
+		///     EBML Parent instance.
 		/// </summary>
 		public EBMLreader Parent { get; }
 
 		/// <summary>
-		/// EBML Element size in bytes.
+		///     EBML Element size in bytes.
 		/// </summary>
 		public ulong Size
 		{
@@ -110,17 +117,17 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 		}
 
 		/// <summary>
-		/// EBML Element data size in bytes.
+		///     EBML Element data size in bytes.
 		/// </summary>
 		public ulong DataSize { set; get; }
 
 		/// <summary>
-		/// EBML Element data offset position in file in bytes.
+		///     EBML Element data offset position in file in bytes.
 		/// </summary>
 		public ulong DataOffset { get; private set; }
 
 		/// <summary>
-		/// EBML Element offset position in file in bytes.
+		///     EBML Element offset position in file in bytes.
 		/// </summary>
 		public ulong Offset
 		{
@@ -133,31 +140,39 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 		}
 
 		/// <summary>
-		/// Defines that the EBML element is not read-out from file,
-		/// but is an abstract representation of an element on the disk.
+		///     Defines that the EBML element is not read-out from file,
+		///     but is an abstract representation of an element on the disk.
 		/// </summary>
 		public bool Abstract => offset == DataOffset;
 
 
 		/// <summary>
-		/// Read EBML header and data-size if it is an abstract one.
-		/// It then becomes a non abstract EBML.
+		///     Read EBML header and data-size if it is an abstract one.
+		///     It then becomes a non abstract EBML.
 		/// </summary>
 		/// <param name="throwException">Throw exception on invalid EBML read if true (Default: false).</param>
 		/// <returns>True if successful.</returns>
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2200:RethrowToPreserveStackDetails")]
+		[SuppressMessage("Microsoft.Usage", "CA2200:RethrowToPreserveStackDetails")]
 		public bool Read(bool throwException = false)
 		{
-			if (!Abstract) return true;
+			if (!Abstract)
+			{
+				return true;
+			}
 
 			if (file == null)
+			{
 				throw new ArgumentNullException("file");
+			}
 
 			try
 			{
 				var ex = new InvalidOperationException("Invalid EBML format Read");
 
-				if (offset >= (ulong)file.Length - 1) throw ex;
+				if (offset >= (ulong)file.Length - 1)
+				{
+					throw ex;
+				}
 
 				// Prepare for Consitency check
 				var ebml_id_check = ebml_id;
@@ -177,7 +192,10 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 					mask >>= 1;
 				}
 
-				if (id_length > 4) throw ex;
+				if (id_length > 4)
+				{
+					throw ex;
+				}
 
 				// Now read the rest of the EBML ID
 				if (id_length > 1)
@@ -203,9 +221,13 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 				}
 
 				if (size_length > 8)
+				{
 					size_length = 1; // Special: Empty element (all zero state)
+				}
 				else
+				{
 					vector[0] &= (byte)(mask - 1); // Clear the marker bit
+				}
 
 				// Now read the rest of the EBML element size
 				if (size_length > 1)
@@ -226,21 +248,32 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 				DataOffset = offset + id_length + size_length;
 
 				// Consistency check: Detect descrepencies between read data and abstract data
-				if (ebml_id_check != 0 && ebml_id_check != ebml_id) throw ex;
-				if (ebml_size_check != 0 && ebml_size_check != Size) throw ex;
+				if (ebml_id_check != 0 && ebml_id_check != ebml_id)
+				{
+					throw ex;
+				}
+
+				if (ebml_size_check != 0 && ebml_size_check != Size)
+				{
+					throw ex;
+				}
 
 				return true;
 			}
 			catch (Exception ex)
 			{
-				if (throwException) throw ex;
+				if (throwException)
+				{
+					throw ex;
+				}
+
 				return false;
 			}
 		}
 
 
 		/// <summary>
-		/// Reads a vector of bytes (raw data) from EBML Element's data section.
+		///     Reads a vector of bytes (raw data) from EBML Element's data section.
 		/// </summary>
 		/// <returns>a <see cref="ByteVector" /> containing the parsed value.</returns>
 		public ByteVector ReadBytes()
@@ -259,12 +292,16 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 
 
 		/// <summary>
-		/// Reads a string from EBML Element's data section (UTF-8).
+		///     Reads a string from EBML Element's data section (UTF-8).
 		/// </summary>
 		/// <returns>a string object containing the parsed value.</returns>
 		public string ReadString()
 		{
-			if (file == null) return null;
+			if (file == null)
+			{
+				return null;
+			}
+
 			var vector = ReadBytes();
 			var ebml = new EBMLelement((MatroskaID)ebml_id, vector);
 			return ebml.GetString();
@@ -272,12 +309,16 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 
 
 		/// <summary>
-		/// Reads a boolean from EBML Element's data section.
+		///     Reads a boolean from EBML Element's data section.
 		/// </summary>
 		/// <returns>a bool containing the parsed value.</returns>
 		public bool ReadBool()
 		{
-			if (file == null || DataSize == 0) return false;
+			if (file == null || DataSize == 0)
+			{
+				return false;
+			}
+
 			var vector = ReadBytes();
 			var ebml = new EBMLelement((MatroskaID)ebml_id, vector);
 			return ebml.GetBool();
@@ -285,12 +326,16 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 
 
 		/// <summary>
-		/// Reads a double from EBML Element's data section.
+		///     Reads a double from EBML Element's data section.
 		/// </summary>
 		/// <returns>a double containing the parsed value.</returns>
 		public double ReadDouble()
 		{
-			if (file == null || DataSize == 0) return 0;
+			if (file == null || DataSize == 0)
+			{
+				return 0;
+			}
+
 			var vector = ReadBytes();
 			var ebml = new EBMLelement((MatroskaID)ebml_id, vector);
 			return ebml.GetDouble();
@@ -298,12 +343,16 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 
 
 		/// <summary>
-		/// Reads an unsigned integer (any size from 1 to 8 bytes) from EBML Element's data section.
+		///     Reads an unsigned integer (any size from 1 to 8 bytes) from EBML Element's data section.
 		/// </summary>
 		/// <returns>a ulong containing the parsed value.</returns>
 		public ulong ReadULong()
 		{
-			if (file == null || DataSize == 0) return 0;
+			if (file == null || DataSize == 0)
+			{
+				return 0;
+			}
+
 			var vector = ReadBytes();
 			var ebml = new EBMLelement((MatroskaID)ebml_id, vector);
 			return ebml.GetULong();
@@ -311,10 +360,10 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 
 
 		/// <summary>
-		/// Write the <see cref="DataSize"/> to the EBML file.
-		/// Resize the data-size length to 8 bytes.
-		/// This will *not* insert extra bytes, but overwrite next contiguous bytes.
-		/// It will claim the size added on the value of the data-size.
+		///     Write the <see cref="DataSize" /> to the EBML file.
+		///     Resize the data-size length to 8 bytes.
+		///     This will *not* insert extra bytes, but overwrite next contiguous bytes.
+		///     It will claim the size added on the value of the data-size.
 		/// </summary>
 		/// <returns>Offset created in Writing the new data-size</returns>
 		public long WriteDataSize()
@@ -331,12 +380,16 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 			}
 
 			if (id_length == 0)
+			{
 				throw new CorruptFileException("invalid EBML ID (zero)");
+			}
 
 			// Figure out the Data size length in bytes
 			var size_length = DataOffset - offset - id_length;
 			if (size_length > 8)
+			{
 				throw new CorruptFileException("invalid EBML element size");
+			}
 
 			// Construct the data-size field
 			var vector = new ByteVector((int)newsize_length);
@@ -360,10 +413,10 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 
 
 		/// <summary>
-		/// Change an EBML element to a Abstract Void element, but do not write to the file.
+		///     Change an EBML element to a Abstract Void element, but do not write to the file.
 		/// </summary>
 		/// <remarks>
-		/// To do a real conversion to Void EBML element on the file, use <see cref="WriteVoid()"/>.
+		///     To do a real conversion to Void EBML element on the file, use <see cref="WriteVoid()" />.
 		/// </remarks>
 		public void SetVoid()
 		{
@@ -377,17 +430,24 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 
 
 		/// <summary>
-		/// Change an EBML element to a Void element directly on the file.
+		///     Change an EBML element to a Void element directly on the file.
 		/// </summary>
 		public void WriteVoid()
 		{
-			if (Size < 2) throw new ArgumentOutOfRangeException("WriteVoid Size < 2");
+			if (Size < 2)
+			{
+				throw new ArgumentOutOfRangeException("WriteVoid Size < 2");
+			}
 
 			if (file == null)
+			{
 				throw new ArgumentNullException("WriteVoid file");
+			}
 
 			if (offset + Size > (ulong)file.Length)
+			{
 				throw new ArgumentOutOfRangeException("WriteVoid tries to write out of the file");
+			}
 
 			ByteVector vector;
 			int datasize;
@@ -423,7 +483,7 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 
 
 		/// <summary>
-		/// Remove the EBML element from the file
+		///     Remove the EBML element from the file
 		/// </summary>
 		/// <returns>Size difference compare to previous EBML size</returns>
 		public long Remove()

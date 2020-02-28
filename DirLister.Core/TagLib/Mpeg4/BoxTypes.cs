@@ -1,8 +1,8 @@
 ﻿namespace Sander.DirLister.Core.TagLib.Mpeg4
 {
 	/// <summary>
-	///    <see cref="BoxType" /> provides references to different box types
-	///    used by the library.
+	///     <see cref="BoxType" /> provides references to different box types
+	///     used by the library.
 	/// </summary>
 	internal static class BoxType
 	{

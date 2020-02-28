@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
@@ -16,6 +15,8 @@ namespace Sander.DirLister.UI
 	public sealed partial class MainForm
 	{
 		private bool _isStartup;
+
+
 		internal void InitializeOutput()
 		{
 			_isStartup = true;
@@ -34,6 +35,7 @@ namespace Sander.DirLister.UI
 			_isStartup = false;
 		}
 
+
 		private void SetFormats()
 		{
 			var formats = OutFormats.Controls.OfType<CheckBox>().ToList();
@@ -43,9 +45,12 @@ namespace Sander.DirLister.UI
 					string.Compare((string)x.Tag, format.ToString(), StringComparison.OrdinalIgnoreCase) == 0);
 
 				if (ch != null)
+				{
 					ch.Checked = true;
+				}
 			}
 		}
+
 
 		private void EnableShellCheck_CheckedChanged(object sender, EventArgs e)
 		{
@@ -54,22 +59,28 @@ namespace Sander.DirLister.UI
 			if (EnableShellCheck.Checked)
 			{
 				if (!_isStartup)
+				{
 					ShellIntegration.Create();
+				}
 			}
 			else
 			{
 				if (!_isStartup)
+				{
 					ShellIntegration.Remove();
+				}
 
 				OpenUiCheck.Checked = Settings.Default.ShowUiFromShell = false;
 				ProgressWindowCheck.Checked = Settings.Default.ShowProgressWindow = false;
 			}
 		}
 
+
 		private void OpenUiCheck_CheckedChanged(object sender, EventArgs e)
 		{
 			Settings.Default.ShowUiFromShell = OpenUiCheck.Checked;
 		}
+
 
 		private void ProgressWindowCheck_CheckedChanged(object sender, EventArgs e)
 		{
@@ -79,10 +90,15 @@ namespace Sander.DirLister.UI
 
 		private void SetDefault_Click(object sender, EventArgs e)
 		{
-			if (!ValidateOutputFolder()) return;
+			if (!ValidateOutputFolder())
+			{
+				return;
+			}
 
 			if (!GetFormats(out var formats))
+			{
 				return;
+			}
 
 			Settings.Default.OutputFormats = new StringCollection();
 			Settings.Default.OutputFormats.AddRange(formats.Select(x => x.ToString()).ToArray());
@@ -112,6 +128,7 @@ namespace Sander.DirLister.UI
 			{
 				MessageBox.Show(this, "Output folder must be a valid directory!", "Invalid output path!",
 					MessageBoxButtons.OK, MessageBoxIcon.Error);
+
 				return false;
 			}
 
@@ -126,16 +143,18 @@ namespace Sander.DirLister.UI
 			{
 				MessageBox.Show(this, "At least one output format must be set!", "No output formats!",
 					MessageBoxButtons.OK, MessageBoxIcon.Error);
+
 				formatList = null;
 				return false;
 			}
 
 
 			formatList = formats.Select(x => (OutputFormat)Enum.Parse(typeof(OutputFormat), x, true))
-			                    .ToList();
+				.ToList();
 
 			return true;
 		}
+
 
 		private void SelectOutputFolder_Click(object sender, EventArgs e)
 		{
@@ -148,6 +167,7 @@ namespace Sander.DirLister.UI
 				OutputFolder.Text = directory;
 			}
 		}
+
 
 		private void KeepOnTop_CheckedChanged(object sender, EventArgs e)
 		{

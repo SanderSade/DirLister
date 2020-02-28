@@ -3,83 +3,89 @@ using System;
 namespace Sander.DirLister.Core.TagLib.Asf
 {
 	/// <summary>
-	///    Indicates the type of data stored in a <see
-	///    cref="ContentDescriptor" /> or <see cref="DescriptionRecord" />
-	///    object.
+	///     Indicates the type of data stored in a
+	///     <see
+	///         cref="ContentDescriptor" />
+	///     or <see cref="DescriptionRecord" />
+	///     object.
 	/// </summary>
 	public enum DataType
 	{
 		/// <summary>
-		///    The descriptor contains Unicode (UTF-16LE) text.
+		///     The descriptor contains Unicode (UTF-16LE) text.
 		/// </summary>
 		Unicode = 0,
 
 		/// <summary>
-		///    The descriptor contains binary data.
+		///     The descriptor contains binary data.
 		/// </summary>
 		Bytes = 1,
 
 		/// <summary>
-		///    The descriptor contains a boolean value.
+		///     The descriptor contains a boolean value.
 		/// </summary>
 		Bool = 2,
 
 		/// <summary>
-		///    The descriptor contains a 4-byte DWORD value.
+		///     The descriptor contains a 4-byte DWORD value.
 		/// </summary>
 		DWord = 3,
 
 		/// <summary>
-		///    The descriptor contains a 8-byte QWORD value.
+		///     The descriptor contains a 8-byte QWORD value.
 		/// </summary>
 		QWord = 4,
 
 		/// <summary>
-		///    The descriptor contains a 2-byte WORD value.
+		///     The descriptor contains a 2-byte WORD value.
 		/// </summary>
 		Word = 5,
 
 		/// <summary>
-		///    The descriptor contains a 16-byte GUID value.
+		///     The descriptor contains a 16-byte GUID value.
 		/// </summary>
 		Guid = 6
 	}
 
 	/// <summary>
-	///    This class provides a representation of an ASF Content
-	///    Descriptor to be used in combination with <see
-	///    cref="ExtendedContentDescriptionObject" />.
+	///     This class provides a representation of an ASF Content
+	///     Descriptor to be used in combination with
+	///     <see
+	///         cref="ExtendedContentDescriptionObject" />
+	///     .
 	/// </summary>
 	public class ContentDescriptor
 	{
 		/// <summary>
-		///    Contains the byte value.
+		///     Contains the byte value.
 		/// </summary>
 		private ByteVector byteValue;
 
 		/// <summary>
-		///    Contains the long value.
+		///     Contains the long value.
 		/// </summary>
 		private ulong longValue;
 
 		/// <summary>
-		///    Contains the string value.
+		///     Contains the string value.
 		/// </summary>
 		private string strValue;
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="ContentDescriptor" /> with a specified name and
-		///    and value.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="ContentDescriptor" />
+		///     with a specified name and
+		///     and value.
 		/// </summary>
 		/// <param name="name">
-		///    A <see cref="string" /> object containing the name of the
-		///    new instance.
+		///     A <see cref="string" /> object containing the name of the
+		///     new instance.
 		/// </param>
 		/// <param name="value">
-		///    A <see cref="string" /> object containing the value for
-		///    the new instance.
+		///     A <see cref="string" /> object containing the value for
+		///     the new instance.
 		/// </param>
 		public ContentDescriptor(string name, string value)
 		{
@@ -89,17 +95,19 @@ namespace Sander.DirLister.Core.TagLib.Asf
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="ContentDescriptor" /> with a specified name and
-		///    and value.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="ContentDescriptor" />
+		///     with a specified name and
+		///     and value.
 		/// </summary>
 		/// <param name="name">
-		///    A <see cref="string" /> object containing the name of the
-		///    new instance.
+		///     A <see cref="string" /> object containing the name of the
+		///     new instance.
 		/// </param>
 		/// <param name="value">
-		///    A <see cref="ByteVector" /> object containing the value
-		///    for the new instance.
+		///     A <see cref="ByteVector" /> object containing the value
+		///     for the new instance.
 		/// </param>
 		public ContentDescriptor(string name, ByteVector value)
 		{
@@ -110,17 +118,19 @@ namespace Sander.DirLister.Core.TagLib.Asf
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="ContentDescriptor" /> with a specified name and
-		///    and value.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="ContentDescriptor" />
+		///     with a specified name and
+		///     and value.
 		/// </summary>
 		/// <param name="name">
-		///    A <see cref="string" /> object containing the name of the
-		///    new instance.
+		///     A <see cref="string" /> object containing the name of the
+		///     new instance.
 		/// </param>
 		/// <param name="value">
-		///    A <see cref="uint" /> value containing the value
-		///    for the new instance.
+		///     A <see cref="uint" /> value containing the value
+		///     for the new instance.
 		/// </param>
 		public ContentDescriptor(string name, uint value)
 		{
@@ -131,17 +141,19 @@ namespace Sander.DirLister.Core.TagLib.Asf
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="ContentDescriptor" /> with a specified name and
-		///    and value.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="ContentDescriptor" />
+		///     with a specified name and
+		///     and value.
 		/// </summary>
 		/// <param name="name">
-		///    A <see cref="string" /> object containing the name of the
-		///    new instance.
+		///     A <see cref="string" /> object containing the name of the
+		///     new instance.
 		/// </param>
 		/// <param name="value">
-		///    A <see cref="ulong" /> value containing the value
-		///    for the new instance.
+		///     A <see cref="ulong" /> value containing the value
+		///     for the new instance.
 		/// </param>
 		public ContentDescriptor(string name, ulong value)
 		{
@@ -152,17 +164,19 @@ namespace Sander.DirLister.Core.TagLib.Asf
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="ContentDescriptor" /> with a specified name and
-		///    and value.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="ContentDescriptor" />
+		///     with a specified name and
+		///     and value.
 		/// </summary>
 		/// <param name="name">
-		///    A <see cref="string" /> object containing the name of the
-		///    new instance.
+		///     A <see cref="string" /> object containing the name of the
+		///     new instance.
 		/// </param>
 		/// <param name="value">
-		///    A <see cref="ushort" /> value containing the value
-		///    for the new instance.
+		///     A <see cref="ushort" /> value containing the value
+		///     for the new instance.
 		/// </param>
 		public ContentDescriptor(string name, ushort value)
 		{
@@ -173,17 +187,19 @@ namespace Sander.DirLister.Core.TagLib.Asf
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="ContentDescriptor" /> with a specified name and
-		///    and value.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="ContentDescriptor" />
+		///     with a specified name and
+		///     and value.
 		/// </summary>
 		/// <param name="name">
-		///    A <see cref="string" /> object containing the name of the
-		///    new instance.
+		///     A <see cref="string" /> object containing the name of the
+		///     new instance.
 		/// </param>
 		/// <param name="value">
-		///    A <see cref="bool" /> value containing the value
-		///    for the new instance.
+		///     A <see cref="bool" /> value containing the value
+		///     for the new instance.
 		/// </param>
 		public ContentDescriptor(string name, bool value)
 		{
@@ -194,65 +210,71 @@ namespace Sander.DirLister.Core.TagLib.Asf
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="ContentDescriptor" /> by reading its contents from
-		///    a file.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="ContentDescriptor" />
+		///     by reading its contents from
+		///     a file.
 		/// </summary>
 		/// <param name="file">
-		///    A <see cref="Asf.File" /> object to read the raw ASF
-		///    Description Record from.
+		///     A <see cref="Asf.File" /> object to read the raw ASF
+		///     Description Record from.
 		/// </param>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="file" /> is <see langword="null" />.
+		///     <paramref name="file" /> is <see langword="null" />.
 		/// </exception>
 		/// <exception cref="CorruptFileException">
-		///    A valid descriptor could not be read.
+		///     A valid descriptor could not be read.
 		/// </exception>
 		/// <remarks>
-		///    <paramref name="file" /> must be at a seek position at
-		///    which the descriptor can be read.
+		///     <paramref name="file" /> must be at a seek position at
+		///     which the descriptor can be read.
 		/// </remarks>
 		protected internal ContentDescriptor(File file)
 		{
 			if (file == null)
+			{
 				throw new ArgumentNullException("file");
+			}
 
 			if (!Parse(file))
+			{
 				throw new CorruptFileException(
 					"Failed to parse content descriptor.");
+			}
 		}
 
 
 		/// <summary>
-		///    Gets the name of the current instance.
+		///     Gets the name of the current instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="string" /> object containing the name of the
-		///    current instance.
+		///     A <see cref="string" /> object containing the name of the
+		///     current instance.
 		/// </value>
 		public string Name { get; private set; }
 
 		/// <summary>
-		///    Gets the type of data contained in the current instance.
+		///     Gets the type of data contained in the current instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="DataType" /> value indicating type of data
-		///    contained in the current instance.
+		///     A <see cref="DataType" /> value indicating type of data
+		///     contained in the current instance.
 		/// </value>
 		public DataType Type { get; private set; } = DataType.Unicode;
 
 
 		/// <summary>
-		///    Populates the current instance by reading in the contents
-		///    from a file.
+		///     Populates the current instance by reading in the contents
+		///     from a file.
 		/// </summary>
 		/// <param name="file">
-		///    A <see cref="Asf.File" /> object to read the raw ASF
-		///    Content Descriptor from.
+		///     A <see cref="Asf.File" /> object to read the raw ASF
+		///     Content Descriptor from.
 		/// </param>
 		/// <returns>
-		///    <see langword="true" /> if the data was read correctly.
-		///    Otherwise <see langword="false" />.
+		///     <see langword="true" /> if the data was read correctly.
+		///     Otherwise <see langword="false" />.
 		/// </returns>
 		protected bool Parse(File file)
 		{
@@ -297,32 +319,37 @@ namespace Sander.DirLister.Core.TagLib.Asf
 
 
 		/// <summary>
-		///    Gets a string representation of the current instance.
+		///     Gets a string representation of the current instance.
 		/// </summary>
 		/// <returns>
-		///    A <see cref="string" /> object containing the value of
-		///    the current instance.
+		///     A <see cref="string" /> object containing the value of
+		///     the current instance.
 		/// </returns>
 		public override string ToString()
 		{
 			if (Type == DataType.Unicode)
+			{
 				return strValue;
+			}
 
 			if (Type == DataType.Bytes)
+			{
 				return byteValue.ToString(StringType.UTF16LE);
+			}
 
 			return longValue.ToString();
 		}
 
 
 		/// <summary>
-		///    Gets the binary contents of the current instance.
+		///     Gets the binary contents of the current instance.
 		/// </summary>
 		/// <returns>
-		///    A <see cref="ByteVector" /> object containing the
-		///    contents of the current instance, or <see langword="null"
-		///    /> if <see cref="Type" /> is unequal to <see
-		///    cref="DataType.Bytes" />.
+		///     A <see cref="ByteVector" /> object containing the
+		///     contents of the current instance, or <see langword="null" /> if <see cref="Type" /> is unequal to
+		///     <see
+		///         cref="DataType.Bytes" />
+		///     .
 		/// </returns>
 		public ByteVector ToByteVector()
 		{
@@ -331,11 +358,11 @@ namespace Sander.DirLister.Core.TagLib.Asf
 
 
 		/// <summary>
-		///    Gets the boolean value contained in the current instance.
+		///     Gets the boolean value contained in the current instance.
 		/// </summary>
 		/// <returns>
-		///    A <see cref="bool" /> value containing the value of the
-		///    current instance.
+		///     A <see cref="bool" /> value containing the value of the
+		///     current instance.
 		/// </returns>
 		public bool ToBool()
 		{
@@ -344,63 +371,69 @@ namespace Sander.DirLister.Core.TagLib.Asf
 
 
 		/// <summary>
-		///    Gets the DWORD value contained in the current instance.
+		///     Gets the DWORD value contained in the current instance.
 		/// </summary>
 		/// <returns>
-		///    A <see cref="uint" /> value containing the value of the
-		///    current instance.
+		///     A <see cref="uint" /> value containing the value of the
+		///     current instance.
 		/// </returns>
 		public uint ToDWord()
 		{
 			if (Type == DataType.Unicode && strValue != null &&
 			    uint.TryParse(strValue, out var value))
+			{
 				return value;
+			}
 
 			return (uint)longValue;
 		}
 
 
 		/// <summary>
-		///    Gets the QWORD value contained in the current instance.
+		///     Gets the QWORD value contained in the current instance.
 		/// </summary>
 		/// <returns>
-		///    A <see cref="ulong" /> value containing the value of the
-		///    current instance.
+		///     A <see cref="ulong" /> value containing the value of the
+		///     current instance.
 		/// </returns>
 		public ulong ToQWord()
 		{
 			if (Type == DataType.Unicode && strValue != null &&
 			    ulong.TryParse(strValue, out var value))
+			{
 				return value;
+			}
 
 			return longValue;
 		}
 
 
 		/// <summary>
-		///    Gets the WORD value contained in the current instance.
+		///     Gets the WORD value contained in the current instance.
 		/// </summary>
 		/// <returns>
-		///    A <see cref="ushort" /> value containing the value of the
-		///    current instance.
+		///     A <see cref="ushort" /> value containing the value of the
+		///     current instance.
 		/// </returns>
 		public ushort ToWord()
 		{
 			if (Type == DataType.Unicode && strValue != null &&
 			    ushort.TryParse(strValue, out var value))
+			{
 				return value;
+			}
 
 			return (ushort)longValue;
 		}
 
 
 		/// <summary>
-		///    Renders the current instance as a raw ASF Description
-		///    Record.
+		///     Renders the current instance as a raw ASF Description
+		///     Record.
 		/// </summary>
 		/// <returns>
-		///    A <see cref="ByteVector" /> object containing the
-		///    rendered version of the current instance.
+		///     A <see cref="ByteVector" /> object containing the
+		///     rendered version of the current instance.
 		/// </returns>
 		public ByteVector Render()
 		{

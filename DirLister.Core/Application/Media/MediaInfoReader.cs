@@ -11,6 +11,7 @@ namespace Sander.DirLister.Core.Application.Media
 		private readonly ImageInfoProvider _imageInfoProvider;
 		private readonly MediaInfoProvider _mediaInfoProvider;
 
+
 		internal MediaInfoReader(Configuration configuration)
 		{
 			_configuration = configuration;
@@ -18,10 +19,13 @@ namespace Sander.DirLister.Core.Application.Media
 			_mediaInfoProvider = new MediaInfoProvider(_configuration);
 		}
 
+
 		internal void AddMediaInfo(List<FileEntry> entries)
 		{
 			if (entries.Count == 0)
+			{
 				return;
+			}
 
 			_configuration.Log(TraceLevel.Info, "Fetching media info...");
 			_configuration.SendProgress(50, "Fetching media info...");
@@ -45,6 +49,5 @@ namespace Sander.DirLister.Core.Application.Media
 			_configuration.SendProgress(90, "Media info fetched");
 			_configuration.Log(TraceLevel.Info, "Media info fetched");
 		}
-
 	}
 }

@@ -59,6 +59,7 @@ namespace Sander.DirLister.Core.Application
 				{
 					_configuration.Log(TraceLevel.Warning,
 						$"Input folder \"{inputFolder}\" does not contain any files!");
+
 					continue;
 				}
 
@@ -81,7 +82,6 @@ namespace Sander.DirLister.Core.Application
 		private static extern bool FindClose(IntPtr hFindFile);
 
 
-
 		[SuppressMessage("Microsoft.Design", "CA1060:MovePInvokesToNativeMethodsClass")]
 		[DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
 		private static extern IntPtr FindFirstFileEx(
@@ -92,15 +92,6 @@ namespace Sander.DirLister.Core.Application
 			IntPtr lpSearchFilter,
 			int dwAdditionalFlags);
 
-		private enum FINDEX_INFO_LEVELS
-		{
-			FindExInfoBasic = 1
-		}
-		private enum FINDEX_SEARCH_OPS
-		{
-			FindExSearchNameMatch = 0
-		}
-
 
 		private bool FindNextFile(string path, out List<FileEntry> files)
 		{
@@ -109,14 +100,16 @@ namespace Sander.DirLister.Core.Application
 
 			try
 			{
-				findHandle = FindFirstFileEx(string.Concat(path, "\\*"), FINDEX_INFO_LEVELS.FindExInfoBasic, out var findData, FINDEX_SEARCH_OPS.FindExSearchNameMatch, IntPtr.Zero, 2);
+				findHandle = FindFirstFileEx(string.Concat(path, "\\*"), FINDEX_INFO_LEVELS.FindExInfoBasic, out var findData,
+					FINDEX_SEARCH_OPS.FindExSearchNameMatch, IntPtr.Zero, 2);
+
 				if (findHandle != INVALID_HANDLE_VALUE)
 				{
 					do
 					{
 						// Skip current directory and parent directory symbols that are returned.
 						if (!findData.cFileName.Equals(".", StringComparison.OrdinalIgnoreCase) && !findData.cFileName.Equals("..",
-								StringComparison.OrdinalIgnoreCase))
+							StringComparison.OrdinalIgnoreCase))
 						{
 							var fullPath = string.Concat(path, "\\", findData.cFileName);
 							// Check if this is a directory and not a symbolic link since symbolic links could lead to repeated files and folders as well as infinite loops.
@@ -131,7 +124,9 @@ namespace Sander.DirLister.Core.Application
 							{
 								var fileEntry = GetFileEntry(fullPath, findData);
 								if (fileEntry != null)
+								{
 									fileList.Add(fileEntry);
+								}
 							}
 						}
 					} while (FindNextFile(findHandle, out findData));
@@ -141,12 +136,20 @@ namespace Sander.DirLister.Core.Application
 			{
 				_configuration.Log(TraceLevel.Warning, $"Caught exception while trying to enumerate a directory. {exception}");
 
-				if (findHandle != INVALID_HANDLE_VALUE) FindClose(findHandle);
+				if (findHandle != INVALID_HANDLE_VALUE)
+				{
+					FindClose(findHandle);
+				}
+
 				files = null;
 				return false;
 			}
 
-			if (findHandle != INVALID_HANDLE_VALUE) FindClose(findHandle);
+			if (findHandle != INVALID_HANDLE_VALUE)
+			{
+				FindClose(findHandle);
+			}
+
 			files = fileList;
 			return true;
 		}
@@ -161,28 +164,33 @@ namespace Sander.DirLister.Core.Application
 			try
 			{
 				path = path[path.Length - 1] == '\\' ? path : FormattableString.Invariant($@"{path}\");
-				findHandle = FindFirstFileEx(string.Concat(path, "*"), FINDEX_INFO_LEVELS.FindExInfoBasic, out var findData, FINDEX_SEARCH_OPS.FindExSearchNameMatch, IntPtr.Zero, 2);
+				findHandle = FindFirstFileEx(string.Concat(path, "*"), FINDEX_INFO_LEVELS.FindExInfoBasic, out var findData,
+					FINDEX_SEARCH_OPS.FindExSearchNameMatch, IntPtr.Zero, 2);
+
 				if (findHandle != INVALID_HANDLE_VALUE)
 				{
 					do
 					{
 						// Skip current directory and parent directory symbols that are returned.
 						if (!findData.cFileName.Equals(".", StringComparison.OrdinalIgnoreCase) && !findData.cFileName.Equals("..",
-								StringComparison.OrdinalIgnoreCase))
+							StringComparison.OrdinalIgnoreCase))
 						{
 							var fullPath = path + findData.cFileName;
 							// Check if this is a directory and not a symbolic link since symbolic links could lead to repeated files and folders as well as infinite loops.
 							if (findData.dwFileAttributes.HasFlag(FileAttributes.Directory) && !findData.dwFileAttributes.HasFlag(FileAttributes.ReparsePoint))
 							{
 								if (_configuration.IncludeSubfolders)
+								{
 									directoryList.Add(fullPath);
+								}
 							}
 							else if (!findData.dwFileAttributes.HasFlag(FileAttributes.Directory))
 							{
 								var fileEntry = GetFileEntry(fullPath, findData);
 								if (fileEntry != null)
+								{
 									fileList.Add(fileEntry);
-
+								}
 							}
 						}
 					} while (FindNextFile(findHandle, out findData));
@@ -207,25 +215,35 @@ namespace Sander.DirLister.Core.Application
 			catch (Exception exception)
 			{
 				_configuration.Log(TraceLevel.Warning, $"Caught exception while trying to enumerate a directory. {exception}");
-				if (findHandle != INVALID_HANDLE_VALUE) FindClose(findHandle);
+				if (findHandle != INVALID_HANDLE_VALUE)
+				{
+					FindClose(findHandle);
+				}
+
 				return fileList.ToList();
 			}
 
-			if (findHandle != INVALID_HANDLE_VALUE) FindClose(findHandle);
+			if (findHandle != INVALID_HANDLE_VALUE)
+			{
+				FindClose(findHandle);
+			}
 
 			return fileList.ToList();
 		}
+
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		private FileEntry GetFileEntry(string fullPath, WIN32_FIND_DATAW findData)
 		{
 			if (!_configuration.IncludeHidden && findData.dwFileAttributes.HasFlag(FileAttributes.System | FileAttributes.Hidden))
+			{
 				return null;
+			}
 
 			var fileEntry = new FileEntry
 			{
 				Fullname = fullPath,
-				Size = (long) findData.nFileSizeHigh << 0x20 | findData.nFileSizeLow
+				Size = (long)findData.nFileSizeHigh << 0x20 | findData.nFileSizeLow
 			};
 
 			if (_configuration.IncludeFileDates)
@@ -235,6 +253,17 @@ namespace Sander.DirLister.Core.Application
 			}
 
 			return fileEntry;
+		}
+
+
+		private enum FINDEX_INFO_LEVELS
+		{
+			FindExInfoBasic = 1
+		}
+
+		private enum FINDEX_SEARCH_OPS
+		{
+			FindExSearchNameMatch = 0
 		}
 
 
@@ -251,8 +280,10 @@ namespace Sander.DirLister.Core.Application
 			internal readonly uint nFileSizeLow;
 			internal readonly int dwReserved0;
 			internal readonly int dwReserved1;
+
 			[MarshalAs(UnmanagedType.ByValTStr, SizeConst = 260)]
 			internal readonly string cFileName;
+
 			[MarshalAs(UnmanagedType.ByValTStr, SizeConst = 14)]
 			internal readonly string cAlternateFileName;
 		}

@@ -3,60 +3,60 @@
 namespace Sander.DirLister.Core.TagLib.Mpeg
 {
 	/// <summary>
-	///    Indicates the type of marker found in a MPEG file.
+	///     Indicates the type of marker found in a MPEG file.
 	/// </summary>
 	public enum Marker
 	{
 		/// <summary>
-		///    An invalid marker.
+		///     An invalid marker.
 		/// </summary>
 		Corrupt = -1,
 
 		/// <summary>
-		///    A zero value marker.
+		///     A zero value marker.
 		/// </summary>
 		Zero = 0,
 
 		/// <summary>
-		///   A marker indicating a system sync packet.
+		///     A marker indicating a system sync packet.
 		/// </summary>
 		SystemSyncPacket = 0xBA,
 
 		/// <summary>
-		///   A marker indicating a video sync packet.
+		///     A marker indicating a video sync packet.
 		/// </summary>
 		VideoSyncPacket = 0xB3,
 
 		/// <summary>
-		///   A marker indicating a system packet.
+		///     A marker indicating a system packet.
 		/// </summary>
 		SystemPacket = 0xBB,
 
 		/// <summary>
-		///   A marker indicating a padding packet.
+		///     A marker indicating a padding packet.
 		/// </summary>
 		PaddingPacket = 0xBE,
 
 		/// <summary>
-		///   A marker indicating a audio packet.
+		///     A marker indicating a audio packet.
 		/// </summary>
 		AudioPacket = 0xC0,
 
 		/// <summary>
-		///   A marker indicating a video packet.
+		///     A marker indicating a video packet.
 		/// </summary>
 		VideoPacket = 0xE0,
 
 		/// <summary>
-		///   A marker indicating the end of a stream.
+		///     A marker indicating the end of a stream.
 		/// </summary>
 		EndOfStream = 0xB9
 	}
 
 	/// <summary>
-	///    This class extends <see cref="TagLib.NonContainer.File" /> to
-	///    provide tagging and properties support for MPEG-1, MPEG-2, and
-	///    MPEG-2.5 video files.
+	///     This class extends <see cref="TagLib.NonContainer.File" /> to
+	///     provide tagging and properties support for MPEG-1, MPEG-2, and
+	///     MPEG-2.5 video files.
 	/// </summary>
 	[SupportedMimeType("taglib/mpg", "mpg")]
 	[SupportedMimeType("taglib/mpeg", "mpeg")]
@@ -69,57 +69,61 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 			new byte[] { 0, 0, 1 };
 
 		/// <summary>
-		///    Indicates whether or not video was found.
+		///     Indicates whether or not video was found.
 		/// </summary>
 		private bool audio_found;
 
 		/// <summary>
-		///    Contains the first audio header.
+		///     Contains the first audio header.
 		/// </summary>
 		private AudioHeader audio_header;
 
 		/// <summary>
-		///    Contains the end time of the file.
+		///     Contains the end time of the file.
 		/// </summary>
 		private double end_time;
 
 		/// <summary>
-		///    Contains the start time of the file.
+		///     Contains the start time of the file.
 		/// </summary>
 		private double? start_time;
 
 		/// <summary>
-		///    Contains the MPEG version.
+		///     Contains the MPEG version.
 		/// </summary>
 		private Version version;
 
 		/// <summary>
-		///    Indicates whether or not audio was found.
+		///     Indicates whether or not audio was found.
 		/// </summary>
 		private bool video_found;
 
 		/// <summary>
-		///    Contains the first video header.
+		///     Contains the first video header.
 		/// </summary>
 		private VideoHeader video_header;
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="File" /> for a specified path in the local file
-		///    system and specified read style.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="File" />
+		///     for a specified path in the local file
+		///     system and specified read style.
 		/// </summary>
 		/// <param name="path">
-		///    A <see cref="string" /> object containing the path of the
-		///    file to use in the new instance.
+		///     A <see cref="string" /> object containing the path of the
+		///     file to use in the new instance.
 		/// </param>
 		/// <param name="propertiesStyle">
-		///    A <see cref="ReadStyle" /> value specifying at what level
-		///    of accuracy to read the media properties, or <see
-		///    cref="ReadStyle.None" /> to ignore the properties.
+		///     A <see cref="ReadStyle" /> value specifying at what level
+		///     of accuracy to read the media properties, or
+		///     <see
+		///         cref="ReadStyle.None" />
+		///     to ignore the properties.
 		/// </param>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="path" /> is <see langword="null" />.
+		///     <paramref name="path" /> is <see langword="null" />.
 		/// </exception>
 		public File(string path, ReadStyle propertiesStyle)
 			: base(path, propertiesStyle)
@@ -128,16 +132,18 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="File" /> for a specified path in the local file
-		///    system with an average read style.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="File" />
+		///     for a specified path in the local file
+		///     system with an average read style.
 		/// </summary>
 		/// <param name="path">
-		///    A <see cref="string" /> object containing the path of the
-		///    file to use in the new instance.
+		///     A <see cref="string" /> object containing the path of the
+		///     file to use in the new instance.
 		/// </param>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="path" /> is <see langword="null" />.
+		///     <paramref name="path" /> is <see langword="null" />.
 		/// </exception>
 		public File(string path) : base(path)
 		{
@@ -145,22 +151,25 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="File" /> for a specified file abstraction and
-		///    specified read style.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="File" />
+		///     for a specified file abstraction and
+		///     specified read style.
 		/// </summary>
 		/// <param name="abstraction">
-		///    A <see cref="TagLib.File.IFileAbstraction" /> object to use when
-		///    reading from and writing to the file.
+		///     A <see cref="TagLib.File.IFileAbstraction" /> object to use when
+		///     reading from and writing to the file.
 		/// </param>
 		/// <param name="propertiesStyle">
-		///    A <see cref="ReadStyle" /> value specifying at what level
-		///    of accuracy to read the media properties, or <see
-		///    cref="ReadStyle.None" /> to ignore the properties.
+		///     A <see cref="ReadStyle" /> value specifying at what level
+		///     of accuracy to read the media properties, or
+		///     <see
+		///         cref="ReadStyle.None" />
+		///     to ignore the properties.
 		/// </param>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="abstraction" /> is <see langword="null"
-		///    />.
+		///     <paramref name="abstraction" /> is <see langword="null" />.
 		/// </exception>
 		public File(IFileAbstraction abstraction,
 			ReadStyle propertiesStyle)
@@ -170,17 +179,18 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="File" /> for a specified file abstraction with an
-		///    average read style.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="File" />
+		///     for a specified file abstraction with an
+		///     average read style.
 		/// </summary>
 		/// <param name="abstraction">
-		///    A <see cref="TagLib.File.IFileAbstraction" /> object to use when
-		///    reading from and writing to the file.
+		///     A <see cref="TagLib.File.IFileAbstraction" /> object to use when
+		///     reading from and writing to the file.
 		/// </param>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="abstraction" /> is <see langword="null"
-		///    />.
+		///     <paramref name="abstraction" /> is <see langword="null" />.
 		/// </exception>
 		public File(IFileAbstraction abstraction)
 			: base(abstraction)
@@ -189,23 +199,27 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 
 
 		/// <summary>
-		///    Reads format specific information at the start of the
-		///    file.
+		///     Reads format specific information at the start of the
+		///     file.
 		/// </summary>
 		/// <param name="start">
-		///    A <see cref="long" /> value containing the seek position
-		///    at which the tags end and the media data begins.
+		///     A <see cref="long" /> value containing the seek position
+		///     at which the tags end and the media data begins.
 		/// </param>
 		/// <param name="propertiesStyle">
-		///    A <see cref="ReadStyle" /> value specifying at what level
-		///    of accuracy to read the media properties, or <see
-		///    cref="ReadStyle.None" /> to ignore the properties.
+		///     A <see cref="ReadStyle" /> value specifying at what level
+		///     of accuracy to read the media properties, or
+		///     <see
+		///         cref="ReadStyle.None" />
+		///     to ignore the properties.
 		/// </param>
 		protected override void ReadStart(long start,
 			ReadStyle propertiesStyle)
 		{
 			if ((propertiesStyle & ReadStyle.Average) == 0)
+			{
 				return;
+			}
 
 			FindMarker(ref start, Marker.SystemSyncPacket);
 			ReadSystemFile(start);
@@ -213,28 +227,34 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 
 
 		/// <summary>
-		///    Reads format specific information at the end of the
-		///    file.
+		///     Reads format specific information at the end of the
+		///     file.
 		/// </summary>
 		/// <param name="end">
-		///    A <see cref="long" /> value containing the seek position
-		///    at which the media data ends and the tags begin.
+		///     A <see cref="long" /> value containing the seek position
+		///     at which the media data ends and the tags begin.
 		/// </param>
 		/// <param name="propertiesStyle">
-		///    A <see cref="ReadStyle" /> value specifying at what level
-		///    of accuracy to read the media properties, or <see
-		///    cref="ReadStyle.None" /> to ignore the properties.
+		///     A <see cref="ReadStyle" /> value specifying at what level
+		///     of accuracy to read the media properties, or
+		///     <see
+		///         cref="ReadStyle.None" />
+		///     to ignore the properties.
 		/// </param>
 		protected override void ReadEnd(long end,
 			ReadStyle propertiesStyle)
 		{
 			if ((propertiesStyle & ReadStyle.Average) == 0 ||
 			    start_time == null)
+			{
 				return;
+			}
 
 			// Enable to search the marker in the entire file if none is found so far
 			if (end == Length)
+			{
 				end = 0;
+			}
 
 			RFindMarker(ref end, Marker.SystemSyncPacket);
 
@@ -243,26 +263,28 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 
 
 		/// <summary>
-		///    Reads the audio properties from the file represented by
-		///    the current instance.
+		///     Reads the audio properties from the file represented by
+		///     the current instance.
 		/// </summary>
 		/// <param name="start">
-		///    A <see cref="long" /> value containing the seek position
-		///    at which the tags end and the media data begins.
+		///     A <see cref="long" /> value containing the seek position
+		///     at which the tags end and the media data begins.
 		/// </param>
 		/// <param name="end">
-		///    A <see cref="long" /> value containing the seek position
-		///    at which the media data ends and the tags begin.
+		///     A <see cref="long" /> value containing the seek position
+		///     at which the media data ends and the tags begin.
 		/// </param>
 		/// <param name="propertiesStyle">
-		///    A <see cref="ReadStyle" /> value specifying at what level
-		///    of accuracy to read the media properties, or <see
-		///    cref="ReadStyle.None" /> to ignore the properties.
+		///     A <see cref="ReadStyle" /> value specifying at what level
+		///     of accuracy to read the media properties, or
+		///     <see
+		///         cref="ReadStyle.None" />
+		///     to ignore the properties.
 		/// </param>
 		/// <returns>
-		///    A <see cref="TagLib.Properties" /> object describing the
-		///    media properties of the file represented by the current
-		///    instance.
+		///     A <see cref="TagLib.Properties" /> object describing the
+		///     media properties of the file represented by the current
+		///     instance.
 		/// </returns>
 		protected override Properties ReadProperties(long start,
 			long end,
@@ -279,19 +301,19 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 
 
 		/// <summary>
-		///    Gets the marker at a specified position.
+		///     Gets the marker at a specified position.
 		/// </summary>
 		/// <param name="position">
-		///    A <see cref="long" /> value specifying the postion in the
-		///    file represented by the current instance at which to
-		///    read.
+		///     A <see cref="long" /> value specifying the postion in the
+		///     file represented by the current instance at which to
+		///     read.
 		/// </param>
 		/// <returns>
-		///    A <see cref="Marker" /> value containing the type of
-		///    marker found at the specified position.
+		///     A <see cref="Marker" /> value containing the type of
+		///     marker found at the specified position.
 		/// </returns>
 		/// <exception cref="CorruptFileException">
-		///    A valid marker does not exist at the specified position.
+		///     A valid marker does not exist at the specified position.
 		/// </exception>
 		internal Marker GetMarker(long position)
 		{
@@ -299,8 +321,10 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 			var identifier = ReadBlock(4);
 
 			if (identifier.Count == 4 && identifier.StartsWith(
-				    MarkerStart))
+				MarkerStart))
+			{
 				return (Marker)identifier[3];
+			}
 
 			throw new CorruptFileException(
 				"Invalid marker at position " + position);
@@ -308,105 +332,105 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 
 
 		/// <summary>
-		///    Finds the next marker starting at a specified position.
+		///     Finds the next marker starting at a specified position.
 		/// </summary>
 		/// <param name="position">
-		///    A <see cref="long" /> value reference specifying the
-		///    position at which to start searching. This value
-		///    is updated to the position of the found marker.
+		///     A <see cref="long" /> value reference specifying the
+		///     position at which to start searching. This value
+		///     is updated to the position of the found marker.
 		/// </param>
 		/// <returns>
-		///    A <see cref="Marker" /> value containing the type of
-		///    marker found at the specified position.
+		///     A <see cref="Marker" /> value containing the type of
+		///     marker found at the specified position.
 		/// </returns>
 		/// <exception cref="CorruptFileException">
-		///    A valid marker could not be found.
+		///     A valid marker could not be found.
 		/// </exception>
 		internal Marker FindMarker(ref long position)
 		{
 			position = Find(MarkerStart, position);
 			if (position < 0)
+			{
 				throw new CorruptFileException(
 					"Marker not found");
+			}
 
 			return GetMarker(position);
 		}
 
 
 		/// <summary>
-		///    Finds the next marker of a specified type, starting at a
-		///    specified position.
+		///     Finds the next marker of a specified type, starting at a
+		///     specified position.
 		/// </summary>
 		/// <param name="position">
-		///    A <see cref="long" /> value reference specifying the
-		///    position at which to start searching. This value
-		///    is updated to the position of the found marker.
+		///     A <see cref="long" /> value reference specifying the
+		///     position at which to start searching. This value
+		///     is updated to the position of the found marker.
 		/// </param>
 		/// <param name="marker">
-		///    A <see cref="Marker" /> value specifying the type of
-		///    marker to search for.
+		///     A <see cref="Marker" /> value specifying the type of
+		///     marker to search for.
 		/// </param>
 		/// <exception cref="CorruptFileException">
-		///    A valid marker could not be found.
+		///     A valid marker could not be found.
 		/// </exception>
 		internal void FindMarker(ref long position, Marker marker)
 		{
-			var packet = new ByteVector(MarkerStart)
-			{
-				(byte)marker
-			};
+			var packet = new ByteVector(MarkerStart) { (byte)marker };
 			position = Find(packet, position);
 
 			if (position < 0)
+			{
 				throw new CorruptFileException(
 					"Marker not found");
+			}
 		}
 
 
 		/// <summary>
-		///    Finds the previous marker of a specified type, starting
-		///    at a specified position.
+		///     Finds the previous marker of a specified type, starting
+		///     at a specified position.
 		/// </summary>
 		/// <param name="position">
-		///    A <see cref="long" /> value reference specifying the
-		///    position at which to start searching. This value
-		///    is updated to the position of the found marker.
+		///     A <see cref="long" /> value reference specifying the
+		///     position at which to start searching. This value
+		///     is updated to the position of the found marker.
 		/// </param>
 		/// <param name="marker">
-		///    A <see cref="Marker" /> value specifying the type of
-		///    marker to search for.
+		///     A <see cref="Marker" /> value specifying the type of
+		///     marker to search for.
 		/// </param>
 		/// <exception cref="CorruptFileException">
-		///    A valid marker could not be found.
+		///     A valid marker could not be found.
 		/// </exception>
 		internal void RFindMarker(ref long position, Marker marker)
 		{
-			var packet = new ByteVector(MarkerStart)
-			{
-				(byte)marker
-			};
+			var packet = new ByteVector(MarkerStart) { (byte)marker };
 			position = RFind(packet, position);
 
 			if (position < 0)
+			{
 				throw new CorruptFileException(
 					"Marker not found");
+			}
 		}
 
 
 		/// <summary>
-		///    Reads the contents of the file as a system file, starting
-		///    at a specified position.
+		///     Reads the contents of the file as a system file, starting
+		///     at a specified position.
 		/// </summary>
 		/// <param name="position">
-		///    A <see cref="long" /> value specifying the postion in the
-		///    file represented by the current instance at which to
-		///    start reading.
+		///     A <see cref="long" /> value specifying the postion in the
+		///     file represented by the current instance at which to
+		///     start reading.
 		/// </param>
 		/// <remarks>
-		///    This method will stop when it has read both an audio and
-		///    a video header, or once it's read 100 packets. This is to
-		///    prevent the entire file from being read if it lacks one
-		///    type of stream.
+		///     This method will stop when it has read both an audio and
+		///     a video header, or once it's read 100 packets. This is to
+		///     prevent the entire file from being read if it lacks one
+		///     type of stream.
 		/// </remarks>
 		internal void ReadSystemFile(long position)
 		{
@@ -431,6 +455,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 						position += ReadBlock(2)
 							            .ToUShort() +
 						            6;
+
 						break;
 
 					case Marker.VideoPacket:
@@ -453,13 +478,13 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 
 
 		/// <summary>
-		///    Reads an audio packet, assigning the audio header and
-		///    advancing the position to the next packet position.
+		///     Reads an audio packet, assigning the audio header and
+		///     advancing the position to the next packet position.
 		/// </summary>
 		/// <param name="position">
-		///    A <see cref="long" /> value reference specifying the
-		///    position at which to start reading the packet. This value
-		///    is updated to the position of the next packet.
+		///     A <see cref="long" /> value reference specifying the
+		///     position at which to start reading the packet. This value
+		///     is updated to the position of the next packet.
 		/// </param>
 		private void ReadAudioPacket(ref long position)
 		{
@@ -468,35 +493,41 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 				.ToUShort();
 
 			if (!audio_found)
+			{
 				audio_found = AudioHeader.Find(
 					out audio_header, this, position + 15,
 					length - 9);
+			}
+
 			position += length;
 		}
 
 
 		/// <summary>
-		///    Reads a video packet, assigning the video header and
-		///    advancing the position to the next packet position.
+		///     Reads a video packet, assigning the video header and
+		///     advancing the position to the next packet position.
 		/// </summary>
 		/// <param name="position">
-		///    A <see cref="long" /> value reference specifying the
-		///    position at which to start reading the packet. This value
-		///    is updated to the position of the next packet.
+		///     A <see cref="long" /> value reference specifying the
+		///     position at which to start reading the packet. This value
+		///     is updated to the position of the next packet.
 		/// </param>
 		private void ReadVideoPacket(ref long position)
 		{
 			Seek(position + 4);
 			int length = ReadBlock(2)
 				.ToUShort();
+
 			var offset = position + 6;
 
 			while (!video_found && offset < position + length)
+			{
 				if (FindMarker(ref offset) ==
 				    Marker.VideoSyncPacket)
 				{
 					video_header = new VideoHeader(this,
 						offset + 4);
+
 					video_found = true;
 				}
 				else
@@ -507,24 +538,25 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 					// posible pes packet with a size =0 would be 6 bytes.
 					offset += 6;
 				}
+			}
 
 			position += length;
 		}
 
 
 		/// <summary>
-		///    Reads a system sync packet, filling in version
-		///    information and the first timestamp value, advancing the
-		///    position to the next packet position.
+		///     Reads a system sync packet, filling in version
+		///     information and the first timestamp value, advancing the
+		///     position to the next packet position.
 		/// </summary>
 		/// <param name="position">
-		///    A <see cref="long" /> value reference specifying the
-		///    position at which to start reading the packet. If the
-		///    method is called without exception, this is updated to
-		///    the position of the next packet.
+		///     A <see cref="long" /> value reference specifying the
+		///     position at which to start reading the packet. If the
+		///     method is called without exception, this is updated to
+		///     the position of the next packet.
 		/// </param>
 		/// <exception cref="UnsupportedFormatException">
-		///    The MPEG version contained in the packet is unknown.
+		///     The MPEG version contained in the packet is unknown.
 		/// </exception>
 		private void ReadSystemSyncPacket(ref long position)
 		{
@@ -544,28 +576,32 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 				packet_size = 14 + (ReadBlock(1)[0] & 0x07);
 			}
 			else
+			{
 				throw new UnsupportedFormatException(
 					"Unknown MPEG version.");
+			}
 
 			if (start_time == null)
+			{
 				start_time = ReadTimestamp(position + 4);
+			}
 
 			position += packet_size;
 		}
 
 
 		/// <summary>
-		///    Reads an MPEG timestamp from a specified position in the
-		///    file represented by the current instance.
+		///     Reads an MPEG timestamp from a specified position in the
+		///     file represented by the current instance.
 		/// </summary>
 		/// <param name="position">
-		///    A <see cref="long" /> value containing the position in
-		///    the file at which to read. This should be immediately
-		///    following a system sync packet marker.
+		///     A <see cref="long" /> value containing the position in
+		///     the file at which to read. This should be immediately
+		///     following a system sync packet marker.
 		/// </param>
 		/// <returns>
-		///    A <see cref="double" /> value containing the read time in
-		///    seconds.
+		///     A <see cref="double" /> value containing the read time in
+		///     seconds.
 		/// </returns>
 		private double ReadTimestamp(long position)
 		{

@@ -6,22 +6,22 @@ using System.Windows.Forms;
 namespace Sander.DirLister.UI.App
 {
 	/// <summary>
-	/// From https://stackoverflow.com/a/27173509
+	///     From https://stackoverflow.com/a/27173509
 	/// </summary>
 	public class SplitButton : Button
 	{
-		[DefaultValue(null), Browsable(true),
-		DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-		public ContextMenuStrip Menu { get; set; }
-
-		[DefaultValue(20), Browsable(true),
-		DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-		public int SplitWidth { get; set; }
-
 		public SplitButton()
 		{
 			SplitWidth = 20;
 		}
+
+
+		[DefaultValue(null)] [Browsable(true)] [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+		public ContextMenuStrip Menu { get; set; }
+
+		[DefaultValue(20)] [Browsable(true)] [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+		public int SplitWidth { get; set; }
+
 
 		protected override void OnMouseDown(MouseEventArgs mevent)
 		{
@@ -29,18 +29,19 @@ namespace Sander.DirLister.UI.App
 
 			// Figure out if the button click was on the button itself or the menu split
 			if (Menu != null &&
-				mevent.Button == MouseButtons.Left
+			    mevent.Button == MouseButtons.Left
 				//&& splitRect.Contains(mevent.Location)
-				)
+			)
 			{
-				Menu.Show(this, 0, Height);    // Shows menu under button
-											   //Menu.Show(this, mevent.Location); // Shows menu at click location
+				Menu.Show(this, 0, Height); // Shows menu under button
+				//Menu.Show(this, mevent.Location); // Shows menu at click location
 			}
 			else
 			{
 				base.OnMouseDown(mevent);
 			}
 		}
+
 
 		protected override void OnPaint(PaintEventArgs pevent)
 		{

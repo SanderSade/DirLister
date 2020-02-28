@@ -18,10 +18,12 @@ namespace Sander.DirLister.UI.App
 		{
 			var shortcutLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
 				$@"Microsoft\Windows\SendTo\{Title}.lnk");
+
 			var shell = new WshShell();
 			var shortcut = (IWshShortcut)shell.CreateShortcut(shortcutLocation);
 			var target = Assembly.GetEntryAssembly()
-			                     .Location;
+				.Location;
+
 			shortcut.Description = Title;
 			shortcut.IconLocation = $"\"{target}\", 0";
 			shortcut.TargetPath = target;
@@ -70,6 +72,7 @@ namespace Sander.DirLister.UI.App
 		{
 			var shortcutLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
 				$@"Microsoft\Windows\SendTo\{Title}.lnk");
+
 			File.Delete(shortcutLocation);
 
 			Registry.CurrentUser.DeleteSubKeyTree($@"Software\Classes\Directory\shell\{Title}", false);

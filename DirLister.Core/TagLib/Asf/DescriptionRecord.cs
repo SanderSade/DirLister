@@ -3,53 +3,54 @@ using System;
 namespace Sander.DirLister.Core.TagLib.Asf
 {
 	/// <summary>
-	///    This class provides a representation of an ASF Description Record
-	///    to be used in combination with <see cref="MetadataLibraryObject"
-	///    />.
+	///     This class provides a representation of an ASF Description Record
+	///     to be used in combination with <see cref="MetadataLibraryObject" />.
 	/// </summary>
 	public class DescriptionRecord
 	{
 		/// <summary>
-		///    Contains the byte value.
+		///     Contains the byte value.
 		/// </summary>
 		private ByteVector byteValue;
 
 		/// <summary>
-		///    Contains the GUID value.
+		///     Contains the GUID value.
 		/// </summary>
 		private System.Guid guidValue = System.Guid.Empty;
 
 		/// <summary>
-		///    Contains the long value.
+		///     Contains the long value.
 		/// </summary>
 		private ulong longValue;
 
 		/// <summary>
-		///    Contains the string value.
+		///     Contains the string value.
 		/// </summary>
 		private string strValue;
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="DescriptionRecord" /> with a specified language,
-		///    stream, name, and value.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="DescriptionRecord" />
+		///     with a specified language,
+		///     stream, name, and value.
 		/// </summary>
 		/// <param name="languageListIndex">
-		///    A <see cref="ushort" /> value containing the language
-		///    list index of the new instance.
+		///     A <see cref="ushort" /> value containing the language
+		///     list index of the new instance.
 		/// </param>
 		/// <param name="streamNumber">
-		///    A <see cref="ushort" /> value containing the stream
-		///    number of the new instance.
+		///     A <see cref="ushort" /> value containing the stream
+		///     number of the new instance.
 		/// </param>
 		/// <param name="name">
-		///    A <see cref="string" /> object containing the name of the
-		///    new instance.
+		///     A <see cref="string" /> object containing the name of the
+		///     new instance.
 		/// </param>
 		/// <param name="value">
-		///    A <see cref="string" /> object containing the value for
-		///    the new instance.
+		///     A <see cref="string" /> object containing the value for
+		///     the new instance.
 		/// </param>
 		public DescriptionRecord(ushort languageListIndex,
 			ushort streamNumber, string name,
@@ -63,25 +64,27 @@ namespace Sander.DirLister.Core.TagLib.Asf
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="DescriptionRecord" /> with a specified language,
-		///    stream, name, and value.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="DescriptionRecord" />
+		///     with a specified language,
+		///     stream, name, and value.
 		/// </summary>
 		/// <param name="languageListIndex">
-		///    A <see cref="ushort" /> value containing the language
-		///    list index of the new instance.
+		///     A <see cref="ushort" /> value containing the language
+		///     list index of the new instance.
 		/// </param>
 		/// <param name="streamNumber">
-		///    A <see cref="ushort" /> value containing the stream
-		///    number of the new instance.
+		///     A <see cref="ushort" /> value containing the stream
+		///     number of the new instance.
 		/// </param>
 		/// <param name="name">
-		///    A <see cref="string" /> object containing the name of the
-		///    new instance.
+		///     A <see cref="string" /> object containing the name of the
+		///     new instance.
 		/// </param>
 		/// <param name="value">
-		///    A <see cref="ByteVector" /> object containing the value
-		///    for the new instance.
+		///     A <see cref="ByteVector" /> object containing the value
+		///     for the new instance.
 		/// </param>
 		public DescriptionRecord(ushort languageListIndex,
 			ushort streamNumber, string name,
@@ -96,25 +99,27 @@ namespace Sander.DirLister.Core.TagLib.Asf
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="DescriptionRecord" /> with a specified language,
-		///    stream, name, and value.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="DescriptionRecord" />
+		///     with a specified language,
+		///     stream, name, and value.
 		/// </summary>
 		/// <param name="languageListIndex">
-		///    A <see cref="ushort" /> value containing the language
-		///    list index of the new instance.
+		///     A <see cref="ushort" /> value containing the language
+		///     list index of the new instance.
 		/// </param>
 		/// <param name="streamNumber">
-		///    A <see cref="ushort" /> value containing the stream
-		///    number of the new instance.
+		///     A <see cref="ushort" /> value containing the stream
+		///     number of the new instance.
 		/// </param>
 		/// <param name="name">
-		///    A <see cref="string" /> object containing the name of the
-		///    new instance.
+		///     A <see cref="string" /> object containing the name of the
+		///     new instance.
 		/// </param>
 		/// <param name="value">
-		///    A <see cref="uint" /> value containing the value
-		///    for the new instance.
+		///     A <see cref="uint" /> value containing the value
+		///     for the new instance.
 		/// </param>
 		public DescriptionRecord(ushort languageListIndex,
 			ushort streamNumber, string name,
@@ -129,25 +134,27 @@ namespace Sander.DirLister.Core.TagLib.Asf
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="DescriptionRecord" /> with a specified language,
-		///    stream, name, and value.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="DescriptionRecord" />
+		///     with a specified language,
+		///     stream, name, and value.
 		/// </summary>
 		/// <param name="languageListIndex">
-		///    A <see cref="ushort" /> value containing the language
-		///    list index of the new instance.
+		///     A <see cref="ushort" /> value containing the language
+		///     list index of the new instance.
 		/// </param>
 		/// <param name="streamNumber">
-		///    A <see cref="ushort" /> value containing the stream
-		///    number of the new instance.
+		///     A <see cref="ushort" /> value containing the stream
+		///     number of the new instance.
 		/// </param>
 		/// <param name="name">
-		///    A <see cref="string" /> object containing the name of the
-		///    new instance.
+		///     A <see cref="string" /> object containing the name of the
+		///     new instance.
 		/// </param>
 		/// <param name="value">
-		///    A <see cref="ulong" /> value containing the value
-		///    for the new instance.
+		///     A <see cref="ulong" /> value containing the value
+		///     for the new instance.
 		/// </param>
 		public DescriptionRecord(ushort languageListIndex,
 			ushort streamNumber, string name,
@@ -162,25 +169,27 @@ namespace Sander.DirLister.Core.TagLib.Asf
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="DescriptionRecord" /> with a specified language,
-		///    stream, name, and value.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="DescriptionRecord" />
+		///     with a specified language,
+		///     stream, name, and value.
 		/// </summary>
 		/// <param name="languageListIndex">
-		///    A <see cref="ushort" /> value containing the language
-		///    list index of the new instance.
+		///     A <see cref="ushort" /> value containing the language
+		///     list index of the new instance.
 		/// </param>
 		/// <param name="streamNumber">
-		///    A <see cref="ushort" /> value containing the stream
-		///    number of the new instance.
+		///     A <see cref="ushort" /> value containing the stream
+		///     number of the new instance.
 		/// </param>
 		/// <param name="name">
-		///    A <see cref="string" /> object containing the name of the
-		///    new instance.
+		///     A <see cref="string" /> object containing the name of the
+		///     new instance.
 		/// </param>
 		/// <param name="value">
-		///    A <see cref="ushort" /> value containing the value
-		///    for the new instance.
+		///     A <see cref="ushort" /> value containing the value
+		///     for the new instance.
 		/// </param>
 		public DescriptionRecord(ushort languageListIndex,
 			ushort streamNumber, string name,
@@ -195,25 +204,27 @@ namespace Sander.DirLister.Core.TagLib.Asf
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="DescriptionRecord" /> with a specified language,
-		///    stream, name, and value.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="DescriptionRecord" />
+		///     with a specified language,
+		///     stream, name, and value.
 		/// </summary>
 		/// <param name="languageListIndex">
-		///    A <see cref="ushort" /> value containing the language
-		///    list index of the new instance.
+		///     A <see cref="ushort" /> value containing the language
+		///     list index of the new instance.
 		/// </param>
 		/// <param name="streamNumber">
-		///    A <see cref="ushort" /> value containing the stream
-		///    number of the new instance.
+		///     A <see cref="ushort" /> value containing the stream
+		///     number of the new instance.
 		/// </param>
 		/// <param name="name">
-		///    A <see cref="string" /> object containing the name of the
-		///    new instance.
+		///     A <see cref="string" /> object containing the name of the
+		///     new instance.
 		/// </param>
 		/// <param name="value">
-		///    A <see cref="bool" /> value containing the value
-		///    for the new instance.
+		///     A <see cref="bool" /> value containing the value
+		///     for the new instance.
 		/// </param>
 		public DescriptionRecord(ushort languageListIndex,
 			ushort streamNumber, string name,
@@ -228,25 +239,27 @@ namespace Sander.DirLister.Core.TagLib.Asf
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="DescriptionRecord" /> with a specified language,
-		///    stream, name, and value.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="DescriptionRecord" />
+		///     with a specified language,
+		///     stream, name, and value.
 		/// </summary>
 		/// <param name="languageListIndex">
-		///    A <see cref="ushort" /> value containing the language
-		///    list index of the new instance.
+		///     A <see cref="ushort" /> value containing the language
+		///     list index of the new instance.
 		/// </param>
 		/// <param name="streamNumber">
-		///    A <see cref="ushort" /> value containing the stream
-		///    number of the new instance.
+		///     A <see cref="ushort" /> value containing the stream
+		///     number of the new instance.
 		/// </param>
 		/// <param name="name">
-		///    A <see cref="string" /> object containing the name of the
-		///    new instance.
+		///     A <see cref="string" /> object containing the name of the
+		///     new instance.
 		/// </param>
 		/// <param name="value">
-		///    A <see cref="System.Guid" /> value containing the value
-		///    for the new instance.
+		///     A <see cref="System.Guid" /> value containing the value
+		///     for the new instance.
 		/// </param>
 		public DescriptionRecord(ushort languageListIndex,
 			ushort streamNumber, string name,
@@ -261,85 +274,91 @@ namespace Sander.DirLister.Core.TagLib.Asf
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="DescriptionRecord" /> by reading its contents from
-		///    a file.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="DescriptionRecord" />
+		///     by reading its contents from
+		///     a file.
 		/// </summary>
 		/// <param name="file">
-		///    A <see cref="Asf.File" /> object to read the raw ASF
-		///    Description Record from.
+		///     A <see cref="Asf.File" /> object to read the raw ASF
+		///     Description Record from.
 		/// </param>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="file" /> is <see langword="null" />.
+		///     <paramref name="file" /> is <see langword="null" />.
 		/// </exception>
 		/// <exception cref="CorruptFileException">
-		///    A valid record could not be read.
+		///     A valid record could not be read.
 		/// </exception>
 		/// <remarks>
-		///    <paramref name="file" /> must be at a seek position at
-		///    which the record can be read.
+		///     <paramref name="file" /> must be at a seek position at
+		///     which the record can be read.
 		/// </remarks>
 		protected internal DescriptionRecord(File file)
 		{
 			if (file == null)
+			{
 				throw new ArgumentNullException("file");
+			}
 
 			if (!Parse(file))
+			{
 				throw new CorruptFileException(
 					"Failed to parse description record.");
+			}
 		}
 
 
 		/// <summary>
-		///    Gets the index of the language associated with the
-		///    current instance.
+		///     Gets the index of the language associated with the
+		///     current instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="ushort" /> value containing the index of the
-		///    language associated with the current instance.
+		///     A <see cref="ushort" /> value containing the index of the
+		///     language associated with the current instance.
 		/// </value>
 		public ushort LanguageListIndex { get; private set; }
 
 		/// <summary>
-		///    Gets the index of the stream associated with the current
-		///    instance.
+		///     Gets the index of the stream associated with the current
+		///     instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="ushort" /> value containing the index of the
-		///    stream associated with the current instance.
+		///     A <see cref="ushort" /> value containing the index of the
+		///     stream associated with the current instance.
 		/// </value>
 		public ushort StreamNumber { get; private set; }
 
 		/// <summary>
-		///    Gets the name of the current instance.
+		///     Gets the name of the current instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="string" /> object containing the name of the
-		///    current instance.
+		///     A <see cref="string" /> object containing the name of the
+		///     current instance.
 		/// </value>
 		public string Name { get; private set; }
 
 		/// <summary>
-		///    Gets the type of data contained in the current instance.
+		///     Gets the type of data contained in the current instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="DataType" /> value indicating type of data
-		///    contained in the current instance.
+		///     A <see cref="DataType" /> value indicating type of data
+		///     contained in the current instance.
 		/// </value>
 		public DataType Type { get; private set; } = DataType.Unicode;
 
 
 		/// <summary>
-		///    Populates the current instance by reading in the contents
-		///    from a file.
+		///     Populates the current instance by reading in the contents
+		///     from a file.
 		/// </summary>
 		/// <param name="file">
-		///    A <see cref="Asf.File" /> object to read the raw ASF
-		///    Description Record from.
+		///     A <see cref="Asf.File" /> object to read the raw ASF
+		///     Description Record from.
 		/// </param>
 		/// <returns>
-		///    <see langword="true" /> if the data was read correctly.
-		///    Otherwise <see langword="false" />.
+		///     <see langword="true" /> if the data was read correctly.
+		///     Otherwise <see langword="false" />.
 		/// </returns>
 		protected bool Parse(File file)
 		{
@@ -389,32 +408,37 @@ namespace Sander.DirLister.Core.TagLib.Asf
 
 
 		/// <summary>
-		///    Gets a string representation of the current instance.
+		///     Gets a string representation of the current instance.
 		/// </summary>
 		/// <returns>
-		///    A <see cref="string" /> object containing the value of
-		///    the current instance.
+		///     A <see cref="string" /> object containing the value of
+		///     the current instance.
 		/// </returns>
 		public override string ToString()
 		{
 			if (Type == DataType.Unicode)
+			{
 				return strValue;
+			}
 
 			if (Type == DataType.Bytes)
+			{
 				return byteValue.ToString(StringType.UTF16LE);
+			}
 
 			return longValue.ToString();
 		}
 
 
 		/// <summary>
-		///    Gets the binary contents of the current instance.
+		///     Gets the binary contents of the current instance.
 		/// </summary>
 		/// <returns>
-		///    A <see cref="ByteVector" /> object containing the
-		///    contents of the current instance, or <see langword="null"
-		///    /> if <see cref="Type" /> is unequal to <see
-		///    cref="DataType.Bytes" />.
+		///     A <see cref="ByteVector" /> object containing the
+		///     contents of the current instance, or <see langword="null" /> if <see cref="Type" /> is unequal to
+		///     <see
+		///         cref="DataType.Bytes" />
+		///     .
 		/// </returns>
 		public ByteVector ToByteVector()
 		{
@@ -423,11 +447,11 @@ namespace Sander.DirLister.Core.TagLib.Asf
 
 
 		/// <summary>
-		///    Gets the boolean value contained in the current instance.
+		///     Gets the boolean value contained in the current instance.
 		/// </summary>
 		/// <returns>
-		///    A <see cref="bool" /> value containing the value of the
-		///    current instance.
+		///     A <see cref="bool" /> value containing the value of the
+		///     current instance.
 		/// </returns>
 		public bool ToBool()
 		{
@@ -436,62 +460,68 @@ namespace Sander.DirLister.Core.TagLib.Asf
 
 
 		/// <summary>
-		///    Gets the DWORD value contained in the current instance.
+		///     Gets the DWORD value contained in the current instance.
 		/// </summary>
 		/// <returns>
-		///    A <see cref="uint" /> value containing the value of the
-		///    current instance.
+		///     A <see cref="uint" /> value containing the value of the
+		///     current instance.
 		/// </returns>
 		public uint ToDWord()
 		{
 			if (Type == DataType.Unicode && strValue != null &&
 			    uint.TryParse(strValue, out var value))
+			{
 				return value;
+			}
 
 			return (uint)longValue;
 		}
 
 
 		/// <summary>
-		///    Gets the QWORD value contained in the current instance.
+		///     Gets the QWORD value contained in the current instance.
 		/// </summary>
 		/// <returns>
-		///    A <see cref="ulong" /> value containing the value of the
-		///    current instance.
+		///     A <see cref="ulong" /> value containing the value of the
+		///     current instance.
 		/// </returns>
 		public ulong ToQWord()
 		{
 			if (Type == DataType.Unicode && strValue != null &&
 			    ulong.TryParse(strValue, out var value))
+			{
 				return value;
+			}
 
 			return longValue;
 		}
 
 
 		/// <summary>
-		///    Gets the WORD value contained in the current instance.
+		///     Gets the WORD value contained in the current instance.
 		/// </summary>
 		/// <returns>
-		///    A <see cref="ushort" /> value containing the value of the
-		///    current instance.
+		///     A <see cref="ushort" /> value containing the value of the
+		///     current instance.
 		/// </returns>
 		public ushort ToWord()
 		{
 			if (Type == DataType.Unicode && strValue != null &&
 			    ushort.TryParse(strValue, out var value))
+			{
 				return value;
+			}
 
 			return (ushort)longValue;
 		}
 
 
 		/// <summary>
-		///    Gets the GUID value contained in the current instance.
+		///     Gets the GUID value contained in the current instance.
 		/// </summary>
 		/// <returns>
-		///    A <see cref="System.Guid" /> value containing the value
-		///    of the current instance.
+		///     A <see cref="System.Guid" /> value containing the value
+		///     of the current instance.
 		/// </returns>
 		public System.Guid ToGuid()
 		{
@@ -500,12 +530,12 @@ namespace Sander.DirLister.Core.TagLib.Asf
 
 
 		/// <summary>
-		///    Renders the current instance as a raw ASF Description
-		///    Record.
+		///     Renders the current instance as a raw ASF Description
+		///     Record.
 		/// </summary>
 		/// <returns>
-		///    A <see cref="ByteVector" /> object containing the
-		///    rendered version of the current instance.
+		///     A <see cref="ByteVector" /> object containing the
+		///     rendered version of the current instance.
 		/// </returns>
 		public ByteVector Render()
 		{

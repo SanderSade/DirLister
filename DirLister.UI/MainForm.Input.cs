@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Configuration;
 using System.Diagnostics;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -19,9 +17,13 @@ namespace Sander.DirLister.UI
 		{
 			Mediator.AddToHistory(directory);
 			while (HistoryMenu.Items.Count > 2)
+			{
 				HistoryMenu.Items.RemoveAt(2);
+			}
+
 			AddHistoryToMenu();
 		}
+
 
 		private void AddHistoryToMenu()
 		{
@@ -35,8 +37,12 @@ namespace Sander.DirLister.UI
 						var menuItem = new ToolStripMenuItem(x);
 						menuItem.Click += delegate(object sender, EventArgs args)
 						{
-							if (sender is ToolStripMenuItem item) AddFolderToList(item.Text);
+							if (sender is ToolStripMenuItem item)
+							{
+								AddFolderToList(item.Text);
+							}
 						};
+
 						return menuItem;
 					})
 					.ToArray());
@@ -47,10 +53,17 @@ namespace Sander.DirLister.UI
 		{
 			var addToList = true;
 			foreach (ListViewItem listItem in DirectoryList.Items)
+			{
 				if (string.Compare(listItem.Text, directory, StringComparison.OrdinalIgnoreCase) == 0)
+				{
 					addToList = false;
+				}
+			}
 
-			if (addToList) DirectoryList.Items.Add(new ListViewItem {Text = directory});
+			if (addToList)
+			{
+				DirectoryList.Items.Add(new ListViewItem { Text = directory });
+			}
 		}
 
 
@@ -80,8 +93,15 @@ namespace Sander.DirLister.UI
 		{
 			var count = HistoryMenu.Items.Count;
 			if (count == 2)
+			{
 				return;
-			for (var i = 2; i < count; i++) HistoryMenu.Items.RemoveAt(2);
+			}
+
+			for (var i = 2; i < count; i++)
+			{
+				HistoryMenu.Items.RemoveAt(2);
+			}
+
 			History.Default.DirectoryHistory.Clear();
 			History.Default.Save();
 		}
@@ -90,17 +110,27 @@ namespace Sander.DirLister.UI
 		private void InitializeInput(IEnumerable<string> inputFolders)
 		{
 			if (History.Default?.DirectoryHistory != null)
+			{
 				AddHistoryToMenu();
+			}
 
 			if (History.Default?.WildcardFilter != null)
+			{
 				WildcardEdit.Items.AddRange(History.Default.WildcardFilter.Cast<string>().Distinct().ToArray());
+			}
 
 			if (History.Default?.RegexFilter != null)
+			{
 				RegexCombo.Items.AddRange(History.Default.RegexFilter.Cast<string>().Distinct().ToArray());
+			}
 
 			if (inputFolders != null)
+			{
 				foreach (var folder in inputFolders)
+				{
 					AddFolderToList(folder);
+				}
+			}
 
 			IncludeHidden.Checked = _configuration.IncludeHidden;
 			IncludeSubfolders.Checked = _configuration.IncludeSubfolders;
@@ -114,15 +144,18 @@ namespace Sander.DirLister.UI
 		private void DirectoryList_MouseClick(object sender, MouseEventArgs e)
 		{
 			if (e.Button == MouseButtons.Right)
+			{
 				if (DirectoryList.FocusedItem.Bounds.Contains(e.Location))
 				{
 					DirectoryMenu.Items[nameof(MoveUp)]
-							.Visible = DirectoryList.FocusedItem.Index > 0;
+						.Visible = DirectoryList.FocusedItem.Index > 0;
 
 					DirectoryMenu.Items[nameof(MoveDown)]
-							.Visible = DirectoryList.FocusedItem.Index < DirectoryList.Items.Count - 1;
+						.Visible = DirectoryList.FocusedItem.Index < DirectoryList.Items.Count - 1;
+
 					DirectoryMenu.Show(Cursor.Position);
 				}
+			}
 		}
 
 
@@ -149,6 +182,7 @@ namespace Sander.DirLister.UI
 			DirectoryList.FocusedItem.Remove();
 		}
 
+
 		private void BrowseButton_Click(object sender, EventArgs e)
 		{
 			FolderSelectionDialog.Description = "Select source folder";
@@ -162,33 +196,45 @@ namespace Sander.DirLister.UI
 			}
 		}
 
+
 		private void WildcardEdit_KeyDown(object sender, KeyEventArgs e)
 		{
 			if (e.KeyCode == Keys.Enter && !string.IsNullOrWhiteSpace(WildcardEdit.Text))
+			{
 				AddWildcard(WildcardEdit.Text);
+			}
 		}
+
 
 		private void AddWildcard(string wildcard)
 		{
 			var addToList = true;
 			foreach (ListViewItem listItem in WildcardList.Items)
+			{
 				if (string.Compare(listItem.Text, wildcard, StringComparison.OrdinalIgnoreCase) == 0)
+				{
 					addToList = false;
+				}
+			}
 
 			if (addToList)
 			{
-				WildcardList.Items.Add(new ListViewItem {Text = wildcard});
+				WildcardList.Items.Add(new ListViewItem { Text = wildcard });
 				WildcardEdit.Text = string.Empty;
 
 				var wildcards = WildcardEdit.Items.Cast<string>().ToList();
 				if (wildcards
 					.Any(x => string.Compare(x, wildcard, StringComparison.OrdinalIgnoreCase) == 0))
+				{
 					return;
+				}
 
 				WildcardEdit.Items.Add(wildcard);
 
 				if (History.Default.WildcardFilter == null)
+				{
 					History.Default.WildcardFilter = new StringCollection();
+				}
 
 				wildcards.Insert(0, wildcard);
 				History.Default.WildcardFilter.AddRange(wildcards.Take(History.Default.FilterHistoryLength).ToArray());
@@ -197,23 +243,30 @@ namespace Sander.DirLister.UI
 			}
 		}
 
+
 		private void AddWildcardButton_Click(object sender, EventArgs e)
 		{
 			if (!string.IsNullOrWhiteSpace(WildcardEdit.Text))
+			{
 				AddWildcard(WildcardEdit.Text);
+			}
 		}
+
 
 		private void ClearWildcardsButton_Click(object sender, EventArgs e)
 		{
 			WildcardList.Items.Clear();
 		}
 
+
 		private void ValidateRegexButton_Click(object sender, EventArgs e)
 		{
 			RegexErrorLabel.Text = string.Empty;
 			RegexErrorLabel.ForeColor = Color.Black;
 			if (string.IsNullOrWhiteSpace(RegexCombo.Text))
+			{
 				return;
+			}
 
 			string validationError = null;
 			var regex = ValidateRegex(ref validationError);
@@ -229,6 +282,7 @@ namespace Sander.DirLister.UI
 			}
 		}
 
+
 		private Regex ValidateRegex(ref string regexError)
 		{
 			try
@@ -243,13 +297,19 @@ namespace Sander.DirLister.UI
 			}
 		}
 
+
 		private void RegexCombo_KeyDown(object sender, KeyEventArgs e)
 		{
 			if (e.KeyCode == Keys.Enter)
+			{
 				ValidateRegexButton_Click(sender, e);
+			}
 			else
+			{
 				RegexErrorLabel.Text = string.Empty;
+			}
 		}
+
 
 		private void AddRegexToHistory(Regex regex)
 		{
@@ -257,12 +317,16 @@ namespace Sander.DirLister.UI
 
 			var regexes = RegexCombo.Items.Cast<string>().ToList();
 			if (regexes.Any(x => string.Compare(x, regexSource, StringComparison.OrdinalIgnoreCase) == 0))
+			{
 				return;
+			}
 
 			RegexCombo.Items.Add(regexSource);
 
 			if (History.Default.RegexFilter == null)
+			{
 				History.Default.RegexFilter = new StringCollection();
+			}
 
 			regexes.Insert(0, regexSource);
 			History.Default.RegexFilter.AddRange(regexes.Take(History.Default.FilterHistoryLength).ToArray());

@@ -9,10 +9,12 @@ namespace Sander.DirLister.Core.Application.Writers
 	{
 		private readonly StringBuilder _sb;
 
+
 		public TxtWriter(Configuration configuration, DateTimeOffset endDate, List<FileEntry> entries) : base(configuration, endDate, entries)
 		{
 			_sb = new StringBuilder();
 		}
+
 
 		protected internal override string Write()
 		{
@@ -25,6 +27,7 @@ namespace Sander.DirLister.Core.Application.Writers
 
 			return WriteFile(_sb, OutputFormat.Txt);
 		}
+
 
 		private void AppendFolder(IGrouping<string, FileEntry> group)
 		{
@@ -39,25 +42,33 @@ namespace Sander.DirLister.Core.Application.Writers
 			{
 				_sb.Append(entry.Filename);
 				if (Configuration.IncludeSize)
+				{
 					_sb.Append($" :: {entry.ReadableSize}");
+				}
 
 				if (Configuration.IncludeFileDates)
+				{
 					_sb.Append(
 						$" :: Created: {entry.Created.ToLocalTime().ToString(Configuration.DateFormat)}, modified: {entry.Modified.ToLocalTime().ToString(Configuration.DateFormat)}");
+				}
 
 				if (Configuration.IncludeMediaInfo && entry.MediaInfo != null)
 				{
 					_sb.Append($" :: {entry.MediaInfo.MediaType}");
 					if (entry.MediaInfo.Duration != TimeSpan.Zero)
+					{
 						_sb.Append($" {FormatDuration(entry.MediaInfo.Duration)}");
+					}
 
 					if (entry.MediaInfo.Height > 0)
+					{
 						_sb.Append($" {entry.MediaInfo.Height}x{entry.MediaInfo.Width},");
+					}
 
 					_sb.Append(GetMediaInfo("bpp", entry.MediaInfo.BitsPerPixel));
 
 					if (entry.MediaInfo.AudioBitRate != 0 || entry.MediaInfo.AudioSampleRate != 0 ||
-						entry.MediaInfo.AudioChannels != 0)
+					    entry.MediaInfo.AudioChannels != 0)
 					{
 						_sb.Remove(_sb.Length - 1, 1);
 						_sb.Append(" :: audio");
@@ -65,10 +76,12 @@ namespace Sander.DirLister.Core.Application.Writers
 						_sb.Append(GetMediaInfo("channels", entry.MediaInfo.AudioChannels));
 
 						if (entry.MediaInfo.AudioSampleRate > 0)
+						{
 							_sb.Append(GetMediaInfo("sample rate", entry.MediaInfo.AudioSampleRate / 1000f));
+						}
 					}
 
-					_sb.Remove(_sb.Length - 1, 1);//remove trailing comma
+					_sb.Remove(_sb.Length - 1, 1); //remove trailing comma
 				}
 
 				_sb.AppendLine();
@@ -83,6 +96,7 @@ namespace Sander.DirLister.Core.Application.Writers
 				: FormattableString.Invariant($" {name}: {value.ToString()},");
 		}
 
+
 		private void AppendHeader()
 		{
 			_sb.AppendLine($"Directory listing by DirLister, {EndDate.ToLocalTime().ToString(Configuration.DateFormat)}:");
@@ -91,6 +105,7 @@ namespace Sander.DirLister.Core.Application.Writers
 				var files = GroupedEntries.Where(x => x.Key.StartsWith(folder, StringComparison.Ordinal))
 					.SelectMany(x => x.ToList())
 					.ToList();
+
 				_sb.AppendLine(
 					$"* {folder} files: {files.Count}, size: {Utils.ReadableSize(files.Sum(x => x.Size))}");
 			}
@@ -100,6 +115,7 @@ namespace Sander.DirLister.Core.Application.Writers
 				_sb.AppendLine();
 				_sb.AppendLine($"** Total: {Entries.Count} files, {Utils.ReadableSize(Entries.Sum(x => x.Size))}");
 			}
+
 			_sb.AppendLine();
 			_sb.AppendLine("Source, updates and support: https://github.com/SanderSade/DirLister/");
 		}

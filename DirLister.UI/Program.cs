@@ -11,6 +11,7 @@ namespace Sander.DirLister.UI
 		internal static readonly string Version = "v2 beta 3";
 		internal static readonly string VersionString = $"DirLister {Version}";
 
+
 		/// <summary>
 		///     The main entry point for the application.
 		/// </summary>
@@ -30,7 +31,9 @@ namespace Sander.DirLister.UI
 			}
 
 			if (Settings.Default.EnableShellIntegration)
-				Task.Run(() => ShellIntegration.Create());
+			{
+				Task.Run(ShellIntegration.Create);
+			}
 
 			Application.ApplicationExit += (sender, args) => History.Default.Save();
 
@@ -47,6 +50,7 @@ namespace Sander.DirLister.UI
 			{
 				LogUnhandledException(args.Exception,
 					$"Uncaught task exception: {sender}");
+
 				args.SetObserved();
 			};
 
@@ -58,6 +62,7 @@ namespace Sander.DirLister.UI
 		{
 			MessageBox.Show($"Fatal error. {message}\r\n\r\n{ex}",
 				"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
 			Environment.Exit(1);
 		}
 	}

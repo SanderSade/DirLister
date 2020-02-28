@@ -15,6 +15,7 @@ namespace Sander.DirLister.UI.App
 		private readonly Configuration _configuration;
 		private readonly ConcurrentBag<LogEntry> _log = new ConcurrentBag<LogEntry>();
 
+
 		public ProgressForm(Configuration configuration)
 		{
 			_configuration = configuration;
@@ -34,19 +35,18 @@ namespace Sander.DirLister.UI.App
 			ProgressLabel.Text = message;
 		}
 
+
 		private void ProgressForm_FormClosed(object sender, FormClosedEventArgs e)
 		{
 			History.Default.Save();
 		}
+
 
 		private void HideLabel_Click(object sender, EventArgs e)
 		{
 			Settings.Default.ShowProgressWindow = false;
 			Hide();
 		}
-
-
-		internal delegate void DoProgress(int progress, string message);
 
 
 		private void ProgressForm_Load(object sender, EventArgs e)
@@ -61,11 +61,12 @@ namespace Sander.DirLister.UI.App
 					message);
 			};
 
-			_configuration.LoggingAction = delegate(TraceLevel level, string message)
-			{
-				_log.Add(new LogEntry(level, message));
-			};
+			_configuration.LoggingAction = delegate(TraceLevel level, string message) { _log.Add(new LogEntry(level, message)); };
 		}
+
+
+		internal delegate void DoProgress(int progress, string message);
+
 
 		private async void ProgressForm_Shown(object sender, EventArgs e)
 		{

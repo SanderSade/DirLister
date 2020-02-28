@@ -13,6 +13,7 @@ namespace Sander.DirLister.Core
 			MediaType = mediaType;
 		}
 
+
 		/// <summary>
 		///     Media type of the current file
 		/// </summary>

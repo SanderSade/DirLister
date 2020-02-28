@@ -8,14 +8,13 @@ using Microsoft.Win32;
 
 namespace Sander.DirLister.Core.Application.Media
 {
-	internal sealed class ImageInfoProvider: BaseProvider
+	internal sealed class ImageInfoProvider : BaseProvider
 	{
-
-		internal ImageInfoProvider(Configuration configuration):base(configuration)
+		internal ImageInfoProvider(Configuration configuration) : base(configuration)
 		{
-			 var extensions = GetAdditionalExtensions();
+			var extensions = GetAdditionalExtensions();
 
-			 //natively supported
+			//natively supported
 			extensions.Add(".PNG,.JPEG,.JPG,.GIF,.BMP,.TIF,.TIFF");
 			var extSplit = string.Join(",", extensions).Split(',').Select(x => x.Trim('.', ' ')).OrderBy(x => x);
 
@@ -49,9 +48,9 @@ namespace Sander.DirLister.Core.Application.Media
 
 
 		/// <summary>
-		/// Gets a list of additionally registered WIC decoder extensions
-		/// Modified from https://stackoverflow.com/a/36391517/3248515
-		/// Returns list of comma-separated extensions, including the . (.ARW,.CR2,.CRW,.ERF,.KDC,.MRW,.NEF,.NRW...)
+		///     Gets a list of additionally registered WIC decoder extensions
+		///     Modified from https://stackoverflow.com/a/36391517/3248515
+		///     Returns list of comma-separated extensions, including the . (.ARW,.CR2,.CRW,.ERF,.KDC,.MRW,.NEF,.NRW...)
 		/// </summary>
 		/// <returns></returns>
 		internal static List<string> GetAdditionalExtensions()

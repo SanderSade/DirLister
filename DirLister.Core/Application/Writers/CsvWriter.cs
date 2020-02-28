@@ -9,18 +9,22 @@ namespace Sander.DirLister.Core.Application.Writers
 	{
 		private readonly StringBuilder _sb;
 
+
 		internal CsvWriter(Configuration configuration, DateTimeOffset endDate, List<FileEntry> entries) : base(
 			configuration, endDate, entries)
 		{
 			_sb = new StringBuilder();
 		}
 
+
 		protected internal override string Write()
 		{
 			GetHeaderLine();
 
 			foreach (var entry in Entries)
+			{
 				GetFileLine(entry);
+			}
 
 			return WriteFile(_sb, OutputFormat.Csv);
 		}
@@ -32,7 +36,9 @@ namespace Sander.DirLister.Core.Application.Writers
 			_sb.Append($",{Quote("File")}");
 
 			if (Configuration.IncludeSize)
+			{
 				_sb.Append($",{Quote(nameof(FileEntry.Size))}");
+			}
 
 			if (Configuration.IncludeFileDates)
 			{
@@ -55,13 +61,16 @@ namespace Sander.DirLister.Core.Application.Writers
 			_sb.AppendLine();
 		}
 
+
 		private void GetFileLine(FileEntry entry)
 		{
 			_sb.Append(Quote(Utils.EnsureBackslash(Utils.GetPath(entry.Fullname))));
 			_sb.Append($",{Quote(Utils.GetFileName(entry.Fullname))}");
 
 			if (Configuration.IncludeSize)
+			{
 				_sb.Append($",{Quote(entry.Size)}");
+			}
 
 			if (Configuration.IncludeFileDates)
 			{
@@ -84,11 +93,14 @@ namespace Sander.DirLister.Core.Application.Writers
 			_sb.AppendLine();
 		}
 
+
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		private static string Quote<T>(T value)
 		{
 			if (value == null || value.Equals(default(T)))
+			{
 				return "\"\"";
+			}
 
 			switch (value)
 			{

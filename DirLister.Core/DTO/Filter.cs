@@ -13,6 +13,7 @@ namespace Sander.DirLister.Core
 		private readonly Regex _regex;
 		private readonly string[] _wildcards;
 
+
 		/// <summary>
 		///     No-filtering constructor
 		/// </summary>
@@ -20,6 +21,7 @@ namespace Sander.DirLister.Core
 		{
 			_isWildcard = true;
 		}
+
 
 		/// <summary>
 		///     Apply wildcard filter
@@ -31,6 +33,7 @@ namespace Sander.DirLister.Core
 			_isWildcard = true;
 		}
 
+
 		/// <summary>
 		///     Apply regex filter
 		/// </summary>
@@ -38,8 +41,11 @@ namespace Sander.DirLister.Core
 		public Filter(Regex regex)
 		{
 			if (regex != null)
+			{
 				_regex = regex;
+			}
 		}
+
 
 		/// <summary>
 		///     Send in filename without the path
@@ -51,11 +57,17 @@ namespace Sander.DirLister.Core
 			if (_isWildcard)
 			{
 				if (_wildcards == null || _wildcards.Length == 0)
+				{
 					return true;
+				}
 
 				foreach (var wildcard in _wildcards)
+				{
 					if (LikeOperator.LikeString(filename, wildcard, CompareMethod.Text))
+					{
 						return true;
+					}
+				}
 
 				return false;
 			}

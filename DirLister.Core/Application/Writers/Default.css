@@ -1,83 +1,65 @@
-﻿
-* {
-	-webkit-box-sizing: border-box;
+﻿* {
 	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
+	hyphens: auto;
 	margin-top: 0;
 	outline: none !important;
 	overflow-wrap: break-word;
 	word-wrap: break-word;
-	hyphens: auto;
 }
 
-html {
-	background: black;
-}
+html { background: black; }
 
-header {
-	margin-bottom: 1em;
-}
+header { margin-bottom: 1em; }
 
 body {
 	background-color: rgb(255, 253, 247);
-	margin: 0 auto;
-	padding: 2em;
-	max-width: 95%;
-	width: 80%;
 	box-shadow: 6px 0 4px orange;
+	margin: 0 auto;
+	max-width: 95%;
+	padding: 2em;
+	width: 80%;
 }
 
-@media only screen and (max-width:1080px) {
+@media only screen and (max-width: 1080px) {
 	body {
-		padding: 0.3em;
-		width: 100%;
-		max-width: 100%;
 		box-shadow: none;
 		font-size-adjust: 80;
+		max-width: 100%;
+		padding: 0.3em;
+		width: 100%;
 	}
 
-	section {
-		padding: 0.1em;
-	}
+	section { padding: 0.1em; }
 
-	ul {
-		margin-left: -3em;
-	}
+	ul { margin-left: -3em; }
 }
 
 
 @media print {
-	* {
-		background-color: #fff !important;
-	}
+	* { background-color: #fff !important; }
 
 	body {
+		box-shadow: none !important;
+		max-width: 100% !important;
 		padding: 0.3em !important;
 		width: 100% !important;
-		max-width: 100% !important;
-		box-shadow: none !important;
 	}
 
-	a:after {
-		content: "( "attr(href)" )" !important;
-	}
+	a:after { content: "( " attr(href) " )" !important; }
 
-	section {
-		padding: 0.1em !important;
-	}
-	aside {
-		display: none !important;
-	}
+	section { padding: 0.1em !important; }
 
-	ul {
-		margin-left: -3em !important;
-	}
+	aside { display: none !important; }
+
+	ul { margin-left: -3em !important; }
 }
 
 
 h2 {
-	font: 1.6em Helvetica, Verdana, sans-serif;
 	color: #8B5A00;
+	font: 1.6em Helvetica, Verdana, sans-serif;
 }
 
 aside {
@@ -85,12 +67,12 @@ aside {
 	float: right;
 }
 
-	aside a, a:visited {
-		color: orangered;
-		text-decoration: none;
-		font-family: monospace;
-		font-size: 95%;
-	}
+aside a, a:visited {
+	color: orangered;
+	font-family: monospace;
+	font-size: 95%;
+	text-decoration: none;
+}
 
 details {
 	margin: 0;
@@ -100,10 +82,10 @@ details {
 
 summary {
 	box-shadow: 3px 3px 4px silver;
-	font: 1.2em Helvetica, Verdana, sans-serif;
 	color: orange;
-	padding: 0.1em;
+	font: 1.2em Helvetica, Verdana, sans-serif;
 	margin-bottom: 0.2em;
+	padding: 0.1em;
 }
 
 li {
@@ -111,12 +93,12 @@ li {
 	user-select: all;
 }
 
-	li > span, summary > span {
-		color: gray;
-		font-family: consolas;
-		font-size: 80%;
-		margin-left: 1em;
-	}
+li > span, summary > span {
+	color: gray;
+	font-family: consolas;
+	font-size: 80%;
+	margin-left: 1em;
+}
 
 ul {
 	font: 0.9em Helvetica, Verdana, sans-serif;
@@ -128,9 +110,7 @@ li:hover {
 	box-shadow: 1px 1px 2px silver;
 }
 
-section {
-	padding: 0.6em;
-}
+section { padding: 0.6em; }
 
 
 footer {
@@ -149,7 +129,7 @@ footer {
 }
 
 
-	footer a, footer a:visited {
-		color: #ff4;
-		text-decoration: none;
-	}
+footer a, footer a:visited {
+	color: #ff4;
+	text-decoration: none;
+}

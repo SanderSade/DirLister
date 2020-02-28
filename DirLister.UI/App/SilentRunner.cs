@@ -14,10 +14,12 @@ namespace Sander.DirLister.UI.App
 	{
 		private readonly Configuration _configuration;
 
+
 		internal SilentRunner(Configuration configuration)
 		{
 			_configuration = configuration;
 		}
+
 
 		internal void RunSilent(string[] folders)
 		{
@@ -34,13 +36,11 @@ namespace Sander.DirLister.UI.App
 			RunSilently(folders);
 		}
 
+
 		private void RunSilently(string[] folders)
 		{
 			var log = new ConcurrentBag<LogEntry>();
-			_configuration.LoggingAction = delegate (TraceLevel level, string message)
-			{
-				log.Add(new LogEntry(level, message));
-			};
+			_configuration.LoggingAction = delegate(TraceLevel level, string message) { log.Add(new LogEntry(level, message)); };
 			var result = Core.DirLister.List(_configuration);
 
 			if (!result)
@@ -54,9 +54,14 @@ namespace Sander.DirLister.UI.App
 			}
 		}
 
+
 		private void RunSilentWithProgress()
 		{
-			Application.Run(new ProgressForm(_configuration) { TopMost = true, StartPosition = FormStartPosition.Manual });
+			Application.Run(new ProgressForm(_configuration)
+			{
+				TopMost = true,
+				StartPosition = FormStartPosition.Manual
+			});
 		}
 	}
 }

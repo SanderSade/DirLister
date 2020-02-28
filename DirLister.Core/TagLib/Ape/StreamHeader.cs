@@ -4,55 +4,55 @@ using System.Globalization;
 namespace Sander.DirLister.Core.TagLib.Ape
 {
 	/// <summary>
-	///    Indicates the compression level used when encoding a Monkey's
-	///    Audio APE file.
+	///     Indicates the compression level used when encoding a Monkey's
+	///     Audio APE file.
 	/// </summary>
 	public enum CompressionLevel
 	{
 		/// <summary>
-		///    The audio is not compressed.
+		///     The audio is not compressed.
 		/// </summary>
 		None = 0,
 
 		/// <summary>
-		///    The audio is mildly compressed.
+		///     The audio is mildly compressed.
 		/// </summary>
 		Fast = 1000,
 
 		/// <summary>
-		///    The audio is compressed at a normal level.
+		///     The audio is compressed at a normal level.
 		/// </summary>
 		Normal = 2000,
 
 		/// <summary>
-		///    The audio is highly compressed.
+		///     The audio is highly compressed.
 		/// </summary>
 		High = 3000,
 
 		/// <summary>
-		///    The audio is extremely highly compressed.
+		///     The audio is extremely highly compressed.
 		/// </summary>
 		ExtraHigh = 4000,
 
 		/// <summary>
-		///    The audio is compressed to an insane level.
+		///     The audio is compressed to an insane level.
 		/// </summary>
 		Insane
 	}
 
 	/// <summary>
-	///    This struct implements <see cref="IAudioCodec" /> to provide
-	///    support for reading Monkey's Audio APE stream properties.
+	///     This struct implements <see cref="IAudioCodec" /> to provide
+	///     support for reading Monkey's Audio APE stream properties.
 	/// </summary>
 	public struct StreamHeader : IAudioCodec, ILosslessAudioCodec
 	{
 		/// <summary>
-		///    Contains the APE version.
+		///     Contains the APE version.
 		/// </summary>
 		/// <remarks>
-		///    This value is stored in bytes (4,5) of the file and is
-		///    1000 times the actual version number, so 3810 indicates
-		///    version 3.81.
+		///     This value is stored in bytes (4,5) of the file and is
+		///     1000 times the actual version number, so 3810 indicates
+		///     version 3.81.
 		/// </remarks>
 		private readonly ushort version;
 
@@ -67,172 +67,190 @@ namespace Sander.DirLister.Core.TagLib.Ape
 		*/
 
 		/// <summary>
-		///    Contains the number of audio blocks in one frame.
+		///     Contains the number of audio blocks in one frame.
 		/// </summary>
 		/// <remarks>
-		///    This value is stored in bytes (55-58).
+		///     This value is stored in bytes (55-58).
 		/// </remarks>
 		private readonly uint blocks_per_frame;
 
 		/// <summary>
-		///    Contains the number of audio blocks in the final frame.
+		///     Contains the number of audio blocks in the final frame.
 		/// </summary>
 		/// <remarks>
-		///    This value is stored in bytes (59-62).
+		///     This value is stored in bytes (59-62).
 		/// </remarks>
 		private readonly uint final_frame_blocks;
 
 		/// <summary>
-		///    Contains the total number of frames.
+		///     Contains the total number of frames.
 		/// </summary>
 		/// <remarks>
-		///    This value is stored in bytes (63-66).
+		///     This value is stored in bytes (63-66).
 		/// </remarks>
 		private readonly uint total_frames;
 
 		/// <summary>
-		///    Contains the number of bits per sample.
+		///     Contains the number of bits per sample.
 		/// </summary>
 		/// <remarks>
-		///    This value is stored in bytes (67,68) and is typically
-		///    16.
+		///     This value is stored in bytes (67,68) and is typically
+		///     16.
 		/// </remarks>
 		private readonly ushort bits_per_sample;
 
 		/// <summary>
-		///    Contains the number of channels.
+		///     Contains the number of channels.
 		/// </summary>
 		/// <remarks>
-		///    This value is stored in bytes (69,70) and is typically
-		///    1 or 2.
+		///     This value is stored in bytes (69,70) and is typically
+		///     1 or 2.
 		/// </remarks>
 		private readonly ushort channels;
 
 		/// <summary>
-		///    Contains the sample rate.
+		///     Contains the sample rate.
 		/// </summary>
 		/// <remarks>
-		///    This value is stored in bytes (71-74) and is typically
-		///    44100.
+		///     This value is stored in bytes (71-74) and is typically
+		///     44100.
 		/// </remarks>
 		private readonly uint sample_rate;
 
 		/// <summary>
-		///    Contains the length of the audio stream.
+		///     Contains the length of the audio stream.
 		/// </summary>
 		/// <remarks>
-		///    This value is provided by the constructor.
+		///     This value is provided by the constructor.
 		/// </remarks>
 		private readonly long stream_length;
 
 		/// <summary>
-		///    The size of a Monkey Audio header.
+		///     The size of a Monkey Audio header.
 		/// </summary>
 		public const uint Size = 76;
 
 		/// <summary>
-		///    The identifier used to recognize a WavPack file.
+		///     The identifier used to recognize a WavPack file.
 		/// </summary>
 		/// <value>
-		///    "MAC "
+		///     "MAC "
 		/// </value>
 		public static readonly ReadOnlyByteVector FileIdentifier =
 			"MAC ";
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="StreamHeader" /> for a specified header block and
-		///    stream length.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="StreamHeader" />
+		///     for a specified header block and
+		///     stream length.
 		/// </summary>
 		/// <param name="data">
-		///    A <see cref="ByteVector" /> object containing the stream
-		///    header data.
+		///     A <see cref="ByteVector" /> object containing the stream
+		///     header data.
 		/// </param>
 		/// <param name="streamLength">
-		///    A <see cref="long" /> value containing the length of the
-		///    Monkey Audio stream in bytes.
+		///     A <see cref="long" /> value containing the length of the
+		///     Monkey Audio stream in bytes.
 		/// </param>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="data" /> is <see langword="null" />.
+		///     <paramref name="data" /> is <see langword="null" />.
 		/// </exception>
 		/// <exception cref="CorruptFileException">
-		///    <paramref name="data" /> does not begin with <see
-		///    cref="FileIdentifier" /> or is less than <see cref="Size"
-		///    /> bytes long.
+		///     <paramref name="data" /> does not begin with
+		///     <see
+		///         cref="FileIdentifier" />
+		///     or is less than <see cref="Size" /> bytes long.
 		/// </exception>
 		public StreamHeader(ByteVector data, long streamLength)
 		{
 			if (data == null)
+			{
 				throw new ArgumentNullException("data");
+			}
 
 			if (!data.StartsWith(FileIdentifier))
+			{
 				throw new CorruptFileException(
 					"Data does not begin with identifier.");
+			}
 
 			if (data.Count < Size)
+			{
 				throw new CorruptFileException(
 					"Insufficient data in stream header");
+			}
 
 			stream_length = streamLength;
 			version = data.Mid(4, 2)
-			              .ToUShort(false);
+				.ToUShort(false);
+
 			Compression = (CompressionLevel)data.Mid(52, 2)
-			                                          .ToUShort(false);
+				.ToUShort(false);
+
 			// format_flags = data.Mid(54, 2).ToUShort(false);
 			blocks_per_frame = data.Mid(56, 4)
-			                       .ToUInt(false);
+				.ToUInt(false);
+
 			final_frame_blocks = data.Mid(60, 4)
-			                         .ToUInt(false);
+				.ToUInt(false);
+
 			total_frames = data.Mid(64, 4)
-			                   .ToUInt(false);
+				.ToUInt(false);
+
 			bits_per_sample = data.Mid(68, 2)
-			                      .ToUShort(false);
+				.ToUShort(false);
+
 			channels = data.Mid(70, 2)
-			               .ToUShort(false);
+				.ToUShort(false);
+
 			sample_rate = data.Mid(72, 4)
-			                  .ToUInt(false);
+				.ToUInt(false);
 		}
 
 
 		/// <summary>
-		///    Gets the duration of the media represented by the current
-		///    instance.
+		///     Gets the duration of the media represented by the current
+		///     instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="TimeSpan" /> containing the duration of the
-		///    media represented by the current instance.
+		///     A <see cref="TimeSpan" /> containing the duration of the
+		///     media represented by the current instance.
 		/// </value>
 		public TimeSpan Duration
 		{
 			get
 			{
 				if (sample_rate <= 0 || total_frames <= 0)
+				{
 					return TimeSpan.Zero;
+				}
 
 				return TimeSpan.FromSeconds(
 					((total_frames - 1) *
-					 blocks_per_frame + final_frame_blocks) /
+						blocks_per_frame + final_frame_blocks) /
 					(double)sample_rate);
 			}
 		}
 
 		/// <summary>
-		///    Gets the types of media represented by the current
-		///    instance.
+		///     Gets the types of media represented by the current
+		///     instance.
 		/// </summary>
 		/// <value>
-		///    Always <see cref="MediaTypes.Audio" />.
+		///     Always <see cref="MediaTypes.Audio" />.
 		/// </value>
 		public MediaTypes MediaTypes => MediaTypes.Audio;
 
 		/// <summary>
-		///    Gets a text description of the media represented by the
-		///    current instance.
+		///     Gets a text description of the media represented by the
+		///     current instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="string" /> object containing a description
-		///    of the media represented by the current instance.
+		///     A <see cref="string" /> object containing a description
+		///     of the media represented by the current instance.
 		/// </value>
 		public string Description => string.Format(
 			CultureInfo.InvariantCulture,
@@ -240,12 +258,12 @@ namespace Sander.DirLister.Core.TagLib.Ape
 			Version);
 
 		/// <summary>
-		///    Gets the bitrate of the audio represented by the current
-		///    instance.
+		///     Gets the bitrate of the audio represented by the current
+		///     instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="int" /> value containing a bitrate of the
-		///    audio represented by the current instance.
+		///     A <see cref="int" /> value containing a bitrate of the
+		///     audio represented by the current instance.
 		/// </value>
 		public int AudioBitrate
 		{
@@ -253,7 +271,9 @@ namespace Sander.DirLister.Core.TagLib.Ape
 			{
 				var d = Duration;
 				if (d <= TimeSpan.Zero)
+				{
 					return 0;
+				}
 
 				return (int)(stream_length * 8L /
 				             d.TotalSeconds) / 1000;
@@ -261,55 +281,55 @@ namespace Sander.DirLister.Core.TagLib.Ape
 		}
 
 		/// <summary>
-		///    Gets the sample rate of the audio represented by the
-		///    current instance.
+		///     Gets the sample rate of the audio represented by the
+		///     current instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="int" /> value containing the sample rate of
-		///    the audio represented by the current instance.
+		///     A <see cref="int" /> value containing the sample rate of
+		///     the audio represented by the current instance.
 		/// </value>
 		public int AudioSampleRate => (int)sample_rate;
 
 		/// <summary>
-		///    Gets the number of channels in the audio represented by
-		///    the current instance.
+		///     Gets the number of channels in the audio represented by
+		///     the current instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="int" /> value containing the number of
-		///    channels in the audio represented by the current
-		///    instance.
+		///     A <see cref="int" /> value containing the number of
+		///     channels in the audio represented by the current
+		///     instance.
 		/// </value>
 		public int AudioChannels => channels;
 
 		/// <summary>
-		///    Gets the APE version of the audio represented by the
-		///    current instance.
+		///     Gets the APE version of the audio represented by the
+		///     current instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="double" /> value containing the APE version
-		///    of the audio represented by the current instance.
+		///     A <see cref="double" /> value containing the APE version
+		///     of the audio represented by the current instance.
 		/// </value>
 		public double Version => version / (double)1000;
 
 		/// <summary>
-		///    Gets the number of bits per sample in the audio
-		///    represented by the current instance.
+		///     Gets the number of bits per sample in the audio
+		///     represented by the current instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="int" /> value containing the number of bits
-		///    per sample in the audio represented by the current
-		///    instance.
+		///     A <see cref="int" /> value containing the number of bits
+		///     per sample in the audio represented by the current
+		///     instance.
 		/// </value>
 		public int BitsPerSample => bits_per_sample;
 
 		/// <summary>
-		///    Gets the level of compression used when encoding the
-		///    audio represented by the current instance.
+		///     Gets the level of compression used when encoding the
+		///     audio represented by the current instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="CompressionLevel" /> value indicating the
-		///    level of compression used when encoding the audio
-		///    represented by the current instance.
+		///     A <see cref="CompressionLevel" /> value indicating the
+		///     level of compression used when encoding the audio
+		///     represented by the current instance.
 		/// </value>
 		public CompressionLevel Compression { get; }
 	}

@@ -1,27 +1,29 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Sander.DirLister.UI.Properties" GeneratedClassName="History">
-  <Profiles />
-  <Settings>
-    <Setting Name="DirectoryHistory" Type="System.Collections.Specialized.StringCollection" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="WildcardFilter" Type="System.Collections.Specialized.StringCollection" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="RegexFilter" Type="System.Collections.Specialized.StringCollection" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="DirectoryHistoryLength" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">16</Value>
-    </Setting>
-    <Setting Name="FilterHistoryLength" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">8</Value>
-    </Setting>
-    <Setting Name="WindowSize" Type="System.Drawing.Rectangle" Scope="User">
-      <Value Profile="(Default)">0, 0, 0, 0</Value>
-    </Setting>
-    <Setting Name="WindowState" Type="System.Windows.Forms.FormWindowState" Scope="User">
-      <Value Profile="(Default)">Normal</Value>
-    </Setting>
-  </Settings>
+
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)"
+              GeneratedClassNamespace="Sander.DirLister.UI.Properties" GeneratedClassName="History">
+	<Profiles />
+	<Settings>
+		<Setting Name="DirectoryHistory" Type="System.Collections.Specialized.StringCollection" Scope="User">
+			<Value Profile="(Default)" />
+		</Setting>
+		<Setting Name="WildcardFilter" Type="System.Collections.Specialized.StringCollection" Scope="User">
+			<Value Profile="(Default)" />
+		</Setting>
+		<Setting Name="RegexFilter" Type="System.Collections.Specialized.StringCollection" Scope="User">
+			<Value Profile="(Default)" />
+		</Setting>
+		<Setting Name="DirectoryHistoryLength" Type="System.Int32" Scope="User">
+			<Value Profile="(Default)">16</Value>
+		</Setting>
+		<Setting Name="FilterHistoryLength" Type="System.Int32" Scope="User">
+			<Value Profile="(Default)">8</Value>
+		</Setting>
+		<Setting Name="WindowSize" Type="System.Drawing.Rectangle" Scope="User">
+			<Value Profile="(Default)">0, 0, 0, 0</Value>
+		</Setting>
+		<Setting Name="WindowState" Type="System.Windows.Forms.FormWindowState" Scope="User">
+			<Value Profile="(Default)">Normal</Value>
+		</Setting>
+	</Settings>
 </SettingsFile>

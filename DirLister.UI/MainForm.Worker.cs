@@ -10,11 +10,8 @@ namespace Sander.DirLister.UI
 	{
 		internal DoProgress ProgressDelegate { get; set; }
 
-		internal delegate void DoProgress(int progress, string message);
-
 		internal DoLog LogDelegate { get; set; }
 
-		internal delegate void DoLog(TraceLevel level, string message);
 
 		internal void SetProgress(int progress, string message)
 		{
@@ -24,10 +21,12 @@ namespace Sander.DirLister.UI
 			//	Close();
 		}
 
+
 		internal void SetLog(TraceLevel level, string message)
 		{
 			LogBox.AppendText($"[{DateTimeOffset.Now.ToLocalTime():G}] {level}: {message}{Environment.NewLine}");
 		}
+
 
 		internal void ConfigureCallbacks()
 		{
@@ -38,10 +37,13 @@ namespace Sander.DirLister.UI
 			_configuration.ProgressAction = (progress, message) => Invoke(ProgressDelegate, progress, message);
 		}
 
+
 		private async void StartButton_Click(object sender, EventArgs e)
 		{
 			if (!UpdateConfiguration())
+			{
 				return;
+			}
 
 			ResetUi();
 			StartButton.Enabled = false;
@@ -63,10 +65,14 @@ namespace Sander.DirLister.UI
 		private bool UpdateConfiguration()
 		{
 			if (!ValidateOutputFolder())
+			{
 				return false;
+			}
 
 			if (!GetFormats(out var formats))
+			{
 				return false;
+			}
 
 			if (DirectoryList.Items.Count == 0)
 			{
@@ -75,14 +81,16 @@ namespace Sander.DirLister.UI
 			}
 
 			_configuration.InputFolders = DirectoryList.Items.OfType<ListViewItem>()
-													   .Select(x => x.Text)
-													   .ToList();
+				.Select(x => x.Text)
+				.ToList();
 
 			_configuration.OutputFormats = formats;
 			_configuration.OutputFolder = OutputFolder.Text;
 			var filter = GetFilter();
 			if (filter == null)
+			{
 				return false;
+			}
 
 			_configuration.Filter = filter;
 			_configuration.IncludeFileDates = IncludeFileDates.Checked;
@@ -97,20 +105,26 @@ namespace Sander.DirLister.UI
 
 
 		/// <summary>
-		/// Returns filter or null in case of error
+		///     Returns filter or null in case of error
 		/// </summary>
 		/// <returns></returns>
 		private Filter GetFilter()
 		{
 			switch (FilterTabs.SelectedIndex)
 			{
-				case 1://wildcard
+				case 1: //wildcard
 					if (WildcardList.Items.Count == 0)
+					{
 						return new Filter();
+					}
+
 					return new Filter(WildcardList.Items.Cast<ListViewItem>().Select(x => x.Text).ToArray());
 				case 2: //regex
 					if (string.IsNullOrWhiteSpace(RegexCombo.Text))
+					{
 						return new Filter();
+					}
+
 					string error = null;
 					var regex = ValidateRegex(ref error);
 					if (regex != null)
@@ -118,12 +132,19 @@ namespace Sander.DirLister.UI
 						AddRegexToHistory(regex);
 						return new Filter(regex);
 					}
-					MessageBox.Show(this, $"Invalid regex:{Environment.NewLine}{Environment.NewLine}{error}", "Invalid filter!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-					return null;
-				default://none
-					return new Filter();
 
+					MessageBox.Show(this, $"Invalid regex:{Environment.NewLine}{Environment.NewLine}{error}", "Invalid filter!", MessageBoxButtons.OK,
+						MessageBoxIcon.Error);
+
+					return null;
+				default: //none
+					return new Filter();
 			}
 		}
+
+
+		internal delegate void DoProgress(int progress, string message);
+
+		internal delegate void DoLog(TraceLevel level, string message);
 	}
 }

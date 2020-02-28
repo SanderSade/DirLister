@@ -70,6 +70,7 @@ namespace Sander.DirLister.Core
 		[DataMember(Name = "mediaInfo", EmitDefaultValue = false, IsRequired = false, Order = 5)]
 		public MediaInfo MediaInfo { get; set; }
 
+
 		/// <summary>
 		///     Returns full file name - drive:\path\name.ext
 		/// </summary>

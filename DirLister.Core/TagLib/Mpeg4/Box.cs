@@ -5,34 +5,38 @@ using Sander.DirLister.Core.TagLib.Mpeg4.Boxes;
 namespace Sander.DirLister.Core.TagLib.Mpeg4
 {
 	/// <summary>
-	///    This abstract class provides a generic implementation of a
-	///    ISO/IEC 14496-12 box.
+	///     This abstract class provides a generic implementation of a
+	///     ISO/IEC 14496-12 box.
 	/// </summary>
 	public class Box
 	{
 		/// <summary>
-		///    Contains the position of the box data.
+		///     Contains the position of the box data.
 		/// </summary>
 		private readonly long data_position;
 
 		/// <summary>
-		///    Contains the box header.
+		///     Contains the box header.
 		/// </summary>
 		private BoxHeader header;
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="Box" /> with a specified header and handler.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="Box" />
+		///     with a specified header and handler.
 		/// </summary>
 		/// <param name="header">
-		///    A <see cref="BoxHeader" /> object describing the new
-		///    instance.
+		///     A <see cref="BoxHeader" /> object describing the new
+		///     instance.
 		/// </param>
 		/// <param name="handler">
-		///    A <see cref="IsoHandlerBox" /> object containing the
-		///    handler that applies to the new instance, or <see
-		///    langword="null" /> if no handler applies.
+		///     A <see cref="IsoHandlerBox" /> object containing the
+		///     handler that applies to the new instance, or
+		///     <see
+		///         langword="null" />
+		///     if no handler applies.
 		/// </param>
 		protected Box(BoxHeader header, IsoHandlerBox handler)
 		{
@@ -43,12 +47,14 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="Box" /> with a specified header.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="Box" />
+		///     with a specified header.
 		/// </summary>
 		/// <param name="header">
-		///    A <see cref="BoxHeader" /> object describing the new
-		///    instance.
+		///     A <see cref="BoxHeader" /> object describing the new
+		///     instance.
 		/// </param>
 		protected Box(BoxHeader header) : this(header, null)
 		{
@@ -56,12 +62,14 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="Box" /> with a specified box type.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="Box" />
+		///     with a specified box type.
 		/// </summary>
 		/// <param name="type">
-		///    A <see cref="ByteVector" /> object containing the box
-		///    type to use for the new instance.
+		///     A <see cref="ByteVector" /> object containing the box
+		///     type to use for the new instance.
 		/// </param>
 		protected Box(ByteVector type) : this(new BoxHeader(type))
 		{
@@ -69,107 +77,106 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4
 
 
 		/// <summary>
-		///    Gets the MPEG-4 box type of the current instance.
+		///     Gets the MPEG-4 box type of the current instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="ByteVector" /> object containing the four
-		///    byte box type of the current instance.
+		///     A <see cref="ByteVector" /> object containing the four
+		///     byte box type of the current instance.
 		/// </value>
 		public virtual ByteVector BoxType => header.BoxType;
 
 		/// <summary>
-		///    Gets the total size of the current instance as it last
-		///    appeared on disk.
+		///     Gets the total size of the current instance as it last
+		///     appeared on disk.
 		/// </summary>
 		/// <value>
-		///    A <see cref="int" /> value containing the total size of
-		///    the current instance as it last appeared on disk.
+		///     A <see cref="int" /> value containing the total size of
+		///     the current instance as it last appeared on disk.
 		/// </value>
 		public virtual int Size => (int)header.TotalBoxSize;
 
 		/// <summary>
-		///    Gets and sets the data contained in the current instance.
+		///     Gets and sets the data contained in the current instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="ByteVector" /> object containing the data
-		///    contained in the current instance.
+		///     A <see cref="ByteVector" /> object containing the data
+		///     contained in the current instance.
 		/// </value>
 		public virtual ByteVector Data
 		{
-			get { return null; }
+			get => null;
 			set { }
 		}
 
 		/// <summary>
-		///    Gets the children of the current instance.
+		///     Gets the children of the current instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="T:System.Collections.Generic.IEnumerable`1" /> object enumerating the
-		///    children of the current instance.
+		///     A <see cref="T:System.Collections.Generic.IEnumerable`1" /> object enumerating the
+		///     children of the current instance.
 		/// </value>
 		public virtual IEnumerable<Box> Children => null;
 
 		/// <summary>
-		///    Gets the handler box that applies to the current
-		///    instance.
+		///     Gets the handler box that applies to the current
+		///     instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="IsoHandlerBox" /> object containing the
-		///    handler that applies to the current instance, or <see
-		///    langword="null" /> if no handler applies.
+		///     A <see cref="IsoHandlerBox" /> object containing the
+		///     handler that applies to the current instance, or
+		///     <see
+		///         langword="null" />
+		///     if no handler applies.
 		/// </value>
 		public IsoHandlerBox Handler { get; }
 
 		/// <summary>
-		///    Gets whether or not the current instance has children.
+		///     Gets whether or not the current instance has children.
 		/// </summary>
 		/// <value>
-		///    A <see cref="bool" /> value indicating whether or not the
-		///    current instance has any children.
+		///     A <see cref="bool" /> value indicating whether or not the
+		///     current instance has any children.
 		/// </value>
-		public bool HasChildren
-		{
-			get { return Children is ICollection<Box> children && children.Count > 0; }
-		}
+		public bool HasChildren => Children is ICollection<Box> children && children.Count > 0;
 
 		/// <summary>
-		///    Gets the size of the data contained in the current
-		///    instance, minux the size of any box specific headers.
+		///     Gets the size of the data contained in the current
+		///     instance, minux the size of any box specific headers.
 		/// </summary>
 		/// <value>
-		///    A <see cref="long" /> value containing the size of
-		///    the data contained in the current instance.
+		///     A <see cref="long" /> value containing the size of
+		///     the data contained in the current instance.
 		/// </value>
 		protected int DataSize => (int)(header.DataSize + data_position -
 		                                DataPosition);
 
 		/// <summary>
-		///    Gets the position of the data contained in the current
-		///    instance, after any box specific headers.
+		///     Gets the position of the data contained in the current
+		///     instance, after any box specific headers.
 		/// </summary>
 		/// <value>
-		///    A <see cref="long" /> value containing the position of
-		///    the data contained in the current instance.
+		///     A <see cref="long" /> value containing the position of
+		///     the data contained in the current instance.
 		/// </value>
 		protected virtual long DataPosition => data_position;
 
 		/// <summary>
-		///    Gets the header of the current instance.
+		///     Gets the header of the current instance.
 		/// </summary>
 		/// <value>
-		///    A <see cref="BoxHeader" /> object containing the header
-		///    of the current instance.
+		///     A <see cref="BoxHeader" /> object containing the header
+		///     of the current instance.
 		/// </value>
 		protected BoxHeader Header => header;
 
 
 		/// <summary>
-		///    Renders the current instance, including its children, to
-		///    a new <see cref="ByteVector" /> object.
+		///     Renders the current instance, including its children, to
+		///     a new <see cref="ByteVector" /> object.
 		/// </summary>
 		/// <returns>
-		///    A <see cref="ByteVector" /> object containing the
-		///    rendered version of the current instance.
+		///     A <see cref="ByteVector" /> object containing the
+		///     rendered version of the current instance.
 		/// </returns>
 		public ByteVector Render()
 		{
@@ -178,25 +185,31 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4
 
 
 		/// <summary>
-		///    Gets a child box from the current instance by finding
-		///    a matching box type.
+		///     Gets a child box from the current instance by finding
+		///     a matching box type.
 		/// </summary>
 		/// <param name="type">
-		///    A <see cref="ByteVector" /> object containing the box
-		///    type to match.
+		///     A <see cref="ByteVector" /> object containing the box
+		///     type to match.
 		/// </param>
 		/// <returns>
-		///    A <see cref="Box" /> object containing the matched box,
-		///    or <see langword="null" /> if no matching box was found.
+		///     A <see cref="Box" /> object containing the matched box,
+		///     or <see langword="null" /> if no matching box was found.
 		/// </returns>
 		public Box GetChild(ByteVector type)
 		{
 			if (Children == null)
+			{
 				return null;
+			}
 
 			foreach (var box in Children)
+			{
 				if (box.BoxType == type)
+				{
 					return box;
+				}
+			}
 
 			return null;
 		}
@@ -230,31 +243,39 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4
 
 
 		/// <summary>
-		///    Gets a child box from the current instance by finding
-		///    a matching box type, searching recursively.
+		///     Gets a child box from the current instance by finding
+		///     a matching box type, searching recursively.
 		/// </summary>
 		/// <param name="type">
-		///    A <see cref="ByteVector" /> object containing the box
-		///    type to match.
+		///     A <see cref="ByteVector" /> object containing the box
+		///     type to match.
 		/// </param>
 		/// <returns>
-		///    A <see cref="Box" /> object containing the matched box,
-		///    or <see langword="null" /> if no matching box was found.
+		///     A <see cref="Box" /> object containing the matched box,
+		///     or <see langword="null" /> if no matching box was found.
 		/// </returns>
 		public Box GetChildRecursively(ByteVector type)
 		{
 			if (Children == null)
+			{
 				return null;
+			}
 
 			foreach (var box in Children)
+			{
 				if (box.BoxType == type)
+				{
 					return box;
+				}
+			}
 
 			foreach (var box in Children)
 			{
 				var child_box = box.GetChildRecursively(type);
 				if (child_box != null)
+				{
 					return child_box;
+				}
 			}
 
 			return null;
@@ -295,21 +316,27 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4
 
 
 		/// <summary>
-		///    Removes all children with a specified box type from the
-		///    current instance.
+		///     Removes all children with a specified box type from the
+		///     current instance.
 		/// </summary>
 		/// <param name="type">
-		///    A <see cref="ByteVector" /> object containing the box
-		///    type to remove.
+		///     A <see cref="ByteVector" /> object containing the box
+		///     type to remove.
 		/// </param>
 		public void RemoveChild(ByteVector type)
 		{
 			if (!(Children is ICollection<Box> children))
+			{
 				return;
+			}
 
 			foreach (var b in new List<Box>(children))
+			{
 				if (b.BoxType == type)
+				{
 					children.Remove(b);
+				}
+			}
 		}
 
 
@@ -337,62 +364,70 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4
 
 
 		/// <summary>
-		///    Removes a specified box from the current instance.
+		///     Removes a specified box from the current instance.
 		/// </summary>
 		/// <param name="box">
-		///    A <see cref="Box" /> object to remove from the current
-		///    instance.
+		///     A <see cref="Box" /> object to remove from the current
+		///     instance.
 		/// </param>
 		public void RemoveChild(Box box)
 		{
 			if (Children is ICollection<Box> children)
+			{
 				children.Remove(box);
+			}
 		}
 
 
 		/// <summary>
-		///    Adds a specified box to the current instance.
+		///     Adds a specified box to the current instance.
 		/// </summary>
 		/// <param name="box">
-		///    A <see cref="Box" /> object to add to the current
-		///    instance.
+		///     A <see cref="Box" /> object to add to the current
+		///     instance.
 		/// </param>
 		public void AddChild(Box box)
 		{
 			if (Children is ICollection<Box> children)
+			{
 				children.Add(box);
+			}
 		}
 
 
 		/// <summary>
-		///    Removes all children from the current instance.
+		///     Removes all children from the current instance.
 		/// </summary>
 		public void ClearChildren()
 		{
 			if (Children is ICollection<Box> children)
+			{
 				children.Clear();
+			}
 		}
 
 
 		/// <summary>
-		///    Loads the children of the current instance from a
-		///    specified file using the internal data position and size.
+		///     Loads the children of the current instance from a
+		///     specified file using the internal data position and size.
 		/// </summary>
 		/// <param name="file">
-		///    The <see cref="TagLib.File" /> from which the current
-		///    instance was read and from which to read the children.
+		///     The <see cref="TagLib.File" /> from which the current
+		///     instance was read and from which to read the children.
 		/// </param>
 		/// <returns>
-		///    A <see cref="T:System.Collections.Generic.IEnumerable`1" /> object enumerating the
-		///    boxes read from the file.
+		///     A <see cref="T:System.Collections.Generic.IEnumerable`1" /> object enumerating the
+		///     boxes read from the file.
 		/// </returns>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="file" /> is <see langword="null" />.
+		///     <paramref name="file" /> is <see langword="null" />.
 		/// </exception>
 		protected IEnumerable<Box> LoadChildren(TagLib.File file)
 		{
 			if (file == null)
+			{
 				throw new ArgumentNullException("file");
+			}
 
 			var children = new List<Box>();
 
@@ -405,6 +440,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4
 				var child = BoxFactory.CreateBox(file,
 					position, header, Handler,
 					children.Count);
+
 				children.Add(child);
 				position += child.Size;
 			}
@@ -416,24 +452,26 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4
 
 
 		/// <summary>
-		///    Loads the data of the current instance from a specified
-		///    file using the internal data position and size.
+		///     Loads the data of the current instance from a specified
+		///     file using the internal data position and size.
 		/// </summary>
 		/// <param name="file">
-		///    The <see cref="TagLib.File" /> from which the current
-		///    instance was read and from which to read the data.
+		///     The <see cref="TagLib.File" /> from which the current
+		///     instance was read and from which to read the data.
 		/// </param>
 		/// <returns>
-		///    A <see cref="ByteVector" /> object containing the data
-		///    read from the file.
+		///     A <see cref="ByteVector" /> object containing the data
+		///     read from the file.
 		/// </returns>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="file" /> is <see langword="null" />.
+		///     <paramref name="file" /> is <see langword="null" />.
 		/// </exception>
 		protected ByteVector LoadData(TagLib.File file)
 		{
 			if (file == null)
+			{
 				throw new ArgumentNullException("file");
+			}
 
 			file.Seek(DataPosition);
 			return file.ReadBlock(DataSize);
@@ -441,17 +479,17 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4
 
 
 		/// <summary>
-		///    Renders the current instance, including its children, to
-		///    a new <see cref="ByteVector" /> object, preceeding the
-		///    contents with a specified block of data.
+		///     Renders the current instance, including its children, to
+		///     a new <see cref="ByteVector" /> object, preceeding the
+		///     contents with a specified block of data.
 		/// </summary>
 		/// <param name="topData">
-		///    A <see cref="ByteVector" /> object containing box
-		///    specific header data to preceed the content.
+		///     A <see cref="ByteVector" /> object containing box
+		///     specific header data to preceed the content.
 		/// </param>
 		/// <returns>
-		///    A <see cref="ByteVector" /> object containing the
-		///    rendered version of the current instance.
+		///     A <see cref="ByteVector" /> object containing the
+		///     rendered version of the current instance.
 		/// </returns>
 		protected virtual ByteVector Render(ByteVector topData)
 		{
@@ -459,14 +497,24 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4
 			var output = new ByteVector();
 
 			if (Children != null)
+			{
 				foreach (var box in Children)
+				{
 					if (box.GetType() == typeof(
-						    IsoFreeSpaceBox))
+						IsoFreeSpaceBox))
+					{
 						free_found = true;
+					}
 					else
+					{
 						output.Add(box.Render());
+					}
+				}
+			}
 			else if (Data != null)
+			{
 				output.Add(Data);
+			}
 
 			// If there was a free, don't take it away, and let meta
 			// be a special case.
@@ -477,14 +525,18 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4
 				// If we have room for free space, add it so we
 				// don't have to resize the file.
 				if (header.DataSize != 0 && size_difference >= 8)
+				{
 					output.Add(new IsoFreeSpaceBox(
 						size_difference).Render());
+				}
 
 				// If we're getting bigger, get a lot bigger so
 				// we might not have to again.
 				else
+				{
 					output.Add(new IsoFreeSpaceBox(2048
 					).Render());
+				}
 			}
 
 			// Adjust the header's data size to match the content.

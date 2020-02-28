@@ -3,48 +3,36 @@
 namespace Sander.DirLister.Core.TagLib.Matroska
 {
 	/// <summary>
-	/// Enumeration describing supported Video Aspect Ratio types.
+	///     Enumeration describing supported Video Aspect Ratio types.
 	/// </summary>
 	public enum VideoAspectRatioType
 	{
 		/// <summary>
-		/// Free Aspect Ratio.
+		///     Free Aspect Ratio.
 		/// </summary>
 		AspectRatioModeFree = 0x0,
 
 		/// <summary>
-		/// Keep Aspect Ratio.
+		///     Keep Aspect Ratio.
 		/// </summary>
 		AspectRatioModeKeep = 0x1,
 
 		/// <summary>
-		/// Fixed Aspect Ratio.
+		///     Fixed Aspect Ratio.
 		/// </summary>
 		AspectRatioModeFixed = 0x2
 	}
 
 	/// <summary>
-	/// Describes a Matroska Video Track.
+	///     Describes a Matroska Video Track.
 	/// </summary>
 	public class VideoTrack : Track, IVideoCodec
 	{
-#pragma warning disable 414 // Assigned, never used
-		private readonly ulong width;
-		private readonly ulong height;
-		private readonly ulong disp_width;
-		private readonly ulong disp_height;
-		private readonly double framerate;
-		private readonly bool interlaced;
-		private readonly VideoAspectRatioType ratio_type;
-		private readonly ByteVector fourcc;
-#pragma warning restore 414
-
-
 		/// <summary>
-		/// Constructs a <see cref="VideoTrack" /> parsing from provided
-		/// file data.
-		/// Parsing will be done reading from _file at position references by
-		/// parent element's data section.
+		///     Constructs a <see cref="VideoTrack" /> parsing from provided
+		///     file data.
+		///     Parsing will be done reading from _file at position references by
+		///     parent element's data section.
 		/// </summary>
 		/// <param name="_file"><see cref="File" /> instance to read from.</param>
 		/// <param name="element">Parent <see cref="EBMLreader" />.</param>
@@ -121,23 +109,33 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 
 
 		/// <summary>
-		/// List of unknown elements encountered while parsing.
+		///     List of unknown elements encountered while parsing.
 		/// </summary>
 		public new List<EBMLreader> UnknownElements { get; } = new List<EBMLreader>();
 
 		/// <summary>
-		/// This type of track only has video media type.
+		///     This type of track only has video media type.
 		/// </summary>
 		public override MediaTypes MediaTypes => MediaTypes.Video;
 
 		/// <summary>
-		/// Describes video track width in pixels.
+		///     Describes video track width in pixels.
 		/// </summary>
 		public int VideoWidth => (int)width;
 
 		/// <summary>
-		/// Describes video track height in pixels.
+		///     Describes video track height in pixels.
 		/// </summary>
 		public int VideoHeight => (int)height;
+#pragma warning disable 414 // Assigned, never used
+		private readonly ulong width;
+		private readonly ulong height;
+		private readonly ulong disp_width;
+		private readonly ulong disp_height;
+		private readonly double framerate;
+		private readonly bool interlaced;
+		private readonly VideoAspectRatioType ratio_type;
+		private readonly ByteVector fourcc;
+#pragma warning restore 414
 	}
 }

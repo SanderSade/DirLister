@@ -16,6 +16,7 @@ namespace Sander.DirLister.Core.Application
 	{
 		private static Guid IID_IShellFolder = typeof(IShellFolder).GUID;
 
+
 		private static IntPtr GetShellFolderChildrenRelativePIDL(IShellFolder parentFolder, string displayName)
 		{
 			uint pdwAttributes = 0;
@@ -24,11 +25,13 @@ namespace Sander.DirLister.Core.Application
 			return ppidl;
 		}
 
+
 		private static IntPtr PathToAbsolutePIDL(string path)
 		{
 			var desktopFolder = NativeMethods.SHGetDesktopFolder();
 			return GetShellFolderChildrenRelativePIDL(desktopFolder, path);
 		}
+
 
 		private static IShellFolder PIDLToShellFolder(IShellFolder parent, IntPtr pidl)
 		{
@@ -37,10 +40,12 @@ namespace Sander.DirLister.Core.Application
 			return folder;
 		}
 
+
 		private static IShellFolder PIDLToShellFolder(IntPtr pidl)
 		{
 			return PIDLToShellFolder(NativeMethods.SHGetDesktopFolder(), pidl);
 		}
+
 
 		private static void SHOpenFolderAndSelectItems(IntPtr pidlFolder, IntPtr[] apidl, bool edit)
 		{
@@ -50,8 +55,15 @@ namespace Sander.DirLister.Core.Application
 
 		internal static void FilesOrFolders(string parentDirectory, ICollection<string> filenames)
 		{
-			if (filenames == null) throw new ArgumentNullException(nameof(filenames));
-			if (filenames.Count == 0) return;
+			if (filenames == null)
+			{
+				throw new ArgumentNullException(nameof(filenames));
+			}
+
+			if (filenames.Count == 0)
+			{
+				return;
+			}
 
 			var parentPidl = PathToAbsolutePIDL(parentDirectory);
 			try
@@ -67,7 +79,10 @@ namespace Sander.DirLister.Core.Application
 				}
 				finally
 				{
-					foreach (var pidl in filesPidl) NativeMethods.ILFree(pidl);
+					foreach (var pidl in filesPidl)
+					{
+						NativeMethods.ILFree(pidl);
+					}
 				}
 			}
 			finally
@@ -107,10 +122,12 @@ namespace Sander.DirLister.Core.Application
 				IBindCtx pbc, [In] [MarshalAs(UnmanagedType.LPWStr)] string pszDisplayName, [Out] out uint pchEaten,
 				[Out] out IntPtr ppidl, [In] [Out] ref uint pdwAttributes);
 
+
 			[PreserveSig]
 			[MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
 			int EnumObjects([In] IntPtr hwnd, [In] SHCONT grfFlags,
 				[MarshalAs(UnmanagedType.Interface)] out IEnumIDList ppenumIDList);
+
 
 			[PreserveSig]
 			[MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
@@ -118,15 +135,19 @@ namespace Sander.DirLister.Core.Application
 				IBindCtx pbc, [In] ref Guid riid, [Out] [MarshalAs(UnmanagedType.Interface)]
 				out IShellFolder ppv);
 
+
 			[MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
 			void BindToStorage([In] ref IntPtr pidl, [In] [MarshalAs(UnmanagedType.Interface)]
 				IBindCtx pbc, [In] ref Guid riid, out IntPtr ppv);
 
+
 			[MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
 			void CompareIDs([In] IntPtr lParam, [In] ref IntPtr pidl1, [In] ref IntPtr pidl2);
 
+
 			[MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
 			void CreateViewObject([In] IntPtr hwndOwner, [In] ref Guid riid, out IntPtr ppv);
+
 
 			[MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
 			void GetAttributesOf([In] uint cidl, [In] IntPtr apidl, [In] [Out] ref uint rgfInOut);
@@ -136,8 +157,10 @@ namespace Sander.DirLister.Core.Application
 			void GetUIObjectOf([In] IntPtr hwndOwner, [In] uint cidl, [In] IntPtr apidl, [In] ref Guid riid,
 				[In] [Out] ref uint rgfReserved, out IntPtr ppv);
 
+
 			[MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
 			void GetDisplayNameOf([In] ref IntPtr pidl, [In] uint uFlags, out IntPtr pName);
+
 
 			[MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
 			void SetNameOf([In] IntPtr hwnd, [In] ref IntPtr pidl,
@@ -153,13 +176,16 @@ namespace Sander.DirLister.Core.Application
 			[MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
 			int Next(uint celt, IntPtr rgelt, out uint pceltFetched);
 
+
 			[PreserveSig]
 			[MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
 			int Skip([In] uint celt);
 
+
 			[PreserveSig]
 			[MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
 			int Reset();
+
 
 			[PreserveSig]
 			[MethodImpl(MethodImplOptions.InternalCall, MethodCodeType = MethodCodeType.Runtime)]
@@ -172,11 +198,13 @@ namespace Sander.DirLister.Core.Application
 				SetLastError = true)]
 			private static extern int SHGetDesktopFolder_([MarshalAs(UnmanagedType.Interface)] out IShellFolder ppshf);
 
+
 			internal static IShellFolder SHGetDesktopFolder()
 			{
 				Marshal.ThrowExceptionForHR(SHGetDesktopFolder_(out var result));
 				return result;
 			}
+
 
 			[DllImport("shell32.dll", EntryPoint = "SHOpenFolderAndSelectItems")]
 			private static extern int SHOpenFolderAndSelectItems_(
@@ -184,12 +212,14 @@ namespace Sander.DirLister.Core.Application
 				IntPtr[] apidl,
 				int dwFlags);
 
+
 			internal static void SHOpenFolderAndSelectItems(IntPtr pidlFolder, IntPtr[] apidl, int dwFlags)
 			{
 				var cidl = apidl != null ? (uint)apidl.Length : 0U;
 				var result = SHOpenFolderAndSelectItems_(pidlFolder, cidl, apidl, dwFlags);
 				Marshal.ThrowExceptionForHR(result);
 			}
+
 
 			[DllImport("shell32.dll")]
 			internal static extern void ILFree([In] IntPtr pidl);

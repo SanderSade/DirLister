@@ -23,7 +23,6 @@ namespace Sander.DirLister.UI
 
 			if (Settings.Default.FirstRun || Settings.Default.ShowUiFromShell || folders == null || folders.Length == 0)
 			{
-
 				Application.Run(new MainForm(configuration, null, folders));
 				Application.Exit();
 				Environment.Exit(0);
@@ -43,7 +42,9 @@ namespace Sander.DirLister.UI
 			var configuration = new Configuration();
 
 			if (!string.IsNullOrWhiteSpace(Settings.Default.CssFile) && File.Exists(Settings.Default.CssFile))
+			{
 				configuration.CssContent = File.ReadAllText(Settings.Default.CssFile);
+			}
 
 			configuration.EnableMultithreading = Settings.Default.EnableMultithreading;
 			configuration.DateFormat = Settings.Default.DateFormat;
@@ -59,8 +60,10 @@ namespace Sander.DirLister.UI
 				: Settings.Default.OutputFolder;
 
 			if (Settings.Default.OutputFormats != null && Settings.Default.OutputFormats.Count > 0)
+			{
 				configuration.OutputFormats = Settings.Default.OutputFormats.Cast<string>()
 					.Select(x => (OutputFormat)Enum.Parse(typeof(OutputFormat), x)).ToList();
+			}
 
 			return configuration;
 		}
@@ -69,7 +72,9 @@ namespace Sander.DirLister.UI
 		internal static void AddToHistory(params string[] folders)
 		{
 			if (History.Default.DirectoryHistory == null)
+			{
 				History.Default.DirectoryHistory = new StringCollection();
+			}
 
 			var history = History.Default.DirectoryHistory.Cast<string>().ToList();
 
@@ -81,6 +86,7 @@ namespace Sander.DirLister.UI
 					.Distinct(StringComparer.OrdinalIgnoreCase)
 					.Take(History.Default.DirectoryHistoryLength)
 					.ToArray());
+
 			History.Default.Save();
 		}
 	}

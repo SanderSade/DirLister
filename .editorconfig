@@ -1,90 +1,191 @@
+root=true
 # EditorConfig - http://EditorConfig.org. This file comes from Roslyn - https://github.com/dotnet/roslyn/blob/master/.editorconfig, edited
 
 # top-most EditorConfig file
-root = true
 
 # Use tabs for indentation.
 [*]
-indent_style = tab
-trim_trailing_whitespace = true
-end_of_line = crlf
+indent_style=tab
+trim_trailing_whitespace=true
+
+# Microsoft .NET properties
+csharp_new_line_before_members_in_object_initializers=false
+csharp_preferred_modifier_order=public, private, protected, internal, new, abstract, virtual, sealed, override, static, readonly, extern, unsafe, volatile, async:suggestion
+csharp_style_expression_bodied_accessors=true:suggestion
+csharp_style_expression_bodied_constructors=false:suggestion
+csharp_style_expression_bodied_methods=false:suggestion
+csharp_style_expression_bodied_properties=true:suggestion
+csharp_style_var_elsewhere=true:suggestion
+csharp_style_var_for_built_in_types=true:suggestion
+csharp_style_var_when_type_is_apparent=true:suggestion
+dotnet_style_parentheses_in_arithmetic_binary_operators=never_if_unnecessary:none
+dotnet_style_parentheses_in_other_binary_operators=never_if_unnecessary:none
+dotnet_style_parentheses_in_relational_binary_operators=never_if_unnecessary:none
+dotnet_style_predefined_type_for_locals_parameters_members=true:suggestion
+dotnet_style_predefined_type_for_member_access=true:suggestion
+dotnet_style_qualification_for_event=false:suggestion
+dotnet_style_qualification_for_field=false:suggestion
+dotnet_style_qualification_for_method=false:suggestion
+dotnet_style_qualification_for_property=false:suggestion
+dotnet_style_require_accessibility_modifiers=for_non_interface_members:suggestion
+
+# ReSharper properties
+resharper_blank_lines_after_control_transfer_statements=1
+resharper_blank_lines_after_multiline_statements=1
+resharper_blank_lines_around_single_line_local_method=1
+resharper_blank_lines_around_single_line_property=1
+resharper_braces_for_for=required
+resharper_braces_for_foreach=required
+resharper_braces_for_ifelse=required
+resharper_braces_for_while=required
+resharper_csharp_blank_lines_around_invocable=2
+resharper_csharp_blank_lines_around_single_line_invocable=2
+resharper_csharp_insert_final_newline=false
+resharper_csharp_max_line_length=160
+resharper_csharp_wrap_for_stmt_header_style=wrap_if_long
+resharper_indent_nested_fixed_stmt=true
+resharper_indent_nested_foreach_stmt=true
+resharper_indent_nested_for_stmt=true
+resharper_indent_nested_lock_stmt=true
+resharper_indent_nested_usings_stmt=true
+resharper_indent_nested_while_stmt=true
+resharper_keep_existing_attribute_arrangement=true
+resharper_max_initializer_elements_on_line=1
+resharper_place_attribute_on_same_line=false
+resharper_place_simple_embedded_statement_on_same_line=false
+resharper_space_within_single_line_array_initializer_braces=true
+resharper_use_heuristics_for_body_style=true
+resharper_wrap_object_and_collection_initializer_style=chop_always
+
+# ReSharper inspection severities
+resharper_arrange_constructor_or_destructor_body_highlighting=none
+resharper_arrange_method_or_operator_body_highlighting=none
+resharper_arrange_redundant_parentheses_highlighting=hint
+resharper_arrange_this_qualifier_highlighting=hint
+resharper_arrange_type_member_modifiers_highlighting=hint
+resharper_arrange_type_modifiers_highlighting=hint
+resharper_built_in_type_reference_style_for_member_access_highlighting=hint
+resharper_built_in_type_reference_style_highlighting=hint
+resharper_comment_typo_highlighting=none
+resharper_convert_to_null_coalescing_compound_assignment_highlighting=hint
+resharper_convert_to_using_declaration_highlighting=hint
+resharper_css_browser_compatibility_highlighting=hint
+resharper_enforce_do_while_statement_braces_highlighting=warning
+resharper_enforce_fixed_statement_braces_highlighting=warning
+resharper_enforce_foreach_statement_braces_highlighting=warning
+resharper_enforce_for_statement_braces_highlighting=warning
+resharper_enforce_lock_statement_braces_highlighting=warning
+resharper_enforce_while_statement_braces_highlighting=warning
+resharper_localizable_element_highlighting=none
+resharper_redundant_base_qualifier_highlighting=warning
+resharper_suggest_base_type_for_parameter_highlighting=none
+resharper_suggest_var_or_type_built_in_types_highlighting=hint
+resharper_suggest_var_or_type_elsewhere_highlighting=hint
+resharper_suggest_var_or_type_simple_types_highlighting=hint
+
+# Standard properties
 
 # Code files
 [*.{cs,csx,vb,vbx,ps1}]
-indent_size = 4
-insert_final_newline = true
-charset = utf-8-bom
+indent_size=4
+insert_final_newline=true
+charset=utf-8-bom
 
 
 
 # Xml project files
 [*.{csproj,vbproj,vcxproj,vcxproj.filters,proj,projitems,shproj,xml}]
-indent_size = 2
+indent_size=2
 
 
 # Xml config files
 [*.{props,targets,ruleset,config,nuspec,resx,vsixmanifest,vsct,cscfg,csdef}]
-indent_size = 2
+indent_size=2
 
 # JSON files
 [*.json]
-indent_size = 2
+indent_size=2
 
 # Dotnet code style settings:
 [*.{cs,vb}]
 # Sort using and Import directives with System.* appearing first
-dotnet_sort_system_directives_first = true
+dotnet_sort_system_directives_first=true
 # Avoid "this." and "Me." if not necessary
-dotnet_style_qualification_for_field = false:suggestion
-dotnet_style_qualification_for_property = false:suggestion
-dotnet_style_qualification_for_method = false:suggestion
-dotnet_style_qualification_for_event = false:suggestion
+dotnet_style_qualification_for_field=false:suggestion
+dotnet_style_qualification_for_property=false:suggestion
+dotnet_style_qualification_for_method=false:suggestion
+dotnet_style_qualification_for_event=false:suggestion
 
 # Use language keywords instead of framework type names for type references
-dotnet_style_predefined_type_for_locals_parameters_members = true:suggestion
-dotnet_style_predefined_type_for_member_access = true:suggestion
+dotnet_style_predefined_type_for_locals_parameters_members=true:suggestion
+dotnet_style_predefined_type_for_member_access=true:suggestion
 
 # Suggest more modern language features when available
-dotnet_style_object_initializer = true:suggestion
-dotnet_style_collection_initializer = true:suggestion
-dotnet_style_coalesce_expression = true:suggestion
-dotnet_style_null_propagation = true:suggestion
-dotnet_style_explicit_tuple_names = true:suggestion
+dotnet_style_object_initializer=true:suggestion
+dotnet_style_collection_initializer=true:suggestion
+dotnet_style_coalesce_expression=true:suggestion
+dotnet_style_null_propagation=true:suggestion
+dotnet_style_explicit_tuple_names=true:suggestion
 
 # CSharp code style settings:
 [*.cs]
-csharp_indent_case_contents = true
-csharp_indent_switch_labels = true
-csharp_space_after_cast = false
+csharp_indent_case_contents=true
+csharp_indent_switch_labels=true
+csharp_space_after_cast=false
 
 
 # Prefer "var" everywhere
-csharp_style_var_for_built_in_types = true:suggestion
-csharp_style_var_when_type_is_apparent = true:suggestion
-csharp_style_var_elsewhere = true:suggestion
+csharp_style_var_for_built_in_types=true:suggestion
+csharp_style_var_when_type_is_apparent=true:suggestion
+csharp_style_var_elsewhere=true:suggestion
 
 
 # Prefer method-like constructs to have a block body
-csharp_style_expression_bodied_methods = false:suggestion
-csharp_style_expression_bodied_constructors = false:suggestion
-csharp_style_expression_bodied_operators = false:suggestion
+csharp_style_expression_bodied_methods=false:suggestion
+csharp_style_expression_bodied_constructors=false:suggestion
+csharp_style_expression_bodied_operators=false:suggestion
 
 # Prefer property-like constructs to have an expression-body
-csharp_style_expression_bodied_properties = true:suggestion
-csharp_style_expression_bodied_indexers = true:suggestion
-csharp_style_expression_bodied_accessors = true:suggestion
+csharp_style_expression_bodied_properties=true:suggestion
+csharp_style_expression_bodied_indexers=true:suggestion
+csharp_style_expression_bodied_accessors=true:suggestion
 
 # Suggest more modern language features when available
-csharp_style_pattern_matching_over_is_with_cast_check = true:suggestion
-csharp_style_pattern_matching_over_as_with_null_check = true:suggestion
-csharp_style_inlined_variable_declaration = true:suggestion
-csharp_style_throw_expression = true:suggestion
-csharp_style_conditional_delegate_call = true:suggestion
+csharp_style_pattern_matching_over_is_with_cast_check=true:suggestion
+csharp_style_pattern_matching_over_as_with_null_check=true:suggestion
+csharp_style_inlined_variable_declaration=true:suggestion
+csharp_style_throw_expression=true:suggestion
+csharp_style_conditional_delegate_call=true:suggestion
 
 # Newline settings
-csharp_new_line_before_open_brace = all
-csharp_new_line_before_else = true
-csharp_new_line_before_catch = true
-csharp_new_line_before_finally = true
-csharp_new_line_before_members_in_object_initializers = true
-csharp_new_line_before_members_in_anonymous_types = true
+csharp_new_line_before_open_brace=all
+csharp_new_line_before_else=true
+csharp_new_line_before_catch=true
+csharp_new_line_before_finally=true
+csharp_new_line_before_members_in_object_initializers=true
+csharp_new_line_before_members_in_anonymous_types=true
+
+[*.{cs,cshtml,htm,html,jsx,proto,razor}]
+indent_style=tab
+indent_size=tab
+tab_width=4
+
+[*.{asax,ascx,aspx,css,js,master,skin,ts,tsx,vb,xaml,xamlx,xoml}]
+indent_style=space
+indent_size=4
+tab_width=4
+
+[*.{appxmanifest,build,config,csproj,dbml,discomap,dtd,json,jsproj,lsproj,njsproj,nuspec,proj,props,resjson,resw,resx,StyleCop,targets,tasks,vbproj,xml,xsd}]
+indent_style=tab
+indent_size=tab
+tab_width=2
+
+[*.{appxmanifest,asax,ascx,aspx,build,config,cs,cshtml,csproj,css,dbml,discomap,dtd,htm,html,js,json,jsproj,jsx,lsproj,master,njsproj,nuspec,proj,props,proto,razor,resjson,resw,resx,skin,StyleCop,targets,tasks,ts,tsx,vb,vbproj,xaml,xamlx,xml,xoml,xsd}]
+indent_style=tab
+indent_size=tab
+tab_width=4
+
+[*.{appxmanifest,axml,build,config,csproj,dbml,discomap,dtd,json,jsproj,lsproj,njsproj,nuspec,proj,props,resjson,resw,resx,StyleCop,targets,tasks,vbproj,xml,xsd}]
+indent_style=tab
+indent_size=tab
+tab_width=2

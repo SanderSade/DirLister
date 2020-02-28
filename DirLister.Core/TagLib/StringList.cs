@@ -4,15 +4,17 @@ using System.Runtime.InteropServices;
 namespace Sander.DirLister.Core.TagLib
 {
 	/// <summary>
-	///    This class extends <see cref="T:Sander.DirLister.Core.TagLib.ListBase`1" /> for a collection of
-	///    <see cref="string" /> objects.
+	///     This class extends <see cref="T:Sander.DirLister.Core.TagLib.ListBase`1" /> for a collection of
+	///     <see cref="string" /> objects.
 	/// </summary>
 	[ComVisible(false)]
 	public class StringCollection : ListBase<string>
 	{
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="StringCollection" /> with no contents.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="StringCollection" />
+		///     with no contents.
 		/// </summary>
 		public StringCollection()
 		{
@@ -20,13 +22,15 @@ namespace Sander.DirLister.Core.TagLib
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="StringCollection" /> with the contents of another
-		///    instance.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="StringCollection" />
+		///     with the contents of another
+		///     instance.
 		/// </summary>
 		/// <param name="values">
-		///    A <see cref="StringCollection" /> object whose values are
-		///    to be added to the new instance.
+		///     A <see cref="StringCollection" /> object whose values are
+		///     to be added to the new instance.
 		/// </param>
 		public StringCollection(StringCollection values)
 		{
@@ -35,13 +39,15 @@ namespace Sander.DirLister.Core.TagLib
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="StringCollection" /> with the contents of a
-		///    specified array.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="StringCollection" />
+		///     with the contents of a
+		///     specified array.
 		/// </summary>
 		/// <param name="values">
-		///    A <see cref="T:string[]" /> whose values are to be added to
-		///    the new instance.
+		///     A <see cref="T:string[]" /> whose values are to be added to
+		///     the new instance.
 		/// </param>
 		public StringCollection(params string[] values)
 		{
@@ -50,36 +56,42 @@ namespace Sander.DirLister.Core.TagLib
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="StringCollection" /> by converting a collection of
-		///    <see cref="ByteVector" /> objects to strings with a
-		///    specified encoding.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="StringCollection" />
+		///     by converting a collection of
+		///     <see cref="ByteVector" /> objects to strings with a
+		///     specified encoding.
 		/// </summary>
 		/// <param name="vectorList">
-		///    A <see cref="ByteVectorCollection" /> object containing
-		///    values to convert and add to the new instance.
+		///     A <see cref="ByteVectorCollection" /> object containing
+		///     values to convert and add to the new instance.
 		/// </param>
 		/// <param name="type">
-		///    A <see cref="StringType" /> specifying what encoding to
-		///    use when converting the data to strings.
+		///     A <see cref="StringType" /> specifying what encoding to
+		///     use when converting the data to strings.
 		/// </param>
 		public StringCollection(ByteVectorCollection vectorList,
 			StringType type)
 		{
 			foreach (var vector in vectorList)
+			{
 				Add(vector.ToString(type));
+			}
 		}
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="StringCollection" /> by converting a collection of
-		///    <see cref="ByteVector" /> objects to strings using the
-		///    UTF-8 encoding.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="StringCollection" />
+		///     by converting a collection of
+		///     <see cref="ByteVector" /> objects to strings using the
+		///     UTF-8 encoding.
 		/// </summary>
 		/// <param name="vectorList">
-		///    A <see cref="ByteVectorCollection" /> object containing
-		///    values to convert and add to the new instance.
+		///     A <see cref="ByteVectorCollection" /> object containing
+		///     values to convert and add to the new instance.
 		/// </param>
 		public StringCollection(ByteVectorCollection vectorList)
 			: this(vectorList, StringType.UTF8)
@@ -88,32 +100,38 @@ namespace Sander.DirLister.Core.TagLib
 
 
 		/// <summary>
-		///    Splits a single <see cref="string" /> into a <see
-		///    cref="StringCollection" /> using a pattern.
+		///     Splits a single <see cref="string" /> into a
+		///     <see
+		///         cref="StringCollection" />
+		///     using a pattern.
 		/// </summary>
 		/// <param name="value">
-		///    A <see cref="string" /> object to split.
+		///     A <see cref="string" /> object to split.
 		/// </param>
 		/// <param name="pattern">
-		///    A <see cref="string" /> object containing a pattern to
-		///    use to split <paramref name="value" />.
+		///     A <see cref="string" /> object containing a pattern to
+		///     use to split <paramref name="value" />.
 		/// </param>
 		/// <returns>
-		///    A <see cref="StringCollection" /> object containing the
-		///    split values.
+		///     A <see cref="StringCollection" /> object containing the
+		///     split values.
 		/// </returns>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="value" /> or <paramref name="pattern" />
-		///    is <see langword="null" />.
+		///     <paramref name="value" /> or <paramref name="pattern" />
+		///     is <see langword="null" />.
 		/// </exception>
 		public static StringCollection Split(string value,
 			string pattern)
 		{
 			if (value == null)
+			{
 				throw new ArgumentNullException("value");
+			}
 
 			if (pattern == null)
+			{
 				throw new ArgumentNullException("pattern");
+			}
 
 			var list = new StringCollection();
 
@@ -125,6 +143,7 @@ namespace Sander.DirLister.Core.TagLib
 			{
 				list.Add(value.Substring(previous_position,
 					position - previous_position));
+
 				previous_position = position + pattern_length;
 				position = value.IndexOf(pattern,
 					previous_position);

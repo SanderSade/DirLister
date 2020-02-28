@@ -37,7 +37,9 @@ namespace Sander.DirLister.Core.Application.Writers
 			_sb.AppendLine();
 			_sb.Append($"### {WebUtility.HtmlEncode(group.Key)} `files: {group.Count()}");
 			if (Configuration.IncludeSize)
-				_sb.Append($"({Utils.ReadableSize(group.Sum(x => x.Size))})");
+			{
+				_sb.Append($"({Utils.ReadableSize(@group.Sum(x => x.Size))})");
+			}
 
 			_sb.AppendLine("`");
 			_sb.AppendLine();
@@ -46,25 +48,33 @@ namespace Sander.DirLister.Core.Application.Writers
 			{
 				_sb.Append($"* {entry.Filename}");
 				if (Configuration.IncludeSize)
+				{
 					_sb.Append($" `{entry.ReadableSize}`");
+				}
 
 				if (Configuration.IncludeFileDates)
+				{
 					_sb.Append(
 						$" `Created: {entry.Created.ToLocalTime().ToString(Configuration.DateFormat)}, modified: {entry.Modified.ToLocalTime().ToString(Configuration.DateFormat)}`");
+				}
 
 				if (Configuration.IncludeMediaInfo && entry.MediaInfo != null)
 				{
 					_sb.Append($" `{entry.MediaInfo.MediaType}");
 					if (entry.MediaInfo.Duration != TimeSpan.Zero)
+					{
 						_sb.Append($" {FormatDuration(entry.MediaInfo.Duration)}");
+					}
 
 					if (entry.MediaInfo.Height > 0)
+					{
 						_sb.Append($" {entry.MediaInfo.Height}x{entry.MediaInfo.Width},");
+					}
 
 					_sb.Append(GetMediaInfo("bpp", entry.MediaInfo.BitsPerPixel));
 
 					if (entry.MediaInfo.AudioBitRate != 0 || entry.MediaInfo.AudioSampleRate != 0 ||
-						entry.MediaInfo.AudioChannels != 0)
+					    entry.MediaInfo.AudioChannels != 0)
 					{
 						_sb.Remove(_sb.Length - 1, 1);
 						_sb.Append(" :: audio");
@@ -72,7 +82,9 @@ namespace Sander.DirLister.Core.Application.Writers
 						_sb.Append(GetMediaInfo("channels", entry.MediaInfo.AudioChannels));
 
 						if (entry.MediaInfo.AudioSampleRate > 0)
+						{
 							_sb.Append(GetMediaInfo("sample rate", entry.MediaInfo.AudioSampleRate / 1000f));
+						}
 					}
 
 					_sb.Remove(_sb.Length - 1, 1); //remove trailing comma
@@ -94,13 +106,15 @@ namespace Sander.DirLister.Core.Application.Writers
 
 		private void AppendHeader()
 		{
-			_sb.AppendLine($"## Directory listing by [DirLister](https://github.com/SanderSade/DirLister/), {EndDate.ToLocalTime().ToString(Configuration.DateFormat)}:");
+			_sb.AppendLine(
+				$"## Directory listing by [DirLister](https://github.com/SanderSade/DirLister/), {EndDate.ToLocalTime().ToString(Configuration.DateFormat)}:");
 
 			foreach (var folder in Configuration.InputFolders)
 			{
 				var files = GroupedEntries.Where(x => x.Key.StartsWith(folder, StringComparison.Ordinal))
-									  .SelectMany(x => x.ToList())
-									  .ToList();
+					.SelectMany(x => x.ToList())
+					.ToList();
+
 				_sb.AppendLine(
 					$"* {WebUtility.HtmlEncode(folder)} `files: {files.Count}, size: {Utils.ReadableSize(files.Sum(x => x.Size))}`");
 			}

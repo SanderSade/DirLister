@@ -7,17 +7,21 @@ using System.Runtime.Serialization;
 namespace Sander.DirLister.Core.TagLib.Riff
 {
 	/// <summary>
-	///    This class extends <see
-	///    cref="T:System.Collections.Generic.Dictionary`2" /> to provide
-	///    support for reading and writing RIFF lists.
+	///     This class extends
+	///     <see
+	///         cref="T:System.Collections.Generic.Dictionary`2" />
+	///     to provide
+	///     support for reading and writing RIFF lists.
 	/// </summary>
 	[Serializable]
 	[ComVisible(false)]
 	public class List : Dictionary<ByteVector, ByteVectorCollection>
 	{
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="List" /> with no contents.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="List" />
+		///     with no contents.
 		/// </summary>
 		public List()
 		{
@@ -25,60 +29,72 @@ namespace Sander.DirLister.Core.TagLib.Riff
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="List" /> by reading the contents of a raw RIFF
-		///    list stored in a <see cref="ByteVector" /> object.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="List" />
+		///     by reading the contents of a raw RIFF
+		///     list stored in a <see cref="ByteVector" /> object.
 		/// </summary>
 		/// <param name="data">
-		///    A <see cref="ByteVector"/> containing a raw RIFF list to
-		///    read into the new instance.
+		///     A <see cref="ByteVector" /> containing a raw RIFF list to
+		///     read into the new instance.
 		/// </param>
 		public List(ByteVector data)
 		{
 			if (data == null)
+			{
 				throw new ArgumentNullException("data");
+			}
 
 			Parse(data);
 		}
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="List" /> by reading the contents of a raw RIFF list
-		///    from a specified position in a <see cref="TagLib.File"/>.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="List" />
+		///     by reading the contents of a raw RIFF list
+		///     from a specified position in a <see cref="TagLib.File" />.
 		/// </summary>
 		/// <param name="file">
-		///    A <see cref="TagLib.File" /> object containing the file
-		///    from which the contents of the new instance is to be
-		///    read.
+		///     A <see cref="TagLib.File" /> object containing the file
+		///     from which the contents of the new instance is to be
+		///     read.
 		/// </param>
 		/// <param name="position">
-		///    A <see cref="long" /> value specify at what position to
-		///    read the list.
+		///     A <see cref="long" /> value specify at what position to
+		///     read the list.
 		/// </param>
 		/// <param name="length">
-		///    A <see cref="int" /> value specifying the number of bytes
-		///    to read.
+		///     A <see cref="int" /> value specifying the number of bytes
+		///     to read.
 		/// </param>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="file" /> is <see langword="null" />.
+		///     <paramref name="file" /> is <see langword="null" />.
 		/// </exception>
 		/// <exception cref="ArgumentOutOfRangeException">
-		///    <paramref name="position" /> is less than zero or greater
-		///    than the size of the file.
+		///     <paramref name="position" /> is less than zero or greater
+		///     than the size of the file.
 		/// </exception>
 		public List(TagLib.File file, long position, int length)
 		{
 			if (file == null)
+			{
 				throw new ArgumentNullException("file");
+			}
 
 			if (length < 0)
+			{
 				throw new ArgumentOutOfRangeException(
 					"length");
+			}
 
 			if (position < 0 || position > file.Length - length)
+			{
 				throw new ArgumentOutOfRangeException(
 					"position");
+			}
 
 			file.Seek(position);
 			Parse(file.ReadBlock(length));
@@ -86,22 +102,25 @@ namespace Sander.DirLister.Core.TagLib.Riff
 
 
 		/// <summary>
-		///    Constructs and initializes a new instance of <see
-		///    cref="List" /> from a specified serialization info and
-		///    streaming context.
+		///     Constructs and initializes a new instance of
+		///     <see
+		///         cref="List" />
+		///     from a specified serialization info and
+		///     streaming context.
 		/// </summary>
 		/// <param name="info">
-		///    A <see cref="SerializationInfo" /> object containing the
-		///    serialized data to be used for the new instance.
+		///     A <see cref="SerializationInfo" /> object containing the
+		///     serialized data to be used for the new instance.
 		/// </param>
 		/// <param name="context">
-		///    A <see cref="StreamingContext" /> object containing the
-		///    streaming context information for the new instance.
+		///     A <see cref="StreamingContext" /> object containing the
+		///     streaming context information for the new instance.
 		/// </param>
 		/// <remarks>
-		///    This constructor is implemented because <see
-		///    cref="List" /> implements the <see cref="ISerializable"
-		///    /> interface.
+		///     This constructor is implemented because
+		///     <see
+		///         cref="List" />
+		///     implements the <see cref="ISerializable" /> interface.
 		/// </remarks>
 		protected List(SerializationInfo info,
 			StreamingContext context)
@@ -111,13 +130,13 @@ namespace Sander.DirLister.Core.TagLib.Riff
 
 
 		/// <summary>
-		///    Populates the current instance by reading in the contents
-		///    of a raw RIFF list stored in a <see cref="ByteVector" />
-		///    object.
+		///     Populates the current instance by reading in the contents
+		///     of a raw RIFF list stored in a <see cref="ByteVector" />
+		///     object.
 		/// </summary>
 		/// <param name="data">
-		///    A <see cref="ByteVector"/> containing a raw RIFF list to
-		///    read into the current instance.
+		///     A <see cref="ByteVector" /> containing a raw RIFF list to
+		///     read into the current instance.
 		/// </param>
 		private void Parse(ByteVector data)
 		{
@@ -126,16 +145,20 @@ namespace Sander.DirLister.Core.TagLib.Riff
 			{
 				var id = data.Mid(offset, 4);
 				var length = (int)data.Mid(offset + 4, 4)
-				                      .ToUInt(false);
+					.ToUInt(false);
 
 				if (!ContainsKey(id))
+				{
 					Add(id, new ByteVectorCollection());
+				}
 
 				this[id]
 					.Add(data.Mid(offset + 8, length));
 
 				if (length % 2 == 1)
+				{
 					length++;
+				}
 
 				offset += 8 + length;
 			}
@@ -143,29 +166,36 @@ namespace Sander.DirLister.Core.TagLib.Riff
 
 
 		/// <summary>
-		///    Renders the current instance as a raw RIFF list.
+		///     Renders the current instance as a raw RIFF list.
 		/// </summary>
 		/// <returns>
-		///    A <see cref="ByteVector"/> object containing the rendered
-		///    version of the current instance.
+		///     A <see cref="ByteVector" /> object containing the rendered
+		///     version of the current instance.
 		/// </returns>
 		public ByteVector Render()
 		{
 			var data = new ByteVector();
 
 			foreach (var id in Keys)
-			foreach (var value in this[id])
 			{
-				if (value.Count == 0)
-					continue;
+				foreach (var value in this[id])
+				{
+					if (value.Count == 0)
+					{
+						continue;
+					}
 
-				data.Add(id);
-				data.Add(ByteVector.FromUInt(
-					(uint)value.Count, false));
-				data.Add(value);
+					data.Add(id);
+					data.Add(ByteVector.FromUInt(
+						(uint)value.Count, false));
 
-				if (value.Count % 2 == 1)
-					data.Add(0);
+					data.Add(value);
+
+					if (value.Count % 2 == 1)
+					{
+						data.Add(0);
+					}
+				}
 			}
 
 			return data;
@@ -173,36 +203,42 @@ namespace Sander.DirLister.Core.TagLib.Riff
 
 
 		/// <summary>
-		///    Renders the current instance enclosed in an item with a
-		///    specified ID.
+		///     Renders the current instance enclosed in an item with a
+		///     specified ID.
 		/// </summary>
 		/// <param name="id">
-		///    A <see cref="ByteVector"/> object containing the ID of
-		///    the item to enclose the current instance in.
+		///     A <see cref="ByteVector" /> object containing the ID of
+		///     the item to enclose the current instance in.
 		/// </param>
 		/// <returns>
-		///    A <see cref="ByteVector"/> object containing the rendered
-		///    version of the current instance.
+		///     A <see cref="ByteVector" /> object containing the rendered
+		///     version of the current instance.
 		/// </returns>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="id" /> is <see langword="null" />.
+		///     <paramref name="id" /> is <see langword="null" />.
 		/// </exception>
 		/// <exception cref="ArgumentException">
-		///    <paramref name="id" /> isn't exactly four bytes long.
+		///     <paramref name="id" /> isn't exactly four bytes long.
 		/// </exception>
 		public ByteVector RenderEnclosed(ByteVector id)
 		{
 			if (id == null)
+			{
 				throw new ArgumentNullException("id");
+			}
 
 			if (id.Count != 4)
+			{
 				throw new ArgumentException(
 					"ID must be 4 bytes long.", "id");
+			}
 
 			var data = Render();
 
 			if (data.Count <= 8)
+			{
 				return new ByteVector();
+			}
 
 			var header = new ByteVector("LIST")
 			{
@@ -210,68 +246,77 @@ namespace Sander.DirLister.Core.TagLib.Riff
 					(uint)(data.Count + 4), false),
 				id
 			};
+
 			data.Insert(0, header);
 			return data;
 		}
 
 
 		/// <summary>
-		///    Gets the values for a specified item in the current
-		///    instance as a <see cref="ByteVectorCollection" />.
+		///     Gets the values for a specified item in the current
+		///     instance as a <see cref="ByteVectorCollection" />.
 		/// </summary>
 		/// <param name="id">
-		///    A <see cref="ByteVector" /> object containing the ID of
-		///    the item to set.
+		///     A <see cref="ByteVector" /> object containing the ID of
+		///     the item to set.
 		/// </param>
 		/// <returns>
-		///    A <see cref="ByteVectorCollection" /> object containing
-		///    the values of the specified item.
+		///     A <see cref="ByteVectorCollection" /> object containing
+		///     the values of the specified item.
 		/// </returns>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="id" /> is <see langword="null" />.
+		///     <paramref name="id" /> is <see langword="null" />.
 		/// </exception>
 		/// <exception cref="ArgumentException">
-		///    <paramref name="id" /> isn't exactly four bytes long.
+		///     <paramref name="id" /> isn't exactly four bytes long.
 		/// </exception>
 		public ByteVectorCollection GetValues(ByteVector id)
 		{
 			if (id == null)
+			{
 				throw new ArgumentNullException("id");
+			}
 
 			if (id.Count != 4)
+			{
 				throw new ArgumentException(
 					"ID must be 4 bytes long.", "id");
+			}
 
 			return TryGetValue(id, out var value) ? value : new ByteVectorCollection();
 		}
 
 
 		/// <summary>
-		///    Gets the values for a specified item in the current
-		///    instance as a <see cref="T:string[]" />.
+		///     Gets the values for a specified item in the current
+		///     instance as a <see cref="T:string[]" />.
 		/// </summary>
 		/// <param name="id">
-		///    A <see cref="ByteVector" /> object containing the ID of
-		///    the item to set.
+		///     A <see cref="ByteVector" /> object containing the ID of
+		///     the item to set.
 		/// </param>
 		/// <returns>
-		///    A <see cref="T:string[]" /> containing the values of the
-		///    specified item.
+		///     A <see cref="T:string[]" /> containing the values of the
+		///     specified item.
 		/// </returns>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="id" /> is <see langword="null" />.
+		///     <paramref name="id" /> is <see langword="null" />.
 		/// </exception>
 		/// <exception cref="ArgumentException">
-		///    <paramref name="id" /> isn't exactly four bytes long.
+		///     <paramref name="id" /> isn't exactly four bytes long.
 		/// </exception>
 		public string[] GetValuesAsStrings(ByteVector id)
 		{
 			if (id == null)
+			{
 				throw new ArgumentNullException("id");
+			}
 
 			if (id.Count != 4)
+			{
 				throw new ArgumentException(
 					"ID must be 4 bytes long.", "id");
+			}
 
 			var values = GetValues(id);
 
@@ -289,7 +334,9 @@ namespace Sander.DirLister.Core.TagLib.Riff
 
 				var length = data.Count;
 				while (length > 0 && data[length - 1] == 0)
+				{
 					length--;
+				}
 
 				result[i] = data
 					.ToString(StringType.UTF8, 0, length);
@@ -300,69 +347,79 @@ namespace Sander.DirLister.Core.TagLib.Riff
 
 
 		/// <summary>
-		///    Gets the values for a specified item in the current
-		///    instance as a <see cref="StringCollection" />.
+		///     Gets the values for a specified item in the current
+		///     instance as a <see cref="StringCollection" />.
 		/// </summary>
 		/// <param name="id">
-		///    A <see cref="ByteVector" /> object containing the ID of
-		///    the item to set.
+		///     A <see cref="ByteVector" /> object containing the ID of
+		///     the item to set.
 		/// </param>
 		/// <returns>
-		///    A <see cref="StringCollection" /> object containing the
-		///    values of the specified item.
+		///     A <see cref="StringCollection" /> object containing the
+		///     values of the specified item.
 		/// </returns>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="id" /> is <see langword="null" />.
+		///     <paramref name="id" /> is <see langword="null" />.
 		/// </exception>
 		/// <exception cref="ArgumentException">
-		///    <paramref name="id" /> isn't exactly four bytes long.
+		///     <paramref name="id" /> isn't exactly four bytes long.
 		/// </exception>
 		[Obsolete("Use GetValuesAsStrings(ByteVector)")]
 		public StringCollection GetValuesAsStringCollection(ByteVector id)
 		{
 			if (id == null)
+			{
 				throw new ArgumentNullException("id");
+			}
 
 			if (id.Count != 4)
+			{
 				throw new ArgumentException(
 					"ID must be 4 bytes long.", "id");
+			}
 
 			return new StringCollection(GetValuesAsStrings(id));
 		}
 
 
 		/// <summary>
-		///    Gets the value for a specified item in the current
-		///    instance as a <see cref="uint"/>.
+		///     Gets the value for a specified item in the current
+		///     instance as a <see cref="uint" />.
 		/// </summary>
 		/// <param name="id">
-		///    A <see cref="ByteVector" /> object containing the ID of
-		///    the item to set.
+		///     A <see cref="ByteVector" /> object containing the ID of
+		///     the item to set.
 		/// </param>
 		/// <returns>
-		///    A <see cref="uint" /> value containing the first value
-		///    with the specified ID that could be converted to an
-		///    integer, or zero if none could be found.
+		///     A <see cref="uint" /> value containing the first value
+		///     with the specified ID that could be converted to an
+		///     integer, or zero if none could be found.
 		/// </returns>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="id" /> is <see langword="null" />.
+		///     <paramref name="id" /> is <see langword="null" />.
 		/// </exception>
 		/// <exception cref="ArgumentException">
-		///    <paramref name="id" /> isn't exactly four bytes long.
+		///     <paramref name="id" /> isn't exactly four bytes long.
 		/// </exception>
 		public uint GetValueAsUInt(ByteVector id)
 		{
 			if (id == null)
+			{
 				throw new ArgumentNullException("id");
+			}
 
 			if (id.Count != 4)
+			{
 				throw new ArgumentException(
 					"ID must be 4 bytes long.", "id");
+			}
 
 			foreach (var text in GetValuesAsStrings(id))
 			{
 				if (uint.TryParse(text, out var value))
+				{
 					return value;
+				}
 			}
 
 			return 0;
@@ -370,142 +427,173 @@ namespace Sander.DirLister.Core.TagLib.Riff
 
 
 		/// <summary>
-		///    Sets the value for a specified item in the current
-		///    instance to the contents of a <see
-		///    cref="T:System.Collections.Generic.IEnumerable`1" />.
+		///     Sets the value for a specified item in the current
+		///     instance to the contents of a
+		///     <see
+		///         cref="T:System.Collections.Generic.IEnumerable`1" />
+		///     .
 		/// </summary>
 		/// <param name="id">
-		///    A <see cref="ByteVector" /> object containing the ID of
-		///    the item to set.
+		///     A <see cref="ByteVector" /> object containing the ID of
+		///     the item to set.
 		/// </param>
 		/// <param name="values">
-		///    A <see cref="T:System.Collections.Generic.IEnumerable`1"
-		///    /> containing the <see cref="ByteVector"/> objects to
-		///    store in the specified item.
+		///     A <see cref="T:System.Collections.Generic.IEnumerable`1" /> containing the <see cref="ByteVector" /> objects to
+		///     store in the specified item.
 		/// </param>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="id" /> is <see langword="null" />.
+		///     <paramref name="id" /> is <see langword="null" />.
 		/// </exception>
 		/// <exception cref="ArgumentException">
-		///    <paramref name="id" /> isn't exactly four bytes long.
+		///     <paramref name="id" /> isn't exactly four bytes long.
 		/// </exception>
 		public void SetValue(ByteVector id,
 			IEnumerable<ByteVector> values)
 		{
 			if (id == null)
+			{
 				throw new ArgumentNullException("id");
+			}
 
 			if (id.Count != 4)
+			{
 				throw new ArgumentException(
 					"ID must be 4 bytes long.", "id");
+			}
 
 			if (values == null)
+			{
 				RemoveValue(id);
+			}
 			else if (ContainsKey(id))
+			{
 				this[id] = new ByteVectorCollection(values);
+			}
 			else
+			{
 				Add(id, new ByteVectorCollection(values));
+			}
 		}
 
 
 		/// <summary>
-		///    Sets the value for a specified item in the current
-		///    instance to the contents of a <see cref="T:ByteVector[]"
-		///    />.
+		///     Sets the value for a specified item in the current
+		///     instance to the contents of a <see cref="T:ByteVector[]" />.
 		/// </summary>
 		/// <param name="id">
-		///    A <see cref="ByteVector" /> object containing the ID of
-		///    the item to set.
+		///     A <see cref="ByteVector" /> object containing the ID of
+		///     the item to set.
 		/// </param>
 		/// <param name="values">
-		///    A <see cref="T:ByteVector[]" /> containing the values to
-		///    store in the specified item.
+		///     A <see cref="T:ByteVector[]" /> containing the values to
+		///     store in the specified item.
 		/// </param>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="id" /> is <see langword="null" />.
+		///     <paramref name="id" /> is <see langword="null" />.
 		/// </exception>
 		/// <exception cref="ArgumentException">
-		///    <paramref name="id" /> isn't exactly four bytes long.
+		///     <paramref name="id" /> isn't exactly four bytes long.
 		/// </exception>
 		public void SetValue(ByteVector id, params ByteVector[] values)
 		{
 			if (id == null)
+			{
 				throw new ArgumentNullException("id");
+			}
 
 			if (id.Count != 4)
+			{
 				throw new ArgumentException(
 					"ID must be 4 bytes long.", "id");
+			}
 
 			if (values == null || values.Length == 0)
+			{
 				RemoveValue(id);
+			}
 			else
+			{
 				SetValue(id, values as IEnumerable<ByteVector>);
+			}
 		}
 
 
 		/// <summary>
-		///    Sets the value for a specified item in the current
-		///    instance to the value of a <see cref="uint"/>.
+		///     Sets the value for a specified item in the current
+		///     instance to the value of a <see cref="uint" />.
 		/// </summary>
 		/// <param name="id">
-		///    A <see cref="ByteVector" /> object containing the ID of
-		///    the item to set.
+		///     A <see cref="ByteVector" /> object containing the ID of
+		///     the item to set.
 		/// </param>
 		/// <param name="value">
-		///    A <see cref="uint" /> value to store in the specified
-		///    item.
+		///     A <see cref="uint" /> value to store in the specified
+		///     item.
 		/// </param>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="id" /> is <see langword="null" />.
+		///     <paramref name="id" /> is <see langword="null" />.
 		/// </exception>
 		/// <exception cref="ArgumentException">
-		///    <paramref name="id" /> isn't exactly four bytes long.
+		///     <paramref name="id" /> isn't exactly four bytes long.
 		/// </exception>
 		public void SetValue(ByteVector id, uint value)
 		{
 			if (id == null)
+			{
 				throw new ArgumentNullException("id");
+			}
 
 			if (id.Count != 4)
+			{
 				throw new ArgumentException(
 					"ID must be 4 bytes long.", "id");
+			}
 
 			if (value == 0)
+			{
 				RemoveValue(id);
+			}
 			else
+			{
 				SetValue(id, value.ToString(
 					CultureInfo.InvariantCulture));
+			}
 		}
 
 
 		/// <summary>
-		///    Sets the value for a specified item in the current
-		///    instance to the contents of a <see
-		///    cref="T:System.Collections.Generic.IEnumerable`1" />.
+		///     Sets the value for a specified item in the current
+		///     instance to the contents of a
+		///     <see
+		///         cref="T:System.Collections.Generic.IEnumerable`1" />
+		///     .
 		/// </summary>
 		/// <param name="id">
-		///    A <see cref="ByteVector" /> object containing the ID of
-		///    the item to set.
+		///     A <see cref="ByteVector" /> object containing the ID of
+		///     the item to set.
 		/// </param>
 		/// <param name="values">
-		///    A <see cref="T:System.Collections.Generic.IEnumerable`1"
-		///    /> containing the <see cref="string"/> objects to store
-		///    in the specified item.
+		///     A <see cref="T:System.Collections.Generic.IEnumerable`1" /> containing the <see cref="string" /> objects to store
+		///     in the specified item.
 		/// </param>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="id" /> is <see langword="null" />.
+		///     <paramref name="id" /> is <see langword="null" />.
 		/// </exception>
 		/// <exception cref="ArgumentException">
-		///    <paramref name="id" /> isn't exactly four bytes long.
+		///     <paramref name="id" /> isn't exactly four bytes long.
 		/// </exception>
 		public void SetValue(ByteVector id, IEnumerable<string> values)
 		{
 			if (id == null)
+			{
 				throw new ArgumentNullException("id");
+			}
 
 			if (id.Count != 4)
+			{
 				throw new ArgumentException(
 					"ID must be 4 bytes long.", "id");
+			}
 
 			if (values == null)
 			{
@@ -517,80 +605,101 @@ namespace Sander.DirLister.Core.TagLib.Riff
 			foreach (var value in values)
 			{
 				if (string.IsNullOrEmpty(value))
+				{
 					continue;
+				}
 
 				var data = ByteVector.FromString(value,
 					StringType.UTF8);
+
 				data.Add(0);
 				l.Add(data);
 			}
 
 			if (l.Count == 0)
+			{
 				RemoveValue(id);
+			}
 			else
+			{
 				SetValue(id, l);
+			}
 		}
 
 
 		/// <summary>
-		///    Sets the value for a specified item in the current
-		///    instance to the contents of a <see cref="T:string[]" />.
+		///     Sets the value for a specified item in the current
+		///     instance to the contents of a <see cref="T:string[]" />.
 		/// </summary>
 		/// <param name="id">
-		///    A <see cref="ByteVector" /> object containing the ID of
-		///    the item to set.
+		///     A <see cref="ByteVector" /> object containing the ID of
+		///     the item to set.
 		/// </param>
 		/// <param name="values">
-		///    A <see cref="T:string[]" /> containing the values to store
-		///    in the specified item.
+		///     A <see cref="T:string[]" /> containing the values to store
+		///     in the specified item.
 		/// </param>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="id" /> is <see langword="null" />.
+		///     <paramref name="id" /> is <see langword="null" />.
 		/// </exception>
 		/// <exception cref="ArgumentException">
-		///    <paramref name="id" /> isn't exactly four bytes long.
+		///     <paramref name="id" /> isn't exactly four bytes long.
 		/// </exception>
 		public void SetValue(ByteVector id, params string[] values)
 		{
 			if (id == null)
+			{
 				throw new ArgumentNullException("id");
+			}
 
 			if (id.Count != 4)
+			{
 				throw new ArgumentException(
 					"ID must be 4 bytes long.", "id");
+			}
 
 			if (values == null || values.Length == 0)
+			{
 				RemoveValue(id);
+			}
 			else
+			{
 				SetValue(id, values as IEnumerable<string>);
+			}
 		}
 
 
 		/// <summary>
-		///    Removes the item with the specified ID from the current
-		///    instance.
+		///     Removes the item with the specified ID from the current
+		///     instance.
 		/// </summary>
 		/// <param name="id">
-		///    A <see cref="ByteVector"/> object containing the ID of
-		///    the item to remove from the current instance.
+		///     A <see cref="ByteVector" /> object containing the ID of
+		///     the item to remove from the current instance.
 		/// </param>
 		/// <exception cref="ArgumentNullException">
-		///    <paramref name="id" /> is <see langword="null" />.
+		///     <paramref name="id" /> is <see langword="null" />.
 		/// </exception>
 		/// <exception cref="ArgumentException">
-		///    <paramref name="id" /> isn't exactly four bytes long.
+		///     <paramref name="id" /> isn't exactly four bytes long.
 		/// </exception>
 		public void RemoveValue(ByteVector id)
 		{
 			if (id == null)
+			{
 				throw new ArgumentNullException("id");
+			}
 
 			if (id.Count != 4)
+			{
 				throw new ArgumentException(
 					"ID must be 4 bytes long.", "id");
+			}
 
 			if (ContainsKey(id))
+			{
 				Remove(id);
+			}
 		}
 	}
 }

@@ -1,57 +1,61 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Sander.DirLister.UI.Properties" GeneratedClassName="Settings">
-  <Profiles />
-  <Settings>
-    <Setting Name="EnableShellIntegration" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="IncludeHidden" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="OutputFormats" Type="System.Collections.Specialized.StringCollection" Scope="User">
-      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;string&gt;Html&lt;/string&gt;
-&lt;/ArrayOfString&gt;</Value>
-    </Setting>
-    <Setting Name="OutputFolder" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="OpenAfter" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="IncludeSubfolders" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="IncludeSize" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="IncludeMediaInfo" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="EnableMultithreading" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="IncludeFileDates" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="DateFormat" Type="System.String" Scope="User">
-      <Value Profile="(Default)">yyyy-MM-dd HH:mm:ss</Value>
-    </Setting>
-    <Setting Name="CssFile" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="FirstRun" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="ShowProgressWindow" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="ShowUiFromShell" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="KeepOnTop" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-  </Settings>
+
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)"
+              GeneratedClassNamespace="Sander.DirLister.UI.Properties" GeneratedClassName="Settings">
+	<Profiles />
+	<Settings>
+		<Setting Name="EnableShellIntegration" Type="System.Boolean" Scope="User">
+			<Value Profile="(Default)">True</Value>
+		</Setting>
+		<Setting Name="IncludeHidden" Type="System.Boolean" Scope="User">
+			<Value Profile="(Default)">False</Value>
+		</Setting>
+		<Setting Name="OutputFormats" Type="System.Collections.Specialized.StringCollection" Scope="User">
+			<Value Profile="(Default)">
+				&lt;?xml version="1.0" encoding="utf-16"?&gt;
+				&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+				&lt;string&gt;Html&lt;/string&gt;
+				&lt;/ArrayOfString&gt;
+			</Value>
+		</Setting>
+		<Setting Name="OutputFolder" Type="System.String" Scope="User">
+			<Value Profile="(Default)" />
+		</Setting>
+		<Setting Name="OpenAfter" Type="System.Boolean" Scope="User">
+			<Value Profile="(Default)">True</Value>
+		</Setting>
+		<Setting Name="IncludeSubfolders" Type="System.Boolean" Scope="User">
+			<Value Profile="(Default)">True</Value>
+		</Setting>
+		<Setting Name="IncludeSize" Type="System.Boolean" Scope="User">
+			<Value Profile="(Default)">True</Value>
+		</Setting>
+		<Setting Name="IncludeMediaInfo" Type="System.Boolean" Scope="User">
+			<Value Profile="(Default)">False</Value>
+		</Setting>
+		<Setting Name="EnableMultithreading" Type="System.Boolean" Scope="User">
+			<Value Profile="(Default)">False</Value>
+		</Setting>
+		<Setting Name="IncludeFileDates" Type="System.Boolean" Scope="User">
+			<Value Profile="(Default)">False</Value>
+		</Setting>
+		<Setting Name="DateFormat" Type="System.String" Scope="User">
+			<Value Profile="(Default)">yyyy-MM-dd HH:mm:ss</Value>
+		</Setting>
+		<Setting Name="CssFile" Type="System.String" Scope="User">
+			<Value Profile="(Default)" />
+		</Setting>
+		<Setting Name="FirstRun" Type="System.Boolean" Scope="User">
+			<Value Profile="(Default)">True</Value>
+		</Setting>
+		<Setting Name="ShowProgressWindow" Type="System.Boolean" Scope="User">
+			<Value Profile="(Default)">True</Value>
+		</Setting>
+		<Setting Name="ShowUiFromShell" Type="System.Boolean" Scope="User">
+			<Value Profile="(Default)">False</Value>
+		</Setting>
+		<Setting Name="KeepOnTop" Type="System.Boolean" Scope="User">
+			<Value Profile="(Default)">True</Value>
+		</Setting>
+	</Settings>
 </SettingsFile>
