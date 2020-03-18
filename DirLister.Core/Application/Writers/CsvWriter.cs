@@ -13,7 +13,7 @@ namespace Sander.DirLister.Core.Application.Writers
 		internal CsvWriter(Configuration configuration, DateTimeOffset endDate, List<FileEntry> entries) : base(
 			configuration, endDate, entries)
 		{
-			_sb = new StringBuilder();
+			_sb = new StringBuilder(entries.Count * 256);
 		}
 
 
@@ -95,7 +95,7 @@ namespace Sander.DirLister.Core.Application.Writers
 
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		private static string Quote<T>(T value)
+		private static string Quote<T>(T value, string delimiter = ",")
 		{
 			if (value == null || value.Equals(default(T)))
 			{
@@ -109,8 +109,22 @@ namespace Sander.DirLister.Core.Application.Writers
 				case double d when d == 0d:
 					return "\"\"";
 				default:
-					return FormattableString.Invariant($"\"{value.ToString()}\"");
+					var valueString = value.ToString();
+					if (string.IsNullOrWhiteSpace(valueString))
+					{
+						return "\"\"";
+					}
+
+					if (valueString.Contains("\"") || valueString.Contains(delimiter) || valueString.Contains("\r") ||
+					    valueString.Contains("\n"))
+					{
+						return string.Concat("\"", valueString.Replace("\"", "\"\""), "\"");
+					}
+
+					return valueString;
 			}
+
+
 		}
 	}
 }

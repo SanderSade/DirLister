@@ -8,7 +8,7 @@ namespace Sander.DirLister.UI
 {
 	internal static class Program
 	{
-		internal static readonly string Version = "v2 beta 3";
+		internal static readonly string Version = "v2 beta 4";
 		internal static readonly string VersionString = $"DirLister {Version}";
 
 

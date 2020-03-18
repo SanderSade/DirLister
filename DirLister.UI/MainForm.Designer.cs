@@ -91,6 +91,7 @@ namespace Sander.DirLister.UI
 			this.MainTabs = new System.Windows.Forms.TabControl();
 			this.AboutTab = new System.Windows.Forms.TabPage();
 			this.AboutPanel = new System.Windows.Forms.Panel();
+			this.UpdateCheck = new System.Windows.Forms.Button();
 			this.ConfigurationFolderButton = new System.Windows.Forms.Button();
 			this.ProgramFolderButton = new System.Windows.Forms.Button();
 			this.panel1 = new System.Windows.Forms.Panel();
@@ -102,6 +103,7 @@ namespace Sander.DirLister.UI
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.MoveUp = new System.Windows.Forms.ToolStripMenuItem();
 			this.MoveDown = new System.Windows.Forms.ToolStripMenuItem();
+			this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.HistoryButton = new Sander.DirLister.UI.App.SplitButton();
 			this.txt2re = new Sander.DirLister.UI.App.HyperlinkLabel();
 			this.regexr = new Sander.DirLister.UI.App.HyperlinkLabel();
@@ -109,7 +111,6 @@ namespace Sander.DirLister.UI
 			this.hyperlinkLabel1 = new Sander.DirLister.UI.App.HyperlinkLabel();
 			this.WikiLabel = new Sander.DirLister.UI.App.HyperlinkLabel();
 			this.HomeLabel = new Sander.DirLister.UI.App.HyperlinkLabel();
-			this.UpdateCheck = new System.Windows.Forms.Button();
 			this.BottomPanel.SuspendLayout();
 			this.HistoryMenu.SuspendLayout();
 			this.LogTab.SuspendLayout();
@@ -195,6 +196,8 @@ namespace Sander.DirLister.UI
 			this.SetDefault.Size = new System.Drawing.Size(121, 63);
 			this.SetDefault.TabIndex = 0;
 			this.SetDefault.Text = "Set as &default options";
+			this.ToolTip.SetToolTip(this.SetDefault, "Set current options as default options.\r\nThis is especially useful when running \r" +
+        "\nDirLister silently from Explorer");
 			this.SetDefault.UseVisualStyleBackColor = true;
 			this.SetDefault.Click += new System.EventHandler(this.SetDefault_Click);
 			// 
@@ -340,6 +343,7 @@ namespace Sander.DirLister.UI
 			this.IncludeMediaInfo.Size = new System.Drawing.Size(84, 19);
 			this.IncludeMediaInfo.TabIndex = 2;
 			this.IncludeMediaInfo.Text = "Media info";
+			this.ToolTip.SetToolTip(this.IncludeMediaInfo, resources.GetString("IncludeMediaInfo.ToolTip"));
 			this.IncludeMediaInfo.UseVisualStyleBackColor = true;
 			// 
 			// IncludeFileDates
@@ -419,6 +423,8 @@ namespace Sander.DirLister.UI
 			this.CsvCheck.TabIndex = 2;
 			this.CsvCheck.Tag = "csv";
 			this.CsvCheck.Text = "CSV";
+			this.ToolTip.SetToolTip(this.CsvCheck, "Comma Separated Values.\r\nThe result is compliant with RFC 4180 standard\r\nand can " +
+        "be opened in any compliant viewer\r\nwithout modifications");
 			this.CsvCheck.UseVisualStyleBackColor = true;
 			// 
 			// TxtCheck
@@ -441,6 +447,7 @@ namespace Sander.DirLister.UI
 			this.HtmlCheck.TabIndex = 0;
 			this.HtmlCheck.Tag = "html";
 			this.HtmlCheck.Text = "HTML";
+			this.ToolTip.SetToolTip(this.HtmlCheck, "HTML 5 with minimal JS");
 			this.HtmlCheck.UseVisualStyleBackColor = true;
 			// 
 			// groupBox1
@@ -465,6 +472,7 @@ namespace Sander.DirLister.UI
 			this.OpenFolderButton.Size = new System.Drawing.Size(75, 23);
 			this.OpenFolderButton.TabIndex = 3;
 			this.OpenFolderButton.Text = "Open";
+			this.ToolTip.SetToolTip(this.OpenFolderButton, "Open the currently selected output folder");
 			this.OpenFolderButton.UseVisualStyleBackColor = true;
 			this.OpenFolderButton.Click += new System.EventHandler(this.OpenFolderButton_Click);
 			// 
@@ -476,6 +484,9 @@ namespace Sander.DirLister.UI
 			this.OpenAfter.Size = new System.Drawing.Size(253, 19);
 			this.OpenAfter.TabIndex = 2;
 			this.OpenAfter.Text = "Open output file/folder after list generation";
+			this.ToolTip.SetToolTip(this.OpenAfter, "If only one output format is selected,\r\nDirLister will open the file in default v" +
+        "iewer\r\nafter the list creation.\r\n\r\nIf there are multiple formats selected,\r\noutp" +
+        "ut folder is opened instead.");
 			this.OpenAfter.UseVisualStyleBackColor = true;
 			// 
 			// SelectOutputFolder
@@ -511,6 +522,7 @@ namespace Sander.DirLister.UI
 			this.InputTab.Size = new System.Drawing.Size(937, 347);
 			this.InputTab.TabIndex = 0;
 			this.InputTab.Text = "Input";
+			this.InputTab.ToolTipText = "Input options";
 			this.InputTab.UseVisualStyleBackColor = true;
 			// 
 			// RemoveAllButton
@@ -521,6 +533,7 @@ namespace Sander.DirLister.UI
 			this.RemoveAllButton.Size = new System.Drawing.Size(93, 23);
 			this.RemoveAllButton.TabIndex = 7;
 			this.RemoveAllButton.Text = "Remove &all";
+			this.ToolTip.SetToolTip(this.RemoveAllButton, "Remove all currently selected drives and directories");
 			this.RemoveAllButton.UseVisualStyleBackColor = true;
 			this.RemoveAllButton.Click += new System.EventHandler(this.RemoveAll_Click);
 			// 
@@ -535,6 +548,7 @@ namespace Sander.DirLister.UI
 			this.DirectoryList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
 			this.DirectoryList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+			this.DirectoryList.HideSelection = false;
 			this.DirectoryList.LabelWrap = false;
 			this.DirectoryList.Location = new System.Drawing.Point(9, 37);
 			this.DirectoryList.Name = "DirectoryList";
@@ -556,6 +570,7 @@ namespace Sander.DirLister.UI
 			this.BrowseButton.Size = new System.Drawing.Size(103, 23);
 			this.BrowseButton.TabIndex = 2;
 			this.BrowseButton.Text = "Select &folder";
+			this.ToolTip.SetToolTip(this.BrowseButton, "Add input folders. \r\nYou can also select local and network drives.");
 			this.BrowseButton.UseVisualStyleBackColor = true;
 			this.BrowseButton.Click += new System.EventHandler(this.BrowseButton_Click);
 			// 
@@ -634,6 +649,7 @@ namespace Sander.DirLister.UI
 			this.WildcardList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.WildcardColumn});
 			this.WildcardList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+			this.WildcardList.HideSelection = false;
 			this.WildcardList.LabelWrap = false;
 			this.WildcardList.Location = new System.Drawing.Point(7, 37);
 			this.WildcardList.Name = "WildcardList";
@@ -802,6 +818,20 @@ namespace Sander.DirLister.UI
 			this.AboutPanel.Name = "AboutPanel";
 			this.AboutPanel.Size = new System.Drawing.Size(395, 322);
 			this.AboutPanel.TabIndex = 7;
+			// 
+			// UpdateCheck
+			// 
+			this.UpdateCheck.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.UpdateCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.UpdateCheck.Location = new System.Drawing.Point(0, 292);
+			this.UpdateCheck.Name = "UpdateCheck";
+			this.UpdateCheck.Size = new System.Drawing.Size(395, 30);
+			this.UpdateCheck.TabIndex = 16;
+			this.UpdateCheck.Text = "Check for updates";
+			this.ToolTip.SetToolTip(this.UpdateCheck, "Check for updates from GitHub,\r\nNo information whatsoever is sent to \r\nGitHub abo" +
+        "ut the current user, version etc");
+			this.UpdateCheck.UseVisualStyleBackColor = true;
+			this.UpdateCheck.Click += new System.EventHandler(this.UpdateCheck_Click);
 			// 
 			// ConfigurationFolderButton
 			// 
@@ -992,18 +1022,6 @@ namespace Sander.DirLister.UI
 			this.HomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.HomeLabel.Url = "https://github.com/SanderSade/DirLister";
 			// 
-			// UpdateCheck
-			// 
-			this.UpdateCheck.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.UpdateCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.UpdateCheck.Location = new System.Drawing.Point(0, 292);
-			this.UpdateCheck.Name = "UpdateCheck";
-			this.UpdateCheck.Size = new System.Drawing.Size(395, 30);
-			this.UpdateCheck.TabIndex = 16;
-			this.UpdateCheck.Text = "Check for updates";
-			this.UpdateCheck.UseVisualStyleBackColor = true;
-			this.UpdateCheck.Click += new System.EventHandler(this.UpdateCheck_Click);
-			// 
 			// MainForm
 			// 
 			this.AllowDrop = true;
@@ -1133,6 +1151,7 @@ namespace Sander.DirLister.UI
 		private System.Windows.Forms.Button ProgramFolderButton;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.Button UpdateCheck;
+		private System.Windows.Forms.ToolTip ToolTip;
 	}
 }
 
