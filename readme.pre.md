@@ -38,9 +38,15 @@ Click on image to enlarge
 ### TODO
 * Win32 Installer
 * UWP installer
-* Hints on form elements
 * Release DirLister.Core as NuGet package
-* Improve JSON format?
+#### Ideas and plans for v2.1
+* Improve JSON format ([#1](https://github.com/SanderSade/DirLister/issues/1))
+* Advanced HTML output ([#9](https://github.com/SanderSade/DirLister/issues/9))
+* Folders-only mode ([#5](https://github.com/SanderSade/DirLister/issues/5), [#7](https://github.com/SanderSade/DirLister/issues/7))
+* Investigate speeding up gathering files in NTFS drives, e.g. https://github.com/search?l=C%23&q=ntfs&type=Repositories
+#### Additional plans for the future
+* Move over to .NET 5 (this will be DirLister v3)
+
 
 #### Advanced
 While most of the preferences can be set from UI, there are some advanced options that are available only by manually editing the configuration file (user.config).
