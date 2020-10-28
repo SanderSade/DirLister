@@ -81,7 +81,7 @@ namespace Sander.DirLister.Core.Application.Writers
 				return string.Empty;
 			}
 
-			var sb = new StringBuilder();
+			var sb = new StringBuilder(32);
 			if (time.Hours > 0)
 			{
 				sb.Append($"{time.Hours}h");

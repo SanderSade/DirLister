@@ -13,7 +13,7 @@ namespace Sander.DirLister.Core.Application.Writers
 
 		internal MarkdownWriter(Configuration configuration, DateTimeOffset endDate, List<FileEntry> entries) : base(configuration, endDate, entries)
 		{
-			_sb = new StringBuilder();
+			_sb = new StringBuilder(entries.Count * 256);
 		}
 
 

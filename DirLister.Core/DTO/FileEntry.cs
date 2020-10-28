@@ -54,7 +54,9 @@ namespace Sander.DirLister.Core
 		public DateTimeOffset Created { get; set; }
 
 		[DataMember(Name = "created", EmitDefaultValue = false, IsRequired = false, Order = 3)]
+#pragma warning disable IDE0051 // Remove unused private members
 		private string CreatedString => Created == DateTimeOffset.MinValue ? null : Created.ToLocalTime().ToString("O", CultureInfo.InvariantCulture);
+#pragma warning restore IDE0051 // Remove unused private members
 
 		/// <summary>
 		///     Last-modified date

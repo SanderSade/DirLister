@@ -12,7 +12,7 @@ namespace Sander.DirLister.Core.Application.Writers
 
 		public TxtWriter(Configuration configuration, DateTimeOffset endDate, List<FileEntry> entries) : base(configuration, endDate, entries)
 		{
-			_sb = new StringBuilder();
+			_sb = new StringBuilder(entries.Count * 256);
 		}
 
 

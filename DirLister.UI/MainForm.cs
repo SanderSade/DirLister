@@ -71,8 +71,7 @@ namespace Sander.DirLister.UI
 
 			foreach (var folder in folders)
 			{
-				if ((File.GetAttributes(folder)
-& FileAttributes.Directory) == 0)
+				if ((File.GetAttributes(folder) & FileAttributes.Directory) == 0)
 				{
 					continue;
 				}

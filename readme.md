@@ -64,6 +64,11 @@ While most of the preferences can be set from UI, there are some advanced option
 <h3>Version history</h3>
 
 
+<h4>v2.beta 5</h4>
+<ul>
+	<li>Further code cleanup</li>
+</ul>
+
 <h4>v2.beta 4</h4>
 <ul>
 	<li>Improve CSV compatibility with RFC 4180 standard</li>

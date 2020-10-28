@@ -19,7 +19,7 @@ namespace Sander.DirLister.Core.Application.Writers
 		public HtmlWriter(Configuration configuration, DateTimeOffset endDate, List<FileEntry> entries) : base(
 			configuration, endDate, entries)
 		{
-			_sb = new StringBuilder();
+			_sb = new StringBuilder(entries.Count * 256);
 			_needsFileInfo = Configuration.IncludeSize || Configuration.IncludeFileDates ||
 			                 Configuration.IncludeMediaInfo;
 		}
@@ -92,7 +92,7 @@ namespace Sander.DirLister.Core.Application.Writers
 				return string.Empty;
 			}
 
-			var sb = new StringBuilder("<span>");
+			var sb = new StringBuilder("<span>", 1024);
 			if (Configuration.IncludeSize)
 			{
 				sb.Append(entry.ReadableSize);
