@@ -18,11 +18,11 @@ namespace Sander.DirLister.UI
 		[STAThread]
 		private static void Main(params string[] folders)
 		{
-			if (folders != null && folders.Length == 1)
+			if (folders?.Length == 1)
 			{
 				var command = folders[0].Trim('/', '-');
-				if (string.Compare(command, "uninstall", StringComparison.OrdinalIgnoreCase) == 0
-				    || string.Compare(command, "remove", StringComparison.OrdinalIgnoreCase) == 0)
+				if (string.Equals(command, "uninstall", StringComparison.OrdinalIgnoreCase)
+				    || string.Equals(command, "remove", StringComparison.OrdinalIgnoreCase))
 				{
 					ShellIntegration.Remove();
 					Environment.Exit(0);

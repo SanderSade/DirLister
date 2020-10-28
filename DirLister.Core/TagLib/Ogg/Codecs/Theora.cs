@@ -9,7 +9,7 @@ namespace Sander.DirLister.Core.TagLib.Ogg.Codecs
 	///     to provide support for processing Ogg
 	///     Theora bitstreams.
 	/// </summary>
-	public class Theora : Codec, IVideoCodec
+	public sealed class Theora : Codec, IVideoCodec
 	{
 		/// <summary>
 		///     Contains the file identifier.
@@ -159,12 +159,12 @@ namespace Sander.DirLister.Core.TagLib.Ogg.Codecs
 		{
 			if (packet == null)
 			{
-				throw new ArgumentNullException("packet");
+				throw new ArgumentNullException(nameof(packet));
 			}
 
 			if (index < 0)
 			{
-				throw new ArgumentOutOfRangeException("index",
+				throw new ArgumentOutOfRangeException(nameof(index),
 					"index must be at least zero.");
 			}
 

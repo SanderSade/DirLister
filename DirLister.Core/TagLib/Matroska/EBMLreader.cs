@@ -260,12 +260,8 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 
 				return true;
 			}
-			catch (Exception ex)
+			catch (Exception) when (!throwException)
 			{
-				if (throwException)
-				{
-					throw ex;
-				}
 
 				return false;
 			}
@@ -405,7 +401,7 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 
 			// Update fields
 			var woffset = newsize_length - size_length;
-			DataOffset = DataOffset + woffset;
+			DataOffset += woffset;
 			DataSize = value - woffset;
 
 			return (long)woffset;

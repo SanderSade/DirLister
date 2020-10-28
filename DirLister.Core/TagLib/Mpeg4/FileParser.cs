@@ -66,7 +66,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4
 		/// </exception>
 		public FileParser(TagLib.File file)
 		{
-			this.file = file ?? throw new ArgumentNullException("file");
+			this.file = file ?? throw new ArgumentNullException(nameof(file));
 			first_header = new BoxHeader(file, 0);
 
 			if (first_header.BoxType != "ftyp")

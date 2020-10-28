@@ -10,7 +10,7 @@ namespace Sander.DirLister.Core.TagLib.Flac
 		/// <summary>
 		///     Contains the block header.
 		/// </summary>
-		private BlockHeader header;
+		private readonly BlockHeader header;
 
 
 		/// <summary>
@@ -39,7 +39,7 @@ namespace Sander.DirLister.Core.TagLib.Flac
 		{
 			if (data == null)
 			{
-				throw new ArgumentNullException("data");
+				throw new ArgumentNullException(nameof(data));
 			}
 
 			if (header.BlockSize != data.Count)
@@ -75,7 +75,7 @@ namespace Sander.DirLister.Core.TagLib.Flac
 		{
 			if (data == null)
 			{
-				throw new ArgumentNullException("data");
+				throw new ArgumentNullException(nameof(data));
 			}
 
 			header = new BlockHeader(type, (uint)data.Count);

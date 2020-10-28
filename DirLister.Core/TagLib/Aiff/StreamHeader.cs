@@ -97,7 +97,7 @@ namespace Sander.DirLister.Core.TagLib.Aiff
 		{
 			if (data == null)
 			{
-				throw new ArgumentNullException("data");
+				throw new ArgumentNullException(nameof(data));
 			}
 
 			if (!data.StartsWith(FileIdentifier))

@@ -93,7 +93,7 @@ namespace Sander.DirLister.Core.Application.Writers
 		{
 			return value == null || value.Equals(default(T))
 				? string.Empty
-				: FormattableString.Invariant($" {name}: {value.ToString()},");
+				: FormattableString.Invariant($" {name}: {value},");
 		}
 
 

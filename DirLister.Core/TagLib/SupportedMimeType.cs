@@ -3,8 +3,6 @@ using System.Collections.Generic;
 
 namespace Sander.DirLister.Core.TagLib
 {
-	/// <summary>
-	/// </summary>
 	[AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
 	public sealed class SupportedMimeType : Attribute
 	{
@@ -51,10 +49,10 @@ namespace Sander.DirLister.Core.TagLib
 		///         <see cref="SupportedMimeType(string,string)" /> strictly
 		///         to register extensions, using "taglib/ext" for the mime
 		///         type. Eg.
-		///         <c>
+		///         <code>
 		///             SupportedMimeType("taglib/mp3",
 		///             "mp3")
-		///         </c>
+		///         </code>
 		///         .
 		///     </para>
 		/// </remarks>
@@ -90,10 +88,10 @@ namespace Sander.DirLister.Core.TagLib
 		///         <see cref="SupportedMimeType(string,string)" /> strictly
 		///         to register extensions, using "taglib/ext" for the mime
 		///         type. Eg.
-		///         <c>
+		///         <code>
 		///             SupportedMimeType("taglib/mp3",
 		///             "mp3")
-		///         </c>
+		///         </code>
 		///         .
 		///     </para>
 		/// </remarks>

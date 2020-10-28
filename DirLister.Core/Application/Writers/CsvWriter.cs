@@ -123,8 +123,6 @@ namespace Sander.DirLister.Core.Application.Writers
 
 					return valueString;
 			}
-
-
 		}
 	}
 }

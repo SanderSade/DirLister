@@ -68,7 +68,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 		{
 			if (data == null)
 			{
-				throw new ArgumentNullException("data");
+				throw new ArgumentNullException(nameof(data));
 			}
 
 			// Check to see if a valid VBRI header is available.
@@ -89,9 +89,6 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 			// The number of Frames are found at Posistion 14
 			TotalFrames = data.Mid(position, 4)
 				.ToUInt();
-
-			position += 4;
-
 			Present = true;
 		}
 

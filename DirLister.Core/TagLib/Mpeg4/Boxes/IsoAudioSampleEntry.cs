@@ -61,7 +61,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4.Boxes
 		{
 			if (file == null)
 			{
-				throw new ArgumentNullException("file");
+				throw new ArgumentNullException(nameof(file));
 			}
 
 			file.Seek(base.DataPosition + 8);

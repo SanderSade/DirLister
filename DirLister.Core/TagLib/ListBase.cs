@@ -336,7 +336,7 @@ namespace Sander.DirLister.Core.TagLib
 		{
 			if (item == null)
 			{
-				throw new ArgumentNullException("item");
+				throw new ArgumentNullException(nameof(item));
 			}
 
 			var i = 0;
@@ -371,7 +371,7 @@ namespace Sander.DirLister.Core.TagLib
 		{
 			if (item == null)
 			{
-				throw new ArgumentNullException("item");
+				throw new ArgumentNullException(nameof(item));
 			}
 
 			SortedInsert(item, false);

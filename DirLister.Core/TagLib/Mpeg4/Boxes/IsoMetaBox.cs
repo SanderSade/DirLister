@@ -71,14 +71,14 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4.Boxes
 		{
 			if (handlerType == null)
 			{
-				throw new ArgumentNullException("handlerType");
+				throw new ArgumentNullException(nameof(handlerType));
 			}
 
 			if (handlerType.Count < 4)
 			{
 				throw new ArgumentException(
 					"The handler type must be four bytes long.",
-					"handlerType");
+					nameof(handlerType));
 			}
 
 			children = new List<Box>();

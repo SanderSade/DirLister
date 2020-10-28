@@ -54,10 +54,6 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 	[SupportedMimeType("video/webm", "webm")]
 	public sealed class File : TagLib.File
 	{
-		/// <summary>
-		///     Contains the media properties.
-		/// </summary>
-		private readonly Properties properties;
 
 		private readonly List<Track> tracks = new List<Track>();
 		private TimeSpan duration;
@@ -156,7 +152,7 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 				codecs.Add(track);
 			}
 
-			properties = new Properties(duration, codecs);
+			Properties = new Properties(duration, codecs);
 		}
 
 
@@ -189,7 +185,7 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 		///     media properties of the file represented by the current
 		///     instance.
 		/// </value>
-		public override Properties Properties => properties;
+		public override Properties Properties { get; }
 
 
 		/// <summary>
@@ -390,9 +386,7 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 				throw new Exception("Invalid Matroska file, missing data 0x1A.");
 			}
 
-			offset = offset + (ulong)idx - buffer_size;
-
-			return offset;
+			return offset + (ulong)idx - buffer_size;
 		}
 
 
@@ -610,10 +604,6 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 		private void ReadAttachedFile(EBMLreader element, ReadStyle propertiesStyle)
 		{
 			ulong i = 0;
-#pragma warning disable 219 // Assigned, never read
-			string file_name = null, file_mime = null, file_desc = null;
-			EBMLreader file_data = null;
-			ulong file_uid = 0;
 #pragma warning restore 219
 
 			while (i < element.DataSize)
@@ -625,19 +615,19 @@ namespace Sander.DirLister.Core.TagLib.Matroska
 				switch (matroska_id)
 				{
 					case MatroskaID.FileName:
-						file_name = child.ReadString();
+#pragma warning disable 219 // Assigned, never read
+						var file_name = child.ReadString();
 						break;
 					case MatroskaID.FileMimeType:
-						file_mime = child.ReadString();
+						var file_mime = child.ReadString();
 						break;
 					case MatroskaID.FileDescription:
-						file_desc = child.ReadString();
+						var file_desc = child.ReadString();
 						break;
 					case MatroskaID.FileData:
-						file_data = child;
 						break;
 					case MatroskaID.FileUID:
-						file_uid = child.ReadULong();
+						var file_uid = child.ReadULong();
 						break;
 				}
 

@@ -125,12 +125,12 @@ namespace Sander.DirLister.Core.TagLib
 		{
 			if (value == null)
 			{
-				throw new ArgumentNullException("value");
+				throw new ArgumentNullException(nameof(value));
 			}
 
 			if (pattern == null)
 			{
-				throw new ArgumentNullException("pattern");
+				throw new ArgumentNullException(nameof(pattern));
 			}
 
 			var list = new StringCollection();

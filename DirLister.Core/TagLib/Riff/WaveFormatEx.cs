@@ -18,11 +18,6 @@ namespace Sander.DirLister.Core.TagLib.Riff
 		/// </summary>
 		private readonly uint samples_per_second;
 
-		/// <summary>
-		///     Contains the number of bits per sample.
-		/// </summary>
-		private readonly ushort bits_per_sample;
-
 
 		/// <summary>
 		///     Constructs and initializes a new instance of
@@ -77,13 +72,13 @@ namespace Sander.DirLister.Core.TagLib.Riff
 		{
 			if (data == null)
 			{
-				throw new ArgumentNullException("data");
+				throw new ArgumentNullException(nameof(data));
 			}
 
 			if (offset < 0)
 			{
 				throw new ArgumentOutOfRangeException(
-					"offset");
+					nameof(offset));
 			}
 
 			if (offset + 16 > data.Count)
@@ -104,7 +99,7 @@ namespace Sander.DirLister.Core.TagLib.Riff
 			AverageBytesPerSecond = data.Mid(offset + 8, 4)
 				.ToUInt(false);
 
-			bits_per_sample = data.Mid(offset + 14, 2)
+			BitsPerSample = data.Mid(offset + 14, 2)
 				.ToUShort(false);
 		}
 
@@ -142,9 +137,9 @@ namespace Sander.DirLister.Core.TagLib.Riff
 		///     A <see cref="ushort" /> value containing the bits per
 		///     sample of the audio.
 		/// </returns>
-		public ushort BitsPerSample => bits_per_sample;
+		public ushort BitsPerSample { get; }
 
-		int ILosslessAudioCodec.BitsPerSample => bits_per_sample;
+		int ILosslessAudioCodec.BitsPerSample => BitsPerSample;
 
 		/// <summary>
 		///     Gets the bitrate of the audio represented by the current
@@ -624,7 +619,7 @@ namespace Sander.DirLister.Core.TagLib.Riff
 				return (int)(FormatTag ^ channels ^
 				             samples_per_second ^
 				             AverageBytesPerSecond ^
-				             bits_per_sample);
+							 BitsPerSample);
 			}
 		}
 
@@ -672,7 +667,7 @@ namespace Sander.DirLister.Core.TagLib.Riff
 			       channels == other.channels &&
 			       samples_per_second == other.samples_per_second &&
 			       AverageBytesPerSecond == other.AverageBytesPerSecond &&
-			       bits_per_sample == other.bits_per_sample;
+				   BitsPerSample == other.BitsPerSample;
 		}
 
 

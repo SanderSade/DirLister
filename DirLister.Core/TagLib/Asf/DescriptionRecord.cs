@@ -298,7 +298,7 @@ namespace Sander.DirLister.Core.TagLib.Asf
 		{
 			if (file == null)
 			{
-				throw new ArgumentNullException("file");
+				throw new ArgumentNullException(nameof(file));
 			}
 
 			if (!Parse(file))
@@ -539,8 +539,7 @@ namespace Sander.DirLister.Core.TagLib.Asf
 		/// </returns>
 		public ByteVector Render()
 		{
-			ByteVector value = null;
-
+			ByteVector value;
 			switch (Type)
 			{
 				case DataType.Unicode:

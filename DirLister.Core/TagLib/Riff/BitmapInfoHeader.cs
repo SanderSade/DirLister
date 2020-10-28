@@ -19,11 +19,6 @@ namespace Sander.DirLister.Core.TagLib.Riff
 		/// </summary>
 		private readonly uint height;
 
-		/// <summary>
-		///     Contains the number of important colors.
-		/// </summary>
-		private readonly uint colors_important;
-
 
 		/// <summary>
 		///     Constructs and initializes a new instance of
@@ -78,7 +73,7 @@ namespace Sander.DirLister.Core.TagLib.Riff
 		{
 			if (data == null)
 			{
-				throw new ArgumentNullException("data");
+				throw new ArgumentNullException(nameof(data));
 			}
 
 			if (offset + 40 > data.Count)
@@ -90,7 +85,7 @@ namespace Sander.DirLister.Core.TagLib.Riff
 			if (offset < 0)
 			{
 				throw new ArgumentOutOfRangeException(
-					"offset");
+					nameof(offset));
 			}
 
 			HeaderSize = data.Mid(offset + 0, 4)
@@ -121,7 +116,7 @@ namespace Sander.DirLister.Core.TagLib.Riff
 			ColorsUsed = data.Mid(offset + 32, 4)
 				.ToUInt(false);
 
-			colors_important = data.Mid(offset + 36, 4)
+			ImportantColors = data.Mid(offset + 36, 4)
 				.ToUInt(false);
 		}
 
@@ -210,7 +205,7 @@ namespace Sander.DirLister.Core.TagLib.Riff
 		///     A <see cref="uint" /> value containing the number of
 		///     important colors.
 		/// </value>
-		public uint ImportantColors => colors_important;
+		public uint ImportantColors { get; }
 
 		/// <summary>
 		///     Gets the width of the video represented by the current
@@ -678,7 +673,7 @@ namespace Sander.DirLister.Core.TagLib.Riff
 				             BitCount ^ CompressionId.ToUInt() ^
 				             ImageSize ^ XPixelsPerMeter ^
 				             YPixelsPerMeter ^ ColorsUsed ^
-				             colors_important);
+							 ImportantColors);
 			}
 		}
 
@@ -730,7 +725,7 @@ namespace Sander.DirLister.Core.TagLib.Riff
 			       XPixelsPerMeter == other.XPixelsPerMeter &&
 			       YPixelsPerMeter == other.YPixelsPerMeter &&
 			       ColorsUsed == other.ColorsUsed &&
-			       colors_important == other.colors_important;
+				   ImportantColors == other.ImportantColors;
 		}
 
 

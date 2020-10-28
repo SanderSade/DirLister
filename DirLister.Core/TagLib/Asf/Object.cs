@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace Sander.DirLister.Core.TagLib.Asf
 {
@@ -34,14 +34,14 @@ namespace Sander.DirLister.Core.TagLib.Asf
 		{
 			if (file == null)
 			{
-				throw new ArgumentNullException("file");
+				throw new ArgumentNullException(nameof(file));
 			}
 
 			if (position < 0 ||
 			    position > file.Length - 24)
 			{
 				throw new ArgumentOutOfRangeException(
-					"position");
+					nameof(position));
 			}
 
 			file.Seek(position);
@@ -117,7 +117,7 @@ namespace Sander.DirLister.Core.TagLib.Asf
 		protected ByteVector Render(ByteVector data)
 		{
 			var length = (ulong)
-				((data != null ? data.Count : 0) + 24);
+				(((data?.Count) ?? 0) + 24);
 
 			ByteVector v = Guid.ToByteArray();
 			v.Add(RenderQWord(length));

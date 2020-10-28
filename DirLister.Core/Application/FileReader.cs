@@ -113,14 +113,14 @@ namespace Sander.DirLister.Core.Application
 						{
 							var fullPath = string.Concat(path, "\\", findData.cFileName);
 							// Check if this is a directory and not a symbolic link since symbolic links could lead to repeated files and folders as well as infinite loops.
-							if (findData.dwFileAttributes.HasFlag(FileAttributes.Directory) && !findData.dwFileAttributes.HasFlag(FileAttributes.ReparsePoint))
+							if ((findData.dwFileAttributes & FileAttributes.Directory) != 0 && (findData.dwFileAttributes & FileAttributes.ReparsePoint) == 0)
 							{
 								if (FindNextFile(fullPath, out var subDirectoryFileList))
 								{
 									fileList.AddRange(subDirectoryFileList);
 								}
 							}
-							else if (!findData.dwFileAttributes.HasFlag(FileAttributes.Directory))
+							else if ((findData.dwFileAttributes & FileAttributes.Directory) == 0)
 							{
 								var fileEntry = GetFileEntry(fullPath, findData);
 								if (fileEntry != null)
@@ -177,14 +177,14 @@ namespace Sander.DirLister.Core.Application
 						{
 							var fullPath = path + findData.cFileName;
 							// Check if this is a directory and not a symbolic link since symbolic links could lead to repeated files and folders as well as infinite loops.
-							if (findData.dwFileAttributes.HasFlag(FileAttributes.Directory) && !findData.dwFileAttributes.HasFlag(FileAttributes.ReparsePoint))
+							if ((findData.dwFileAttributes & FileAttributes.Directory) != 0 && (findData.dwFileAttributes & FileAttributes.ReparsePoint) == 0)
 							{
 								if (_configuration.IncludeSubfolders)
 								{
 									directoryList.Add(fullPath);
 								}
 							}
-							else if (!findData.dwFileAttributes.HasFlag(FileAttributes.Directory))
+							else if ((findData.dwFileAttributes & FileAttributes.Directory) == 0)
 							{
 								var fileEntry = GetFileEntry(fullPath, findData);
 								if (fileEntry != null)
@@ -235,7 +235,7 @@ namespace Sander.DirLister.Core.Application
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		private FileEntry GetFileEntry(string fullPath, WIN32_FIND_DATAW findData)
 		{
-			if (!_configuration.IncludeHidden && findData.dwFileAttributes.HasFlag(FileAttributes.System | FileAttributes.Hidden))
+			if (!_configuration.IncludeHidden && (findData.dwFileAttributes & (FileAttributes.System | FileAttributes.Hidden)) == (FileAttributes.System | FileAttributes.Hidden))
 			{
 				return null;
 			}
@@ -243,7 +243,7 @@ namespace Sander.DirLister.Core.Application
 			var fileEntry = new FileEntry
 			{
 				Fullname = fullPath,
-				Size = (long)findData.nFileSizeHigh << 0x20 | findData.nFileSizeLow
+				Size = ((long)findData.nFileSizeHigh << 0x20) | findData.nFileSizeLow
 			};
 
 			if (_configuration.IncludeFileDates)

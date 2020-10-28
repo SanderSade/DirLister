@@ -8,7 +8,6 @@ namespace DirLister.Core.Tests
 	[TestClass]
 	public class FullRun
 	{
-
 		private static Configuration GetConfiguration()
 		{
 			var configuration = new Configuration
@@ -21,7 +20,8 @@ namespace DirLister.Core.Tests
 				IncludeSubfolders = true,
 				InputFolders = new List<string>
 				{
-					@"C:\Temp", @"c:\tools\"
+					@"C:\Temp",
+					@"c:\tools\"
 				},
 				ProgressAction = (i, s) => Trace.WriteLine($"[Progress] {i} {s}")
 			};
@@ -29,21 +29,21 @@ namespace DirLister.Core.Tests
 			return configuration;
 		}
 
+
 		[TestMethod]
 		public void TestXmlOut()
 		{
 			var configuration = GetConfiguration();
-			configuration.OutputFormats = new List<OutputFormat>
-				{ OutputFormat.Xml };
+			configuration.OutputFormats = new List<OutputFormat> { OutputFormat.Xml };
 			Sander.DirLister.Core.DirLister.List(configuration);
 		}
+
 
 		[TestMethod]
 		public void TestCsvOut()
 		{
 			var configuration = GetConfiguration();
-			configuration.OutputFormats = new List<OutputFormat>
-				{ OutputFormat.Csv };
+			configuration.OutputFormats = new List<OutputFormat> { OutputFormat.Csv };
 			Sander.DirLister.Core.DirLister.List(configuration);
 		}
 
@@ -52,8 +52,7 @@ namespace DirLister.Core.Tests
 		public void TestJsonOut()
 		{
 			var configuration = GetConfiguration();
-			configuration.OutputFormats = new List<OutputFormat>
-				{ OutputFormat.Json };
+			configuration.OutputFormats = new List<OutputFormat> { OutputFormat.Json };
 			Sander.DirLister.Core.DirLister.List(configuration);
 		}
 
@@ -62,8 +61,7 @@ namespace DirLister.Core.Tests
 		public void TestTxtOut()
 		{
 			var configuration = GetConfiguration();
-			configuration.OutputFormats = new List<OutputFormat>
-				{ OutputFormat.Txt };
+			configuration.OutputFormats = new List<OutputFormat> { OutputFormat.Txt };
 			Sander.DirLister.Core.DirLister.List(configuration);
 		}
 
@@ -72,8 +70,7 @@ namespace DirLister.Core.Tests
 		public void TestHtmlOut()
 		{
 			var configuration = GetConfiguration();
-			configuration.OutputFormats = new List<OutputFormat>
-				{ OutputFormat.Html };
+			configuration.OutputFormats = new List<OutputFormat> { OutputFormat.Html };
 			configuration.EnableMultithreading = true;
 			//configuration.CssContent = "* {}";
 			//configuration.IncludeSubfolders = false;
@@ -87,18 +84,25 @@ namespace DirLister.Core.Tests
 		public void TestMdOut()
 		{
 			var configuration = GetConfiguration();
-			configuration.OutputFormats = new List<OutputFormat>
-				{ OutputFormat.Md };
+			configuration.OutputFormats = new List<OutputFormat> { OutputFormat.Md };
 			configuration.OpenAfter = false;
 			Sander.DirLister.Core.DirLister.List(configuration);
 		}
+
 
 		[TestMethod]
 		public void TestAllOut()
 		{
 			var configuration = GetConfiguration();
 			configuration.OutputFormats = new List<OutputFormat>
-				{ OutputFormat.Html, OutputFormat.Csv, OutputFormat.Json, OutputFormat.Txt, OutputFormat.Xml };
+			{
+				OutputFormat.Html,
+				OutputFormat.Csv,
+				OutputFormat.Json,
+				OutputFormat.Txt,
+				OutputFormat.Xml
+			};
+
 			Sander.DirLister.Core.DirLister.List(configuration);
 		}
 	}

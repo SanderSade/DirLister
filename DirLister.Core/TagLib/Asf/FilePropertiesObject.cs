@@ -15,11 +15,6 @@ namespace Sander.DirLister.Core.TagLib.Asf
 		private readonly ulong creation_date;
 
 		/// <summary>
-		///     Contains the file flags.
-		/// </summary>
-		private readonly uint flags;
-
-		/// <summary>
 		///     Contains the play duration.
 		/// </summary>
 		private readonly ulong play_duration;
@@ -78,7 +73,7 @@ namespace Sander.DirLister.Core.TagLib.Asf
 			send_duration = file.ReadQWord();
 			play_duration = file.ReadQWord();
 			Preroll = file.ReadQWord();
-			flags = file.ReadDWord();
+			Flags = file.ReadDWord();
 			MinimumDataPacketSize = file.ReadDWord();
 			MaximumDataPacketSize = file.ReadDWord();
 			MaximumBitrate = file.ReadDWord();
@@ -164,7 +159,7 @@ namespace Sander.DirLister.Core.TagLib.Asf
 		///     A <see cref="uint" /> value containing the flags of the
 		///     file described by the current instance.
 		/// </value>
-		public uint Flags => flags;
+		public uint Flags { get; }
 
 		/// <summary>
 		///     Gets the minimum data packet size of the file described
@@ -215,7 +210,7 @@ namespace Sander.DirLister.Core.TagLib.Asf
 			output.Add(RenderQWord(send_duration));
 			output.Add(RenderQWord(play_duration));
 			output.Add(RenderQWord(Preroll));
-			output.Add(RenderDWord(flags));
+			output.Add(RenderDWord(Flags));
 			output.Add(RenderDWord(MinimumDataPacketSize));
 			output.Add(RenderDWord(MaximumDataPacketSize));
 			output.Add(RenderDWord(MaximumBitrate));

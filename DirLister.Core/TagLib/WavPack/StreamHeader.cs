@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Globalization;
 
 namespace Sander.DirLister.Core.TagLib.WavPack
@@ -80,7 +80,7 @@ namespace Sander.DirLister.Core.TagLib.WavPack
 		{
 			if (data == null)
 			{
-				throw new ArgumentNullException("data");
+				throw new ArgumentNullException(nameof(data));
 			}
 
 			if (!data.StartsWith(FileIdentifier))

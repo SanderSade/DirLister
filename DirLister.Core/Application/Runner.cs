@@ -7,8 +7,7 @@ using Sander.DirLister.Core.Application.Media;
 
 namespace Sander.DirLister.Core.Application
 {
-	/// <summary>
-	/// </summary>
+
 	internal sealed class Runner
 	{
 		private readonly Configuration _configuration;
@@ -147,7 +146,7 @@ namespace Sander.DirLister.Core.Application
 				{
 					var mappedFolder = Utils.GetUncPath(inputFolder);
 
-					if (string.Compare(mappedFolder, inputFolder, StringComparison.Ordinal) != 0)
+					if (!string.Equals(mappedFolder, inputFolder, StringComparison.Ordinal))
 					{
 						_configuration.Log(TraceLevel.Warning, $"Using \"{inputFolder}\" as UNC path \"{mappedFolder}\"");
 					}

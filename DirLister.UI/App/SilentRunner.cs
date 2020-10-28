@@ -40,7 +40,7 @@ namespace Sander.DirLister.UI.App
 		private void RunSilently(string[] folders)
 		{
 			var log = new ConcurrentBag<LogEntry>();
-			_configuration.LoggingAction = delegate(TraceLevel level, string message) { log.Add(new LogEntry(level, message)); };
+			_configuration.LoggingAction = (level, message) => log.Add(new LogEntry(level, message));
 			var result = Core.DirLister.List(_configuration);
 
 			if (!result)

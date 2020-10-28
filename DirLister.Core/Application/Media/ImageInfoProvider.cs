@@ -71,7 +71,7 @@ namespace Sander.DirLister.Core.Application.Media
 			}
 
 			var baseKey = Registry.ClassesRoot.OpenSubKey(baseKeyPath, false);
-			var categoryKey = baseKey?.OpenSubKey("{7ED96837-96F0-4812-B211-F13C24117ED3}" + "\\instance", false);
+			var categoryKey = baseKey?.OpenSubKey("{7ED96837-96F0-4812-B211-F13C24117ED3}\\instance", false);
 			if (categoryKey != null)
 			{
 				// Read the guids of the registered decoders

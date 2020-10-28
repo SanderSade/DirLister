@@ -168,7 +168,7 @@ namespace Sander.DirLister.Core.TagLib.Ape
 		{
 			if (data == null)
 			{
-				throw new ArgumentNullException("data");
+				throw new ArgumentNullException(nameof(data));
 			}
 
 			if (!data.StartsWith(FileIdentifier))

@@ -54,14 +54,14 @@ namespace Sander.DirLister.UI.App
 			Left = Screen.PrimaryScreen.WorkingArea.Right - Width - 20;
 			Top = Screen.PrimaryScreen.WorkingArea.Bottom - Height - 30;
 
-			_configuration.ProgressAction = delegate(int progress, string message)
+			_configuration.ProgressAction = (int progress, string message) =>
 			{
 				// ReSharper disable AccessToDisposedClosure
 				Invoke(ProgressDelegate, progress,
 					message);
 			};
 
-			_configuration.LoggingAction = delegate(TraceLevel level, string message) { _log.Add(new LogEntry(level, message)); };
+			_configuration.LoggingAction = (TraceLevel level, string message) => _log.Add(new LogEntry(level, message));
 		}
 
 
@@ -70,10 +70,10 @@ namespace Sander.DirLister.UI.App
 
 		private async void ProgressForm_Shown(object sender, EventArgs e)
 		{
-			var isSuccess = await Core.DirLister.ListAsync(_configuration);
+			var isSuccess = await Core.DirLister.ListAsync(_configuration).ConfigureAwait(false);
 			if (!isSuccess)
 			{
-				await Task.Delay(500);
+				await Task.Delay(500).ConfigureAwait(false);
 				Hide();
 				var mainForm = new MainForm(_configuration, _log.OrderBy(x => x.Timestamp).ToList(), _configuration.InputFolders);
 				mainForm.ShowDialog(this);

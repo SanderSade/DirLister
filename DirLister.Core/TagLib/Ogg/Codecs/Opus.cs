@@ -9,7 +9,7 @@ namespace Sander.DirLister.Core.TagLib.Ogg.Codecs
 	///     to provide support for processing Ogg
 	///     Opus bitstreams.
 	/// </summary>
-	public class Opus : Codec, IAudioCodec
+	public sealed class Opus : Codec, IAudioCodec
 	{
 		/// <summary>
 		///     Contains the file identifier.
@@ -18,7 +18,7 @@ namespace Sander.DirLister.Core.TagLib.Ogg.Codecs
 
 		private static readonly ByteVector magic_signature_header = "OpusHead";
 		private static readonly ByteVector magic_signature_comment = "OpusTags";
-		private static readonly int magic_signature_length = 8;
+		private const int magic_signature_length = 8;
 
 		/// <summary>
 		///     Contains the comment data.
@@ -178,12 +178,12 @@ namespace Sander.DirLister.Core.TagLib.Ogg.Codecs
 		{
 			if (packet == null)
 			{
-				throw new ArgumentNullException("packet");
+				throw new ArgumentNullException(nameof(packet));
 			}
 
 			if (index < 0)
 			{
-				throw new ArgumentOutOfRangeException("index",
+				throw new ArgumentOutOfRangeException(nameof(index),
 					"index must be at least zero.");
 			}
 

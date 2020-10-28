@@ -9,7 +9,7 @@ namespace Sander.DirLister.Core.TagLib.Ogg.Codecs
 	///     to provide support for processing Ogg
 	///     Vorbis bitstreams.
 	/// </summary>
-	public class Vorbis : Codec, IAudioCodec
+	public sealed class Vorbis : Codec, IAudioCodec
 	{
 		/// <summary>
 		///     Contains the file identifier.
@@ -56,7 +56,7 @@ namespace Sander.DirLister.Core.TagLib.Ogg.Codecs
 		///     audio represented by the current instance.
 		/// </value>
 		public int AudioBitrate => (int)(header.bitrate_nominal /
-		                                 1000f + 0.5);
+			1000f + 0.5);
 
 		/// <summary>
 		///     Gets the sample rate of the audio represented by the
@@ -171,12 +171,12 @@ namespace Sander.DirLister.Core.TagLib.Ogg.Codecs
 		{
 			if (packet == null)
 			{
-				throw new ArgumentNullException("packet");
+				throw new ArgumentNullException(nameof(packet));
 			}
 
 			if (index < 0)
 			{
-				throw new ArgumentOutOfRangeException("index",
+				throw new ArgumentOutOfRangeException(nameof(index),
 					"index must be at least zero.");
 			}
 

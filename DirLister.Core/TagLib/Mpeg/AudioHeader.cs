@@ -111,11 +111,6 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 		private long stream_length;
 
 		/// <summary>
-		///     Contains the associated VBRI header.
-		/// </summary>
-		private readonly VBRIHeader vbri_header;
-
-		/// <summary>
 		///     Contains the audio stream duration.
 		/// </summary>
 		private TimeSpan duration;
@@ -158,7 +153,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 			this.flags = flags;
 			stream_length = streamLength;
 			XingHeader = xingHeader;
-			vbri_header = vbriHeader;
+			VBRIHeader = vbriHeader;
 			duration = TimeSpan.Zero;
 		}
 
@@ -204,7 +199,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 
 			XingHeader = XingHeader.Unknown;
 
-			vbri_header = VBRIHeader.Unknown;
+			VBRIHeader = VBRIHeader.Unknown;
 
 			// Check for a Xing header that will help us in
 			// gathering information about a VBR stream.
@@ -233,7 +228,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 			if (vbri_data.Count == 24 &&
 			    vbri_data.StartsWith(VBRIHeader.FileIdentifier))
 			{
-				vbri_header = new VBRIHeader(vbri_data);
+				VBRIHeader = new VBRIHeader(vbri_data);
 			}
 		}
 
@@ -307,7 +302,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 					                       Duration.TotalSeconds / 1000.0);
 				}
 
-				if (vbri_header.TotalSize > 0 &&
+				if (VBRIHeader.TotalSize > 0 &&
 				    Duration > TimeSpan.Zero)
 				{
 					return (int)Math.Round(VBRIHeader.TotalSize * 8L /
@@ -427,7 +422,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 						time_per_frame *
 						XingHeader.TotalFrames);
 				}
-				else if (vbri_header.TotalFrames > 0)
+				else if (VBRIHeader.TotalFrames > 0)
 				{
 					// Read the length and the bitrate from
 					// the VBRI header.
@@ -493,7 +488,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 				builder.Append(" Audio, Layer ");
 				builder.Append(AudioLayer);
 
-				if (XingHeader.Present || vbri_header.Present)
+				if (XingHeader.Present || VBRIHeader.Present)
 				{
 					builder.Append(" VBR");
 				}
@@ -584,7 +579,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 		///     instance, or <see cref="VBRIHeader.Unknown" /> if no
 		///     header was found.
 		/// </value>
-		public VBRIHeader VBRIHeader => vbri_header;
+		public VBRIHeader VBRIHeader { get; }
 
 
 		/// <summary>
@@ -607,7 +602,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 			// Force the recalculation of duration if it depends on
 			// the stream length.
 			if (XingHeader.TotalFrames == 0 ||
-			    vbri_header.TotalFrames == 0)
+				VBRIHeader.TotalFrames == 0)
 			{
 				duration = TimeSpan.Zero;
 			}
@@ -646,7 +641,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 		{
 			if (file == null)
 			{
-				throw new ArgumentNullException("file");
+				throw new ArgumentNullException(nameof(file));
 			}
 
 			var end = position + length;

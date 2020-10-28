@@ -16,11 +16,6 @@ namespace Sander.DirLister.Core.TagLib.Asf
 		private readonly uint reserved;
 
 		/// <summary>
-		///     Contains the stream type GUID.
-		/// </summary>
-		private readonly System.Guid stream_type;
-
-		/// <summary>
 		///     Contains the time offset of the stream.
 		/// </summary>
 		private readonly ulong time_offset;
@@ -67,7 +62,7 @@ namespace Sander.DirLister.Core.TagLib.Asf
 					"Object size too small.");
 			}
 
-			stream_type = file.ReadGuid();
+			StreamType = file.ReadGuid();
 			ErrorCorrectionType = file.ReadGuid();
 			time_offset = file.ReadQWord();
 
@@ -98,13 +93,13 @@ namespace Sander.DirLister.Core.TagLib.Asf
 		{
 			get
 			{
-				if (stream_type == Asf.Guid.AsfAudioMedia)
+				if (StreamType == Asf.Guid.AsfAudioMedia)
 				{
 					return new WaveFormatEx(
 						TypeSpecificData, 0);
 				}
 
-				if (stream_type == Asf.Guid.AsfVideoMedia)
+				if (StreamType == Asf.Guid.AsfVideoMedia)
 				{
 					return new BitmapInfoHeader(
 						TypeSpecificData, 11);
@@ -121,7 +116,7 @@ namespace Sander.DirLister.Core.TagLib.Asf
 		///     A <see cref="System.Guid" /> object containing the stream
 		///     type GUID of the current instance.
 		/// </summary>
-		public System.Guid StreamType => stream_type;
+		public System.Guid StreamType { get; }
 
 		/// <summary>
 		///     Gets the error correction type GUID of the current
@@ -191,7 +186,7 @@ namespace Sander.DirLister.Core.TagLib.Asf
 		/// </returns>
 		public override ByteVector Render()
 		{
-			ByteVector output = stream_type.ToByteArray();
+			ByteVector output = StreamType.ToByteArray();
 			output.Add(ErrorCorrectionType.ToByteArray());
 			output.Add(RenderQWord(time_offset));
 			output.Add(RenderDWord((uint)

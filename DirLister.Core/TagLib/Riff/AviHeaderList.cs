@@ -54,19 +54,19 @@ namespace Sander.DirLister.Core.TagLib.Riff
 		{
 			if (file == null)
 			{
-				throw new ArgumentNullException("file");
+				throw new ArgumentNullException(nameof(file));
 			}
 
 			if (length < 0)
 			{
 				throw new ArgumentOutOfRangeException(
-					"length");
+					nameof(length));
 			}
 
 			if (position < 0 || position > file.Length - length)
 			{
 				throw new ArgumentOutOfRangeException(
-					"position");
+					nameof(position));
 			}
 
 			var list = new List(file, position, length);
@@ -123,15 +123,6 @@ namespace Sander.DirLister.Core.TagLib.Riff
 	/// </summary>
 	public struct AviHeader
 	{
-		/// <summary>
-		///     Contains the number of streams.
-		/// </summary>
-		private readonly uint streams;
-
-		/// <summary>
-		///     Contains the video height.
-		/// </summary>
-		private readonly uint height;
 
 
 		/// <summary>
@@ -187,13 +178,13 @@ namespace Sander.DirLister.Core.TagLib.Riff
 		{
 			if (data == null)
 			{
-				throw new ArgumentNullException("data");
+				throw new ArgumentNullException(nameof(data));
 			}
 
 			if (offset < 0)
 			{
 				throw new ArgumentOutOfRangeException(
-					"offset");
+					nameof(offset));
 			}
 
 			if (offset + 40 > data.Count)
@@ -217,7 +208,7 @@ namespace Sander.DirLister.Core.TagLib.Riff
 			InitialFrames = data.Mid(offset + 20, 4)
 				.ToUInt(false);
 
-			streams = data.Mid(offset + 24, 4)
+			Streams = data.Mid(offset + 24, 4)
 				.ToUInt(false);
 
 			SuggestedBufferSize = data.Mid(offset + 28, 4)
@@ -226,7 +217,7 @@ namespace Sander.DirLister.Core.TagLib.Riff
 			Width = data.Mid(offset + 32, 4)
 				.ToUInt(false);
 
-			height = data.Mid(offset + 36, 4)
+			Height = data.Mid(offset + 36, 4)
 				.ToUInt(false);
 		}
 
@@ -282,7 +273,7 @@ namespace Sander.DirLister.Core.TagLib.Riff
 		///     A <see cref="uint" /> value specifying the number of
 		///     streams in the file.
 		/// </value>
-		public uint Streams => streams;
+		public uint Streams { get; }
 
 		/// <summary>
 		///     Gets the suggested buffer size for the file.
@@ -308,7 +299,7 @@ namespace Sander.DirLister.Core.TagLib.Riff
 		///     A <see cref="uint" /> value containing the height of the
 		///     video.
 		/// </value>
-		public uint Height => height;
+		public uint Height { get; }
 
 		/// <summary>
 		///     Gets the duration of the media in the file.

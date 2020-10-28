@@ -14,11 +14,6 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 		private static readonly double[] frame_rates = new double[9] { 0, 24000d / 1001d, 24, 25, 30000d / 1001d, 30, 50, 60000d / 1001d, 60 };
 
 		/// <summary>
-		///     Contains the video height.
-		/// </summary>
-		private readonly int height;
-
-		/// <summary>
 		///     Contains the index in <see cref="frame_rates" /> of the
 		///     video frame rate.
 		/// </summary>
@@ -49,7 +44,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 		{
 			if (file == null)
 			{
-				throw new ArgumentNullException("file");
+				throw new ArgumentNullException(nameof(file));
 			}
 
 			file.Seek(position);
@@ -64,7 +59,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 			VideoWidth = data.Mid(0, 2)
 				.ToUShort() >> 4;
 
-			height = data.Mid(1, 2)
+			VideoHeight = data.Mid(1, 2)
 				.ToUShort() & 0x0FFF;
 
 			frame_rate_index = data[3] & 0x0F;
@@ -120,7 +115,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 		///     A <see cref="int" /> value containing the height of the
 		///     video represented by the current instance.
 		/// </value>
-		public int VideoHeight => height;
+		public int VideoHeight { get; }
 
 		/// <summary>
 		///     Gets the frame rate of the video represented by the

@@ -20,11 +20,6 @@ namespace Sander.DirLister.Core.TagLib.Audible
 		/// </summary>
 		public const short OffsetToEndTagPointer = 0x38;
 
-		/// <summary>
-		///     Contains the media properties.
-		/// </summary>
-		private readonly Properties properties = new Properties();
-
 
 		/// <summary>
 		///     Constructs and initializes a new instance of
@@ -150,6 +145,6 @@ namespace Sander.DirLister.Core.TagLib.Audible
 		///     media properties of the file represented by the current
 		///     instance.
 		/// </value>
-		public override Properties Properties => properties;
+		public override Properties Properties { get; } = new Properties();
 	}
 }

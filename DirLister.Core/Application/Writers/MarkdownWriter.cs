@@ -38,7 +38,7 @@ namespace Sander.DirLister.Core.Application.Writers
 			_sb.Append($"### {WebUtility.HtmlEncode(group.Key)} `files: {group.Count()}");
 			if (Configuration.IncludeSize)
 			{
-				_sb.Append($"({Utils.ReadableSize(@group.Sum(x => x.Size))})");
+				_sb.Append($"({Utils.ReadableSize(group.Sum(x => x.Size))})");
 			}
 
 			_sb.AppendLine("`");
@@ -100,7 +100,7 @@ namespace Sander.DirLister.Core.Application.Writers
 		{
 			return value == null || value.Equals(default(T))
 				? string.Empty
-				: FormattableString.Invariant($" {name}: {value.ToString()},");
+				: FormattableString.Invariant($" {name}: {value},");
 		}
 
 

@@ -84,7 +84,7 @@ namespace Sander.DirLister.Core.Application.Writers
 			{
 				return value == null || value.Equals(default(T))
 					? string.Empty
-					: FormattableString.Invariant($" {name}: {value.ToString()},");
+					: FormattableString.Invariant($" {name}: {value},");
 			}
 
 			if (!_needsFileInfo)
@@ -204,7 +204,7 @@ namespace Sander.DirLister.Core.Application.Writers
 			if (string.IsNullOrWhiteSpace(Configuration.CssContent))
 			{
 				var assembly = Assembly.GetExecutingAssembly();
-				var resourceName = "Sander.DirLister.Core.Application.Writers.Default.css";
+				const string resourceName = "Sander.DirLister.Core.Application.Writers.Default.css";
 				using (var stream = assembly.GetManifestResourceStream(resourceName))
 				{
 					Debug.Assert(stream != null, nameof(stream) + " != null");

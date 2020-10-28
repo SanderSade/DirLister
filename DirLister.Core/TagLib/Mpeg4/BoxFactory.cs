@@ -43,8 +43,8 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4
 			// The first few children of an "stsd" are sample
 			// entries.
 			if (parent.BoxType == BoxType.Stsd &&
-			    parent.Box is IsoSampleDescriptionBox &&
-			    index < (parent.Box as IsoSampleDescriptionBox).EntryCount)
+			    parent.Box is IsoSampleDescriptionBox box &&
+			    index < box.EntryCount)
 			{
 				if (handler != null && handler.HandlerType == BoxType.Soun)
 				{

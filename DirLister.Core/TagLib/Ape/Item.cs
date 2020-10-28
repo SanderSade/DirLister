@@ -69,7 +69,7 @@ namespace Sander.DirLister.Core.TagLib.Ape
 		{
 			if (data == null)
 			{
-				throw new ArgumentNullException("data");
+				throw new ArgumentNullException(nameof(data));
 			}
 
 			Parse(data, offset);
@@ -98,10 +98,10 @@ namespace Sander.DirLister.Core.TagLib.Ape
 		{
 			if (value == null)
 			{
-				throw new ArgumentNullException("value");
+				throw new ArgumentNullException(nameof(value));
 			}
 
-			Key = key ?? throw new ArgumentNullException("key");
+			Key = key ?? throw new ArgumentNullException(nameof(key));
 			text = new[] { value };
 		}
 
@@ -129,10 +129,10 @@ namespace Sander.DirLister.Core.TagLib.Ape
 		{
 			if (value == null)
 			{
-				throw new ArgumentNullException("value");
+				throw new ArgumentNullException(nameof(value));
 			}
 
-			Key = key ?? throw new ArgumentNullException("key");
+			Key = key ?? throw new ArgumentNullException(nameof(key));
 			text = (string[])value.Clone();
 		}
 
@@ -162,10 +162,10 @@ namespace Sander.DirLister.Core.TagLib.Ape
 		{
 			if (value == null)
 			{
-				throw new ArgumentNullException("value");
+				throw new ArgumentNullException(nameof(value));
 			}
 
-			Key = key ?? throw new ArgumentNullException("key");
+			Key = key ?? throw new ArgumentNullException(nameof(key));
 			text = value.ToArray();
 		}
 
@@ -198,11 +198,7 @@ namespace Sander.DirLister.Core.TagLib.Ape
 			Key = key;
 			Type = ItemType.Binary;
 
-			data = value as ReadOnlyByteVector;
-			if (data == null)
-			{
-				data = new ReadOnlyByteVector(value);
-			}
+			data = value as ReadOnlyByteVector ?? new ReadOnlyByteVector(value);
 		}
 
 
@@ -298,7 +294,7 @@ namespace Sander.DirLister.Core.TagLib.Ape
 					return text == null || text.Length == 0;
 				}
 
-				return data == null || data.IsEmpty;
+				return data?.IsEmpty != false;
 			}
 		}
 
@@ -334,12 +330,12 @@ namespace Sander.DirLister.Core.TagLib.Ape
 		{
 			if (data == null)
 			{
-				throw new ArgumentNullException("data");
+				throw new ArgumentNullException(nameof(data));
 			}
 
 			if (offset < 0)
 			{
-				throw new ArgumentOutOfRangeException("offset");
+				throw new ArgumentOutOfRangeException(nameof(offset));
 			}
 
 			// 11 bytes is the minimum size for an APE item

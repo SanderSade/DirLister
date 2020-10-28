@@ -11,7 +11,7 @@ namespace Sander.DirLister.UI.App
 {
 	internal static class ShellIntegration
 	{
-		private static readonly string Title = "DirLister (list files)";
+		private const string Title = "DirLister (list files)";
 
 
 		private static void CreateShortcut()

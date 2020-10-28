@@ -43,7 +43,7 @@ namespace Sander.DirLister.Core.TagLib.Riff
 		{
 			if (data == null)
 			{
-				throw new ArgumentNullException("data");
+				throw new ArgumentNullException(nameof(data));
 			}
 
 			Parse(data);
@@ -81,19 +81,19 @@ namespace Sander.DirLister.Core.TagLib.Riff
 		{
 			if (file == null)
 			{
-				throw new ArgumentNullException("file");
+				throw new ArgumentNullException(nameof(file));
 			}
 
 			if (length < 0)
 			{
 				throw new ArgumentOutOfRangeException(
-					"length");
+					nameof(length));
 			}
 
 			if (position < 0 || position > file.Length - length)
 			{
 				throw new ArgumentOutOfRangeException(
-					"position");
+					nameof(position));
 			}
 
 			file.Seek(position);
@@ -224,13 +224,13 @@ namespace Sander.DirLister.Core.TagLib.Riff
 		{
 			if (id == null)
 			{
-				throw new ArgumentNullException("id");
+				throw new ArgumentNullException(nameof(id));
 			}
 
 			if (id.Count != 4)
 			{
 				throw new ArgumentException(
-					"ID must be 4 bytes long.", "id");
+					"ID must be 4 bytes long.", nameof(id));
 			}
 
 			var data = Render();
@@ -274,13 +274,13 @@ namespace Sander.DirLister.Core.TagLib.Riff
 		{
 			if (id == null)
 			{
-				throw new ArgumentNullException("id");
+				throw new ArgumentNullException(nameof(id));
 			}
 
 			if (id.Count != 4)
 			{
 				throw new ArgumentException(
-					"ID must be 4 bytes long.", "id");
+					"ID must be 4 bytes long.", nameof(id));
 			}
 
 			return TryGetValue(id, out var value) ? value : new ByteVectorCollection();
@@ -309,13 +309,13 @@ namespace Sander.DirLister.Core.TagLib.Riff
 		{
 			if (id == null)
 			{
-				throw new ArgumentNullException("id");
+				throw new ArgumentNullException(nameof(id));
 			}
 
 			if (id.Count != 4)
 			{
 				throw new ArgumentException(
-					"ID must be 4 bytes long.", "id");
+					"ID must be 4 bytes long.", nameof(id));
 			}
 
 			var values = GetValues(id);
@@ -369,13 +369,13 @@ namespace Sander.DirLister.Core.TagLib.Riff
 		{
 			if (id == null)
 			{
-				throw new ArgumentNullException("id");
+				throw new ArgumentNullException(nameof(id));
 			}
 
 			if (id.Count != 4)
 			{
 				throw new ArgumentException(
-					"ID must be 4 bytes long.", "id");
+					"ID must be 4 bytes long.", nameof(id));
 			}
 
 			return new StringCollection(GetValuesAsStrings(id));
@@ -405,13 +405,13 @@ namespace Sander.DirLister.Core.TagLib.Riff
 		{
 			if (id == null)
 			{
-				throw new ArgumentNullException("id");
+				throw new ArgumentNullException(nameof(id));
 			}
 
 			if (id.Count != 4)
 			{
 				throw new ArgumentException(
-					"ID must be 4 bytes long.", "id");
+					"ID must be 4 bytes long.", nameof(id));
 			}
 
 			foreach (var text in GetValuesAsStrings(id))
@@ -452,13 +452,13 @@ namespace Sander.DirLister.Core.TagLib.Riff
 		{
 			if (id == null)
 			{
-				throw new ArgumentNullException("id");
+				throw new ArgumentNullException(nameof(id));
 			}
 
 			if (id.Count != 4)
 			{
 				throw new ArgumentException(
-					"ID must be 4 bytes long.", "id");
+					"ID must be 4 bytes long.", nameof(id));
 			}
 
 			if (values == null)
@@ -498,13 +498,13 @@ namespace Sander.DirLister.Core.TagLib.Riff
 		{
 			if (id == null)
 			{
-				throw new ArgumentNullException("id");
+				throw new ArgumentNullException(nameof(id));
 			}
 
 			if (id.Count != 4)
 			{
 				throw new ArgumentException(
-					"ID must be 4 bytes long.", "id");
+					"ID must be 4 bytes long.", nameof(id));
 			}
 
 			if (values == null || values.Length == 0)
@@ -540,13 +540,13 @@ namespace Sander.DirLister.Core.TagLib.Riff
 		{
 			if (id == null)
 			{
-				throw new ArgumentNullException("id");
+				throw new ArgumentNullException(nameof(id));
 			}
 
 			if (id.Count != 4)
 			{
 				throw new ArgumentException(
-					"ID must be 4 bytes long.", "id");
+					"ID must be 4 bytes long.", nameof(id));
 			}
 
 			if (value == 0)
@@ -586,13 +586,13 @@ namespace Sander.DirLister.Core.TagLib.Riff
 		{
 			if (id == null)
 			{
-				throw new ArgumentNullException("id");
+				throw new ArgumentNullException(nameof(id));
 			}
 
 			if (id.Count != 4)
 			{
 				throw new ArgumentException(
-					"ID must be 4 bytes long.", "id");
+					"ID must be 4 bytes long.", nameof(id));
 			}
 
 			if (values == null)
@@ -649,13 +649,13 @@ namespace Sander.DirLister.Core.TagLib.Riff
 		{
 			if (id == null)
 			{
-				throw new ArgumentNullException("id");
+				throw new ArgumentNullException(nameof(id));
 			}
 
 			if (id.Count != 4)
 			{
 				throw new ArgumentException(
-					"ID must be 4 bytes long.", "id");
+					"ID must be 4 bytes long.", nameof(id));
 			}
 
 			if (values == null || values.Length == 0)
@@ -687,13 +687,13 @@ namespace Sander.DirLister.Core.TagLib.Riff
 		{
 			if (id == null)
 			{
-				throw new ArgumentNullException("id");
+				throw new ArgumentNullException(nameof(id));
 			}
 
 			if (id.Count != 4)
 			{
 				throw new ArgumentException(
-					"ID must be 4 bytes long.", "id");
+					"ID must be 4 bytes long.", nameof(id));
 			}
 
 			if (ContainsKey(id))

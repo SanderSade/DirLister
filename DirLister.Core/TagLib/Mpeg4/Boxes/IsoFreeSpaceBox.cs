@@ -66,7 +66,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4.Boxes
 		public override ByteVector Data
 		{
 			get => new ByteVector((int)padding);
-			set => padding = value != null ? value.Count : 0;
+			set => padding = (value?.Count) ?? 0;
 		}
 
 		/// <summary>

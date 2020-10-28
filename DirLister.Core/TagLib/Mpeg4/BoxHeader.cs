@@ -60,7 +60,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4
 		{
 			if (file == null)
 			{
-				throw new ArgumentNullException("file");
+				throw new ArgumentNullException(nameof(file));
 			}
 
 			Box = null;
@@ -189,14 +189,14 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4
 
 			if (type == null)
 			{
-				throw new ArgumentNullException("type");
+				throw new ArgumentNullException(nameof(type));
 			}
 
 			if (type.Count != 4)
 			{
 				throw new ArgumentException(
 					"Box type must be 4 bytes in length.",
-					"type");
+					nameof(type));
 			}
 
 			box_size = header_size = 8;
@@ -207,7 +207,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4
 				{
 					throw new ArgumentException(
 						"Extended type only permitted for 'uuid'.",
-						"extendedType");
+						nameof(extendedType));
 				}
 
 				ExtendedType = extendedType;
@@ -216,14 +216,14 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4
 
 			if (extendedType == null)
 			{
-				throw new ArgumentNullException("extendedType");
+				throw new ArgumentNullException(nameof(extendedType));
 			}
 
 			if (extendedType.Count != 16)
 			{
 				throw new ArgumentException(
 					"Extended type must be 16 bytes in length.",
-					"extendedType");
+					nameof(extendedType));
 			}
 
 			box_size = header_size = 24;
@@ -324,7 +324,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4
 		/// </param>
 		/// <returns>
 		///     The size change encountered by the box that parents the
-		///     box described the the current instance, equal to the
+		///     box described the current instance, equal to the
 		///     size change of the box plus any size change that should
 		///     happen in the header.
 		/// </returns>
@@ -332,7 +332,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4
 		{
 			if (file == null)
 			{
-				throw new ArgumentNullException("file");
+				throw new ArgumentNullException(nameof(file));
 			}
 
 			if (!from_disk)

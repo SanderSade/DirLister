@@ -8,10 +8,6 @@ namespace Sander.DirLister.Core.TagLib.Riff
 	/// </summary>
 	public abstract class AviStream
 	{
-		/// <summary>
-		///     Contains the stream codec information.
-		/// </summary>
-		private ICodec codec;
 
 
 		/// <summary>
@@ -46,11 +42,7 @@ namespace Sander.DirLister.Core.TagLib.Riff
 		///     A <see cref="ICodec" /> object containing the codec
 		///     information for the stream.
 		/// </value>
-		public ICodec Codec
-		{
-			get => codec;
-			protected set => codec = value;
-		}
+		public ICodec Codec { get; protected set; }
 
 
 		/// <summary>
@@ -94,7 +86,7 @@ namespace Sander.DirLister.Core.TagLib.Riff
 		{
 			if (data == null)
 			{
-				throw new ArgumentNullException("data");
+				throw new ArgumentNullException(nameof(data));
 			}
 
 			if (!data.StartsWith("strl"))
@@ -247,10 +239,6 @@ namespace Sander.DirLister.Core.TagLib.Riff
 	/// </summary>
 	public struct AviStreamHeader
 	{
-		/// <summary>
-		///     Contains the position for the bottom side of the video.
-		/// </summary>
-		private readonly ushort bottom;
 
 
 		/// <summary>
@@ -306,13 +294,13 @@ namespace Sander.DirLister.Core.TagLib.Riff
 		{
 			if (data == null)
 			{
-				throw new ArgumentNullException("data");
+				throw new ArgumentNullException(nameof(data));
 			}
 
 			if (offset < 0)
 			{
 				throw new ArgumentOutOfRangeException(
-					"offset");
+					nameof(offset));
 			}
 
 			if (offset + 56 > data.Count)
@@ -362,7 +350,7 @@ namespace Sander.DirLister.Core.TagLib.Riff
 			Right = data.Mid(offset + 52, 2)
 				.ToUShort(false);
 
-			bottom = data.Mid(offset + 54, 2)
+			Bottom = data.Mid(offset + 54, 2)
 				.ToUShort(false);
 		}
 
@@ -521,6 +509,6 @@ namespace Sander.DirLister.Core.TagLib.Riff
 		///     A <see cref="ushort" /> value specifying the bottom
 		///     position.
 		/// </value>
-		public ushort Bottom => bottom;
+		public ushort Bottom { get; }
 	}
 }

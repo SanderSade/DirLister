@@ -179,7 +179,7 @@ namespace Sander.DirLister.Core.TagLib.Asf
 		{
 			if (names == null)
 			{
-				throw new ArgumentNullException("names");
+				throw new ArgumentNullException(nameof(names));
 			}
 
 			foreach (var name in names)
@@ -209,7 +209,7 @@ namespace Sander.DirLister.Core.TagLib.Asf
 		{
 			if (descriptor == null)
 			{
-				throw new ArgumentNullException("descriptor");
+				throw new ArgumentNullException(nameof(descriptor));
 			}
 
 			descriptors.Add(descriptor);
@@ -244,7 +244,7 @@ namespace Sander.DirLister.Core.TagLib.Asf
 		{
 			if (name == null)
 			{
-				throw new ArgumentNullException("name");
+				throw new ArgumentNullException(nameof(name));
 			}
 
 			var position = this.descriptors.Count;

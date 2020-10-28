@@ -390,7 +390,7 @@ namespace Sander.DirLister.Core.TagLib
 
 
 		/// <summary>
-		///     Gets an enumerator for enumerating through the the bytes
+		///     Gets an enumerator for enumerating through the bytes
 		///     in the current instance.
 		/// </summary>
 		/// <returns>
@@ -634,13 +634,13 @@ namespace Sander.DirLister.Core.TagLib
 			if (startIndex < 0 || startIndex > Count)
 			{
 				throw new ArgumentOutOfRangeException(
-					"startIndex");
+					nameof(startIndex));
 			}
 
 			if (length < 0 || startIndex + length > Count)
 			{
 				throw new ArgumentOutOfRangeException(
-					"length");
+					nameof(length));
 			}
 
 			if (length == 0)
@@ -874,13 +874,13 @@ namespace Sander.DirLister.Core.TagLib
 		{
 			if (pattern == null)
 			{
-				throw new ArgumentNullException("pattern");
+				throw new ArgumentNullException(nameof(pattern));
 			}
 
 			if (offset < 0)
 			{
 				throw new ArgumentOutOfRangeException(
-					"offset");
+					nameof(offset));
 			}
 
 			if (pattern.Count == 0 || pattern.Count > Count - offset)
@@ -1017,7 +1017,7 @@ namespace Sander.DirLister.Core.TagLib
 		{
 			if (pattern == null)
 			{
-				throw new ArgumentNullException("pattern");
+				throw new ArgumentNullException(nameof(pattern));
 			}
 
 			if (pattern.Count < patternLength)
@@ -1151,7 +1151,7 @@ namespace Sander.DirLister.Core.TagLib
 		{
 			if (pattern == null)
 			{
-				throw new ArgumentNullException("pattern");
+				throw new ArgumentNullException(nameof(pattern));
 			}
 
 			return ContainsAt(pattern,
@@ -1181,7 +1181,7 @@ namespace Sander.DirLister.Core.TagLib
 		{
 			if (pattern == null)
 			{
-				throw new ArgumentNullException("pattern");
+				throw new ArgumentNullException(nameof(pattern));
 			}
 
 			if (pattern.Count > data.Count)
@@ -1803,12 +1803,12 @@ namespace Sander.DirLister.Core.TagLib
 		{
 			if (offset < 0 || offset > Count)
 			{
-				throw new ArgumentOutOfRangeException("offset");
+				throw new ArgumentOutOfRangeException(nameof(offset));
 			}
 
 			if (count < 0 || count + offset > Count)
 			{
-				throw new ArgumentOutOfRangeException("count");
+				throw new ArgumentOutOfRangeException(nameof(count));
 			}
 
 			var bom = type == StringType.UTF16 &&
@@ -1931,7 +1931,7 @@ namespace Sander.DirLister.Core.TagLib
 		public string[] ToStrings(StringType type, int offset,
 			int count)
 		{
-			var chunk = 0;
+			const int chunk = 0;
 			var position = offset;
 
 			var list = new List<string>();
@@ -2003,8 +2003,8 @@ namespace Sander.DirLister.Core.TagLib
 		public static bool operator ==(ByteVector first,
 			ByteVector second)
 		{
-			var fnull = (object)first == null;
-			var snull = (object)second == null;
+			var fnull = first is null;
+			var snull = second is null;
 			if (fnull && snull)
 			{
 				return true;
@@ -2066,12 +2066,12 @@ namespace Sander.DirLister.Core.TagLib
 		{
 			if (first == null)
 			{
-				throw new ArgumentNullException("first");
+				throw new ArgumentNullException(nameof(first));
 			}
 
 			if (second == null)
 			{
-				throw new ArgumentNullException("second");
+				throw new ArgumentNullException(nameof(second));
 			}
 
 			return first.CompareTo(second) < 0;
@@ -2103,12 +2103,12 @@ namespace Sander.DirLister.Core.TagLib
 		{
 			if (first == null)
 			{
-				throw new ArgumentNullException("first");
+				throw new ArgumentNullException(nameof(first));
 			}
 
 			if (second == null)
 			{
-				throw new ArgumentNullException("second");
+				throw new ArgumentNullException(nameof(second));
 			}
 
 			return first.CompareTo(second) <= 0;
@@ -2140,12 +2140,12 @@ namespace Sander.DirLister.Core.TagLib
 		{
 			if (first == null)
 			{
-				throw new ArgumentNullException("first");
+				throw new ArgumentNullException(nameof(first));
 			}
 
 			if (second == null)
 			{
-				throw new ArgumentNullException("second");
+				throw new ArgumentNullException(nameof(second));
 			}
 
 			return first.CompareTo(second) > 0;
@@ -2177,12 +2177,12 @@ namespace Sander.DirLister.Core.TagLib
 		{
 			if (first == null)
 			{
-				throw new ArgumentNullException("first");
+				throw new ArgumentNullException(nameof(first));
 			}
 
 			if (second == null)
 			{
-				throw new ArgumentNullException("second");
+				throw new ArgumentNullException(nameof(second));
 			}
 
 			return first.CompareTo(second) >= 0;
@@ -2294,7 +2294,7 @@ namespace Sander.DirLister.Core.TagLib
 			for (var i = 0; i < 4; i++)
 			{
 				var offset = mostSignificantByteFirst ? 3 - i : i;
-				vector.Add((byte)(value >> (offset * 8) & 0xFF));
+				vector.Add((byte)((value >> (offset * 8)) & 0xFF));
 			}
 
 			return vector;
@@ -2342,7 +2342,7 @@ namespace Sander.DirLister.Core.TagLib
 			for (var i = 0; i < 4; i++)
 			{
 				var offset = mostSignificantByteFirst ? 3 - i : i;
-				vector.Add((byte)(value >> (offset * 8) & 0xFF));
+				vector.Add((byte)((value >> (offset * 8)) & 0xFF));
 			}
 
 			return vector;
@@ -2391,7 +2391,7 @@ namespace Sander.DirLister.Core.TagLib
 			for (var i = 0; i < 2; i++)
 			{
 				var offset = mostSignificantByteFirst ? 1 - i : i;
-				vector.Add((byte)(value >> (offset * 8) & 0xFF));
+				vector.Add((byte)((value >> (offset * 8)) & 0xFF));
 			}
 
 			return vector;
@@ -2439,7 +2439,7 @@ namespace Sander.DirLister.Core.TagLib
 			for (var i = 0; i < 2; i++)
 			{
 				var offset = mostSignificantByteFirst ? 1 - i : i;
-				vector.Add((byte)(value >> (offset * 8) & 0xFF));
+				vector.Add((byte)((value >> (offset * 8)) & 0xFF));
 			}
 
 			return vector;
@@ -2488,7 +2488,7 @@ namespace Sander.DirLister.Core.TagLib
 			for (var i = 0; i < 8; i++)
 			{
 				var offset = mostSignificantByteFirst ? 7 - i : i;
-				vector.Add((byte)(value >> (offset * 8) & 0xFF));
+				vector.Add((byte)((value >> (offset * 8)) & 0xFF));
 			}
 
 			return vector;
@@ -2536,7 +2536,7 @@ namespace Sander.DirLister.Core.TagLib
 			for (var i = 0; i < 8; i++)
 			{
 				var offset = mostSignificantByteFirst ? 7 - i : i;
-				vector.Add((byte)(value >> (offset * 8) & 0xFF));
+				vector.Add((byte)((value >> (offset * 8)) & 0xFF));
 			}
 
 			return vector;
@@ -2590,7 +2590,7 @@ namespace Sander.DirLister.Core.TagLib
 				data.Add(new byte[] { 0xff, 0xfe });
 			}
 
-			if (text == null || text.Length == 0)
+			if (string.IsNullOrEmpty(text))
 			{
 				return data;
 			}
@@ -2721,7 +2721,7 @@ namespace Sander.DirLister.Core.TagLib
 		{
 			if (path == null)
 			{
-				throw new ArgumentNullException("path");
+				throw new ArgumentNullException(nameof(path));
 			}
 
 			return FromFile(new File.LocalFileAbstraction(path),
@@ -2784,7 +2784,7 @@ namespace Sander.DirLister.Core.TagLib
 		{
 			if (abstraction == null)
 			{
-				throw new ArgumentNullException("abstraction");
+				throw new ArgumentNullException(nameof(abstraction));
 			}
 
 			var stream = abstraction.ReadStream;

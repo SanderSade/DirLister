@@ -74,7 +74,7 @@ namespace Sander.DirLister.Core.Application
 			if (_outputFiles.Count == 1)
 			{
 				_configuration.Log(TraceLevel.Info, "Opening the output file with the default viewer");
-				Process.Start(_outputFiles.First());
+				Process.Start(_outputFiles[0]);
 				return;
 			}
 

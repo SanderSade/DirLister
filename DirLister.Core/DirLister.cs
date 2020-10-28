@@ -27,7 +27,7 @@ namespace Sander.DirLister.Core
 		/// <param name="configuration"></param>
 		public static async Task<bool> ListAsync(Configuration configuration)
 		{
-			return await Task.Run(() => List(configuration));
+			return await Task.Run(() => List(configuration)).ConfigureAwait(false);
 		}
 
 
@@ -56,7 +56,7 @@ namespace Sander.DirLister.Core
 		/// <returns></returns>
 		public static async Task<List<FileEntry>> RunAsync(Configuration configuration)
 		{
-			return await Task.Run(() => Run(configuration));
+			return await Task.Run(() => Run(configuration)).ConfigureAwait(false);
 		}
 	}
 }

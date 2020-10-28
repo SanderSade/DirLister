@@ -59,7 +59,7 @@ namespace Sander.DirLister.UI
 				? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "DirLister")
 				: Settings.Default.OutputFolder;
 
-			if (Settings.Default.OutputFormats != null && Settings.Default.OutputFormats.Count > 0)
+			if (Settings.Default.OutputFormats?.Count > 0)
 			{
 				configuration.OutputFormats = Settings.Default.OutputFormats.Cast<string>()
 					.Select(x => (OutputFormat)Enum.Parse(typeof(OutputFormat), x)).ToList();

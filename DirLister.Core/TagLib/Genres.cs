@@ -203,7 +203,7 @@ namespace Sander.DirLister.Core.TagLib
 		private static byte StringToByte(string text)
 		{
 			int last_pos;
-			if (text != null && text.Length > 2 && text[0] == '('
+			if (text?.Length > 2 && text[0] == '('
 			    && (last_pos = text.IndexOf(')')) != -1
 			    && byte.TryParse(text.Substring(1,
 				    last_pos - 1), out var value))

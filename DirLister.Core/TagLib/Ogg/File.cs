@@ -260,10 +260,7 @@ namespace Sander.DirLister.Core.TagLib.Ogg
 					active_streams.Remove(stream);
 				}
 
-				if (pages != null)
-				{
-					pages.Add(page);
-				}
+				pages?.Add(page);
 
 				position += page.Size;
 			} while (active_streams.Count > 0);

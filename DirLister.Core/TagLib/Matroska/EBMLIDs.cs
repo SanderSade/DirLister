@@ -6,9 +6,19 @@
 	public enum EBMLID
 	{
 		/// <summary>
-		///     Indicates an EBML Header element.
+		///     Indicates an EBML Void element.
 		/// </summary>
-		EBMLHeader = 0x1A45DFA3,
+		EBMLVoid = 0xEC,
+
+		/// <summary>
+		///     Indicates an EBML Doc Type element.
+		/// </summary>
+		EBMLDocType = 0x4282,
+
+		/// <summary>
+		///     Indicates an EBML Doc Type Read Version element.
+		/// </summary>
+		EBMLDocTypeReadVersion = 0x4285,
 
 		/// <summary>
 		///     Indicates an EBML Version element.
@@ -16,9 +26,9 @@
 		EBMLVersion = 0x4286,
 
 		/// <summary>
-		///     Indicates an EBML Read Version element.
+		///     Indicates an EBML Doc Type Version element.
 		/// </summary>
-		EBMLReadVersion = 0x42F7,
+		EBMLDocTypeVersion = 0x4287,
 
 		/// <summary>
 		///     Indicates an EBML Max ID Length element.
@@ -31,23 +41,13 @@
 		EBMLMaxSizeLength = 0x42F3,
 
 		/// <summary>
-		///     Indicates an EBML Doc Type element.
+		///     Indicates an EBML Read Version element.
 		/// </summary>
-		EBMLDocType = 0x4282,
+		EBMLReadVersion = 0x42F7,
 
 		/// <summary>
-		///     Indicates an EBML Doc Type Version element.
+		///     Indicates an EBML Header element.
 		/// </summary>
-		EBMLDocTypeVersion = 0x4287,
-
-		/// <summary>
-		///     Indicates an EBML Doc Type Read Version element.
-		/// </summary>
-		EBMLDocTypeReadVersion = 0x4285,
-
-		/// <summary>
-		///     Indicates an EBML Void element.
-		/// </summary>
-		EBMLVoid = 0xEC
+		EBMLHeader = 0x1A45DFA3
 	}
 }

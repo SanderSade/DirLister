@@ -35,7 +35,7 @@ namespace Sander.DirLister.UI
 					.Select(x =>
 					{
 						var menuItem = new ToolStripMenuItem(x);
-						menuItem.Click += delegate(object sender, EventArgs args)
+						menuItem.Click += (object sender, EventArgs args) =>
 						{
 							if (sender is ToolStripMenuItem item)
 							{
@@ -54,7 +54,7 @@ namespace Sander.DirLister.UI
 			var addToList = true;
 			foreach (ListViewItem listItem in DirectoryList.Items)
 			{
-				if (string.Compare(listItem.Text, directory, StringComparison.OrdinalIgnoreCase) == 0)
+				if (string.Equals(listItem.Text, directory, StringComparison.OrdinalIgnoreCase))
 				{
 					addToList = false;
 				}
@@ -211,7 +211,7 @@ namespace Sander.DirLister.UI
 			var addToList = true;
 			foreach (ListViewItem listItem in WildcardList.Items)
 			{
-				if (string.Compare(listItem.Text, wildcard, StringComparison.OrdinalIgnoreCase) == 0)
+				if (string.Equals(listItem.Text, wildcard, StringComparison.OrdinalIgnoreCase))
 				{
 					addToList = false;
 				}
@@ -224,7 +224,7 @@ namespace Sander.DirLister.UI
 
 				var wildcards = WildcardEdit.Items.Cast<string>().ToList();
 				if (wildcards
-					.Any(x => string.Compare(x, wildcard, StringComparison.OrdinalIgnoreCase) == 0))
+					.Any(x => string.Equals(x, wildcard, StringComparison.OrdinalIgnoreCase)))
 				{
 					return;
 				}
@@ -316,7 +316,7 @@ namespace Sander.DirLister.UI
 			var regexSource = regex.ToString();
 
 			var regexes = RegexCombo.Items.Cast<string>().ToList();
-			if (regexes.Any(x => string.Compare(x, regexSource, StringComparison.OrdinalIgnoreCase) == 0))
+			if (regexes.Any(x => string.Equals(x, regexSource, StringComparison.OrdinalIgnoreCase)))
 			{
 				return;
 			}

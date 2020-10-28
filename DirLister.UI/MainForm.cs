@@ -36,7 +36,7 @@ namespace Sander.DirLister.UI
 			InitializeInput(inputFolders);
 			InitializeOutput();
 
-			if (logs != null && logs.Count > 0)
+			if (logs?.Count > 0)
 			{
 				LogBox.Lines = logs.Select(x => x.ToString())
 					.ToArray();
@@ -71,8 +71,8 @@ namespace Sander.DirLister.UI
 
 			foreach (var folder in folders)
 			{
-				if (!File.GetAttributes(folder)
-					.HasFlag(FileAttributes.Directory))
+				if ((File.GetAttributes(folder)
+& FileAttributes.Directory) == 0)
 				{
 					continue;
 				}
@@ -150,10 +150,10 @@ namespace Sander.DirLister.UI
 				using (var client = new WebClient())
 				{
 					var version = await client.DownloadStringTaskAsync(
-						new Uri("https://raw.githubusercontent.com/SanderSade/DirLister/master/Version.txt"));
+						new Uri("https://raw.githubusercontent.com/SanderSade/DirLister/master/Version.txt")).ConfigureAwait(false);
 
 					version = version.Trim();
-					if (string.Compare(version, Program.Version, StringComparison.OrdinalIgnoreCase) == 0)
+					if (string.Equals(version, Program.Version, StringComparison.OrdinalIgnoreCase))
 					{
 						SetLog(TraceLevel.Info, $"Found \"{version}\". No updates available");
 						MessageBox.Show("You have the latest version", "No updates available", MessageBoxButtons.OK,
@@ -164,7 +164,7 @@ namespace Sander.DirLister.UI
 
 					SetLog(TraceLevel.Info, $"Update found: \"{version}\", fetching release notes...");
 					var releaseNotes = await client.DownloadStringTaskAsync(
-						new Uri("https://raw.githubusercontent.com/SanderSade/DirLister/master/VersionHistory.html"));
+						new Uri("https://raw.githubusercontent.com/SanderSade/DirLister/master/VersionHistory.html")).ConfigureAwait(false);
 
 					SetLog(TraceLevel.Info, "Received release notes");
 

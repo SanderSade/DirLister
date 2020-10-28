@@ -237,8 +237,6 @@ namespace Sander.DirLister.Core.TagLib.Ogg
 					new PageHeader(
 						first_header.StreamSerialNumber,
 						index, first_packet_continued ? PageFlags.FirstPacketContinued : PageFlags.None)));
-
-				index++;
 				count--;
 			}
 

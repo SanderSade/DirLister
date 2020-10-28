@@ -49,7 +49,7 @@ namespace Sander.DirLister.Core.TagLib.Flac
 		{
 			if (data == null)
 			{
-				throw new ArgumentNullException("data");
+				throw new ArgumentNullException(nameof(data));
 			}
 
 			if (data.Count < 18)

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace Sander.DirLister.Core.TagLib.Ogg
@@ -52,16 +52,6 @@ namespace Sander.DirLister.Core.TagLib.Ogg
 		/// </summary>
 		private readonly ulong absolute_granular_position;
 
-		/// <summary>
-		///     Contains the page sequence number.
-		/// </summary>
-		private readonly uint page_sequence_number;
-
-		/// <summary>
-		///     Contains the data size on disk.
-		/// </summary>
-		private readonly uint data_size;
-
 
 		/// <summary>
 		///     Constructs and initializes a new instance of
@@ -90,9 +80,9 @@ namespace Sander.DirLister.Core.TagLib.Ogg
 			Flags = flags;
 			absolute_granular_position = 0;
 			StreamSerialNumber = streamSerialNumber;
-			page_sequence_number = pageNumber;
+			PageSequenceNumber = pageNumber;
 			Size = 0;
-			data_size = 0;
+			DataSize = 0;
 			packet_sizes = new List<int>();
 
 			if (pageNumber == 0 &&
@@ -133,13 +123,13 @@ namespace Sander.DirLister.Core.TagLib.Ogg
 		{
 			if (file == null)
 			{
-				throw new ArgumentNullException("file");
+				throw new ArgumentNullException(nameof(file));
 			}
 
 			if (position < 0 || position > file.Length - 27)
 			{
 				throw new ArgumentOutOfRangeException(
-					"position");
+					nameof(position));
 			}
 
 			file.Seek(position);
@@ -164,7 +154,7 @@ namespace Sander.DirLister.Core.TagLib.Ogg
 			StreamSerialNumber = data.Mid(14, 4)
 				.ToUInt(false);
 
-			page_sequence_number = data.Mid(18, 4)
+			PageSequenceNumber = data.Mid(18, 4)
 				.ToUInt(false);
 
 			// Byte number 27 is the number of page segments, which
@@ -190,11 +180,11 @@ namespace Sander.DirLister.Core.TagLib.Ogg
 			packet_sizes = new List<int>();
 
 			var packet_size = 0;
-			data_size = 0;
+			DataSize = 0;
 
 			for (var i = 0; i < page_segment_count; i++)
 			{
-				data_size += page_segments[i];
+				DataSize += page_segments[i];
 				packet_size += page_segments[i];
 
 				if (page_segments[i] < 255)
@@ -240,14 +230,14 @@ namespace Sander.DirLister.Core.TagLib.Ogg
 				original.absolute_granular_position;
 
 			StreamSerialNumber = original.StreamSerialNumber;
-			page_sequence_number =
-				original.page_sequence_number + offset;
+			PageSequenceNumber =
+				original.PageSequenceNumber + offset;
 
 			Size = original.Size;
-			data_size = original.data_size;
+			DataSize = original.DataSize;
 			packet_sizes = new List<int>();
 
-			if (page_sequence_number == 0 &&
+			if (PageSequenceNumber == 0 &&
 			    (flags & PageFlags.FirstPacketContinued) == 0)
 			{
 				Flags |= PageFlags.FirstPageOfStream;
@@ -300,7 +290,7 @@ namespace Sander.DirLister.Core.TagLib.Ogg
 		///     A <see cref="uint" /> value containing the sequence
 		///     number of the page.
 		/// </value>
-		public uint PageSequenceNumber => page_sequence_number;
+		public uint PageSequenceNumber { get; }
 
 		/// <summary>
 		///     Gets the serial number of stream that the page described
@@ -327,7 +317,7 @@ namespace Sander.DirLister.Core.TagLib.Ogg
 		/// <value>
 		///     A <see cref="uint" /> value containing the data size.
 		/// </value>
-		public uint DataSize => data_size;
+		public uint DataSize { get; }
 
 
 		/// <summary>
@@ -349,7 +339,7 @@ namespace Sander.DirLister.Core.TagLib.Ogg
 				ByteVector.FromUInt(
 					StreamSerialNumber, false),
 				ByteVector.FromUInt(
-					page_sequence_number, false),
+					PageSequenceNumber, false),
 				new ByteVector(4, 0) // checksum, to be filled in later.
 			};
 
@@ -421,8 +411,8 @@ namespace Sander.DirLister.Core.TagLib.Ogg
 				             version ^ (int)Flags ^
 				             (int)absolute_granular_position ^
 				             StreamSerialNumber ^
-				             page_sequence_number ^ Size ^
-				             data_size);
+							 PageSequenceNumber ^ Size ^
+				             DataSize);
 			}
 		}
 
@@ -473,10 +463,10 @@ namespace Sander.DirLister.Core.TagLib.Ogg
 			       other.absolute_granular_position &&
 			       StreamSerialNumber ==
 			       other.StreamSerialNumber &&
-			       page_sequence_number ==
-			       other.page_sequence_number &&
+				   PageSequenceNumber ==
+			       other.PageSequenceNumber &&
 			       Size == other.Size &&
-			       data_size == other.data_size;
+			       DataSize == other.DataSize;
 		}
 
 

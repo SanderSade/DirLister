@@ -38,7 +38,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4.Boxes
 		{
 			if (file == null)
 			{
-				throw new ArgumentNullException("file");
+				throw new ArgumentNullException(nameof(file));
 			}
 
 			file.Seek(DataPosition + 4);
@@ -81,14 +81,14 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4.Boxes
 		{
 			if (handlerType == null)
 			{
-				throw new ArgumentNullException("handlerType");
+				throw new ArgumentNullException(nameof(handlerType));
 			}
 
 			if (handlerType.Count < 4)
 			{
 				throw new ArgumentException(
 					"The handler type must be four bytes long.",
-					"handlerType");
+					nameof(handlerType));
 			}
 
 			HandlerType = handlerType.Mid(0, 4);

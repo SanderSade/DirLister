@@ -68,7 +68,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 		{
 			if (data == null)
 			{
-				throw new ArgumentNullException("data");
+				throw new ArgumentNullException(nameof(data));
 			}
 
 			// Check to see if a valid Xing header is available.
@@ -96,8 +96,6 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 			{
 				TotalSize = data.Mid(position, 4)
 					.ToUInt();
-
-				position += 4;
 			}
 			else
 			{

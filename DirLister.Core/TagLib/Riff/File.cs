@@ -192,15 +192,13 @@ namespace Sander.DirLister.Core.TagLib.Riff
 
 			long position = 12;
 			var length = Length;
-			uint size = 0;
 			var duration = TimeSpan.Zero;
 			var codecs = new ICodec [0];
 
+			uint size;
 			// Read until there are less than 8 bytes to read.
 			do
 			{
-				var tag_found = false;
-
 				Seek(position);
 				var fourcc = ReadBlock(4)
 					.ToString(StringType.UTF8);
@@ -214,7 +212,7 @@ namespace Sander.DirLister.Core.TagLib.Riff
 					// WaveFormatEx structure.
 					case "fmt ":
 						if (style == ReadStyle.None ||
-						    stream_format != "WAVE")
+							stream_format != "WAVE")
 						{
 							break;
 						}
@@ -238,8 +236,8 @@ namespace Sander.DirLister.Core.TagLib.Riff
 						InvariantEndPosition = position + size;
 
 						if (style == ReadStyle.None ||
-						    codecs.Length != 1 ||
-						    !(codecs[0] is WaveFormatEx))
+							codecs.Length != 1 ||
+							!(codecs[0] is WaveFormatEx))
 						{
 							break;
 						}
@@ -254,45 +252,45 @@ namespace Sander.DirLister.Core.TagLib.Riff
 					// Lists are used to store a variety of data
 					// collections. Read the type and act on it.
 					case "LIST":
-					{
-						switch (ReadBlock(4)
-							.ToString(StringType.UTF8))
 						{
-							// "hdlr" is used by AVI files to hold
-							// a media header and BitmapInfoHeader
-							// and WaveFormatEx structures.
-							case "hdrl":
-								if (style == ReadStyle.None ||
-								    stream_format != "AVI ")
-								{
-									continue;
-								}
+							switch (ReadBlock(4)
+								.ToString(StringType.UTF8))
+							{
+								// "hdlr" is used by AVI files to hold
+								// a media header and BitmapInfoHeader
+								// and WaveFormatEx structures.
+								case "hdrl":
+									if (style == ReadStyle.None ||
+										stream_format != "AVI ")
+									{
+										continue;
+									}
 
-								var header_list =
-									new AviHeaderList(this,
-										position + 12,
-										(int)(size - 4));
+									var header_list =
+										new AviHeaderList(this,
+											position + 12,
+											(int)(size - 4));
 
-								duration = header_list.Header.Duration;
-								codecs = header_list.Codecs;
-								break;
-
-							// "movi" contains the media data for
-							// and AVI and its contents represent
-							// the invariant portion of the file.
-							case "movi":
-								if (stream_format != "AVI ")
-								{
+									duration = header_list.Header.Duration;
+									codecs = header_list.Codecs;
 									break;
-								}
 
-								InvariantStartPosition = position;
-								InvariantEndPosition = position + size;
-								break;
+								// "movi" contains the media data for
+								// and AVI and its contents represent
+								// the invariant portion of the file.
+								case "movi":
+									if (stream_format != "AVI ")
+									{
+										break;
+									}
+
+									InvariantStartPosition = position;
+									InvariantEndPosition = position + size;
+									break;
+							}
+
+							break;
 						}
-
-						break;
-					}
 
 					// "JUNK" is a padding element that could be
 					// associated with tag data.
@@ -307,19 +305,6 @@ namespace Sander.DirLister.Core.TagLib.Riff
 
 				// Determine the region of the file that
 				// contains tags.
-				if (tag_found)
-				{
-					if (tag_start == -1)
-					{
-						tag_start = position;
-						tag_end = position + 8 + size;
-					}
-					else if (tag_end == position)
-					{
-						tag_end = position + 8 + size;
-					}
-				}
-
 				// Move to the next item.
 			} while ((position += 8L + size) + 8 < length);
 

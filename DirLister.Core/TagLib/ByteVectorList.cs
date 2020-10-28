@@ -79,7 +79,7 @@ namespace Sander.DirLister.Core.TagLib
 		{
 			if (item == null)
 			{
-				throw new ArgumentNullException("item");
+				throw new ArgumentNullException(nameof(item));
 			}
 
 			// FIXME: This is not used, but if it is a faster
@@ -121,7 +121,7 @@ namespace Sander.DirLister.Core.TagLib
 		{
 			if (separator == null)
 			{
-				throw new ArgumentNullException("separator");
+				throw new ArgumentNullException(nameof(separator));
 			}
 
 			var vector = new ByteVector();
@@ -160,7 +160,7 @@ namespace Sander.DirLister.Core.TagLib
 		/// <param name="max">
 		///     A <see cref="int" /> value specifying the maximum number
 		///     of objects to return, or zero to not to limit the number.
-		///     If that that number is reached, the last value will
+		///     If that number is reached, the last value will
 		///     contain the remainder of the file even if it contains
 		///     more instances of <paramref name="pattern" />.
 		/// </param>
@@ -182,18 +182,18 @@ namespace Sander.DirLister.Core.TagLib
 		{
 			if (vector == null)
 			{
-				throw new ArgumentNullException("vector");
+				throw new ArgumentNullException(nameof(vector));
 			}
 
 			if (pattern == null)
 			{
-				throw new ArgumentNullException("pattern");
+				throw new ArgumentNullException(nameof(pattern));
 			}
 
 			if (byteAlign < 1)
 			{
 				throw new ArgumentOutOfRangeException(
-					"byteAlign",
+					nameof(byteAlign),
 					"byteAlign must be at least 1.");
 			}
 

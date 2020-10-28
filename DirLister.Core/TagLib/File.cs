@@ -37,7 +37,7 @@ namespace Sander.DirLister.Core.TagLib
 	/// <remarks>
 	///     <para>
 	///         This class is agnostic to all specific media types. Its
-	///         child classes, on the other hand, support the the intricacies of
+	///         child classes, on the other hand, support the intricacies of
 	///         different media and tagging formats. For example,
 	///         <see
 	///             cref="Mpeg4.File" />
@@ -83,7 +83,7 @@ namespace Sander.DirLister.Core.TagLib
 		/// <summary>
 		///     Contains buffer size to use when reading.
 		/// </summary>
-		private static readonly int buffer_size = 1024;
+		private const int buffer_size = 1024;
 
 		private static readonly Dictionary<Type, TagFileConstructor<File>> TagFileConstructors = new Dictionary<Type, TagFileConstructor<File>>();
 
@@ -97,12 +97,6 @@ namespace Sander.DirLister.Core.TagLib
 		///     Contains the current stream used in reading/writing.
 		/// </summary>
 		private Stream _fileStream;
-
-		/// <summary>
-		///     Contains position at which the invariant data portion of
-		///     the file begins.
-		/// </summary>
-		private long _invariantStartPosition;
 
 		/// <summary>
 		///     Contains the internal file abstraction.
@@ -128,7 +122,7 @@ namespace Sander.DirLister.Core.TagLib
 		{
 			if (path == null)
 			{
-				throw new ArgumentNullException("path");
+				throw new ArgumentNullException(nameof(path));
 			}
 
 			file_abstraction = new LocalFileAbstraction(path);
@@ -150,7 +144,7 @@ namespace Sander.DirLister.Core.TagLib
 		/// </exception>
 		protected File(IFileAbstraction abstraction)
 		{
-			file_abstraction = abstraction ?? throw new ArgumentNullException("abstraction");
+			file_abstraction = abstraction ?? throw new ArgumentNullException(nameof(abstraction));
 		}
 
 
@@ -234,11 +228,7 @@ namespace Sander.DirLister.Core.TagLib
 		///     section begins. If the value could not be determined,
 		///     <c>-1</c> is returned.
 		/// </value>
-		public long InvariantStartPosition
-		{
-			get => _invariantStartPosition;
-			protected set => _invariantStartPosition = value;
-		}
+		public long InvariantStartPosition { get; protected set; }
 
 		/// <summary>
 		///     Gets the position at which the invariant portion of the
@@ -341,12 +331,7 @@ namespace Sander.DirLister.Core.TagLib
 		/// </param>
 		internal void MarkAsCorrupt(string reason)
 		{
-			if (_corruptionReasons == null)
-			{
-				_corruptionReasons = new List<string>();
-			}
-
-			_corruptionReasons.Add(reason);
+			(_corruptionReasons ??= new List<string>()).Add(reason);
 		}
 
 
@@ -584,9 +569,7 @@ namespace Sander.DirLister.Core.TagLib
 			// Start the search at the offset.
 
 			var buffer_offset = Length - startPosition;
-			var read_size = buffer_size;
-
-			read_size = (int)Math.Min(buffer_offset, buffer_size);
+			var read_size = (int)Math.Min(buffer_offset, buffer_size);
 			buffer_offset -= read_size;
 			_fileStream.Position = buffer_offset;
 
@@ -1004,7 +987,7 @@ namespace Sander.DirLister.Core.TagLib
 			/// </exception>
 			public LocalFileAbstraction(string path)
 			{
-				Name = path ?? throw new ArgumentNullException("path");
+				Name = path ?? throw new ArgumentNullException(nameof(path));
 			}
 
 
@@ -1058,7 +1041,7 @@ namespace Sander.DirLister.Core.TagLib
 			{
 				if (stream == null)
 				{
-					throw new ArgumentNullException("stream");
+					throw new ArgumentNullException(nameof(stream));
 				}
 
 				stream.Dispose();
@@ -1089,16 +1072,16 @@ namespace Sander.DirLister.Core.TagLib
 		///     </para>
 		///     <code lang="C#">using TagLib;
 		/// using Gnome.Vfs;
-		/// 
+		///
 		/// public class ReadTitle
 		/// {
 		///    public static void Main (string [] args)
 		///    {
 		///       if (args.Length != 1)
 		///          return;
-		/// 
+		///
 		///       Gnome.Vfs.Vfs.Initialize ();
-		/// 
+		///
 		///       try {
 		///           TagLib.File file = TagLib.File.Create (
 		///              new VfsFileAbstraction (args [0]));
@@ -1108,28 +1091,28 @@ namespace Sander.DirLister.Core.TagLib
 		///       }
 		///    }
 		/// }
-		/// 
+		///
 		/// public class VfsFileAbstraction : TagLib.File.IFileAbstraction
 		/// {
 		///     private string name;
-		/// 
+		///
 		///     public VfsFileAbstraction (string file)
 		///     {
 		///         name = file;
 		///     }
-		/// 
+		///
 		///     public string Name {
 		///         get { return name; }
 		///     }
-		/// 
+		///
 		///     public System.IO.Stream ReadStream {
 		///         get { return new VfsStream(Name, System.IO.FileMode.Open); }
 		///     }
-		/// 
+		///
 		///     public System.IO.Stream WriteStream {
 		///         get { return new VfsStream(Name, System.IO.FileMode.Open); }
 		///     }
-		/// 
+		///
 		///     public void CloseStream (System.IO.Stream stream)
 		///     {
 		///         stream.Close ();
@@ -1137,29 +1120,29 @@ namespace Sander.DirLister.Core.TagLib
 		/// }</code>
 		///     <code lang="Boo">import TagLib from "taglib-sharp.dll"
 		/// import Gnome.Vfs from "gnome-vfs-sharp"
-		/// 
+		///
 		/// class VfsFileAbstraction (TagLib.File.IFileAbstraction):
-		/// 
+		///
 		///         _name as string
-		/// 
+		///
 		///         def constructor(file as string):
 		///                 _name = file
-		/// 
+		///
 		///         Name:
 		///                 get:
 		///                         return _name
-		/// 
+		///
 		///         ReadStream:
 		///                 get:
 		///                         return VfsStream(_name, FileMode.Open)
-		/// 
+		///
 		///         WriteStream:
 		///                 get:
 		///                         return VfsStream(_name, FileMode.Open)
-		/// 
+		///
 		/// if len(argv) == 1:
 		///         Vfs.Initialize()
-		/// 
+		///
 		///         try:
 		///                 file as TagLib.File = TagLib.File.Create (VfsFileAbstraction (argv[0]))
 		///                 print file.Tag.Title

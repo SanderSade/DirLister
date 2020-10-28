@@ -61,7 +61,6 @@ While most of the preferences can be set from UI, there are some advanced option
 ### Used components
 
 * Code from [taglib#](https://github.com/mono/taglib-sharp), licensed under [GNU Lesser General Public License v2.1](https://github.com/mono/taglib-sharp/blob/master/COPYING). Heavily modified.
-
 <h3>Version history</h3>
 
 

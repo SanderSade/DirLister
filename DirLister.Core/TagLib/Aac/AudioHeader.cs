@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace Sander.DirLister.Core.TagLib.Aac
 {
@@ -6,7 +6,7 @@ namespace Sander.DirLister.Core.TagLib.Aac
 	///     This structure implements <see cref="IAudioCodec" /> and provides
 	///     information about an ADTS AAC audio stream.
 	/// </summary>
-	public class AudioHeader : IAudioCodec
+	public sealed class AudioHeader : IAudioCodec
 	{
 		/// <summary>
 		///     An empty and unset header.
@@ -17,7 +17,7 @@ namespace Sander.DirLister.Core.TagLib.Aac
 		/// <summary>
 		///     Contains a sample rate table for ADTS AAC audio.
 		/// </summary>
-		private static readonly int[] sample_rates = new int[13] { 96000, 88200, 64000, 48000, 44100, 32000, 24000, 22050, 16000, 12000, 11025, 8000, 7350 };
+		private static readonly int[] sample_rates = { 96000, 88200, 64000, 48000, 44100, 32000, 24000, 22050, 16000, 12000, 11025, 8000, 7350 };
 
 		/// <summary>
 		///     Contains a channel table for ADTS AAC audio.
@@ -199,7 +199,7 @@ namespace Sander.DirLister.Core.TagLib.Aac
 		{
 			if (file == null)
 			{
-				throw new ArgumentNullException("file");
+				throw new ArgumentNullException(nameof(file));
 			}
 
 			var end = position + length;
@@ -234,7 +234,7 @@ namespace Sander.DirLister.Core.TagLib.Aac
 							var bits = new BitStream(buffer.Mid(i, 7)
 								.Data);
 
-							// 12 bits sync header 
+							// 12 bits sync header
 							bits.ReadInt32(12);
 
 							// 1 bit mpeg 2/4
@@ -243,13 +243,13 @@ namespace Sander.DirLister.Core.TagLib.Aac
 							// 2 bits layer
 							bits.ReadInt32(2);
 
-							// 1 bit protection absent  
+							// 1 bit protection absent
 							bits.ReadInt32(1);
 
 							// 2 bits profile object type
 							bits.ReadInt32(2);
 
-							// 4 bits sampling frequency index                            
+							// 4 bits sampling frequency index
 							var samplerateindex = bits.ReadInt32(4);
 							if (samplerateindex >= sample_rates.Length)
 							{

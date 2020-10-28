@@ -9,14 +9,14 @@ namespace Sander.DirLister.Core.TagLib.Ape
 	public enum FooterFlags : uint
 	{
 		/// <summary>
-		///     The tag lacks a footer object.
-		/// </summary>
-		FooterAbsent = 0x40000000,
-
-		/// <summary>
 		///     The footer is actually a header.
 		/// </summary>
 		IsHeader = 0x20000000,
+
+		/// <summary>
+		///     The tag lacks a footer object.
+		/// </summary>
+		FooterAbsent = 0x40000000,
 
 		/// <summary>
 		///     The tag contains a header.
@@ -34,12 +34,6 @@ namespace Sander.DirLister.Core.TagLib.Ape
 		///     Contains the APE tag version.
 		/// </summary>
 		private readonly uint version;
-
-		/// <summary>
-		///     Contains the tag size including the footer but excluding
-		///     the header.
-		/// </summary>
-		private uint tag_size;
 
 		/// <summary>
 		///     Specifies the size of an APEv2 footer.
@@ -82,7 +76,7 @@ namespace Sander.DirLister.Core.TagLib.Ape
 		{
 			if (data == null)
 			{
-				throw new ArgumentNullException("data");
+				throw new ArgumentNullException(nameof(data));
 			}
 
 			if (data.Count < Size)
@@ -100,7 +94,7 @@ namespace Sander.DirLister.Core.TagLib.Ape
 			version = data.Mid(8, 4)
 				.ToUInt(false);
 
-			tag_size = data.Mid(12, 4)
+			TagSize = data.Mid(12, 4)
 				.ToUInt(false);
 
 			ItemCount = data.Mid(16, 4)
@@ -150,11 +144,7 @@ namespace Sander.DirLister.Core.TagLib.Ape
 		///     A <see cref="uint" /> value containing the size of the
 		///     tag represented by the current instance.
 		/// </value>
-		public uint TagSize
-		{
-			get => tag_size;
-			set => tag_size = value;
-		}
+		public uint TagSize { get; set; }
 
 		/// <summary>
 		///     Gets the complete size of the tag represented by the
@@ -166,8 +156,8 @@ namespace Sander.DirLister.Core.TagLib.Ape
 		/// </value>
 		public uint CompleteTagSize => TagSize + ((Flags &
 		                                           FooterFlags.HeaderPresent) != 0
-			                               ? Size
-			                               : 0);
+			? Size
+			: 0);
 
 
 		/// <summary>
@@ -222,7 +212,7 @@ namespace Sander.DirLister.Core.TagLib.Ape
 				ByteVector.FromUInt(2000, false),
 
 				// add the tag size
-				ByteVector.FromUInt(tag_size, false),
+				ByteVector.FromUInt(TagSize, false),
 
 				// add the item count
 				ByteVector.FromUInt(ItemCount, false)
@@ -266,7 +256,7 @@ namespace Sander.DirLister.Core.TagLib.Ape
 		{
 			unchecked
 			{
-				return (int)((uint)Flags ^ tag_size ^
+				return (int)((uint)Flags ^ TagSize ^
 				             ItemCount ^ version);
 			}
 		}
@@ -312,7 +302,7 @@ namespace Sander.DirLister.Core.TagLib.Ape
 		public bool Equals(Footer other)
 		{
 			return Flags == other.Flags &&
-			       tag_size == other.tag_size &&
+				   TagSize == other.TagSize &&
 			       ItemCount == other.ItemCount &&
 			       version == other.version;
 		}

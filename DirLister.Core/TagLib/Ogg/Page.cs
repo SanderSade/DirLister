@@ -91,7 +91,7 @@ namespace Sander.DirLister.Core.TagLib.Ogg
 		{
 			if (packets == null)
 			{
-				throw new ArgumentNullException("packets");
+				throw new ArgumentNullException(nameof(packets));
 			}
 
 			this.packets = new ByteVectorCollection(packets);

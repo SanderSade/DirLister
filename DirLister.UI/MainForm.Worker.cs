@@ -48,7 +48,7 @@ namespace Sander.DirLister.UI
 			ResetUi();
 			StartButton.Enabled = false;
 			MainTabs.SelectedTab = LogTab;
-			await Core.DirLister.ListAsync(_configuration);
+			await Core.DirLister.ListAsync(_configuration).ConfigureAwait(false);
 			Progress.Value = 0;
 			StartButton.Enabled = true;
 		}

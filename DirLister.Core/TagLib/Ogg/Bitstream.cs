@@ -55,7 +55,7 @@ namespace Sander.DirLister.Core.TagLib.Ogg
 		{
 			if (page == null)
 			{
-				throw new ArgumentNullException("page");
+				throw new ArgumentNullException(nameof(page));
 			}
 
 			// Assume that the first packet is completely enclosed.
@@ -117,7 +117,7 @@ namespace Sander.DirLister.Core.TagLib.Ogg
 		{
 			if (page == null)
 			{
-				throw new ArgumentNullException("page");
+				throw new ArgumentNullException(nameof(page));
 			}
 
 			var packets = page.Packets;

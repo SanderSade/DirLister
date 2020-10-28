@@ -41,8 +41,8 @@ namespace Sander.DirLister.UI
 			var formats = OutFormats.Controls.OfType<CheckBox>().ToList();
 			foreach (var format in _configuration.OutputFormats)
 			{
-				var ch = formats.FirstOrDefault(x =>
-					string.Compare((string)x.Tag, format.ToString(), StringComparison.OrdinalIgnoreCase) == 0);
+				var ch = formats.Find(x =>
+					string.Equals((string)x.Tag, format.ToString(), StringComparison.OrdinalIgnoreCase));
 
 				if (ch != null)
 				{
@@ -149,8 +149,8 @@ namespace Sander.DirLister.UI
 			}
 
 
-			formatList = formats.Select(x => (OutputFormat)Enum.Parse(typeof(OutputFormat), x, true))
-				.ToList();
+			formatList = formats.ConvertAll(x => (OutputFormat)Enum.Parse(typeof(OutputFormat), x, true))
+;
 
 			return true;
 		}
@@ -163,8 +163,7 @@ namespace Sander.DirLister.UI
 			FolderSelectionDialog.SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 			if (FolderSelectionDialog.ShowDialog() == DialogResult.OK)
 			{
-				var directory = Utils.EnsureBackslash(FolderSelectionDialog.SelectedPath);
-				OutputFolder.Text = directory;
+				OutputFolder.Text = Utils.EnsureBackslash(FolderSelectionDialog.SelectedPath);
 			}
 		}
 

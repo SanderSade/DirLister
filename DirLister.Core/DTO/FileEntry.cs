@@ -25,17 +25,17 @@ namespace Sander.DirLister.Core
 		/// <summary>
 		///     File folder
 		/// </summary>
-		public string Folder => _folder ?? (_folder = Utils.GetPath(Fullname));
+		public string Folder => _folder ??= Utils.GetPath(Fullname);
 
 		/// <summary>
 		///     File name including extension
 		/// </summary>
-		public string Filename => _filename ?? (_filename = Utils.GetFileName(Fullname));
+		public string Filename => _filename ??= Utils.GetFileName(Fullname);
 
 		/// <summary>
 		///     File extension without the period (.). Does not handle multi-dot extensions.
 		/// </summary>
-		public string Extension => _extension ?? (_extension = Utils.GetExtension(Fullname));
+		public string Extension => _extension ??= Utils.GetExtension(Fullname);
 
 		/// <summary>
 		///     File size in bytes

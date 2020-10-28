@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Globalization;
 using System.IO;
 
@@ -86,7 +86,7 @@ namespace Sander.DirLister.Core.TagLib.Mpc
 		{
 			if (file == null)
 			{
-				throw new ArgumentNullException("file");
+				throw new ArgumentNullException(nameof(file));
 			}
 
 			// Assign default values, to be able to call methods
@@ -189,7 +189,7 @@ namespace Sander.DirLister.Core.TagLib.Mpc
 
 					var pos = 4;
 					Version = data[pos];
-					pos += 1;
+					pos++;
 					frames = (uint)ReadSize(data, ref pos);
 					if (pos > (uint)payloadSize - 3)
 					{

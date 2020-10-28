@@ -18,14 +18,19 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 		Zero = 0,
 
 		/// <summary>
-		///     A marker indicating a system sync packet.
-		/// </summary>
-		SystemSyncPacket = 0xBA,
-
-		/// <summary>
 		///     A marker indicating a video sync packet.
 		/// </summary>
 		VideoSyncPacket = 0xB3,
+
+		/// <summary>
+		///     A marker indicating the end of a stream.
+		/// </summary>
+		EndOfStream = 0xB9,
+
+		/// <summary>
+		///     A marker indicating a system sync packet.
+		/// </summary>
+		SystemSyncPacket = 0xBA,
 
 		/// <summary>
 		///     A marker indicating a system packet.
@@ -45,12 +50,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 		/// <summary>
 		///     A marker indicating a video packet.
 		/// </summary>
-		VideoPacket = 0xE0,
-
-		/// <summary>
-		///     A marker indicating the end of a stream.
-		/// </summary>
-		EndOfStream = 0xB9
+		VideoPacket = 0xE0
 	}
 
 	/// <summary>
@@ -434,7 +434,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg
 		/// </remarks>
 		internal void ReadSystemFile(long position)
 		{
-			var sanity_limit = 100;
+			const int sanity_limit = 100;
 
 			for (var i = 0;
 				i < sanity_limit && (start_time == null ||

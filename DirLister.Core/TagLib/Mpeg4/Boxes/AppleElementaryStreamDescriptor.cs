@@ -25,11 +25,6 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4.Boxes
 		/// </summary>
 		private readonly uint max_bitrate;
 
-		/// <summary>
-		///     Contains the stream type.
-		/// </summary>
-		private readonly byte stream_type;
-
 
 		/// <summary>
 		///     Constructs and initializes a new instance of
@@ -112,7 +107,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4.Boxes
 
 			// Read a lot of good info.
 			ObjectTypeId = box_data[offset++];
-			stream_type = box_data[offset++];
+			StreamType = box_data[offset++];
 			BufferSizeDB = box_data.Mid(offset, 3)
 				.ToUInt();
 
@@ -178,7 +173,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4.Boxes
 		///     A <see cref="byte" /> value containing the type the
 		///     stream described by the current instance.
 		/// </value>
-		public byte StreamType => stream_type;
+		public byte StreamType { get; }
 
 		/// <summary>
 		///     Gets the buffer size DB value the stream described by the
@@ -224,7 +219,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4.Boxes
 
 		/// <summary>
 		///     Reads a section length and updates the offset to the end
-		///     of of the length block.
+		///     of the length block.
 		/// </summary>
 		/// <param name="data">
 		///     A <see cref="ByteVector" /> object to read from.
@@ -247,7 +242,7 @@ namespace Sander.DirLister.Core.TagLib.Mpeg4.Boxes
 			do
 			{
 				b = data[offset++];
-				length = length << 7 |
+				length = (length << 7) |
 				         (uint)(b & 0x7f);
 			} while ((b & 0x80) != 0 && offset <= end);
 
