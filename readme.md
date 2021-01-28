@@ -16,6 +16,8 @@ Easy-to use utility for quickly listing folder or drive contents. DirLister can 
 #### Reviews
 * https://www.ghacks.net/2019/07/22/dirlister-open-source-program-to-print-a-list-of-files-and-folders/
 * https://www.softpedia.com/get/System/File-Management/DirLister.shtml
+* [Spanish] https://www.neoteo.com/dirlister-como-crear-listados-de-archivos-y-carpetas/ 
+* http://www.allaboutlifehacks.com/dirlister-is-an-open-source-program-which-can-print-a-list-of-files-and-folders/
 
 ### Installation
 
